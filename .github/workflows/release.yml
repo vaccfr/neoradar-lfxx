@@ -86,13 +86,26 @@ jobs:
             echo "::endgroup::"
           done
 
-      - name: Setup Node.js 22
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10
+
+      - name: Setup Node.js 24
         uses: actions/setup-node@v6
         with:
-          node-version: '22'
+          node-version: '24'
 
       - name: Install neoradar CLI
-        run: npm install -g github:neoradar-project/cli
+        # neoradar-cli@1.1.0+ requires Node >=24 and pnpm >=10. We expose
+        # PNPM_HOME so global binaries (`neoradar-cli`) are on PATH for
+        # subsequent steps.
+        run: |
+          export PNPM_HOME="$HOME/.local/share/pnpm"
+          mkdir -p "$PNPM_HOME"
+          echo "PNPM_HOME=$PNPM_HOME" >> "$GITHUB_ENV"
+          echo "$PNPM_HOME" >> "$GITHUB_PATH"
+          pnpm add -g github:neoradar-project/cli
 
       - name: Configure AWS credentials
         run: |
