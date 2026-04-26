@@ -3,35 +3,100 @@ name: Publish Release
 on:
   workflow_dispatch:
 
+env:
+  # TODO: replace with the actual private data repo name (same org as this repo).
+  LIVE_DATA_REPO_NAME: lfxx-live-data
+  LIVE_DATA_REF: main
+
 jobs:
   build:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
 
     steps:
-    - uses: actions/checkout@v4
-    
-    - name: Setup Node.js 22
-      uses: actions/setup-node@v4
-      with:
-        node-version: '22'
-        
-    - name: Install dependencies
-      run: | 
-        npm install --global yarn
-        yarn global add https://github.com/neoradar-project/cli.git
-      
-    - name: Install aws secrets
-      run: |
-        mkdir -p ~/.aws
-        echo "${{ secrets.AWS_PUBLISH_CREDENTIALS }}" > ~/.aws/credentials
+      - name: Checkout package repo
+        uses: actions/checkout@v6
 
-    - name: Install navdata
-      run: wget ${{ secrets.DATABASE_URL }} -O ./package/datasets/airways.db
+      - name: Mint live-data access token
+        id: live-data-token
+        uses: actions/create-github-app-token@v3
+        with:
+          app-id: ${{ vars.LIVE_DATA_APP_ID }}
+          private-key: ${{ secrets.LIVE_DATA_APP_PRIVATE_KEY }}
+          owner: ${{ github.repository_owner }}
+          repositories: ${{ env.LIVE_DATA_REPO_NAME }}
 
-    - name: Get commit short SHA
-      id: vars
-      run: echo "##[set-output name=COMMIT_SHA;]$(echo ${GITHUB_SHA} | cut -c1-3)"
+      - name: Checkout live data (private)
+        uses: actions/checkout@v6
+        with:
+          repository: ${{ github.repository_owner }}/${{ env.LIVE_DATA_REPO_NAME }}
+          ref: ${{ env.LIVE_DATA_REF }}
+          token: ${{ steps.live-data-token.outputs.token }}
+          path: .live-data
+          persist-credentials: false
 
-    - name: Publish Release
-      run: |
-        neoradar-cli distribute --new-version "$(cat VERSION)_${{ steps.vars.outputs.COMMIT_SHA }}" --publish ./
+      - name: Sync live data into package environment
+        run: |
+          set -euo pipefail
+          # TODO: adjust source paths below to match the layout of the private repo.
+          cp .live-data/sector/*.sct  sector_files/ 2>/dev/null || true
+          cp .live-data/sector/*.sct2 sector_files/ 2>/dev/null || true
+          cp .live-data/sector/*.ese  sector_files/
+          cp .live-data/icao/ICAO_Aircraft.txt icao_data/
+          cp .live-data/icao/ICAO_Airlines.txt icao_data/
+          # Uncomment if Alias.txt / LoginProfiles.txt should come from live data
+          # rather than what is committed in this repo.
+          # cp .live-data/euroscope/Alias.txt         euroscope_data/
+          # cp .live-data/euroscope/LoginProfiles.txt euroscope_data/
+
+      - name: Apply diffs
+        run: |
+          set -euo pipefail
+          if [ ! -d diffs ]; then
+            echo "No diffs directory; skipping."
+            exit 0
+          fi
+          mapfile -t patches < <(find diffs -type f -name '*.patch' | sort)
+          if [ "${#patches[@]}" -eq 0 ]; then
+            echo "No patches to apply."
+            exit 0
+          fi
+          for p in "${patches[@]}"; do
+            echo "::group::Applying $p"
+            git apply --whitespace=fix --verbose "$p"
+            echo "::endgroup::"
+          done
+
+      - name: Setup Node.js 22
+        uses: actions/setup-node@v6
+        with:
+          node-version: '22'
+
+      - name: Install neoradar CLI
+        run: npm install -g github:neoradar-project/cli
+
+      - name: Configure AWS credentials
+        run: |
+          mkdir -p ~/.aws
+          echo "${{ secrets.AWS_PUBLISH_CREDENTIALS }}" > ~/.aws/credentials
+
+      - name: Download navdata
+        run: wget -q "${{ secrets.DATABASE_URL }}" -O ./package/datasets/airways.db
+
+      - name: Convert SCT/ESE/ICAO/aliases
+        run: neoradar-cli convert ./ <<< y
+
+      - name: Compute version
+        id: vars
+        run: echo "version=$(cat VERSION)_${GITHUB_SHA::7}" >> "$GITHUB_OUTPUT"
+
+      - name: Distribute & publish
+        run: neoradar-cli distribute --new-version "${{ steps.vars.outputs.version }}" --publish ./
+
+      - name: Upload package artifact
+        uses: actions/upload-artifact@v7
+        with:
+          name: lfxx-${{ steps.vars.outputs.version }}
+          path: dist/*.zip
+          if-no-files-found: error

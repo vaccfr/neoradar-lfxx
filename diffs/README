@@ -1,0 +1,32 @@
+Patches in this folder are applied on top of the live data pulled from the
+private data repo, before the neoradar-cli conversion runs.
+
+Layout: anything under diffs/**/*.patch is applied (sorted by path).
+Suggested grouping:
+  diffs/sector_files/*.patch  - against the SCT / SCT2 / ESE
+  diffs/icao_data/*.patch     - against ICAO_Aircraft.txt / ICAO_Airlines.txt
+  diffs/euroscope_data/*.patch
+
+Authoring a patch:
+
+1. Run the workflow's sync step locally (or copy the live SCT/ESE/ICAO into
+   sector_files/ and icao_data/). Those files are .gitignored so git won't
+   pick them up directly.
+
+2. Edit the file in place.
+
+3. Generate a patch with paths relative to the repo root:
+
+     git diff --no-index --relative \
+       sector_files/Original.sct sector_files/Original.sct \
+       > diffs/sector_files/fix-something.patch
+
+   Or, if the file is temporarily un-ignored:
+
+     git diff sector_files/Original.sct > diffs/sector_files/fix-something.patch
+
+4. Commit the .patch file. The CI step applies it with:
+
+     git apply --whitespace=fix <patch>
+
+Keep one logical change per patch so PRs stay reviewable.
