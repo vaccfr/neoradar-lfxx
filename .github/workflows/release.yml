@@ -21,7 +21,7 @@ jobs:
         id: live-data-token
         uses: actions/create-github-app-token@v3
         with:
-          app-id: ${{ vars.LIVE_DATA_APP_ID }}
+          client-id: ${{ vars.LIVE_DATA_APP_ID }}
           private-key: ${{ secrets.LIVE_DATA_APP_PRIVATE_KEY }}
           owner: ${{ github.repository_owner }}
           repositories: ${{ env.LIVE_DATA_REPO_NAME }}
