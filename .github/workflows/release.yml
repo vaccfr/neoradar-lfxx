@@ -99,8 +99,8 @@ jobs:
           mkdir -p ~/.aws
           echo "${{ secrets.AWS_PUBLISH_CREDENTIALS }}" > ~/.aws/credentials
 
-      - name: Sync navdata
-        run: cp .live-data/airways.db ./package/datasets/airways.db
+      - name: Build airways database
+        run: neoradar-cli build-airways .live-data/LFXX/NavData -o ./package/datasets/airways.db
 
       - name: Convert SCT/ESE/ICAO/aliases
         run: neoradar-cli convert ./ <<< y

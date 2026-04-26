@@ -2,7 +2,7 @@
   "$schema": "https://raw.githubusercontent.com/neoradar-project/schemas/refs/heads/main/package/manifest.schema.json",
   "id": "LFXX",
   "name": "LFXX",
-  "version": "2511_1",
+  "version": "2603_1",
   "description": "Combined LFXX for all French FIRs",
   "namespace": "lfxx",
   "createdAt": "2025-11-04T17:17:23.755Z",
