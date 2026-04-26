@@ -38,25 +38,30 @@ jobs:
       - name: Sync sector files (ESE / SCT)
         run: |
           set -euo pipefail
-          # ESE/SCT live at the live-data repo root and the filename rotates
-          # every AIRAC, e.g. LFXX-LFXX_20260321145023-260301-0002.{ese,sct}.
-          # Wipe the previous AIRAC's files so we don't ship two copies.
+          # ESE/SCT live at the live-data repo root with AIRAC-rotating names
+          # (e.g. LFXX-LFXX_20260321145023-260301-0002.{ese,sct}). We rename
+          # them to stable paths (sector_files/LFXX.{ese,sct,sct2}) so diffs
+          # can target predictable filenames across AIRACs.
           rm -f sector_files/*.ese sector_files/*.sct sector_files/*.sct2
           shopt -s nullglob
           ese_files=(.live-data/*.ese)
           sct_files=(.live-data/*.sct)
           sct2_files=(.live-data/*.sct2)
-          if [ ${#ese_files[@]} -eq 0 ]; then
-            echo "::error::No .ese file found at the root of the live-data repo"
+          if [ ${#ese_files[@]} -ne 1 ]; then
+            echo "::error::Expected exactly one .ese at live-data root, found ${#ese_files[@]}"
+            exit 1
+          fi
+          if [ ${#sct_files[@]} -gt 1 ] || [ ${#sct2_files[@]} -gt 1 ]; then
+            echo "::error::Expected at most one .sct and one .sct2 at live-data root"
             exit 1
           fi
           if [ ${#sct_files[@]} -eq 0 ] && [ ${#sct2_files[@]} -eq 0 ]; then
             echo "::error::No .sct/.sct2 file found at the root of the live-data repo"
             exit 1
           fi
-          cp "${ese_files[@]}" sector_files/
-          [ ${#sct_files[@]} -gt 0 ]  && cp "${sct_files[@]}"  sector_files/
-          [ ${#sct2_files[@]} -gt 0 ] && cp "${sct2_files[@]}" sector_files/
+          cp "${ese_files[0]}" sector_files/LFXX.ese
+          [ ${#sct_files[@]}  -eq 1 ] && cp "${sct_files[0]}"  sector_files/LFXX.sct
+          [ ${#sct2_files[@]} -eq 1 ] && cp "${sct2_files[0]}" sector_files/LFXX.sct2
           echo "Sector files now in package:"
           ls -la sector_files/
 
@@ -94,8 +99,8 @@ jobs:
           mkdir -p ~/.aws
           echo "${{ secrets.AWS_PUBLISH_CREDENTIALS }}" > ~/.aws/credentials
 
-      - name: Download navdata
-        run: wget -q "${{ secrets.DATABASE_URL }}" -O ./package/datasets/airways.db
+      - name: Sync navdata
+        run: cp .live-data/airways.db ./package/datasets/airways.db
 
       - name: Convert SCT/ESE/ICAO/aliases
         run: neoradar-cli convert ./ <<< y
