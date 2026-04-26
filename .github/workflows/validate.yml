@@ -1,0 +1,51 @@
+name: Validate config files
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+
+      - name: Install PyYAML
+        run: pip install --quiet pyyaml
+
+      - name: Validate JSON & YAML
+        run: |
+          python3 - <<'PY'
+          import json, sys
+          from pathlib import Path
+          import yaml
+
+          SKIP = {".git", "dist", ".live-data", "node_modules"}
+          errors = []
+          counts = {"json": 0, "yaml": 0}
+
+          for path in Path(".").rglob("*"):
+              if not path.is_file():
+                  continue
+              if any(part in SKIP for part in path.parts):
+                  continue
+
+              suffix = path.suffix.lower()
+              try:
+                  if suffix == ".json":
+                      json.loads(path.read_text(encoding="utf-8"))
+                      counts["json"] += 1
+                  elif suffix in (".yml", ".yaml"):
+                      with path.open("r", encoding="utf-8") as fh:
+                          list(yaml.safe_load_all(fh))
+                      counts["yaml"] += 1
+              except Exception as exc:
+                  errors.append((path, exc))
+
+          for path, exc in errors:
+              print(f"::error file={path}::{type(exc).__name__}: {exc}")
+
+          print(f"Validated {counts['json']} JSON and {counts['yaml']} YAML files; "
+                f"{len(errors)} error(s).")
+          sys.exit(1 if errors else 0)
+          PY
