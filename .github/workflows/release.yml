@@ -110,11 +110,10 @@ jobs:
           export PATH="$PNPM_HOME:$PATH"
           echo "PNPM_HOME=$PNPM_HOME" >> "$GITHUB_ENV"
           echo "$PNPM_HOME" >> "$GITHUB_PATH"
-          {
-            echo 'onlyBuiltDependencies[]=better-sqlite3'
-            echo 'onlyBuiltDependencies[]=sector-file-tools'
-          } >> "$HOME/.npmrc"
-          pnpm add -g github:neoradar-project/cli
+          pnpm add -g \
+            --allow-build=better-sqlite3 \
+            --allow-build=sector-file-tools \
+            github:neoradar-project/cli
 
       - name: Configure AWS credentials
         run: |
