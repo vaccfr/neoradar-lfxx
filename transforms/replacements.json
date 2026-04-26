@@ -1,0 +1,32 @@
+{
+  "files": [
+    {
+      "source": "LFXX/Settings/LoginProfiles.txt",
+      "target": "euroscope_data/LoginProfiles.txt",
+      "replacements": [
+        { "find": "vatsim.fr/fb/VOTRE_CID_ICI", "replace": "vatsim.fr/fb/$cid" },
+        { "find": "Leave us some feedback!",    "replace": "Leave me some feedback!" }
+      ]
+    },
+    {
+      "source": "LFXX/Alias/alias.txt",
+      "target": "euroscope_data/Alias.txt",
+      "replacements": []
+    },
+    {
+      "source": "LFXX/ICAO/ICAO_Aircraft.txt",
+      "target": "icao_data/ICAO_Aircraft.txt",
+      "replacements": []
+    },
+    {
+      "source": "LFXX/ICAO/ICAO_Airlines.txt",
+      "target": "icao_data/ICAO_Airlines.txt",
+      "replacements": []
+    },
+    {
+      "source": "LFXX/ICAO/ICAO_Airports.txt",
+      "target": "icao_data/ICAO_Airports.txt",
+      "replacements": []
+    }
+  ]
+}

@@ -4,8 +4,7 @@ on:
   workflow_dispatch:
 
 env:
-  # TODO: replace with the actual private data repo name (same org as this repo).
-  LIVE_DATA_REPO_NAME: lfxx-live-data
+  LIVE_DATA_REPO_NAME: data-sectorfiles
   LIVE_DATA_REF: main
 
 jobs:
@@ -36,19 +35,33 @@ jobs:
           path: .live-data
           persist-credentials: false
 
-      - name: Sync live data into package environment
+      - name: Sync sector files (ESE / SCT)
         run: |
           set -euo pipefail
-          # TODO: adjust source paths below to match the layout of the private repo.
-          cp .live-data/sector/*.sct  sector_files/ 2>/dev/null || true
-          cp .live-data/sector/*.sct2 sector_files/ 2>/dev/null || true
-          cp .live-data/sector/*.ese  sector_files/
-          cp .live-data/icao/ICAO_Aircraft.txt icao_data/
-          cp .live-data/icao/ICAO_Airlines.txt icao_data/
-          # Uncomment if Alias.txt / LoginProfiles.txt should come from live data
-          # rather than what is committed in this repo.
-          # cp .live-data/euroscope/Alias.txt         euroscope_data/
-          # cp .live-data/euroscope/LoginProfiles.txt euroscope_data/
+          # ESE/SCT live at the live-data repo root and the filename rotates
+          # every AIRAC, e.g. LFXX-LFXX_20260321145023-260301-0002.{ese,sct}.
+          # Wipe the previous AIRAC's files so we don't ship two copies.
+          rm -f sector_files/*.ese sector_files/*.sct sector_files/*.sct2
+          shopt -s nullglob
+          ese_files=(.live-data/*.ese)
+          sct_files=(.live-data/*.sct)
+          sct2_files=(.live-data/*.sct2)
+          if [ ${#ese_files[@]} -eq 0 ]; then
+            echo "::error::No .ese file found at the root of the live-data repo"
+            exit 1
+          fi
+          if [ ${#sct_files[@]} -eq 0 ] && [ ${#sct2_files[@]} -eq 0 ]; then
+            echo "::error::No .sct/.sct2 file found at the root of the live-data repo"
+            exit 1
+          fi
+          cp "${ese_files[@]}" sector_files/
+          [ ${#sct_files[@]} -gt 0 ]  && cp "${sct_files[@]}"  sector_files/
+          [ ${#sct2_files[@]} -gt 0 ] && cp "${sct2_files[@]}" sector_files/
+          echo "Sector files now in package:"
+          ls -la sector_files/
+
+      - name: Sync data files & apply replacements
+        run: python3 transforms/apply.py .live-data
 
       - name: Apply diffs
         run: |
