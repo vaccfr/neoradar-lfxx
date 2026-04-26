@@ -97,12 +97,14 @@ jobs:
           node-version: '24'
 
       - name: Install neoradar CLI
-        # neoradar-cli@1.1.0+ requires Node >=24 and pnpm >=10. We expose
-        # PNPM_HOME so global binaries (`neoradar-cli`) are on PATH for
-        # subsequent steps.
+        # neoradar-cli@1.1.0+ requires Node >=24 and pnpm >=10. pnpm refuses
+        # to `add -g` unless its global bin dir is already on PATH, so we
+        # add PNPM_HOME to PATH for this step *and* persist it via
+        # GITHUB_ENV/GITHUB_PATH so `neoradar-cli` is reachable in later steps.
         run: |
           export PNPM_HOME="$HOME/.local/share/pnpm"
           mkdir -p "$PNPM_HOME"
+          export PATH="$PNPM_HOME:$PATH"
           echo "PNPM_HOME=$PNPM_HOME" >> "$GITHUB_ENV"
           echo "$PNPM_HOME" >> "$GITHUB_PATH"
           pnpm add -g github:neoradar-project/cli
