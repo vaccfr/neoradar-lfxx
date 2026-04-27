@@ -18,7 +18,8 @@ extendedCenterlines:
 layerStyles:
   label:
     textStyle:
-      fontSize: 9
+      fontSize: 8
+      color: [200,200,200]
   
   fix:
     pointStyle:

@@ -6,9 +6,8 @@
         {
           "itemName": "plugin:NeoVSID:TAG_ALERT",
           "value": "No Push Clearance",
-          "fontSize": 12,
-          "fontWeight": "bold",
-          "backgroundColor":[234, 171, 24]
+          "fontSize": 11,
+          "fontWeight": "bold"
         }
       ],
       [
@@ -17,7 +16,7 @@
           "prefix": ["=assumedPrefix"],
           "suffix": ["=assumedSuffix"],
           "fontWeight": "bold",
-          "fontSize": 12
+          "fontSize": 11
         },
         {
           "separatorBefore": true,
@@ -40,9 +39,8 @@
         {
           "itemName": "plugin:NeoVSID:TAG_ALERT",
           "value": "No Push Clearance",
-          "fontSize": 12,
-          "fontWeight": "bold",
-          "backgroundColor":[234, 171, 24]
+          "fontSize": 11,
+          "fontWeight": "bold"
         }
       ],
       [
@@ -51,13 +49,13 @@
           "prefix": ["=assumedPrefix"],
           "suffix": ["=assumedSuffix"],
           "fontWeight": "bold",
-          "fontSize": 12,
+          "fontSize": 11,
           "color": "=incorrectSquawkRedColor"
         },
         {
           "itemName": "text",
           "value": "=penWhenScratchpadNotEmpty",
-          "fontSize": 12,
+          "fontSize": 11,
           "fontWeight": "bold"
         },
         {
@@ -77,14 +75,15 @@
       ],
       [
         {
-          "itemName": "text",
+          "itemName": "plugin:NeoVSID:TAG_RWY",
           "placeholder": "RWY",
-          "value": ["=suggestedDepRunwayIfNoAssigned", "&depRunway"]
+          "color": [255, 255, 255]
         },
         {
-          "itemName": "text",
+          "itemName": "plugin:NeoVSID:TAG_SID",
           "placeholder": "SID",
-          "value": ["=suggestedSidIfNoAssigned", "&sid"]
+          "value": ["=suggestedSidIfNoAssigned", "&sid"],
+          "color": [255, 255, 255]
         }
       ]
     ],
@@ -95,7 +94,7 @@
           "prefix": ["=assumedPrefix"],
           "suffix": ["=assumedSuffix"],
           "fontWeight": "bold",
-          "fontSize": 12
+          "fontSize": 11
         },
         {
           "separatorBefore": true,
@@ -114,6 +113,9 @@
       ],
       [
         {
+          "itemName": "plugin:NeoRampAgent:TAG_STAND"
+        },
+        {
           "itemName": "scratchpad"
         }
       ]
@@ -121,12 +123,20 @@
     "detailed": [
       [
         {
+          "itemName": "plugin:NeoVSID:TAG_ALERT",
+          "value": "No Push Clearance",
+          "fontSize": 11,
+          "fontWeight": "bold"
+        }
+      ],
+      [
+        {
           "itemName": "callsign",
           "fontWeight": "bold",
           "leftClick": "callsignMenu",
           "prefix": ["=assumedPrefix"],
           "suffix": ["=assumedSuffix"],
-          "fontSize": 12
+          "fontSize": 11
 
         },
         {
@@ -144,17 +154,32 @@
           "itemName": "squawk",
           "prefix": "@"
         }
+      ],
+      [
+        {
+          "itemName": "plugin:NeoRampAgent:TAG_STAND"
+        },
+        {
+          "itemName": "plugin:NeoRampAgent:TAG_REMARK"
+        }
       ]
     ],
     "departureDetailed": [
       [
         {
+          "itemName": "plugin:NeoVSID:TAG_ALERT",
+          "value": "No Push Clearance",
+          "fontSize": 11,
+          "fontWeight": "bold"
+        }
+      ],
+      [
+        {
           "itemName": "callsign",
           "fontWeight": "bold",
-          "fontSize": 12,
+          "fontSize": 11,
           "leftClick": "callsignMenu",
           "prefix": ["=assumedPrefix"],
-          "suffix": ["=assumedSuffix"],
           "color": "=incorrectSquawkRedColor"
         },
         {
@@ -176,16 +201,26 @@
       ],
       [
         {
-          "itemName": "text",
+          "itemName": "plugin:NeoVSID:TAG_RWY",
           "placeholder": "RWY",
           "value": ["=suggestedDepRunwayIfNoAssigned", "&depRunway"],
-          "leftClick": "depRunwayMenu"
+          "leftClick": "depRunwayMenu",
+          "color": [255, 255, 255]
         },
         {
-          "itemName": "text",
+          "itemName": "plugin:NeoVSID:TAG_SID",
           "placeholder": "SID",
           "value": ["=suggestedSidIfNoAssigned", "&sid"],
-          "leftClick": "sidMenu"
+          "leftClick": "sidMenu",
+          "color": [255, 255, 255]
+        }
+      ],
+      [
+        {
+          "itemName": "plugin:NeoRampAgent:TAG_STAND"
+        },
+        {
+          "itemName": "plugin:NeoRampAgent:TAG_REMARK"
         }
       ],
       [
@@ -212,10 +247,9 @@
         {
           "itemName": "callsign",
           "fontWeight": "bold",
-          "fontSize": 12,
+          "fontSize": 11,
           "leftClick": "callsignMenu",
-          "prefix": ["=assumedPrefix"],
-          "suffix": ["=assumedSuffix"]
+          "prefix": ["=assumedPrefix"]
         },
         {
           "separatorBefore": true,
@@ -236,6 +270,10 @@
       ],
       [
         {
+          "itemName": "plugin:NeoRampAgent:TAG_STAND",
+          "leftClick": "plugin:NeoRampAgent:ACTION_StandMenu"
+        },
+        {
           "itemName": "scratchpad",
           "placeholder": "...",
           "leftClick": "triggerScratchpad"
@@ -247,7 +285,7 @@
         "applyWhen": "$isOutboundTransfer",
         "backgroundColor": [34, 117, 78],
         "textColor": [255, 255, 255],
-        "fontSize": 11,
+        "fontSize": 10,
         "tagContainerPaddingBottom": 1,
         "tagContainerPaddingTop": 1,
         "tagContainerPaddingLeft": 1,
@@ -261,7 +299,7 @@
         "applyWhen": "$isInboundTransfer",
         "backgroundColor": [50, 170, 104],
         "textColor": [255, 255, 255],
-        "fontSize": 11,
+        "fontSize": 10,
         "tagContainerPaddingBottom": 1,
         "tagContainerPaddingTop": 1,
         "tagContainerPaddingLeft": 1,
@@ -275,7 +313,7 @@
         "applyToIsDeparture": true,
         "backgroundColor": [40, 50, 200],
         "textColor": [255, 255, 255],
-        "fontSize": 11,
+        "fontSize": 10,
         "tagContainerPaddingBottom": 1,
         "tagContainerPaddingTop": 1,
         "tagContainerPaddingLeft": 1,
@@ -289,7 +327,7 @@
         "applyToIsArrival": true,
         "backgroundColor": [170, 50, 50],
         "textColor": [255, 255, 255],
-        "fontSize": 11,
+        "fontSize": 10,
         "tagContainerPaddingBottom": 1,
         "tagContainerPaddingTop": 1,
         "tagContainerPaddingLeft": 1,
@@ -303,7 +341,7 @@
         "applyToIsDeparture": true,
         "backgroundColor": [40, 50, 200],
         "textColor": [255, 255, 255],
-        "fontSize": 11,
+        "fontSize": 10,
         "tagContainerPaddingBottom": 1,
         "tagContainerPaddingTop": 1,
         "tagContainerPaddingLeft": 1,
@@ -316,7 +354,7 @@
       {
         "backgroundColor": [48, 48, 48],
         "textColor": [255, 255, 255],
-        "fontSize": 11,
+        "fontSize": 10,
         "tagContainerPaddingBottom": 1,
         "tagContainerPaddingTop": 1,
         "tagContainerPaddingLeft": 1,
@@ -330,6 +368,14 @@
   },
   "airborne": {
     "unconcerned": [
+      [
+        {
+          "itemName": "plugin:NeoVSID:TAG_ALERT",
+          "value": "No Push Clearance",
+          "fontSize": 11,
+          "fontWeight": "bold"
+        }
+      ],
       [
         {
           "itemName": "groundSpeed",
@@ -399,6 +445,14 @@
       ]
     ],
     "concerned": [
+      [
+        {
+          "itemName": "plugin:NeoVSID:TAG_ALERT",
+          "value": "No Push Clearance",
+          "fontSize": 11,
+          "fontWeight": "bold"
+        }
+      ],
       [
         {
           "itemName": "groundSpeed",
@@ -497,6 +551,14 @@
       ]
     ],
     "detailed": [
+      [
+        {
+          "itemName": "plugin:NeoVSID:TAG_ALERT",
+          "value": "No Push Clearance",
+          "fontSize": 11,
+          "fontWeight": "bold"
+        }
+      ],
       [
         {
           "itemName": "groundSpeed",

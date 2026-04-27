@@ -4,12 +4,10 @@
     "incorrectSquawkYellowColor": { "value": "239, 247, 72", "expression": ["$incorrectSquawk"] },
     "incorrectSquawkRedColor": { "value": "239, 20, 72", "expression": ["$incorrectSquawk"] },
     "emptyIfNoAssignedSquawk":  {"value": "", "expression": ["$noAssignedSquawk"] },
-    
-    "focusedAircraft": {
-      "value": "80, 80, 80",
-      "expression": ["$isFocusedAircraft"]
-    },
 
+    "incorrectSquawkTruncate": { "value": "0,4", "expression": ["$incorrectSquawk"] },
+    "correctSquawkTruncate": { "value": "0,0", "expression": ["$correctSquawk"] },
+    
     "isMayday":{
       "value": "EMRG",
       "expression": ["$isEmergency"]
@@ -183,10 +181,10 @@
         ["==", "isDeparture", "0"]
       ]
     ],
-"isFocusedAircraft": ["==", "focusedAircraftCallsign", "&callsign"],
 "isEmergency": ["==", "squawk", "7700"],
 "isLostComm": ["==", "squawk", "7600"],
 
+"hasRequestPending": ["notEmpty", "plugin:NeoVSID:TAG_REQUEST"],
 
 "isAssumedAndEmergency": [
   "AND",
@@ -324,7 +322,7 @@
     "isSlowClimbing": ["AND", [["<", "verticalSpeed", "1000"], [">", "verticalSpeed", "0"]]],
     "isNotSlowClimbing": [">=", "verticalSpeed", "1000"],
     "isNotSlowDescending": ["<=", "verticalSpeed", "-1000"],
-    "isEmmergencyDescending": ["<=", "verticalSpeed", -4000],
+    "isEmmergencyDescending": ["<=", "verticalSpeed", "-4000"],
     "isNotEmmergencyDescending": ["NOT", ["$isEmmergencyDescending"]],
 
     "isVFR": ["contains", "flightRule", "V"],
@@ -332,6 +330,8 @@
 
     "isVFRandDeparture": ["AND", [["==", "isDeparture", "1"], ["contains", "flightRule", "V"]]],
     "isVFRandArrival": ["AND", [["==", "isArrival", "1"], ["contains", "flightRule", "V"]]], 
+
+
 
 
     "assumedAndIsArr": [
@@ -351,6 +351,7 @@
     ],
 
     "incorrectSquawk": ["!=", "squawk", "&assignedSquawk"],
+    "correctSquawk": ["==", "squawk", "&assignedSquawk"],
     "noAssignedSquawk": ["==", "assignedSquawk", "0000"],
 
     "isAssignedSidEmpty": ["isEmpty", "sid"],

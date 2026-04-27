@@ -1,20 +1,19 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/neoradar-project/schemas/main/systems/mapstyle.schema.json
 inactiveSectorBackgroundColor: [57, 61, 63]
 activeSectorBackgroundColor: [48, 48, 48]
-areaOfInterestBackgroundColor: [66, 75, 78]
 
 neighborSectorBorderLineColor: [145, 82, 15]
 neighborSectorBorderLineWidth: 2
 
 extendedCenterlines:
-  lengthNm: 23
+  lengthNm: 20
   color: [101, 129, 101]
-  lineWidth: 2
+  lineWidth: 6
   thresholdOffsetNm: 2
 
-  majorTickType: 'circle'
-  majorTickSpacingNm: 3
-  majorTickWidth: 50
+  majorTickType: 'rightSideLine'
+  majorTickSpacingNm: 5
+  majorTickWidth: 1
 
 layerStyles:
   star:
@@ -27,3 +26,7 @@ layerStyles:
       color: [83, 94, 78]
       width: 1
       opacity: 1
+  label:
+    textStyle:
+      fontSize: 8
+      color: [200, 200, 200]

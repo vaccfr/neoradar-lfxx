@@ -6,15 +6,14 @@ neighborSectorBorderLineColor: [145, 82, 15]
 neighborSectorBorderLineWidth: 2
 
 extendedCenterlines:
-  lengthNm: 23
+  lengthNm: 20
   color: [101, 129, 101]
   lineWidth: 2
   thresholdOffsetNm: 2
 
-  majorTickType: 'circle'
-  majorTickSpacingNm: 3
-  majorTickWidth: 50
-
+  majorTickType: 'rightSideLine'
+  majorTickSpacingNm: 5
+  majorTickWidth: 1
 layerStyles:
   fix:
     pointStyle:
@@ -23,7 +22,6 @@ layerStyles:
       strokeColor: [83, 94, 78]
       fillColor: [83, 94, 78]
       rotation: 45
-
   vor:
     pointStyle:
       type: cross
@@ -31,11 +29,14 @@ layerStyles:
       strokeColor: [83, 94, 78]
       fillColor: [83, 94, 78]
       rotation: 45
-
-  nbd:
+  ndb:
     pointStyle:
       type: cross
       size: 4
       strokeColor: [83, 94, 78]
       fillColor: [83, 94, 78]
       rotation: 45
+  label:
+    textStyle:
+      fontSize: 8
+      color: [200, 200, 200]

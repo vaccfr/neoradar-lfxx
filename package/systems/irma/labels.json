@@ -6,9 +6,8 @@
         {
           "itemName": "plugin:NeoVSID:TAG_ALERT",
           "value": "No Push Clearance",
-          "fontSize": 12,
-          "fontWeight": "bold",
-          "backgroundColor":[234, 171, 24]
+          "fontSize": 11,
+          "fontWeight": "bold"
         }
       ],
       [
@@ -17,7 +16,7 @@
           "prefix": ["=assumedPrefix"],
           "suffix": ["=assumedSuffix"],
           "fontWeight": "bold",
-          "fontSize": 12
+          "fontSize": 11
         },
         {
           "separatorBefore": true,
@@ -40,9 +39,8 @@
         {
           "itemName": "plugin:NeoVSID:TAG_ALERT",
           "value": "No Push Clearance",
-          "fontSize": 12,
-          "fontWeight": "bold",
-          "backgroundColor":[234, 171, 24]
+          "fontSize": 11,
+          "fontWeight": "bold"
         }
       ],
       [
@@ -51,7 +49,7 @@
           "prefix": ["=assumedPrefix"],
           "suffix": ["=assumedSuffix"],
           "fontWeight": "bold",
-          "fontSize": 12,
+          "fontSize": 11,
           "color": "=incorrectSquawkRedColor"
         },
         {
@@ -68,7 +66,7 @@
         {
           "itemName": "text",
           "value": "=penWhenScratchpadNotEmpty",
-          "fontSize": 12,
+          "fontSize": 11,
           "fontWeight": "bold"
         }
       ],
@@ -84,7 +82,8 @@
         {
           "itemName": "plugin:NeoVSID:TAG_SID",
           "placeholder": "SID",
-          "leftClick": "sidMenu"
+          "leftClick": "sidMenu",
+          "color": [255, 255, 255]
         }
       ]
     ],
@@ -95,7 +94,7 @@
           "prefix": ["=assumedPrefix"],
           "suffix": ["=assumedSuffix"],
           "fontWeight": "bold",
-          "fontSize": 12
+          "fontSize": 11
         },
         {
           "separatorBefore": true,
@@ -115,6 +114,9 @@
         {
           "itemName": "acShortType",
           "placeholder": "ATYP"
+        },
+        {
+          "itemName": "plugin:NeoRampAgent:TAG_STAND"
         }
       ]
     ],
@@ -123,9 +125,8 @@
         {
           "itemName": "plugin:NeoVSID:TAG_ALERT",
           "value": "No Push Clearance",
-          "fontSize": 12,
-          "fontWeight": "bold",
-          "backgroundColor":[234, 171, 24]
+          "fontSize": 11,
+          "fontWeight": "bold"
         }
       ],
       [
@@ -134,8 +135,7 @@
           "fontWeight": "bold",
           "leftClick": "callsignMenu",
           "prefix": ["=assumedPrefix"],
-          "suffix": ["=assumedSuffix"],
-          "fontSize": 12
+          "fontSize": 11
         },
         {
           "separatorBefore": true,
@@ -152,6 +152,11 @@
           "itemName": "squawk",
           "prefix": "@"
         }
+      ],
+      [
+        {
+          "itemName": "plugin:NeoRampAgent:TAG_STAND"
+        }
       ]
     ],
     "departureDetailed": [
@@ -159,19 +164,17 @@
         {
           "itemName": "plugin:NeoVSID:TAG_ALERT",
           "value": "No Push Clearance",
-          "fontSize": 12,
-          "fontWeight": "bold",
-          "backgroundColor":[234, 171, 24]
+          "fontSize": 11,
+          "fontWeight": "bold"
         }
       ],
       [
         {
           "itemName": "callsign",
           "fontWeight": "bold",
-          "fontSize": 12,
+          "fontSize": 11,
           "leftClick": "callsignMenu",
           "prefix": ["=assumedPrefix"],
-          "suffix": ["=assumedSuffix"],
           "color": "=incorrectSquawkRedColor"
         },
         {
@@ -200,12 +203,22 @@
         {
           "itemName": "plugin:NeoVSID:TAG_RWY",
           "placeholder": "RWY",
-          "leftClick": "depRunwayMenu"
+          "leftClick": "depRunwayMenu",
+          "color": [255, 255, 255]
         },
         {
           "itemName": "plugin:NeoVSID:TAG_SID",
           "placeholder": "SID",
-          "leftClick": "sidMenu"
+          "leftClick": "sidMenu",
+          "color": [255, 255, 255]
+        }
+      ],
+      [
+        {
+          "itemName": "plugin:NeoRampAgent:TAG_STAND"
+        },
+        {
+          "itemName": "plugin:NeoRampAgent:TAG_REMARK"
         }
       ],
       [
@@ -227,10 +240,9 @@
         {
           "itemName": "callsign",
           "fontWeight": "bold",
-          "fontSize": 12,
+          "fontSize": 11,
           "leftClick": "callsignMenu",
-          "prefix": ["=assumedPrefix"],
-          "suffix": ["=assumedSuffix"]
+          "prefix": ["=assumedPrefix"]
         },
         {
           "separatorBefore": true,
@@ -254,6 +266,10 @@
           "itemName": "acShortType",
           "placeholder": "ATYP",
           "leftClick": "fpDialog"
+        },
+        {
+          "itemName": "plugin:NeoRampAgent:TAG_STAND",
+          "leftClick": "plugin:NeoRampAgent:ACTION_StandMenu"
         }
       ]
     ],
@@ -347,11 +363,17 @@
     "unconcerned": [
       [
         {
+          "itemName": "assignedSquawk",
+          "truncate": ["=incorrectSquawkTruncate", "=correctSquawkTruncate"],
+          "color": [218, 89, 50]
+        }
+      ],
+      [
+        {
           "itemName": "plugin:NeoVSID:TAG_ALERT",
           "value": "No Push Clearance",
-          "fontSize": 12,
-          "fontWeight": "bold",
-          "backgroundColor":[234, 171, 24]
+          "fontSize": 11,
+          "fontWeight": "bold"
         }
       ],
       [
@@ -476,6 +498,13 @@
     "concerned": [
       [
         {
+          "itemName": "assignedSquawk",
+          "truncate": ["=incorrectSquawkTruncate", "=correctSquawkTruncate"],
+          "color": [218, 89, 50]
+        }
+      ],
+      [
+        {
           "itemName": "assignedMach",
           "padWithZeroLeft": 3,
           "truncate": [0, 3],
@@ -515,17 +544,6 @@
           "leftClick": "callsignMenu",
           "color": "=cdgWhiteIfInStateOfInterest",
           "backgroundColor": ["=assumedVFRandArrival", "=assumedTransitVFR", "=assumedAndDeparture", "=assumedAndArrival", "=assumedTransitIFR"]
-        },
-        {
-          "separatorBefore": false,
-          "itemName": "voiceType",
-          "leftClick": "voiceTypeMenu",
-          "mapping": {
-            "0": "",
-            "1": "/r",
-            "2": "/t"
-          },
-          "color": [255, 220, 3]
         },
         {
           "separatorBefore": false,
@@ -608,6 +626,13 @@
     "detailed": [
       [
         {
+          "itemName": "assignedSquawk",
+          "truncate": ["=incorrectSquawkTruncate", "=correctSquawkTruncate"],
+          "color": [218, 89, 50]
+        }
+      ],
+      [
+        {
           "itemName": "assignedMach",
           "padWithZeroLeft": 3,
           "truncate": [0, 3],
@@ -636,11 +661,6 @@
           "fontWeight": "bold",
           "backgroundColor": [1,1,1],
           "color": [218, 89, 50]
-        },
-        {
-          "itemName": "text",
-          "value": "=penWhenScratchpadNotEmpty",
-          "color": "=blueColorScratchpadNotEmpty"
         }
       ],
       [
@@ -779,7 +799,7 @@
         "detailedRoundedCorners": 2,
         "font": "OrlyLabelVATSIM",
         "fontWeight": "normal",
-        "fontSize": 13
+        "fontSize": 11
       },
       {
         "description": "VFR",
@@ -790,7 +810,7 @@
         "detailedRoundedCorners": 2,
         "font": "OrlyLabelVATSIM",
         "fontWeight": "normal",
-        "fontSize": 13
+        "fontSize": 11
       },
       {
         "description": "other departures",
@@ -801,7 +821,7 @@
         "detailedRoundedCorners": 2,
         "font": "OrlyLabelVATSIM",
         "fontWeight": "normal",
-        "fontSize": 13
+        "fontSize": 11
       },
       {
         "description": "other arrival",
@@ -812,7 +832,7 @@
         "detailedRoundedCorners": 2,
         "font": "OrlyLabelVATSIM",
         "fontWeight": "normal",
-        "fontSize": 13
+        "fontSize": 11
       },
       {
         "description": "Transit IFR",
@@ -823,7 +843,7 @@
         "detailedRoundedCorners": 2,
         "font": "OrlyLabelVATSIM",
         "fontWeight": "normal",
-        "fontSize": 13
+        "fontSize": 11
       },
       {
         "description": "other assumed",
@@ -834,7 +854,7 @@
           "detailedRoundedCorners": 2,
         "font": "OrlyLabelVATSIM",
         "fontWeight": "normal",
-        "fontSize": 13
+        "fontSize": 11
       },
       {
         "description": "catch all unconcerned default",
@@ -845,7 +865,7 @@
         "detailedTextColor": [212,212,185],
         "font": "OrlyLabelVATSIM",
         "fontWeight": "normal",
-        "fontSize": 13
+        "fontSize": 11
       }
     ]
   }
