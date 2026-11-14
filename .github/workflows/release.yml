@@ -2,10 +2,31 @@ name: Publish Release
 
 on:
   workflow_dispatch:
+    inputs:
+      packages:
+        description: "Package ids to build, comma-separated (empty = all: LFBB,LFXXN,LFMM,LFRR)"
+        required: false
+        default: ""
+      publish:
+        description: "Publish to the package bucket (off = build and upload artifacts only)"
+        type: boolean
+        default: true
 
 env:
+  # Public: ASRs, login profiles, alias, CoFrance plugin maps.
+  SECTOR_FILES_REPO: vaccfr/Sector-Files
+  SECTOR_FILES_REF: main
+  # Public: the CoFrance maps and config. Sector-Files ships only CoFranceLoader.dll; the loader
+  # downloads these at runtime, so this repo is what controllers actually draw.
+  COFRANCE_CONFIG_REPO: alexisBalzano/CoFrance-config-files
+  COFRANCE_CONFIG_REF: main
+  # Private: the GNG AIRAC data (sector files, ICAO, NavData), never published as-is.
   LIVE_DATA_REPO_NAME: data-sectorfiles
   LIVE_DATA_REF: main
+  # The client in use (0.2.3-alpha) refuses layer files without an item table, which only the CLI's
+  # develop branch writes. Move both back to main once develop is merged.
+  NEORADAR_CLI_REF: develop
+  NEORADAR_SCHEMAS_REF: develop
 
 jobs:
   build:
@@ -17,6 +38,29 @@ jobs:
       - name: Checkout package repo
         uses: actions/checkout@v6
 
+      - name: Checkout French vACC Sector-Files
+        uses: actions/checkout@v6
+        with:
+          repository: ${{ env.SECTOR_FILES_REPO }}
+          ref: ${{ env.SECTOR_FILES_REF }}
+          path: .source
+          persist-credentials: false
+
+      - name: Checkout CoFrance config (maps)
+        uses: actions/checkout@v6
+        with:
+          repository: ${{ env.COFRANCE_CONFIG_REPO }}
+          ref: ${{ env.COFRANCE_CONFIG_REF }}
+          path: .cofrance
+          persist-credentials: false
+
+      - name: Lay CoFrance config into the plugin folder
+        run: |
+          set -euo pipefail
+          mkdir -p .source/LFXX/Plugins/CoFrance
+          rsync -a --exclude .git --exclude .github .cofrance/ .source/LFXX/Plugins/CoFrance/
+          echo "CoFrance $(python3 -c "import json;print(json.load(open('.source/LFXX/Plugins/CoFrance/version.json'))['plugin_version'])")"
+
       - name: Mint live-data access token
         id: live-data-token
         uses: actions/create-github-app-token@v3
@@ -26,7 +70,7 @@ jobs:
           owner: ${{ github.repository_owner }}
           repositories: ${{ env.LIVE_DATA_REPO_NAME }}
 
-      - name: Checkout live data (private)
+      - name: Checkout GNG data (private)
         uses: actions/checkout@v6
         with:
           repository: ${{ github.repository_owner }}/${{ env.LIVE_DATA_REPO_NAME }}
@@ -35,56 +79,23 @@ jobs:
           path: .live-data
           persist-credentials: false
 
-      - name: Sync sector files (ESE / SCT)
+      - name: Lay GNG data over Sector-Files
+        # data-sectorfiles mirrors the Controller Pack layout for the GNG-owned files:
+        #   LFXX/Sectors/<FIR>.sct + .ese + current_airac.txt, <FIR>/ICAO/*.txt, <FIR>/NavData/*.txt
         run: |
           set -euo pipefail
-          # ESE/SCT live at the live-data repo root with AIRAC-rotating names
-          # (e.g. LFXX-LFXX_20260321145023-260301-0002.{ese,sct}). We rename
-          # them to stable paths (sector_files/LFXX.{ese,sct,sct2}) so diffs
-          # can target predictable filenames across AIRACs.
-          rm -f sector_files/*.ese sector_files/*.sct sector_files/*.sct2
-          shopt -s nullglob
-          ese_files=(.live-data/*.ese)
-          sct_files=(.live-data/*.sct)
-          sct2_files=(.live-data/*.sct2)
-          if [ ${#ese_files[@]} -ne 1 ]; then
-            echo "::error::Expected exactly one .ese at live-data root, found ${#ese_files[@]}"
-            exit 1
-          fi
-          if [ ${#sct_files[@]} -gt 1 ] || [ ${#sct2_files[@]} -gt 1 ]; then
-            echo "::error::Expected at most one .sct and one .sct2 at live-data root"
-            exit 1
-          fi
-          if [ ${#sct_files[@]} -eq 0 ] && [ ${#sct2_files[@]} -eq 0 ]; then
-            echo "::error::No .sct/.sct2 file found at the root of the live-data repo"
-            exit 1
-          fi
-          cp "${ese_files[0]}" sector_files/LFXX.ese
-          [ ${#sct_files[@]}  -eq 1 ] && cp "${sct_files[0]}"  sector_files/LFXX.sct
-          [ ${#sct2_files[@]} -eq 1 ] && cp "${sct2_files[0]}" sector_files/LFXX.sct2
-          echo "Sector files now in package:"
-          ls -la sector_files/
+          rsync -a --exclude .git .live-data/ .source/
+          test -f .source/LFXX/Sectors/current_airac.txt || { echo "::error::LFXX/Sectors/current_airac.txt missing from ${LIVE_DATA_REPO_NAME}"; exit 1; }
+          echo "AIRAC $(cat .source/LFXX/Sectors/current_airac.txt)"
+          ls -la .source/LFXX/Sectors/
 
-      - name: Sync data files & apply replacements
-        run: python3 transforms/apply.py .live-data
-
-      - name: Apply diffs
-        run: |
-          set -euo pipefail
-          if [ ! -d diffs ]; then
-            echo "No diffs directory; skipping."
-            exit 0
-          fi
-          mapfile -t patches < <(find diffs -type f -name '*.patch' | sort)
-          if [ "${#patches[@]}" -eq 0 ]; then
-            echo "No patches to apply."
-            exit 0
-          fi
-          for p in "${patches[@]}"; do
-            echo "::group::Applying $p"
-            git apply --whitespace=fix --verbose "$p"
-            echo "::endgroup::"
-          done
+      - name: Checkout NeoRadar schemas
+        uses: actions/checkout@v6
+        with:
+          repository: neoradar-project/schemas
+          ref: ${{ env.NEORADAR_SCHEMAS_REF }}
+          path: .schemas
+          persist-credentials: false
 
       - name: Setup Node.js 24
         uses: actions/setup-node@v6
@@ -97,13 +108,9 @@ jobs:
           version: 10
 
       - name: Install neoradar CLI
-        # neoradar-cli@1.1.0+ requires Node >=24 and pnpm >=10. Two gotchas:
-        #  1. pnpm refuses `add -g` unless its global bin dir is already on
-        #     PATH — we add PNPM_HOME to PATH for this step *and* persist it
-        #     via GITHUB_ENV/GITHUB_PATH so the binary is reachable later.
-        #  2. pnpm 10 blocks build scripts by default. better-sqlite3 (native)
-        #     and the git-hosted sector-file-tools dep both need them, so we
-        #     whitelist them in ~/.npmrc before installing.
+        # neoradar-cli needs Node >= 24 and pnpm >= 10. pnpm refuses `add -g` unless its global
+        # bin dir is on PATH, and blocks build scripts by default (better-sqlite3 is native, the
+        # git-hosted sector-file-tools dep builds on install), so both are whitelisted.
         run: |
           export PNPM_HOME="$HOME/.local/share/pnpm"
           mkdir -p "$PNPM_HOME"
@@ -113,29 +120,69 @@ jobs:
           pnpm add -g \
             --allow-build=better-sqlite3 \
             --allow-build=sector-file-tools \
-            github:neoradar-project/cli
+            "github:neoradar-project/cli#${NEORADAR_CLI_REF}"
+
+      - name: Build package environments
+        run: scripts/build-all.sh .source "${{ inputs.packages }}"
+
+      - name: Validate against the NeoRadar schemas
+        run: |
+          npm install --no-save --no-package-lock --prefix scripts ajv@8 js-yaml@4
+          node scripts/validate.js .schemas build/*/package
+
+      - name: Build airways databases (server-only)
+        # Navigraph-derived and licensed: kept next to the environment, never inside package/.
+        run: |
+          set -euo pipefail
+          for env in build/*/; do
+            id="$(basename "$env")"
+            [ -d "$env/navdata" ] || continue
+            neoradar-cli build-airways "$env/navdata" -o "server-artifacts/$id/airways.db"
+            cp "$env/server-dataset.json" "server-artifacts/$id/server-dataset.json"
+          done
 
       - name: Configure AWS credentials
+        if: ${{ inputs.publish }}
         run: |
           mkdir -p ~/.aws
           echo "${{ secrets.AWS_PUBLISH_CREDENTIALS }}" > ~/.aws/credentials
 
-      - name: Build airways database
-        run: neoradar-cli build-airways .live-data/LFXX/NavData -o ./package/datasets/airways.db
+      - name: Distribute${{ inputs.publish && ' & publish' || '' }}
+        run: |
+          set -euo pipefail
+          publish_flag=""
+          [ "${{ inputs.publish }}" = "true" ] && publish_flag="--publish"
+          mkdir -p dist
+          for env in build/*/; do
+            id="$(basename "$env")"
+            airac="$(python3 -c "import json;print(json.load(open('$env/build-info.json'))['airac'])")"
+            version="${airac}_${GITHUB_SHA::7}"
+            echo "::group::$id $version"
+            (cd build && neoradar-cli distribute "$id" --new-version "$version" $publish_flag)
+            cp "build/$id/dist/"*.zip "dist/${id}-${version}.zip"
+            echo "::endgroup::"
+          done
 
-      - name: Convert SCT/ESE/ICAO/aliases
-        run: neoradar-cli convert ./ <<< y
-
-      - name: Compute version
-        id: vars
-        run: echo "version=$(cat VERSION)_${GITHUB_SHA::7}" >> "$GITHUB_OUTPUT"
-
-      - name: Distribute & publish
-        run: neoradar-cli distribute --new-version "${{ steps.vars.outputs.version }}" --publish ./
-
-      - name: Upload package artifact
+      - name: Upload packages
         uses: actions/upload-artifact@v7
         with:
-          name: lfxx-${{ steps.vars.outputs.version }}
+          name: packages-${{ github.sha }}
           path: dist/*.zip
           if-no-files-found: error
+          retention-days: 14
+
+      - name: Upload server artifacts (private)
+        uses: actions/upload-artifact@v7
+        with:
+          name: server-artifacts-${{ github.sha }}
+          path: server-artifacts/
+          if-no-files-found: warn
+          retention-days: 14
+
+      - name: Upload build logs
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: logs-${{ github.sha }}
+          path: build/*/neoradar-cli.log
+          if-no-files-found: ignore

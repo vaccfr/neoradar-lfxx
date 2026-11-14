@@ -1,67 +1,39 @@
 # Diffs
 
-Patches in this folder are applied on top of the live data pulled from the
-private `data-sectorfiles` repo, **before** the `neoradar-cli` conversion runs.
+Patches applied to a package environment by `scripts/build.py assemble`, after the source
+files are copied in and **before** `neoradar-cli convert` runs.
 
-Anything under `diffs/**/*.patch` is applied, sorted by path.
-
-## Layout
-
-| Folder | Targets |
+| Folder | Applied to |
 | --- | --- |
-| `diffs/sector_files/` | `LFXX.ese`, `LFXX.sct`, `LFXX.sct2` |
-| `diffs/icao_data/` | `ICAO_Aircraft.txt`, `ICAO_Airlines.txt`, `ICAO_Airports.txt` |
-| `diffs/euroscope_data/` | `Alias.txt`, `LoginProfiles.txt` |
+| `diffs/common/*.patch` | every package |
+| `diffs/<ID>/*.patch` | `build/<ID>/` only (`LFBB`, `LFXXN`, `LFMM`, `LFRR`) |
 
-## Stable filenames
+Patches apply in filename order with `git apply --whitespace=fix --directory=build/<ID>`, so
+paths inside a patch are relative to the environment root:
 
-The release workflow renames the AIRAC-rotating sector files to stable
-paths **before** patching, so your patches don't break every month:
-
-| Upstream (`data-sectorfiles`) | Patched as |
+| Path in the patch | File |
 | --- | --- |
-| `LFXX-LFXX_<airac-stamp>.ese` | `sector_files/LFXX.ese` |
-| `LFXX-LFXX_<airac-stamp>.sct` | `sector_files/LFXX.sct` |
-| `LFXX-LFXX_<airac-stamp>.sct2` | `sector_files/LFXX.sct2` *(if present)* |
+| `sector_files/<ID>.ese`, `sector_files/<ID>.sct` | the GNG sector file, renamed to the package id |
+| `ASRs/...` | the FIR's ASRs (`ASRs/LFFF/...`, `ASRs/LFEE/...` for `LFXXN`) |
+| `euroscope_data/Alias.txt`, `euroscope_data/LoginProfiles.txt` | aliases, login profiles |
+| `icao_data/ICAO_*.txt` | ICAO data |
+| `package/...` | the package itself, e.g. a generated CoFrance map layer |
 
-> Always author patches against `sector_files/LFXX.ese` / `LFXX.sct` etc. —
-> **never** against the dated upstream filename.
-
-Other targets keep their upstream names: `ICAO_*.txt`, `Alias.txt`,
-`LoginProfiles.txt`.
+A patch that no longer applies fails the build: upstream changed under it.
 
 ## Authoring a patch
 
-1. **Reproduce the post-sync state locally.** Either run the workflow's
-   sync logic against a checkout of `data-sectorfiles`, or just copy the
-   relevant file into place under its stable name:
+```bash
+python scripts/build.py assemble --source ~/Documents/FrenchVACC --only LFBB
+cp build/LFBB/sector_files/LFBB.ese /tmp/LFBB.ese.orig
+# edit build/LFBB/sector_files/LFBB.ese
+git diff --no-index /tmp/LFBB.ese.orig build/LFBB/sector_files/LFBB.ese \
+  | sed -e 's#a/tmp/LFBB.ese.orig#a/sector_files/LFBB.ese#' -e 's#b/build/LFBB/#b/#' \
+  > diffs/LFBB/fix-something.patch
+```
 
-   ```bash
-   cp /path/to/data-sectorfiles/LFXX-LFXX_*.sct sector_files/LFXX.sct
-   ```
+The headers must read `a/sector_files/LFBB.ese` / `b/sector_files/LFBB.ese`. Keep one logical
+change per patch.
 
-   These targets are `.gitignore`d so git won't pick them up directly.
-
-2. **Edit the file in place.**
-
-3. **Generate a patch** with paths relative to the repo root:
-
-   ```bash
-   git diff --no-index --relative \
-     sector_files/LFXX.sct sector_files/LFXX.sct \
-     > diffs/sector_files/fix-something.patch
-   ```
-
-   Or, if the file is temporarily un-ignored:
-
-   ```bash
-   git diff sector_files/LFXX.sct > diffs/sector_files/fix-something.patch
-   ```
-
-4. **Commit the `.patch` file.** CI applies it with:
-
-   ```bash
-   git apply --whitespace=fix <patch>
-   ```
-
-Keep one logical change per patch so PRs stay reviewable.
+**A patch against a `.sct` or `.ese` quotes the restricted sector file it changes.** Keep those
+patches to the lines you change (default 3 lines of context) and never commit a whole-file diff.

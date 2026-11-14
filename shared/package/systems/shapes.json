@@ -1,0 +1,60 @@
+{
+  "$schema": "https://raw.githubusercontent.com/neoradar-project/schemas/refs/heads/main/systems/shapes.schema.json",
+  "shapes": {
+    "base/aircraft": {
+      "description": "A plain asterisk, 10 units across. Colour comes from the variant's plotColor.",
+      "strokeWidth": 1,
+      "pixelSnap": true,
+      "elements": [
+        {
+          "line": [
+            [
+              -4.5,
+              -4.5
+            ],
+            [
+              4.5,
+              4.5
+            ]
+          ]
+        },
+        {
+          "line": [
+            [
+              4.5,
+              -4.5
+            ],
+            [
+              -4.5,
+              4.5
+            ]
+          ]
+        },
+        {
+          "line": [
+            [
+              0,
+              -4.5
+            ],
+            [
+              0,
+              4.5
+            ]
+          ]
+        },
+        {
+          "line": [
+            [
+              -4.5,
+              0
+            ],
+            [
+              4.5,
+              0
+            ]
+          ]
+        }
+      ]
+    }
+  }
+}

@@ -1,15 +1,25 @@
-airways.db
-.DS_Store
-logs/
-*.db
+# Build output: package environments and zips are built in CI, never committed.
+build/
+dist/
+.source/
+.live-data/
+.schemas/
+.cofrance/
+node_modules/
+scripts/node_modules/
+
+# Restricted data: GNG sector files, compiled packages, licensed databases.
 *.sct
 *.sct2
 *.ese
-*.log
-ICAO_Aircraft.txt
-ICAO_Airlines.txt
-ICAO_Airports.txt
-dist/*
+*.rwy
+*.zip
+*.db
+*.db-wal
+*.db-shm
+*.db-journal
+server-dataset.json
 
-.ignore/
-dist/
+*.log
+.DS_Store
+__pycache__/
