@@ -1,0 +1,83 @@
+# CLAUDE.md
+
+Guidance for Claude Code in this repository. Maintainer documentation is in
+[docs/maintaining.md](docs/maintaining.md); read it before changing the build.
+
+## What this is
+
+The build for the French vACC's NeoRadar packages: LFBB, LFXXN (Paris + Reims), LFMM, LFRR, one
+per GNG sector file. It holds scripts and settings only. Every package is rebuilt from upstream on
+each run:
+
+- `vaccfr/Sector-Files` (public): ASRs, login profiles, aliases
+- `alexisBalzano/CoFrance-config-files` (public): CoFrance maps and `config/tag_formats.json`
+- `vaccfr/data-sectorfiles` (PRIVATE): GNG `.sct`/`.ese`, ICAO, NavData
+
+Laid over each other, they form a "source tree" with the French Controller Pack layout. A local
+Controller Pack install (e.g. `~/Documents/FrenchVACC`) is already one.
+
+## Hard rules
+
+- **Never commit or publish restricted data**: `.sct`, `.ese`, built packages (`build/`, `dist/`,
+  zips), `server-dataset.json`, `airways.db`. Never copy anything from `data-sectorfiles` into
+  this repo. The Validate workflow fails on them.
+- **Never edit `build/` to fix something.** It is regenerated from scratch. Fix the script, the
+  shared files, or upstream.
+- **Prefer upstream fixes.** Wrong ASRs, maps or positions are wrong in EuroScope too. Report
+  them; only work around them in the build (with a warning) when they break NeoRadar.
+- **Every build warning must say what is wrong and where to fix it.** Do not drop data silently.
+- **Validate before you finish**: build, then `node scripts/validate.js <schemas@develop> build/*/package`
+  must pass.
+- Commit and push only when the maintainer asks, and to where they say (they may want it
+  straight on `main`).
+
+## Layout
+
+| Path | What |
+| --- | --- |
+| `packages.json` | The packages: id, namespace (permanent: provider URL and server vAcc id), sector file, FIR folders, publish settings |
+| `scripts/build.py` | `assemble` (source tree → `build/<ID>/` environment) and `finalize` (after `neoradar-cli convert`: profiles, manifest) |
+| `scripts/cofrance.py` | CoFrance GeoJSON maps → NeoRadar map layers (EPSG:3857, item table, `showWhen` from CoFrance `activation`) |
+| `scripts/tag_formats.py` | One `cf-<format>` system per CoFrance tag format without a hand-made port |
+| `scripts/build-all.sh` | assemble → convert → finalize for all or some packages; CI and local both use it |
+| `scripts/validate.js` | Schema check of built packages (ajv) |
+| `shared/package/` | Copied into every package: systems, fonts, images, sounds |
+| `shared/package/systems/` | Hand-made systems: `irma` (IRMA, also the template for generated ones), `cdg` (Paris-CDG), `nce` (Nice), `default` (CoFrance base look: FIR/UIR and AVISO displays) |
+| `diffs/`, `transforms/` | Patches and text replacements applied to source files during `assemble` |
+| `.github/workflows/` | `release.yml` (build, validate, publish), `validate.yml` (repo checks) |
+
+## Commands
+
+```bash
+scripts/build-all.sh ~/Documents/FrenchVACC [LFRR,LFBB]          # needs neoradar-cli on PATH, or NEORADAR_CLI="node <cli>/dist/index.js"
+python scripts/build.py assemble --source <tree> [--only IDS]
+python scripts/build.py finalize [--only IDS]
+node scripts/validate.js <schemas checkout> build/*/package      # ajv@8 + js-yaml@4 resolvable
+```
+
+## Things that are easy to get wrong
+
+- **neoradar-cli and schemas must be the `develop` branch** until it is merged: current clients
+  refuse map layers without an item table, which only `develop` writes. CI pins both through
+  `NEORADAR_CLI_REF` / `NEORADAR_SCHEMAS_REF` in `release.yml`.
+- **The client is the arbiter, the schemas describe it.** The C# client is
+  `neoradar-project/client-sharp` (`develop`); check it when a field's behaviour matters. A field
+  that validates can still mean something new (e.g. a style variant without `leaderLineColor`
+  draws no leader line; truncate `"0,0"` no longer hides an item, use the item's `applyWhen`).
+- **Profiles need an explicit `atmSystem`.** Without one the client falls back to the first
+  system alphabetically (`cdg`). `finalize` sets one on every profile.
+- **A profile with an empty item list draws every layer.** `finalize` fills AVISO profiles, whose
+  upstream ASRs carry no map content on purpose.
+- **Generated systems copy `irma`'s label rows.** All CoFrance formats share one tag layout; only
+  colours, symbols and conditions differ per format.
+- **The server's data is separate.** `server-dataset.json` is uploaded with
+  `neoradar-cli push-dataset`; procedure rules and runway preferences are server config, not
+  part of the package.
+- Source files are partly Windows-1252 with CRLF: `read_text_any` decodes and normalises them.
+  Sector files are copied byte for byte.
+
+## Related repos
+
+`neoradar-project/cli` (the converter), `neoradar-project/schemas` (file formats),
+`neoradar-project/client-sharp` (the client), `neoradar-project/neoradar-server`. Problems in
+those are reported there, not worked around silently here.
