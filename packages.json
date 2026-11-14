@@ -1,0 +1,46 @@
+{
+  "$comment": "One NeoRadar package per GNG sector file published by the French vACC. 'sectorFile' is the basename under LFXX/Sectors/ in the source tree; 'firs' are the source folders (ASR, Settings, ICAO, NavData) and the CoFrance map folders the package carries.",
+  "publish": {
+    "bucketName": "neoradar",
+    "region": "eu-west-2",
+    "makePublic": true,
+    "s3PathPrefix": "packages/",
+    "baseUrlPrefix": "https://pkg.neoradar.app/"
+  },
+  "sharedCoFranceMaps": ["LFXX"],
+  "packages": [
+    {
+      "id": "LFBB",
+      "name": "LFBB Bordeaux",
+      "namespace": "lfbb",
+      "description": "French vACC package for the Bordeaux FIR (LFBB)",
+      "sectorFile": "LFBB",
+      "firs": ["LFBB"]
+    },
+    {
+      "id": "LFXXN",
+      "name": "LFXXN Paris + Reims",
+      "namespace": "lfxxn",
+      "description": "French vACC package for the Paris (LFFF) and Reims (LFEE) FIRs",
+      "sectorFile": "LFFF",
+      "sectorFileAliases": ["LFEE"],
+      "firs": ["LFFF", "LFEE"]
+    },
+    {
+      "id": "LFMM",
+      "name": "LFMM Marseille",
+      "namespace": "lfmm",
+      "description": "French vACC package for the Marseille FIR (LFMM)",
+      "sectorFile": "LFMM",
+      "firs": ["LFMM"]
+    },
+    {
+      "id": "LFRR",
+      "name": "LFRR Brest",
+      "namespace": "lfrr",
+      "description": "French vACC package for the Brest FIR (LFRR)",
+      "sectorFile": "LFRR",
+      "firs": ["LFRR"]
+    }
+  ]
+}

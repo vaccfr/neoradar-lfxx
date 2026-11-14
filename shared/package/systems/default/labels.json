@@ -1,0 +1,1058 @@
+{
+  "$schema": "https://raw.githubusercontent.com/neoradar-project/schemas/refs/heads/main/systems/labels.schema.json",
+  "ground": {
+    "labels": [
+      {
+        "description": "Arrival detailed",
+        "detailed": true,
+        "applyToIsArrival": true,
+        "rows": [
+          [
+            {
+              "itemName": "callsign",
+              "fontWeight": "bold",
+              "fontSize": 12,
+              "leftClick": "callsignMenu",
+              "prefix": [
+                "=assumedPrefix"
+              ],
+              "suffix": [
+                "=assumedSuffix"
+              ]
+            },
+            {
+              "separatorBefore": true,
+              "itemName": "voiceType",
+              "leftClick": "voiceTypeMenu",
+              "mapping": {
+                "0": "",
+                "1": "/r",
+                "2": "/t"
+              },
+              "color": [
+                255,
+                220,
+                3
+              ]
+            },
+            {
+              "itemName": "acShortType",
+              "placeholder": "ATYP",
+              "leftClick": "fpDialog"
+            }
+          ],
+          [
+            {
+              "itemName": "scratchpad",
+              "placeholder": "...",
+              "leftClick": "triggerScratchpad"
+            }
+          ]
+        ]
+      },
+      {
+        "description": "Departure detailed",
+        "detailed": true,
+        "applyToIsDeparture": true,
+        "rows": [
+          [
+            {
+              "itemName": "callsign",
+              "fontWeight": "bold",
+              "fontSize": 12,
+              "leftClick": "callsignMenu",
+              "prefix": [
+                "=assumedPrefix"
+              ],
+              "suffix": [
+                "=assumedSuffix"
+              ],
+              "color": "=incorrectSquawkRedColor"
+            },
+            {
+              "separatorBefore": true,
+              "itemName": "voiceType",
+              "leftClick": "voiceTypeMenu",
+              "mapping": {
+                "0": "",
+                "1": "/r",
+                "2": "/t"
+              },
+              "color": [
+                255,
+                220,
+                3
+              ]
+            },
+            {
+              "itemName": "acShortType",
+              "placeholder": "ATYP",
+              "leftClick": "fpDialog"
+            }
+          ],
+          [
+            {
+              "itemName": "text",
+              "placeholder": "RWY",
+              "value": [
+                "=suggestedDepRunwayIfNoAssigned",
+                "&depRunway"
+              ],
+              "leftClick": "depRunwayMenu"
+            },
+            {
+              "itemName": "text",
+              "placeholder": "SID",
+              "value": [
+                "=suggestedSidIfNoAssigned",
+                "&sid"
+              ],
+              "leftClick": "sidMenu"
+            }
+          ],
+          [
+            {
+              "itemName": "groundStatus",
+              "leftClick": "groundStatusMenu",
+              "mapping": {
+                "0": "NOST",
+                "1": "STUP",
+                "2": "PUSH",
+                "3": "TAXI",
+                "4": "DEPA"
+              }
+            },
+            {
+              "itemName": "scratchpad",
+              "leftClick": "triggerScratchpad",
+              "placeholder": "..."
+            }
+          ]
+        ]
+      },
+      {
+        "description": "Detailed",
+        "detailed": true,
+        "rows": [
+          [
+            {
+              "itemName": "callsign",
+              "fontWeight": "bold",
+              "leftClick": "callsignMenu",
+              "prefix": [
+                "=assumedPrefix"
+              ],
+              "suffix": [
+                "=assumedSuffix"
+              ],
+              "fontSize": 12
+            },
+            {
+              "separatorBefore": true,
+              "itemName": "voiceType",
+              "leftClick": "voiceTypeMenu",
+              "mapping": {
+                "0": "",
+                "1": "/r",
+                "2": "/t"
+              },
+              "color": [
+                255,
+                220,
+                3
+              ]
+            },
+            {
+              "itemName": "squawk",
+              "prefix": "@"
+            }
+          ]
+        ]
+      },
+      {
+        "description": "Arrival",
+        "applyToIsArrival": true,
+        "rows": [
+          [
+            {
+              "itemName": "callsign",
+              "prefix": [
+                "=assumedPrefix"
+              ],
+              "suffix": [
+                "=assumedSuffix"
+              ],
+              "fontWeight": "bold",
+              "fontSize": 12
+            },
+            {
+              "separatorBefore": true,
+              "itemName": "voiceType",
+              "mapping": {
+                "0": "",
+                "1": "/r",
+                "2": "/t"
+              },
+              "color": [
+                255,
+                220,
+                3
+              ]
+            },
+            {
+              "itemName": "acShortType",
+              "placeholder": "ATYP"
+            }
+          ],
+          [
+            {
+              "itemName": "scratchpad"
+            }
+          ]
+        ]
+      },
+      {
+        "description": "Departure",
+        "applyToIsDeparture": true,
+        "rows": [
+          [
+            {
+              "itemName": "plugin:NeoVSID:TAG_ALERT",
+              "value": "No Push Clearance",
+              "fontSize": 12,
+              "fontWeight": "bold",
+              "backgroundColor": [
+                234,
+                171,
+                24
+              ]
+            }
+          ],
+          [
+            {
+              "itemName": "callsign",
+              "prefix": [
+                "=assumedPrefix"
+              ],
+              "suffix": [
+                "=assumedSuffix"
+              ],
+              "fontWeight": "bold",
+              "fontSize": 12,
+              "color": "=incorrectSquawkRedColor"
+            },
+            {
+              "itemName": "text",
+              "value": "=penWhenScratchpadNotEmpty",
+              "fontSize": 12,
+              "fontWeight": "bold"
+            },
+            {
+              "separatorBefore": true,
+              "itemName": "voiceType",
+              "mapping": {
+                "0": "",
+                "1": "/r",
+                "2": "/t"
+              },
+              "color": [
+                255,
+                220,
+                3
+              ]
+            },
+            {
+              "itemName": "acShortType",
+              "placeholder": "ATYP"
+            }
+          ],
+          [
+            {
+              "itemName": "text",
+              "placeholder": "RWY",
+              "value": [
+                "=suggestedDepRunwayIfNoAssigned",
+                "&depRunway"
+              ]
+            },
+            {
+              "itemName": "text",
+              "placeholder": "SID",
+              "value": [
+                "=suggestedSidIfNoAssigned",
+                "&sid"
+              ]
+            }
+          ]
+        ]
+      },
+      {
+        "description": "Default",
+        "rows": [
+          [
+            {
+              "itemName": "plugin:NeoVSID:TAG_ALERT",
+              "value": "No Push Clearance",
+              "fontSize": 12,
+              "fontWeight": "bold",
+              "backgroundColor": [
+                234,
+                171,
+                24
+              ]
+            }
+          ],
+          [
+            {
+              "itemName": "callsign",
+              "prefix": [
+                "=assumedPrefix"
+              ],
+              "suffix": [
+                "=assumedSuffix"
+              ],
+              "fontWeight": "bold",
+              "fontSize": 12
+            },
+            {
+              "separatorBefore": true,
+              "itemName": "voiceType",
+              "mapping": {
+                "0": "",
+                "1": "/r",
+                "2": "/t"
+              },
+              "color": [
+                255,
+                220,
+                3
+              ]
+            },
+            {
+              "itemName": "squawk",
+              "prefix": "@"
+            }
+          ]
+        ]
+      }
+    ],
+    "styleVariants": [
+      {
+        "applyWhen": "$isOutboundTransfer",
+        "backgroundColor": [
+          34,
+          117,
+          78
+        ],
+        "textColor": [
+          255,
+          255,
+          255
+        ],
+        "fontSize": 11,
+        "tagContainerPaddingBottom": 1,
+        "tagContainerPaddingTop": 1,
+        "tagContainerPaddingLeft": 1,
+        "tagContainerPaddingRight": 1,
+        "detailedTagContainerPaddingBottom": 1,
+        "detailedTagContainerPaddingTop": 1,
+        "detailedTagContainerPaddingLeft": 1,
+        "detailedTagContainerPaddingRight": 1,
+        "leaderLineColor": [
+          255,
+          255,
+          255
+        ]
+      },
+      {
+        "applyWhen": "$isInboundTransfer",
+        "backgroundColor": [
+          50,
+          170,
+          104
+        ],
+        "textColor": [
+          255,
+          255,
+          255
+        ],
+        "fontSize": 11,
+        "tagContainerPaddingBottom": 1,
+        "tagContainerPaddingTop": 1,
+        "tagContainerPaddingLeft": 1,
+        "tagContainerPaddingRight": 1,
+        "detailedTagContainerPaddingBottom": 1,
+        "detailedTagContainerPaddingTop": 1,
+        "detailedTagContainerPaddingLeft": 1,
+        "detailedTagContainerPaddingRight": 1,
+        "leaderLineColor": [
+          255,
+          255,
+          255
+        ]
+      },
+      {
+        "applyToIsDeparture": true,
+        "backgroundColor": [
+          40,
+          50,
+          200
+        ],
+        "textColor": [
+          255,
+          255,
+          255
+        ],
+        "fontSize": 11,
+        "tagContainerPaddingBottom": 1,
+        "tagContainerPaddingTop": 1,
+        "tagContainerPaddingLeft": 1,
+        "tagContainerPaddingRight": 1,
+        "detailedTagContainerPaddingBottom": 1,
+        "detailedTagContainerPaddingTop": 1,
+        "detailedTagContainerPaddingLeft": 1,
+        "detailedTagContainerPaddingRight": 1,
+        "leaderLineColor": [
+          255,
+          255,
+          255
+        ]
+      },
+      {
+        "applyToIsArrival": true,
+        "backgroundColor": [
+          170,
+          50,
+          50
+        ],
+        "textColor": [
+          255,
+          255,
+          255
+        ],
+        "fontSize": 11,
+        "tagContainerPaddingBottom": 1,
+        "tagContainerPaddingTop": 1,
+        "tagContainerPaddingLeft": 1,
+        "tagContainerPaddingRight": 1,
+        "detailedTagContainerPaddingBottom": 1,
+        "detailedTagContainerPaddingTop": 1,
+        "detailedTagContainerPaddingLeft": 1,
+        "detailedTagContainerPaddingRight": 1,
+        "leaderLineColor": [
+          255,
+          255,
+          255
+        ]
+      },
+      {
+        "applyToIsDeparture": true,
+        "backgroundColor": [
+          40,
+          50,
+          200
+        ],
+        "textColor": [
+          255,
+          255,
+          255
+        ],
+        "fontSize": 11,
+        "tagContainerPaddingBottom": 1,
+        "tagContainerPaddingTop": 1,
+        "tagContainerPaddingLeft": 1,
+        "tagContainerPaddingRight": 1,
+        "detailedTagContainerPaddingBottom": 1,
+        "detailedTagContainerPaddingTop": 1,
+        "detailedTagContainerPaddingLeft": 1,
+        "detailedTagContainerPaddingRight": 1,
+        "leaderLineColor": [
+          255,
+          255,
+          255
+        ]
+      },
+      {
+        "backgroundColor": [
+          48,
+          48,
+          48
+        ],
+        "textColor": [
+          255,
+          255,
+          255
+        ],
+        "fontSize": 11,
+        "tagContainerPaddingBottom": 1,
+        "tagContainerPaddingTop": 1,
+        "tagContainerPaddingLeft": 1,
+        "tagContainerPaddingRight": 1,
+        "detailedTagContainerPaddingBottom": 1,
+        "detailedTagContainerPaddingTop": 1,
+        "detailedTagContainerPaddingLeft": 1,
+        "detailedTagContainerPaddingRight": 1,
+        "leaderLineColor": [
+          255,
+          255,
+          255
+        ]
+      }
+    ]
+  },
+  "airborne": {
+    "labels": [
+      {
+        "description": "Unconcerned",
+        "applyToAttentionStates": [
+          "kUnconcerned"
+        ],
+        "rows": [
+          [
+            {
+              "itemName": "groundSpeed",
+              "padWithZeroLeft": 3,
+              "truncate": [
+                0,
+                2
+              ]
+            },
+            {
+              "itemName": "verticalSpeed",
+              "truncate": [
+                0,
+                3
+              ],
+              "showPlusMinus": true,
+              "color": [
+                255,
+                255,
+                255
+              ],
+              "backgroundColor": [
+                218,
+                89,
+                50
+              ],
+              "applyWhen": "$isEmmergencyDescending"
+            },
+            {
+              "itemName": "text",
+              "value": [
+                "=emmergencyDescentArrow"
+              ],
+              "fontWeight": "bold",
+              "color": [
+                218,
+                89,
+                50
+              ],
+              "backgroundColor": [
+                1,
+                1,
+                1
+              ]
+            },
+            {
+              "separatorBefore": true,
+              "itemName": "text",
+              "value": [
+                "=isMayday",
+                "=isRDOF"
+              ],
+              "fontWeight": "bold",
+              "backgroundColor": [
+                1,
+                1,
+                1
+              ],
+              "color": [
+                218,
+                89,
+                50
+              ]
+            },
+            {
+              "itemName": "text",
+              "value": "=penWhenScratchpadNotEmpty",
+              "color": "=blueColorScratchpadNotEmpty"
+            }
+          ],
+          [
+            {
+              "itemName": "callsign",
+              "leftClick": "callsignMenu"
+            },
+            {
+              "separatorBefore": true,
+              "itemName": "voiceType",
+              "mapping": {
+                "0": "",
+                "1": "/r",
+                "2": "/t"
+              },
+              "color": [
+                255,
+                220,
+                3
+              ]
+            }
+          ],
+          [
+            {
+              "itemName": "computedAltitude",
+              "prefix": [
+                "=altitudeBelowTAPrefix"
+              ],
+              "truncate": [
+                "=altitudeBelowTATruncate",
+                "=altitudeAboveTATruncate"
+              ],
+              "padWithZeroLeft": 5
+            },
+            {
+              "itemName": "verticalTrend",
+              "placeholder": ":i",
+              "mapping": {
+                "0": ":i",
+                "1": ":i",
+                "-1": ":i"
+              }
+            }
+          ]
+        ]
+      },
+      {
+        "description": "Concerned",
+        "applyToAttentionStates": [
+          "kNotified",
+          "kIncomingTransfer",
+          "kAssumed",
+          "kOutgoingTransfer",
+          "kIntruder",
+          "kConcerned"
+        ],
+        "rows": [
+          [
+            {
+              "itemName": "groundSpeed",
+              "padWithZeroLeft": 3,
+              "truncate": [
+                0,
+                2
+              ]
+            },
+            {
+              "itemName": "assignedMach",
+              "padWithZeroLeft": 3,
+              "truncate": [
+                0,
+                3
+              ],
+              "prefix": "m"
+            },
+            {
+              "itemName": "computedSpeed",
+              "prefix": "k"
+            },
+            {
+              "itemName": "verticalSpeed",
+              "truncate": [
+                0,
+                3
+              ],
+              "showPlusMinus": true,
+              "color": [
+                255,
+                255,
+                255
+              ],
+              "backgroundColor": [
+                218,
+                89,
+                50
+              ],
+              "applyWhen": "$isEmmergencyDescending"
+            },
+            {
+              "itemName": "text",
+              "value": [
+                "=emmergencyDescentArrow"
+              ],
+              "fontWeight": "bold",
+              "color": [
+                218,
+                89,
+                50
+              ],
+              "backgroundColor": [
+                1,
+                1,
+                1
+              ]
+            },
+            {
+              "separatorBefore": true,
+              "itemName": "text",
+              "value": [
+                "=isMayday",
+                "=isRDOF"
+              ],
+              "fontWeight": "bold",
+              "backgroundColor": [
+                1,
+                1,
+                1
+              ],
+              "color": [
+                218,
+                89,
+                50
+              ]
+            },
+            {
+              "itemName": "text",
+              "value": "=penWhenScratchpadNotEmpty",
+              "color": "=blueColorScratchpadNotEmpty"
+            }
+          ],
+          [
+            {
+              "itemName": "callsign",
+              "leftClick": "callsignMenu"
+            },
+            {
+              "separatorBefore": true,
+              "itemName": "voiceType",
+              "mapping": {
+                "0": "",
+                "1": "/r",
+                "2": "/t"
+              },
+              "color": [
+                255,
+                220,
+                3
+              ]
+            }
+          ],
+          [
+            {
+              "itemName": "computedAltitude",
+              "prefix": [
+                "=altitudeBelowTAPrefix"
+              ],
+              "truncate": [
+                "=altitudeBelowTATruncate",
+                "=altitudeAboveTATruncate"
+              ],
+              "padWithZeroLeft": 5
+            },
+            {
+              "itemName": "verticalTrend",
+              "placeholder": ":i",
+              "mapping": {
+                "0": ":i",
+                "1": ":i",
+                "-1": ":i"
+              }
+            },
+            {
+              "itemName": "clearedFlightLevel",
+              "padWithZeroLeft": 5,
+              "truncate": [
+                0,
+                2
+              ],
+              "mapping": {
+                "1": "CA",
+                "2": "VA"
+              }
+            },
+            {
+              "itemName": "assignedDirect",
+              "leftClick": "triggerScratchpad"
+            },
+            {
+              "itemName": "assignedHeading",
+              "padWithZeroLeft": 3,
+              "truncate": [
+                0,
+                3
+              ],
+              "prefix": "h"
+            }
+          ]
+        ]
+      },
+      {
+        "description": "Detailed",
+        "detailed": true,
+        "rows": [
+          [
+            {
+              "itemName": "groundSpeed",
+              "padWithZeroLeft": 3,
+              "truncate": [
+                0,
+                2
+              ]
+            },
+            {
+              "itemName": "assignedMach",
+              "padWithZeroLeft": 3,
+              "truncate": [
+                0,
+                3
+              ],
+              "prefix": "m",
+              "leftClick": "spd",
+              "rightClick": "clearSpd"
+            },
+            {
+              "itemName": "computedSpeed",
+              "prefix": "k",
+              "placeholder": "k..",
+              "leftClick": "spd",
+              "rightClick": "clearSpd"
+            },
+            {
+              "itemName": "verticalSpeed",
+              "truncate": [
+                0,
+                3
+              ],
+              "showPlusMinus": true,
+              "color": [
+                255,
+                255,
+                255
+              ],
+              "backgroundColor": [
+                218,
+                89,
+                50
+              ],
+              "applyWhen": "$isEmmergencyDescending"
+            },
+            {
+              "itemName": "text",
+              "value": [
+                "=emmergencyDescentArrow"
+              ],
+              "fontWeight": "bold",
+              "color": [
+                218,
+                89,
+                50
+              ],
+              "backgroundColor": [
+                1,
+                1,
+                1
+              ]
+            },
+            {
+              "separatorBefore": true,
+              "itemName": "text",
+              "value": [
+                "=isMayday",
+                "=isRDOF"
+              ],
+              "fontWeight": "bold",
+              "backgroundColor": [
+                1,
+                1,
+                1
+              ],
+              "color": [
+                218,
+                89,
+                50
+              ]
+            },
+            {
+              "itemName": "scratchpad",
+              "placeholder": ":i",
+              "color": "=blueColorScratchpadNotEmpty",
+              "leftClick": "triggerScratchpad"
+            },
+            {
+              "itemName": "verticalSpeed",
+              "padWithZeroLeft": 4,
+              "truncate": [
+                0,
+                3
+              ],
+              "showPlusMinus": true
+            },
+            {
+              "itemName": "acShortType"
+            }
+          ],
+          [
+            {
+              "itemName": "callsign",
+              "leftClick": "callsignMenu"
+            },
+            {
+              "separatorBefore": true,
+              "itemName": "voiceType",
+              "leftClick": "voiceTypeMenu",
+              "mapping": {
+                "0": "",
+                "1": "/r",
+                "2": "/t"
+              },
+              "color": [
+                255,
+                220,
+                3
+              ]
+            },
+            {
+              "itemName": "sectorIndicator",
+              "placeholder": "---"
+            },
+            {
+              "itemName": "plannedFlightLevel",
+              "padWithZeroLeft": 5,
+              "truncate": [
+                0,
+                2
+              ],
+              "placeholder": "TaFL",
+              "leftClick": "pfl"
+            }
+          ],
+          [
+            {
+              "itemName": "computedAltitude",
+              "prefix": [
+                "=altitudeBelowTAPrefix"
+              ],
+              "truncate": [
+                "=altitudeBelowTATruncate",
+                "=altitudeAboveTATruncate"
+              ],
+              "padWithZeroLeft": 5,
+              "leftClick": "routeDraw"
+            },
+            {
+              "itemName": "verticalTrend",
+              "placeholder": ":i",
+              "mapping": {
+                "0": ":i",
+                "1": ":i",
+                "-1": ":i"
+              }
+            },
+            {
+              "itemName": "clearedFlightLevel",
+              "padWithZeroLeft": 5,
+              "truncate": [
+                0,
+                2
+              ],
+              "mapping": {
+                "1": "CA",
+                "2": "VA"
+              },
+              "placeholder": "cfl",
+              "leftClick": "cfl"
+            },
+            {
+              "itemName": "assignedDirect",
+              "leftClick": "directMenu",
+              "rightClick": "triggerScratchpad"
+            },
+            {
+              "itemName": "assignedHeading",
+              "padWithZeroLeft": 3,
+              "truncate": [
+                0,
+                3
+              ],
+              "placeholder": "h...",
+              "prefix": "h",
+              "leftClick": "hdg",
+              "rightClick": "directMenu"
+            }
+          ],
+          [
+            {
+              "itemName": "reportedHeading",
+              "padWithZeroLeft": 3,
+              "truncate": [
+                0,
+                3
+              ],
+              "placeholder": "@h...",
+              "prefix": "@h"
+            }
+          ],
+          [
+            {
+              "itemName": "origin",
+              "placeholder": "ORIG",
+              "leftClick": "fpDialog"
+            },
+            {
+              "itemName": "destination",
+              "placeholder": "DEST",
+              "leftClick": "fpDialog"
+            }
+          ]
+        ]
+      }
+    ],
+    "styleVariants": [
+      {
+        "textColor": [
+          80,
+          86,
+          87
+        ],
+        "textColorForState": {
+          "kAssumed": [
+            205,
+            205,
+            205
+          ],
+          "kIncomingTransfer": [
+            190,
+            225,
+            191
+          ],
+          "kIntruder": [
+            94,
+            175,
+            180
+          ],
+          "kNotified": [
+            160,
+            216,
+            180
+          ],
+          "kOutgoingTransfer": [
+            94,
+            175,
+            180
+          ]
+        },
+        "detailedBackgroundColor": [
+          20,
+          20,
+          20
+        ],
+        "detailedBackgroundColorOpacity": 0.8,
+        "detailedRoundedCorners": 5,
+        "leaderLineColor": [
+          80,
+          86,
+          87
+        ]
+      }
+    ]
+  }
+}

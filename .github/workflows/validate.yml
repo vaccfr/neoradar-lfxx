@@ -1,4 +1,4 @@
-name: Validate config files
+name: Validate
 
 on:
   push:
@@ -10,8 +10,21 @@ jobs:
     steps:
       - uses: actions/checkout@v6
 
+      - name: No restricted data committed
+        run: |
+          set -euo pipefail
+          bad="$(git ls-files | grep -E -i '\.(sct2?|ese|rwy|zip|db)$|server-dataset\.json$' || true)"
+          if [ -n "$bad" ]; then
+            echo "::error::Sector files, compiled packages and databases must not be committed:"
+            echo "$bad"
+            exit 1
+          fi
+
       - name: Install PyYAML
         run: pip install --quiet pyyaml
+
+      - name: Python scripts compile
+        run: python3 -m py_compile scripts/*.py
 
       - name: Validate JSON & YAML
         run: |
@@ -20,19 +33,14 @@ jobs:
           from pathlib import Path
           import yaml
 
-          SKIP = {".git", "dist", ".live-data", "node_modules"}
-          errors = []
-          counts = {"json": 0, "yaml": 0}
-
+          SKIP = {".git", "build", "dist", ".source", ".live-data", ".schemas", ".cofrance", "node_modules"}
+          errors, counts = [], {"json": 0, "yaml": 0}
           for path in Path(".").rglob("*"):
-              if not path.is_file():
+              if not path.is_file() or any(part in SKIP for part in path.parts):
                   continue
-              if any(part in SKIP for part in path.parts):
-                  continue
-
               suffix = path.suffix.lower()
               try:
-                  if suffix == ".json":
+                  if suffix in (".json", ".geojson"):
                       json.loads(path.read_text(encoding="utf-8"))
                       counts["json"] += 1
                   elif suffix in (".yml", ".yaml"):
@@ -41,11 +49,25 @@ jobs:
                       counts["yaml"] += 1
               except Exception as exc:
                   errors.append((path, exc))
-
           for path, exc in errors:
               print(f"::error file={path}::{type(exc).__name__}: {exc}")
-
-          print(f"Validated {counts['json']} JSON and {counts['yaml']} YAML files; "
-                f"{len(errors)} error(s).")
+          print(f"Validated {counts['json']} JSON and {counts['yaml']} YAML files; {len(errors)} error(s).")
           sys.exit(1 if errors else 0)
           PY
+
+      - name: Checkout NeoRadar schemas
+        uses: actions/checkout@v6
+        with:
+          repository: neoradar-project/schemas
+          ref: develop  # matches release.yml's NEORADAR_SCHEMAS_REF
+          path: .schemas
+          persist-credentials: false
+
+      - name: Shared systems match the schemas
+        run: |
+          npm install --no-save --no-package-lock --prefix scripts ajv@8 js-yaml@4
+          # The validator wants a package root; a stub manifest stands in for the generated one.
+          tmp="$(mktemp -d)"
+          cp -r shared/package/systems "$tmp/systems"
+          echo '{"$schema":"x","id":"x","name":"x","version":"0","namespace":"x","createdAt":"x","centerPoint":[0,0]}' > "$tmp/manifest.json"
+          node scripts/validate.js .schemas "$tmp"

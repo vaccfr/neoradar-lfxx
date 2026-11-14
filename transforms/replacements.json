@@ -1,32 +1,15 @@
 {
-  "files": [
+  "$comment": "Literal find/replace pairs applied while copying source files into a package environment. 'appliesTo' is matched against the environment-relative target path with fnmatch. Plain strings, not regex. A rule that matches nothing in a file it applies to is reported as a warning: upstream probably changed its wording.",
+  "rules": [
     {
-      "source": "LFXX/Settings/LoginProfiles.txt",
-      "target": "euroscope_data/LoginProfiles.txt",
-      "replacements": [
-        { "find": "vatsim.fr/fb/VOTRE_CID_ICI", "replace": "vatsim.fr/fb/$cid" },
-        { "find": "Leave us some feedback!",    "replace": "Leave me some feedback!" }
-      ]
+      "appliesTo": "euroscope_data/LoginProfiles.txt*",
+      "find": "vatsim.fr/fb/VOTRE_CID_ICI",
+      "replace": "vatsim.fr/fb/$cid"
     },
     {
-      "source": "LFXX/Alias/alias.txt",
-      "target": "euroscope_data/Alias.txt",
-      "replacements": []
-    },
-    {
-      "source": "LFXX/ICAO/ICAO_Aircraft.txt",
-      "target": "icao_data/ICAO_Aircraft.txt",
-      "replacements": []
-    },
-    {
-      "source": "LFXX/ICAO/ICAO_Airlines.txt",
-      "target": "icao_data/ICAO_Airlines.txt",
-      "replacements": []
-    },
-    {
-      "source": "LFXX/ICAO/ICAO_Airports.txt",
-      "target": "icao_data/ICAO_Airports.txt",
-      "replacements": []
+      "appliesTo": "euroscope_data/LoginProfiles.txt*",
+      "find": "Leave us some feedback!",
+      "replace": "Leave me some feedback!"
     }
   ]
 }
