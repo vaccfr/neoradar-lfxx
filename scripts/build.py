@@ -113,35 +113,6 @@ def md5(path: Path) -> str:
     return hashlib.md5(path.read_bytes()).hexdigest()
 
 
-def sct_center(sct: Path) -> list[float]:
-    """[INFO] lines 4 and 5 hold the default centre as N048.00.50.319 / E002.32.52.000."""
-    lines, in_info = [], False
-    for raw in read_text_any(sct).splitlines():
-        line = raw.strip()
-        if line.startswith("["):
-            if in_info:
-                break
-            in_info = line.upper() == "[INFO]"
-            continue
-        if in_info and line and not line.startswith(";"):
-            lines.append(line)
-    try:
-        lat, lon = dms(lines[3]), dms(lines[4])
-    except (IndexError, ValueError):
-        warn(f"{sct.name}: no usable [INFO] centre, defaulting to France")
-        lat, lon = 46.5, 2.5
-    return cofrance.to_mercator(lon, lat)
-
-
-def dms(value: str) -> float:
-    m = re.match(r"^([NSEW])(\d+)\.(\d+)\.(\d+(?:\.\d+)?)$", value.strip())
-    if not m:
-        raise ValueError(value)
-    hemi, d, mi, s = m.groups()
-    out = int(d) + int(mi) / 60 + float(s) / 3600
-    return -out if hemi in "SW" else out
-
-
 def ese_positions(ese: Path) -> dict[str, str]:
     """Callsign -> position id from the ESE [POSITIONS] section."""
     out, section = {}, None
@@ -281,17 +252,18 @@ def assemble(pkg: dict, config: dict, source: Path, build: Path) -> None:
     (env / rel).write_text("\n".join(chunks) + "\n", encoding="utf-8", newline="\n")
 
     # icao_data
+    data_folder = pkg.get("dataFolder", pkg["firs"][0])
     icao = env / "icao_data"
     icao.mkdir()
     for name in ("ICAO_Aircraft.txt", "ICAO_Airlines.txt", "ICAO_Airports.txt"):
-        src = source / pkg["firs"][0] / "ICAO" / name
+        src = source / data_folder / "ICAO" / name
         if not src.is_file():
             src = source / "LFXX" / "ICAO" / name
         shutil.copyfile(src, icao / name)
     shutil.copyfile(SHARED / "icao_data" / "recat.json", icao / "recat.json")
 
     # NavData for build-airways: server-only, kept outside package/
-    navdata = source / pkg["firs"][0] / "NavData"
+    navdata = source / data_folder / "NavData"
     if navdata.is_dir():
         shutil.copytree(navdata, env / "navdata")
 
@@ -344,7 +316,6 @@ def assemble(pkg: dict, config: dict, source: Path, build: Path) -> None:
         "description": f"{pkg['description']}, AIRAC {airac}",
         "namespace": pkg["namespace"],
         "createdAt": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%S.000Z"),
-        "centerPoint": sct_center(env / "sector_files" / f"{pid}.sct"),
         "mapLayers": SECTOR_LAYERS + layers,
         "fonts": [{"alias": Path(f).stem, "src": f} for f in fonts],
         "plugins": [],

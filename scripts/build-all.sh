@@ -17,12 +17,13 @@ python="${PYTHON:-python3}"
 only_args=()
 [ -n "$only" ] && only_args=(--only "$only")
 
-"$python" "$repo/scripts/build.py" assemble --source "$source_tree" "${only_args[@]}"
+"$python" "$repo/scripts/build.py" assemble --source "$source_tree" ${only_args[@]+"${only_args[@]}"}
 
 if [ -n "$only" ]; then
   IFS=',' read -r -a ids <<< "$only"
 else
-  mapfile -t ids < <("$python" "$repo/scripts/build.py" ids | tr -d '[]" \r' | tr ',' '\n')
+  ids=()
+  while IFS= read -r id; do [ -n "$id" ] && ids+=("$id"); done < <("$python" "$repo/scripts/build.py" ids | tr -d '[]" \r' | tr ',' '\n')
 fi
 
 for id in "${ids[@]}"; do
@@ -35,4 +36,4 @@ for id in "${ids[@]}"; do
   if [ -f "$repo/build/neoradar-cli.log" ]; then mv "$repo/build/neoradar-cli.log" "$env_dir/neoradar-cli.log"; fi
 done
 
-"$python" "$repo/scripts/build.py" finalize "${only_args[@]}"
+"$python" "$repo/scripts/build.py" finalize ${only_args[@]+"${only_args[@]}"}

@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
     inputs:
       packages:
-        description: "Package ids to build, comma-separated (empty = all: LFBB,LFXXN,LFMM,LFRR)"
+        description: "Package ids to build, comma-separated (empty = all: LFXX)"
         required: false
         default: ""
       publish:

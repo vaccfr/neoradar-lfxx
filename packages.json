@@ -1,5 +1,5 @@
 {
-  "$comment": "One NeoRadar package per GNG sector file published by the French vACC. 'sectorFile' is the basename under LFXX/Sectors/ in the source tree; 'firs' are the source folders (ASR, Settings, ICAO, NavData) and the CoFrance map folders the package carries.",
+  "$comment": "One NeoRadar package for all of France, built from the French vACC military GNG sector file (LFFM), which covers every French FIR. 'sectorFile' is the basename under LFXX/Sectors/ in the source tree; 'firs' are the source folders whose ASRs, login profiles and CoFrance maps the package carries (the first FIR wins a duplicated callsign); 'dataFolder' is the folder whose ICAO and NavData are used (default: the first FIR).",
   "publish": {
     "bucketName": "neoradar",
     "region": "eu-west-2",
@@ -7,40 +7,25 @@
     "s3PathPrefix": "packages/",
     "baseUrlPrefix": "https://pkg.neoradar.app/"
   },
-  "sharedCoFranceMaps": ["LFXX"],
+  "sharedCoFranceMaps": [
+    "LFXX"
+  ],
   "packages": [
     {
-      "id": "LFBB",
-      "name": "LFBB Bordeaux",
-      "namespace": "lfbb",
-      "description": "French vACC package for the Bordeaux FIR (LFBB)",
-      "sectorFile": "LFBB",
-      "firs": ["LFBB"]
-    },
-    {
-      "id": "LFXXN",
-      "name": "LFXXN Paris + Reims",
-      "namespace": "lfxxn",
-      "description": "French vACC package for the Paris (LFFF) and Reims (LFEE) FIRs",
-      "sectorFile": "LFFF",
-      "sectorFileAliases": ["LFEE"],
-      "firs": ["LFFF", "LFEE"]
-    },
-    {
-      "id": "LFMM",
-      "name": "LFMM Marseille",
-      "namespace": "lfmm",
-      "description": "French vACC package for the Marseille FIR (LFMM)",
-      "sectorFile": "LFMM",
-      "firs": ["LFMM"]
-    },
-    {
-      "id": "LFRR",
-      "name": "LFRR Brest",
-      "namespace": "lfrr",
-      "description": "French vACC package for the Brest FIR (LFRR)",
-      "sectorFile": "LFRR",
-      "firs": ["LFRR"]
+      "id": "LFXX",
+      "name": "LFXX France",
+      "namespace": "lfxx",
+      "description": "French vACC package for all French FIRs (Paris, Reims, Brest, Bordeaux, Marseille), with the military positions",
+      "sectorFile": "LFFM",
+      "firs": [
+        "LFFF",
+        "LFEE",
+        "LFRR",
+        "LFBB",
+        "LFMM",
+        "LFFM"
+      ],
+      "dataFolder": "LFFM"
     }
   ]
 }
