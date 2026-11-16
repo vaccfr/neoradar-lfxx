@@ -5,9 +5,9 @@ Guidance for Claude Code in this repository. Maintainer documentation is in
 
 ## What this is
 
-The build for the French vACC's NeoRadar packages: LFBB, LFXXN (Paris + Reims), LFMM, LFRR, one
-per GNG sector file. It holds scripts and settings only. Every package is rebuilt from upstream on
-each run:
+The build for the French vACC's NeoRadar package, `LFXX`: all of France in one package, built from
+the military GNG sector file (`LFFM`), which covers every French FIR. It holds scripts and settings
+only. The package is rebuilt from upstream on each run:
 
 - `vaccfr/Sector-Files` (public): ASRs, login profiles, aliases
 - `alexisBalzano/CoFrance-config-files` (public): CoFrance maps and `config/tag_formats.json`
@@ -35,7 +35,7 @@ Controller Pack install (e.g. `~/Documents/FrenchVACC`) is already one.
 
 | Path | What |
 | --- | --- |
-| `packages.json` | The packages: id, namespace (permanent: provider URL and server vAcc id), sector file, FIR folders, publish settings |
+| `packages.json` | The package: id, namespace (permanent: provider URL and server vAcc id), sector file, FIR folders, ICAO/NavData folder, publish settings |
 | `scripts/build.py` | `assemble` (source tree → `build/<ID>/` environment) and `finalize` (after `neoradar-cli convert`: profiles, manifest) |
 | `scripts/cofrance.py` | CoFrance GeoJSON maps → NeoRadar map layers (EPSG:3857, item table, `showWhen` from CoFrance `activation`) |
 | `scripts/tag_formats.py` | One `cf-<format>` system per CoFrance tag format without a hand-made port |
@@ -49,7 +49,7 @@ Controller Pack install (e.g. `~/Documents/FrenchVACC`) is already one.
 ## Commands
 
 ```bash
-scripts/build-all.sh ~/Documents/FrenchVACC [LFRR,LFBB]          # needs neoradar-cli on PATH, or NEORADAR_CLI="node <cli>/dist/index.js"
+scripts/build-all.sh ~/Documents/FrenchVACC [LFXX]               # needs neoradar-cli on PATH, or NEORADAR_CLI="node <cli>/dist/index.js"
 python scripts/build.py assemble --source <tree> [--only IDS]
 python scripts/build.py finalize [--only IDS]
 node scripts/validate.js <schemas checkout> build/*/package      # ajv@8 + js-yaml@4 resolvable

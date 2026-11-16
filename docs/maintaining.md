@@ -1,6 +1,6 @@
 # Maintaining the French NeoRadar packages
 
-This repo turns the French vACC's EuroScope Controller Pack into four NeoRadar packages. It holds
+This repo turns the French vACC's EuroScope Controller Pack into one NeoRadar package, `LFXX`. It holds
 only scripts and settings: every build starts from the upstream sources, so most changes belong
 upstream, and a release is mostly "update the data, run the workflow".
 
@@ -23,20 +23,20 @@ vaccfr/data-sectorfiles (PRIVATE)         GNG sector files, ICAO, NavData
 
 | Package | Built from | FIR folders |
 | --- | --- | --- |
-| `LFBB` | `LFXX/Sectors/LFBB.sct/.ese` | LFBB |
-| `LFXXN` | `LFXX/Sectors/LFFF.sct/.ese` (the same file as LFEE) | LFFF, LFEE |
-| `LFMM` | `LFXX/Sectors/LFMM.sct/.ese` | LFMM |
-| `LFRR` | `LFXX/Sectors/LFRR.sct/.ese` | LFRR |
+| `LFXX` | `LFXX/Sectors/LFFM.sct/.ese` (the military GNG file, all French FIRs) | LFFF, LFEE, LFRR, LFBB, LFMM, LFFM |
 
-These are defined in `packages.json`.
+It is defined in `packages.json`. ASRs, login profiles and CoFrance maps come from every FIR folder
+listed (the first FIR wins a duplicated callsign); ICAO and NavData come from `LFFM` (`dataFolder`).
+The per-FIR GNG files (`LFBB`, `LFFF`, `LFEE`, `LFMM`, `LFRR`) are no longer used.
 
 ## Each AIRAC
 
 1. Update your Controller Pack with the French vACC installer so it has the new GNG files.
 2. Copy the GNG files into your clone of `vaccfr/data-sectorfiles`, at the same paths:
-   - `LFXX/Sectors/` (the `.sct`, `.ese` and `current_airac.txt`)
+   - `LFXX/Sectors/`: the military file renamed `LFFM.sct` / `LFFM.ese`, and `current_airac.txt`
    - `LFXX/ICAO/`, `LFXX/NavData/`
-   - for each of LFBB, LFEE, LFFF, LFMM, LFRR: `ICAO/`, `NavData/`, `Settings/VoiceChannels.txt`
+   - `LFFM/ICAO/`, `LFFM/NavData/` (from the military download)
+   - for each of LFBB, LFEE, LFFF, LFMM, LFRR: `Settings/VoiceChannels.txt`
 
    Copy nothing else: anything else in that repo overrides the public Sector-Files copy.
 3. Commit as the AIRAC (e.g. `2612`) and push.
@@ -47,7 +47,7 @@ These are defined in `packages.json`.
 
 GitHub → Actions → **Publish Release** → Run workflow.
 
-- **packages**: leave empty for all four, or e.g. `LFRR,LFBB`.
+- **packages**: leave empty (there is only `LFXX`).
 - **publish**: untick to only build. The zips are then in the run's artifacts, to try first.
 
 The run fails on a missing input, a convert error or a schema error, before anything is
@@ -62,7 +62,7 @@ navaids). The NeoRadar server needs it for routes, procedures and runway suggest
 run's `server-artifacts-<sha>` artifact. Upload each one with a staff token:
 
 ```bash
-NEORADAR_STAFF_TOKEN=... neoradar-cli push-dataset build/LFXXN
+NEORADAR_STAFF_TOKEN=... neoradar-cli push-dataset build/LFXX
 ```
 
 It shows what changes on the server and publishes only after you type the vAcc id.
@@ -78,15 +78,14 @@ pnpm add -g "github:neoradar-project/cli#develop"
 Build from your Controller Pack folder (it already has everything laid out):
 
 ```bash
-scripts/build-all.sh ~/Documents/FrenchVACC            # all packages
-scripts/build-all.sh ~/Documents/FrenchVACC LFRR       # one package
+scripts/build-all.sh ~/Documents/FrenchVACC
 ```
 
 To try a package in NeoRadar, link it into the packages folder (Windows, PowerShell):
 
 ```powershell
-New-Item -ItemType Junction -Path "$env:USERPROFILE\Documents\NeoRadar\packages\LFRR" `
-  -Target "$PWD\build\LFRR\package"
+New-Item -ItemType Junction -Path "$env:USERPROFILE\Documents\NeoRadar\packages\LFXX" `
+  -Target "$PWD\build\LFXX\package"
 ```
 
 Close NeoRadar before rebuilding: the build deletes and recreates `build/<ID>`.

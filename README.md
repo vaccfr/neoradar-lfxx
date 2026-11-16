@@ -8,16 +8,14 @@ TO BE USED SOLELY ON THE VATSIM NETWORK - NOT TO BE USED FOR REAL WORLD AVIATION
 
 ## Packages
 
-GNG publishes one sector file per FIR group, so there is one NeoRadar package per file:
+One package covers all of France. It is built from the French vACC military GNG sector file
+(`LFFM`), which holds every French FIR:
 
 | Package | FIRs | Provider URL |
 | --- | --- | --- |
-| `LFBB` | Bordeaux | `https://pkg.neoradar.app/lfbb` |
-| `LFXXN` | Paris + Reims | `https://pkg.neoradar.app/lfxxn` |
-| `LFMM` | Marseille | `https://pkg.neoradar.app/lfmm` |
-| `LFRR` | Brest | `https://pkg.neoradar.app/lfrr` |
+| `LFXX` | Paris, Reims, Brest, Bordeaux, Marseille, plus the military positions | `https://pkg.neoradar.app/lfxx` |
 
-Each package has the converted sector file, every ASR of its FIRs as a NeoRadar profile, the
+The package has the converted sector file, every ASR of its FIRs as a NeoRadar profile, the
 CoFrance maps, and one radar system (tag colours and symbols) per CoFrance tag format.
 
 ## Documentation
