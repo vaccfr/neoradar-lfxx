@@ -59,9 +59,12 @@ node scripts/validate.js <schemas checkout> build/*/package      # ajv@8 + js-ya
 
 ## Things that are easy to get wrong
 
-- **neoradar-cli and schemas must be the `develop` branch** until it is merged: current clients
-  refuse map layers without an item table, which only `develop` writes. CI pins both through
+- **neoradar-cli runs from `main`; the schemas stay on `develop`** until develop is merged: the
+  schemas' `main` still requires profile fields the package no longer writes. CI pins both through
   `NEORADAR_CLI_REF` / `NEORADAR_SCHEMAS_REF` in `release.yml`.
+- **Publishing goes to Cloudflare R2** (`publish` in `packages.json`: bucket `neoradar-packages`,
+  path `lfxx`, served at `https://pkg.neoradar.app/lfxx`). The keys are the repository secrets
+  `NEORADAR_R2_ACCESS_KEY_ID` / `NEORADAR_R2_SECRET_ACCESS_KEY`; never put them in a file.
 - **The client is the arbiter, the schemas describe it.** The C# client is
   `neoradar-project/client-sharp` (`develop`); check it when a field's behaviour matters. A field
   that validates can still mean something new (e.g. a style variant without `leaderLineColor`

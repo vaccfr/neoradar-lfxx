@@ -1,11 +1,14 @@
 {
   "$comment": "One NeoRadar package for all of France, built from the French vACC military GNG sector file (LFFM), which covers every French FIR. 'sectorFile' is the basename under LFXX/Sectors/ in the source tree; 'firs' are the source folders whose ASRs, login profiles and CoFrance maps the package carries (the first FIR wins a duplicated callsign); 'excludeAsrs' are globs, relative to a FIR's ASR folder, of the displays left out (the centre ones: NeoRadar serves approach and below for now); 'excludeLoginFacilities' are the EuroScope facility numbers whose login profiles are left out (6: centre); 'dataFolder' is the folder whose ICAO and NavData are used (default: the first FIR).",
   "publish": {
-    "bucketName": "neoradar",
-    "region": "eu-west-2",
-    "makePublic": true,
-    "s3PathPrefix": "packages/",
-    "baseUrlPrefix": "https://pkg.neoradar.app/"
+    "$comment": "neoradar-cli distribute's publish settings. Each package goes to <s3PathPrefix><namespace> in the R2 bucket and is served at <baseUrlPrefix><namespace>. The R2 keys come from the two environment variables named here (GitHub secrets in the Publish Release workflow).",
+    "provider": "r2",
+    "bucketName": "neoradar-packages",
+    "endpoint": "https://70723958eaa1e0ced0cf2c067ec30640.r2.cloudflarestorage.com/",
+    "s3PathPrefix": "",
+    "baseUrlPrefix": "https://pkg.neoradar.app/",
+    "envVariableAccessKeyId": "NEORADAR_R2_ACCESS_KEY_ID",
+    "envVariableSecretAccessKey": "NEORADAR_R2_SECRET_ACCESS_KEY"
   },
   "sharedCoFranceMaps": [
     "LFXX"

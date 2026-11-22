@@ -16,7 +16,7 @@ vaccfr/data-sectorfiles (PRIVATE)         GNG sector files, ICAO, NavData
    neoradar-cli convert        → build/<ID>/package the converted package
    scripts/build.py finalize   → profiles finished, manifest cleaned
    scripts/validate.js         → checked against the NeoRadar schemas
-   neoradar-cli distribute     → zip + publish to pkg.neoradar.app
+   neoradar-cli distribute     → zip + publish to the R2 bucket, served at pkg.neoradar.app
 ```
 
 `scripts/build-all.sh` runs the first three steps; the **Publish Release** workflow runs them all.
@@ -56,8 +56,14 @@ GitHub → Actions → **Publish Release** → Run workflow.
 - **packages**: leave empty (there is only `LFXX`).
 - **publish**: untick to only build. The zips are then in the run's artifacts, to try first.
 
+The package goes to the Cloudflare R2 bucket `neoradar-packages` under `lfxx/`, which
+`https://pkg.neoradar.app/lfxx` serves (the provider URL controllers add). `publish` in
+`packages.json` holds the bucket, endpoint and the names of the two key variables; the keys
+themselves are repository secrets (below).
+
 The run fails on a missing input, a convert error or a schema error, before anything is
-published. Read its warnings either way (see [Build warnings](#build-warnings)).
+published. It also fails if publishing was asked for and the R2 secrets are missing, or if
+`neoradar-cli distribute` does not report the package published. Read its warnings either way (see [Build warnings](#build-warnings)).
 
 Versions are `<AIRAC>_<commit>`, e.g. `2611_b7bea4a`.
 
@@ -75,10 +81,10 @@ It shows what changes on the server and publishes only after you type the vAcc i
 
 ## Building locally
 
-You need Python 3.10+, Node 24, pnpm 10, and neoradar-cli from its `develop` branch:
+You need Python 3.10+, Node 24, pnpm 10, and neoradar-cli from its `main` branch:
 
 ```bash
-pnpm add -g "github:neoradar-project/cli#develop"
+pnpm add -g "github:neoradar-project/cli#main"
 ```
 
 Build from your Controller Pack folder (it already has everything laid out):
@@ -223,13 +229,14 @@ upstream.
 - **Server-dependent tags.** Arrival runway colours (CDG), SID/runway suggestions and route-based
   rules need the server link and the uploaded server dataset.
 - **Not converted yet:** vSID procedure priorities and runway preferences.
-- **CLI pinned to `develop`.** Current clients need files only neoradar-cli `develop` writes. When
-  `develop` is merged, set `NEORADAR_CLI_REF` and `NEORADAR_SCHEMAS_REF` back to `main` in
-  `.github/workflows/release.yml` and `ref:` in `validate.yml`.
+- **Schemas pinned to `develop`.** The CLI runs from `main` (`NEORADAR_CLI_REF`), but the schemas'
+  `main` still requires profile fields `develop` dropped, so the package fails against it. Once
+  schemas `develop` is merged to `main`, set `NEORADAR_SCHEMAS_REF` in `.github/workflows/release.yml`
+  and `ref:` in `validate.yml` to `main`.
 
 ## Secrets used by the workflows
 
 | Name | For |
 | --- | --- |
 | `LIVE_DATA_APP_ID` (variable), `LIVE_DATA_APP_PRIVATE_KEY` (secret) | Reading the private `data-sectorfiles` repo |
-| `AWS_PUBLISH_CREDENTIALS` | Uploading packages to the package bucket |
+| `NEORADAR_R2_ACCESS_KEY_ID`, `NEORADAR_R2_SECRET_ACCESS_KEY` | An R2 API token with Object Read & Write on the `neoradar-packages` bucket, for uploading the package |

@@ -230,18 +230,16 @@ def assemble(pkg: dict, config: dict, source: Path, build: Path) -> None:
     if not re.fullmatch(r"\d{4}", airac):
         sys.exit(f"{airac_file}: expected a 4-digit AIRAC cycle, got {airac!r}")
 
-    # config.json
+    # config.json: packages.json's publish settings as neoradar-cli distribute reads them, with the
+    # package's own path (prefix + namespace) in the bucket and under the public URL
     pub = config["publish"]
     slug = pkg["namespace"]
+    publish = {k: v for k, v in pub.items() if k not in ("$comment", "s3PathPrefix", "baseUrlPrefix")}
+    publish["s3Path"] = pub.get("s3PathPrefix", "") + slug
+    publish["baseUrl"] = pub["baseUrlPrefix"] + slug
     (env / "config.json").write_text(json.dumps({
         "sectorFileFromGNG": True,
-        "publish": {
-            "bucketName": pub["bucketName"],
-            "region": pub["region"],
-            "s3Path": pub["s3PathPrefix"] + slug,
-            "makePublic": pub["makePublic"],
-            "baseUrl": pub["baseUrlPrefix"] + slug,
-        },
+        "publish": publish,
     }, indent=2) + "\n", encoding="utf-8")
 
     # sector_files/<ID>.sct + .ese

@@ -8,7 +8,7 @@ on:
         required: false
         default: ""
       publish:
-        description: "Publish to the package bucket (off = build and upload artifacts only)"
+        description: "Publish to the R2 package bucket (off = build and upload artifacts only)"
         type: boolean
         default: true
 
@@ -23,9 +23,9 @@ env:
   # Private: the GNG AIRAC data (sector files, ICAO, NavData), never published as-is.
   LIVE_DATA_REPO_NAME: data-sectorfiles
   LIVE_DATA_REF: main
-  # The client in use (0.2.3-alpha) refuses layer files without an item table, which only the CLI's
-  # develop branch writes. Move both back to main once develop is merged.
-  NEORADAR_CLI_REF: develop
+  # The CLI's main has caught up with develop. The schemas' main has not: it still requires
+  # profile fields develop dropped, so the package fails against it. Move to main once it is merged.
+  NEORADAR_CLI_REF: main
   NEORADAR_SCHEMAS_REF: develop
 
 jobs:
@@ -141,24 +141,34 @@ jobs:
             cp "$env/server-dataset.json" "server-artifacts/$id/server-dataset.json"
           done
 
-      - name: Configure AWS credentials
-        if: ${{ inputs.publish }}
-        run: |
-          mkdir -p ~/.aws
-          echo "${{ secrets.AWS_PUBLISH_CREDENTIALS }}" > ~/.aws/credentials
-
       - name: Distribute${{ inputs.publish && ' & publish' || '' }}
+        # packages.json names these variables (envVariableAccessKeyId / envVariableSecretAccessKey);
+        # neoradar-cli uploads with them to the R2 bucket.
+        env:
+          NEORADAR_R2_ACCESS_KEY_ID: ${{ secrets.NEORADAR_R2_ACCESS_KEY_ID }}
+          NEORADAR_R2_SECRET_ACCESS_KEY: ${{ secrets.NEORADAR_R2_SECRET_ACCESS_KEY }}
         run: |
           set -euo pipefail
           publish_flag=""
-          [ "${{ inputs.publish }}" = "true" ] && publish_flag="--publish"
+          if [ "${{ inputs.publish }}" = "true" ]; then
+            publish_flag="--publish"
+            if [ -z "$NEORADAR_R2_ACCESS_KEY_ID" ] || [ -z "$NEORADAR_R2_SECRET_ACCESS_KEY" ]; then
+              echo "::error::Secrets NEORADAR_R2_ACCESS_KEY_ID and NEORADAR_R2_SECRET_ACCESS_KEY must be set to publish"
+              exit 1
+            fi
+          fi
           mkdir -p dist
           for env in build/*/; do
             id="$(basename "$env")"
             airac="$(python3 -c "import json;print(json.load(open('$env/build-info.json'))['airac'])")"
             version="${airac}_${GITHUB_SHA::7}"
             echo "::group::$id $version"
-            (cd build && neoradar-cli distribute "$id" --new-version "$version" $publish_flag)
+            (cd build && neoradar-cli distribute "$id" --new-version "$version" $publish_flag) 2>&1 | tee "distribute-$id.log"
+            # distribute returns 0 when it skips publishing over a config problem, so ask for the proof.
+            if [ -n "$publish_flag" ] && ! grep -q "Package published successfully" "distribute-$id.log"; then
+              echo "::error::$id was not published; see the distribute output above"
+              exit 1
+            fi
             cp "build/$id/dist/"*.zip "dist/${id}-${version}.zip"
             echo "::endgroup::"
           done
