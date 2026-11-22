@@ -69,5 +69,6 @@ jobs:
           # The validator wants a package root; a stub manifest stands in for the generated one.
           tmp="$(mktemp -d)"
           cp -r shared/package/systems "$tmp/systems"
+          cp -r shared/package/images "$tmp/images"
           echo '{"$schema":"x","id":"x","name":"x","version":"0","namespace":"x","createdAt":"x"}' > "$tmp/manifest.json"
           node scripts/validate.js .schemas "$tmp"
