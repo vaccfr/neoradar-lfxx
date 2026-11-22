@@ -21,8 +21,8 @@ Radar systems
   the plate when transferred to you, green text when transferred out (same in both systems).
 - Flights CoFrance never filters, and flights assumed or in transfer, show through the altitude
   filter.
-- Trails: the old CDG trail rings and IRMA dots, in each track colour; approach displays refresh
-  every 4 s like a radar, so trails follow the aircraft sweep by sweep.
+- Trails: the old CDG trail rings and IRMA dots, in each track colour; displays refresh like a
+  radar (approach 2 s, AVISO 1 s), so trails follow the aircraft sweep by sweep.
 - Tags in B612 Mono (barred zero), with climb/descent/level arrows and the voice type (/r, /t).
 - Every target correlated (correlation mode always).
 - Route draw in CoFrance's route colours, labels on a dark plate.
@@ -44,6 +44,6 @@ Revisions
 - 2611.5  readable reverse-video callsigns
 - 2611.6  old CDG trail rings, EuroScope font, correlation always, CDG tag fixes
 - 2611.7  one tag layout for both systems
-- 2611.8  4 s radar sweep on approach displays (trails follow the aircraft), IRMA trails (three
+- 2611.8  radar refresh, approach 2 s and AVISO 1 s (trails follow the aircraft), IRMA trails (three
           big, three small rings), one callsign look per state (slate plate), B612 Mono font with
           a barred zero

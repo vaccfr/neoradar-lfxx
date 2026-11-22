@@ -74,9 +74,10 @@ SYSTEM_FOR_TAG_FORMAT = {"Paris-CDG": "cdg"}
 SYSTEM_FOR_AVISO = {"LFPG": "cdg", "LFPB": "cdg"}
 DEFAULT_SYSTEM = "neoirma"
 FRENCH_TRANSITION_ALTITUDE = 5000
-# Approach displays refresh like a radar: aircraft and trails move once per sweep, the trail dots
-# being the previous sweeps (map.sweepIntervalSeconds). AVISOs stay on every update.
-RADAR_SWEEP_SECONDS = 4
+# Displays refresh like a radar: aircraft and trails move once per sweep, the trail dots being the
+# previous sweeps (map.sweepIntervalSeconds). Approach radar every 2 s, ground (AVISO) every 1 s.
+APPROACH_SWEEP_SECONDS = 2
+GROUND_SWEEP_SECONDS = 1
 
 
 def log(msg: str) -> None:
@@ -467,7 +468,7 @@ def finalize(pkg: dict, build: Path) -> None:
         if meta.get("DisplayTypeName", "").lower().startswith("cofrance"):
             fmt = meta["plugin"].get(("CoFrance", "TagFormat"), "")
             profile["atmSystem"] = SYSTEM_FOR_TAG_FORMAT.get(fmt, DEFAULT_SYSTEM)
-            profile["map"]["sweepIntervalSeconds"] = RADAR_SWEEP_SECONDS
+            profile["map"]["sweepIntervalSeconds"] = APPROACH_SWEEP_SECONDS
             radar = profile.setdefault("radarData", {})
             radar["transitionAltitude"] = FRENCH_TRANSITION_ALTITUDE
             for key, field in (("UpperAlt", "upperFilterValue"), ("LowerAlt", "lowerFilterValue")):
@@ -500,6 +501,7 @@ def finalize(pkg: dict, build: Path) -> None:
             if set_icao != icao:
                 warn(f"{pid}: {asr.name} sets vSMR:Airport:{set_icao or '(none)'}; using {icao} from its name")
             profile["atmSystem"] = SYSTEM_FOR_AVISO.get(icao, DEFAULT_SYSTEM)
+            profile["map"]["sweepIntervalSeconds"] = GROUND_SWEEP_SECONDS
             if profile["map"].get("items"):
                 replaced_items.add(asr.relative_to(env / "ASRs").as_posix())
             if aviso_profiles.get(icao):
