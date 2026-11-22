@@ -3,7 +3,7 @@
   "ground": "#neoirma",
   "airborne": {
     "styleDefaults": {
-      "font": "OrlyLabelVATSIM",
+      "font": "EuroScope",
       "fontWeight": "normal",
       "fontSize": 13,
       "detailedBackgroundColor": [25, 25, 25],
@@ -110,6 +110,16 @@
                 "=cdgAssumedBoxDepCDG",
                 "=cdgAssumedBoxVFR"
               ]
+            },
+            {
+              "itemName": "voiceType",
+              "leftClick": "voiceTypeMenu",
+              "mapping": {
+                "0": "",
+                "1": "/r",
+                "2": "/t"
+              },
+              "color": [255, 220, 3]
             },
             {
               "itemName": "sectorIndicator",
@@ -290,6 +300,16 @@
               ]
             },
             {
+              "itemName": "voiceType",
+              "leftClick": "voiceTypeMenu",
+              "mapping": {
+                "0": "",
+                "1": "/r",
+                "2": "/t"
+              },
+              "color": [255, 220, 3]
+            },
+            {
               "itemName": "sectorIndicator",
               "placeholder": "---"
             },
@@ -454,10 +474,20 @@
               ]
             },
             {
+              "itemName": "voiceType",
+              "leftClick": "voiceTypeMenu",
+              "mapping": {
+                "0": "",
+                "1": "/r",
+                "2": "/t"
+              },
+              "color": [255, 220, 3]
+            },
+            {
               "itemName": "text",
               "truncate": [0, 3],
               "color": [29, 118, 226],
-              "value": ["=suggestedSidIfNoAssigned", "&sid"]
+              "value": ["=emptySIDifNotDep", "=suggestedSidIfNoAssigned", "&sid"]
             }
           ],
           [
@@ -585,10 +615,20 @@
               ]
             },
             {
+              "itemName": "voiceType",
+              "leftClick": "voiceTypeMenu",
+              "mapping": {
+                "0": "",
+                "1": "/r",
+                "2": "/t"
+              },
+              "color": [255, 220, 3]
+            },
+            {
               "itemName": "text",
               "truncate": [0, 3],
               "color": [29, 118, 226],
-              "value": ["=suggestedSidIfNoAssigned", "&sid"]
+              "value": ["=emptySIDifNotDep", "=suggestedSidIfNoAssigned", "&sid"]
             }
           ],
           [

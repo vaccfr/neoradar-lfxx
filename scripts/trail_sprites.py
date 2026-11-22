@@ -1,11 +1,11 @@
-"""Tapered, fading trail sprites for the systems' history trails.
+"""History-trail sprites: the old CDG trail (6 rings shrinking from 10 to 4 px), in every trail colour.
 
     python scripts/trail_sprites.py
 
-Writes shared/package/images/symbols.png + symbols.json (frames trails/<rrggbb>/t1..t8, one per
-trail colour the systems' targets use) and points every airborne variant's historyTrailImages at
-its colour's frames. Sprites, because released clients cannot size a trail shape per mark; once
-historyTrailShape.scaleRamp is released, the trails can go back to shapes.
+Re-colours plots/cdg/blanc/t1..t6 from backup/images/symbols.png into shared/package/images/
+symbols.png + symbols.json (frames trails/<rrggbb>/t1..t6) and points every airborne variant's
+historyTrailImages at its colour's frames. Sprites, because released clients cannot size a trail
+shape per mark (historyTrailShape.scaleRamp is not released yet).
 """
 import json
 from pathlib import Path
@@ -15,41 +15,44 @@ from PIL import Image
 REPO = Path(__file__).resolve().parent.parent
 SYSTEMS = REPO / "shared" / "package" / "systems"
 IMAGES = REPO / "shared" / "package" / "images"
-FRAME = 8
-DIAMETERS = [6, 5.1, 4.3, 3.6, 3.0, 2.5, 2.1, 1.8]  # newest first: the comet narrows behind the plot
-ALPHAS = [0.9, 0.75, 0.62, 0.5, 0.4, 0.3, 0.22, 0.15]
+OLD = REPO / "backup" / "images"
+SOURCE = [f"plots/cdg/blanc/t{i}" for i in range(1, 7)]
+SKIP_STEPS = 5  # the old CDG trail spacing
 
 
-def dot(color, diameter, alpha):
-    img = Image.new("RGBA", (FRAME, FRAME), (0, 0, 0, 0))
-    c, r = FRAME / 2, diameter / 2
-    for y in range(FRAME):
-        for x in range(FRAME):
-            # Coverage of the pixel by the disc, sampled 4 x 4, for a soft but small dot.
-            inside = sum(((x + (i + 0.5) / 4 - c) ** 2 + (y + (j + 0.5) / 4 - c) ** 2) <= r * r for i in range(4) for j in range(4))
-            if inside:
-                img.putpixel((x, y), (*color, round(255 * alpha * inside / 16)))
-    return img
+def trail_color(variant):
+    c = (variant.get("historyTrailShape") or {}).get("color") or variant.get("plotColor")
+    return tuple(c[:3]) if isinstance(c, list) else None
 
 
 def main():
+    old_atlas = Image.open(OLD / "symbols.png").convert("RGBA")
+    old_frames = json.loads((OLD / "symbols.json").read_text(encoding="utf-8"))["frames"]
+    sources = []
+    for name in SOURCE:
+        f = old_frames[name]["frame"]
+        sources.append(old_atlas.crop((f["x"], f["y"], f["x"] + f["w"], f["y"] + f["h"])))
+    size = sources[0].width
+
     targets = {s: json.loads((SYSTEMS / s / "targets.json").read_text(encoding="utf-8")) for s in ("cdg", "neoirma")}
     colors = []
     for doc in targets.values():
         for v in doc["airborneSymbology"]:
-            c = (v.get("historyTrailShape") or {}).get("color") or v.get("plotColor")
-            if isinstance(c, list) and tuple(c[:3]) not in colors:
-                colors.append(tuple(c[:3]))
+            c = trail_color(v)
+            if c and c not in colors:
+                colors.append(c)
 
-    atlas = Image.new("RGBA", (FRAME * len(DIAMETERS), FRAME * len(colors)), (0, 0, 0, 0))
+    atlas = Image.new("RGBA", (size * len(sources), size * len(colors)), (0, 0, 0, 0))
     frames = {}
     for row, color in enumerate(colors):
         key = "%02x%02x%02x" % color
-        for i, (d, a) in enumerate(zip(DIAMETERS, ALPHAS)):
-            atlas.paste(dot(color, d, a), (i * FRAME, row * FRAME))
+        for i, src in enumerate(sources):
+            tinted = Image.new("RGBA", src.size, (*color, 0))
+            tinted.putalpha(src.getchannel("A"))
+            atlas.paste(tinted, (i * size, row * size))
             frames[f"trails/{key}/t{i + 1}"] = {
-                "frame": {"x": i * FRAME, "y": row * FRAME, "w": FRAME, "h": FRAME}, "rotated": False, "trimmed": False,
-                "spriteSourceSize": {"x": 0, "y": 0, "w": FRAME, "h": FRAME}, "sourceSize": {"w": FRAME, "h": FRAME},
+                "frame": {"x": i * size, "y": row * size, "w": size, "h": size}, "rotated": False, "trimmed": False,
+                "spriteSourceSize": {"x": 0, "y": 0, "w": size, "h": size}, "sourceSize": {"w": size, "h": size},
                 "pivot": {"x": 0.5, "y": 0.5},
             }
     atlas.save(IMAGES / "symbols.png")
@@ -58,15 +61,14 @@ def main():
 
     for system, doc in targets.items():
         for v in doc["airborneSymbology"]:
-            c = (v.get("historyTrailShape") or {}).get("color") or v.get("plotColor")
-            if not isinstance(c, list):
+            c = trail_color(v)
+            if not c:
                 continue
-            key = "%02x%02x%02x" % tuple(c[:3])
+            key = "%02x%02x%02x" % c
             v.pop("historyTrailShape", None)  # a trail shape would win over the images
-            v["historyTrailImages"] = [f"trails/{key}/t{i + 1}" for i in range(len(DIAMETERS))]
-        path = SYSTEMS / system / "targets.json"
-        text = json.dumps(doc, indent=2, ensure_ascii=False)
-        path.write_text(text + "\n", encoding="utf-8", newline="\n")
+            v["historyTrailImages"] = [f"trails/{key}/t{i + 1}" for i in range(len(sources))]
+            v["historyTrailsSkipSteps"] = SKIP_STEPS
+        (SYSTEMS / system / "targets.json").write_text(json.dumps(doc, indent=2, ensure_ascii=False) + "\n", encoding="utf-8", newline="\n")
     print(f"{len(colors)} trail colours, {len(frames)} frames")
 
 

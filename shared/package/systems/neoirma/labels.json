@@ -362,7 +362,7 @@
   },
   "airborne": {
     "styleDefaults": {
-      "font": "OrlyLabelVATSIM",
+      "font": "EuroScope",
       "fontWeight": "normal",
       "fontSize": 13,
       "detailedBackgroundColor": [25, 25, 25],

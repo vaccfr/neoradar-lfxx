@@ -55,7 +55,7 @@ routeDraw:
     fillOpacity: 0
   textStyle:
     color: [160, 216, 180]
-    fontFamily: OrlyLabelVATSIM
+    fontFamily: EuroScope
     fontSize: 11
     lineHeight: 11
     offset: [6, -6]
