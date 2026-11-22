@@ -24,6 +24,15 @@ are left out), the CoFrance maps, and two radar systems:
 
 The systems before this change are kept in [backup/](backup/README.md).
 
+## 4-Flight UI theme
+
+[themes/4-Flight.json](themes/4-Flight.json) gives the NeoRadar window the colours of the French
+4-Flight HMI (sampled from the VOPS manual, rev M): a light global menu, grey-teal windows and
+lists, white text, 4-Flight blue, green and yellow. It changes the client's interface only, not
+the radar systems. A package cannot install a theme, so each controller copies the file into
+`Documents\NeoRadar\themes\` (`~/.local/share/NeoRadar/themes/` on Linux) and picks "4-Flight" in
+the client's settings. It overrides 70 of the client's colour tokens; the rest keep the default.
+
 ## Documentation
 
 - **[Maintainer guide](docs/maintaining.md)**: the AIRAC update, releasing, building locally,
