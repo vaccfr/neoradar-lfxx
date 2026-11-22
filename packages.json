@@ -1,5 +1,5 @@
 {
-  "$comment": "One NeoRadar package for all of France, built from the French vACC military GNG sector file (LFFM), which covers every French FIR. 'sectorFile' is the basename under LFXX/Sectors/ in the source tree; 'firs' are the source folders whose ASRs, login profiles and CoFrance maps the package carries (the first FIR wins a duplicated callsign); 'excludeAsrs' are globs, relative to a FIR's ASR folder, of the displays left out (the centre ones: NeoRadar serves approach and below for now); 'dataFolder' is the folder whose ICAO and NavData are used (default: the first FIR).",
+  "$comment": "One NeoRadar package for all of France, built from the French vACC military GNG sector file (LFFM), which covers every French FIR. 'sectorFile' is the basename under LFXX/Sectors/ in the source tree; 'firs' are the source folders whose ASRs, login profiles and CoFrance maps the package carries (the first FIR wins a duplicated callsign); 'excludeAsrs' are globs, relative to a FIR's ASR folder, of the displays left out (the centre ones: NeoRadar serves approach and below for now); 'excludeLoginFacilities' are the EuroScope facility numbers whose login profiles are left out (6: centre); 'dataFolder' is the folder whose ICAO and NavData are used (default: the first FIR).",
   "publish": {
     "bucketName": "neoradar",
     "region": "eu-west-2",
@@ -24,6 +24,9 @@
         "LFBB",
         "LFMM",
         "LFFM"
+      ],
+      "excludeLoginFacilities": [
+        6
       ],
       "excludeAsrs": [
         "* FIR.asr",

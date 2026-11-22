@@ -31,7 +31,8 @@ The per-FIR GNG files (`LFBB`, `LFFF`, `LFEE`, `LFMM`, `LFRR`) are no longer use
 
 NeoRadar is used for approach and below for now, so the centre displays are left out:
 `excludeAsrs` in `packages.json` lists them as globs (`* FIR.asr`, `* UIR.asr`, `* CTR.asr`), and
-the build log names every ASR it skipped. Remove a pattern to ship those displays again (they
+the build log names every ASR it skipped. The centre login profiles go too: `excludeLoginFacilities`
+lists EuroScope facility numbers (`6` is centre). Remove a pattern to ship those displays again (they
 would then need a system: see below).
 
 ## Each AIRAC
@@ -127,8 +128,10 @@ targets) is the package's only ground look: the AVISO look, raw video with a sma
 **Track colours** follow the CoFrance rules in their priority order (the first matching variant
 wins, as CoFrance's lowest priority number does):
 
-- `neoirma`: departing a French airport (`LF*`) pink `#D597A3`; arriving at one blue `#63BBD9`;
-  other IFR traffic that is assumed or transferred out white; everything else grey `#8E8E8E`.
+- `neoirma`: departures pink `#D597A3`, arrivals blue `#63BBD9`, everything else a quiet grey
+  `#8E8E8E`. Departure and arrival are NeoRadar's `isDeparture` / `isArrival`: the plan leaves
+  from or lands at an airport the controller has active (with runways set), not CoFrance's
+  "any `LF*` airport".
 - `cdg`: CoFrance's Paris-CDG letters and colours: `S`/`N` CDG arrivals by runway pair (the
   assigned arrival runway, or the server's suggestion while none is assigned), `B` Le Bourget,
   `O` Orly, `A` Pontoise/Beauvais, `V` Toussus/Villacoublay, `R` CDG with no runway yet, `G`/`P`
@@ -145,10 +148,15 @@ by state, so the state is shown in reverse video:
 
 | State | Callsign |
 | --- | --- |
-| Assumed | dark text on a box of the flight's track colour (CoFrance's assumed grey `205,205,205` when that colour is black) |
-| Transfer to you | dark text on CoFrance's hand-off green `160,216,180` |
+| Assumed | a box of the flight's track colour (CoFrance's assumed grey `205,205,205` when that colour is black) |
+| Transfer to you | a box of CoFrance's hand-off green `160,216,180` |
 | Transferred out | hand-off green text, no box |
 | Other | the track colour, no box |
+
+The text on a box is dark `20,20,20` or white, whichever contrasts more with that box; every box
+reaches at least 4.5:1 (WCAG AA), the lowest being neoIRMA's grey at 5.6:1. When you change a
+track colour, keep its box at 4.5:1 or more with one of the two (each `…AssumedText…` rule in
+`expressions.json` sits next to its `…AssumedBox…` rule).
 
 Track symbols are vector shapes (`shapes.json`), coloured by each variant's `plotColor`, not
 sprites. CDG's letters are stroke glyphs (`font/A`…`font/Z`) composed under the disk. The CDG disk

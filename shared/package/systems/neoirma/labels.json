@@ -418,12 +418,17 @@
             {
               "itemName": "callsign",
               "leftClick": "callsignMenu",
-              "color": ["=reverseVideoText", "=handoffText"],
+              "color": [
+                "=incomingTransferText",
+                "=neoirmaAssumedTextDep",
+                "=neoirmaAssumedTextArr",
+                "=neoirmaAssumedTextOther",
+                "=handoffText"
+              ],
               "backgroundColor": [
                 "=incomingTransferBox",
                 "=neoirmaAssumedBoxDep",
                 "=neoirmaAssumedBoxArr",
-                "=neoirmaAssumedBoxIFR",
                 "=neoirmaAssumedBoxOther"
               ]
             },
@@ -593,12 +598,17 @@
             {
               "itemName": "callsign",
               "leftClick": "callsignMenu",
-              "color": ["=reverseVideoText", "=handoffText"],
+              "color": [
+                "=incomingTransferText",
+                "=neoirmaAssumedTextDep",
+                "=neoirmaAssumedTextArr",
+                "=neoirmaAssumedTextOther",
+                "=handoffText"
+              ],
               "backgroundColor": [
                 "=incomingTransferBox",
                 "=neoirmaAssumedBoxDep",
                 "=neoirmaAssumedBoxArr",
-                "=neoirmaAssumedBoxIFR",
                 "=neoirmaAssumedBoxOther"
               ]
             },
@@ -767,12 +777,17 @@
             {
               "itemName": "callsign",
               "leftClick": "callsignMenu",
-              "color": ["=reverseVideoText", "=handoffText"],
+              "color": [
+                "=incomingTransferText",
+                "=neoirmaAssumedTextDep",
+                "=neoirmaAssumedTextArr",
+                "=neoirmaAssumedTextOther",
+                "=handoffText"
+              ],
               "backgroundColor": [
                 "=incomingTransferBox",
                 "=neoirmaAssumedBoxDep",
                 "=neoirmaAssumedBoxArr",
-                "=neoirmaAssumedBoxIFR",
                 "=neoirmaAssumedBoxOther"
               ]
             },
@@ -903,12 +918,17 @@
             {
               "itemName": "callsign",
               "leftClick": "callsignMenu",
-              "color": ["=reverseVideoText", "=handoffText"],
+              "color": [
+                "=incomingTransferText",
+                "=neoirmaAssumedTextDep",
+                "=neoirmaAssumedTextArr",
+                "=neoirmaAssumedTextOther",
+                "=handoffText"
+              ],
               "backgroundColor": [
                 "=incomingTransferBox",
                 "=neoirmaAssumedBoxDep",
                 "=neoirmaAssumedBoxArr",
-                "=neoirmaAssumedBoxIFR",
                 "=neoirmaAssumedBoxOther"
               ]
             },
@@ -999,29 +1019,21 @@
     ],
     "styleVariants": [
       {
-        "description": "DEP: departs a French airport",
+        "description": "DEP: departs one of your airports",
         "applyWhen": "$neoirmaDep",
         "applyToFilterStates": ["kUnfiltered", "kUpperFiltered", "kLowerFiltered"],
         "textColor": [213, 151, 163],
         "leaderLineColor": [213, 151, 163]
       },
       {
-        "description": "ARR: arrives at a French airport",
+        "description": "ARR: arrives at one of your airports",
         "applyWhen": "$neoirmaArr",
         "applyToFilterStates": ["kUnfiltered", "kUpperFiltered", "kLowerFiltered"],
         "textColor": [99, 187, 217],
         "leaderLineColor": [99, 187, 217]
       },
       {
-        "description": "IFR, assumed or transferred out",
-        "applyWhen": "$neoirmaIFR",
-        "applyToAttentionStates": ["kAssumed", "kOutgoingTransfer"],
-        "applyToFilterStates": ["kUnfiltered", "kUpperFiltered", "kLowerFiltered"],
-        "textColor": [255, 255, 255],
-        "leaderLineColor": [255, 255, 255]
-      },
-      {
-        "description": "Other traffic, yours or offered to you, shown through the altitude filter",
+        "description": "Other traffic (yours or offered to you, shown through the altitude filter)",
         "applyToAttentionStates": ["kIncomingTransfer", "kAssumed", "kOutgoingTransfer"],
         "applyToFilterStates": ["kUnfiltered", "kUpperFiltered", "kLowerFiltered"],
         "textColor": [142, 142, 142],

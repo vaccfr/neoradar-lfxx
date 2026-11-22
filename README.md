@@ -16,7 +16,8 @@ One package covers all of France. It is built from the French vACC military GNG 
 | `LFXX` | Paris, Reims, Brest, Bordeaux, Marseille, plus the military airfields | `https://pkg.neoradar.app/lfxx` |
 
 NeoRadar is used for approach and below for now. The package has the converted sector file, the
-approach (CCA/EGA) and AVISO ASRs as NeoRadar profiles (the centre FIR/UIR displays are left out),
+approach (CCA/EGA) and AVISO ASRs as NeoRadar profiles (the centre displays and login profiles
+are left out),
 the CoFrance maps, and two radar systems:
 
 - **`neoirma`**: a stripless IRMA for every approach, and the ground look for every AVISO.

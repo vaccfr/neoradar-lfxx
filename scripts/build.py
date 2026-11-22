@@ -161,6 +161,26 @@ def copy_tree_text(src: Path, dst: Path, suffix: str, exclude: list[str] | None 
     return n, skipped
 
 
+def drop_login_profiles(text: str, facilities: set[str]) -> tuple[str, list[str]]:
+    """Removes the LoginProfiles.txt profiles whose facility (PROFILE:<callsign>:<range>:<facility>)
+    is in `facilities`, with the ATIS lines that follow them. Returns (text, dropped callsigns)."""
+    if not facilities:
+        return text, []
+    out, dropped, skipping = [], [], False
+    for line in text.split("\n"):
+        if line.startswith("PROFILE:"):
+            fields = line.split(":")
+            skipping = len(fields) > 3 and fields[3].strip() in facilities
+            if skipping:
+                dropped.append(fields[1])
+                continue
+        elif line.startswith("PROFILE"):
+            skipping = False
+        if not skipping:
+            out.append(line)
+    return "\n".join(out), dropped
+
+
 def drop_unidentified_positions(ese: Path) -> list[str]:
     """Removes [POSITIONS] lines whose identifier field (the 4th) is blank and returns their callsigns.
 
@@ -253,14 +273,20 @@ def assemble(pkg: dict, config: dict, source: Path, build: Path) -> None:
     alias = source / "LFXX" / "Alias" / "alias.txt"
     (ed / "Alias.txt").write_text(read_text_any(alias), encoding="utf-8", newline="\n")
     rel = "euroscope_data/LoginProfiles.txt"
-    chunks = []
+    chunks, dropped_logins = [], []
+    excluded_facilities = {str(f) for f in pkg.get("excludeLoginFacilities", [])}
     for fir in pkg["firs"]:
         lp = source / fir / "Settings" / "LoginProfiles.txt"
         if not lp.is_file():
             warn(f"{lp} missing")
             continue
-        chunks.append(apply_replacements(read_text_any(lp), f"{rel} ({fir})", rules).rstrip("\n"))
+        text = apply_replacements(read_text_any(lp), f"{rel} ({fir})", rules)
+        text, dropped = drop_login_profiles(text, excluded_facilities)
+        dropped_logins += dropped
+        chunks.append(text.rstrip("\n"))
     (env / rel).write_text("\n".join(chunks) + "\n", encoding="utf-8", newline="\n")
+    if excluded_facilities:
+        log(f"  {len(dropped_logins)} login profiles left out by excludeLoginFacilities ({', '.join(sorted(excluded_facilities))})")
 
     # icao_data
     data_folder = pkg.get("dataFolder", pkg["firs"][0])

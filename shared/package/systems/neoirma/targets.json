@@ -46,7 +46,7 @@
   },
   "airborneSymbology": [
     {
-      "description": "DEP: departs a French airport",
+      "description": "DEP: departs one of your airports",
       "applyWhen": "$neoirmaDep",
       "applyToFilterStates": ["kUnfiltered", "kUpperFiltered", "kLowerFiltered"],
       "plotShape": "neoirma/track",
@@ -61,7 +61,7 @@
       "speedVectorColor": [213, 151, 163]
     },
     {
-      "description": "ARR: arrives at a French airport",
+      "description": "ARR: arrives at one of your airports",
       "applyWhen": "$neoirmaArr",
       "applyToFilterStates": ["kUnfiltered", "kUpperFiltered", "kLowerFiltered"],
       "plotShape": "neoirma/track",
@@ -76,23 +76,7 @@
       "speedVectorColor": [99, 187, 217]
     },
     {
-      "description": "IFR, assumed or transferred out",
-      "applyWhen": "$neoirmaIFR",
-      "applyToAttentionStates": ["kAssumed", "kOutgoingTransfer"],
-      "applyToFilterStates": ["kUnfiltered", "kUpperFiltered", "kLowerFiltered"],
-      "plotShape": "neoirma/track",
-      "plotColor": [255, 255, 255],
-      "historyTrailShape": {
-        "shape": "neoirma/trail",
-        "steps": 5,
-        "color": [255, 255, 255],
-        "opacityRamp": [1, 0.85, 0.7, 0.55, 0.45]
-      },
-      "historyTrailsSkipSteps": 7,
-      "speedVectorColor": [255, 255, 255]
-    },
-    {
-      "description": "Other traffic, yours or offered to you, shown through the altitude filter",
+      "description": "Other traffic (yours or offered to you, shown through the altitude filter)",
       "applyToAttentionStates": ["kIncomingTransfer", "kAssumed", "kOutgoingTransfer"],
       "applyToFilterStates": ["kUnfiltered", "kUpperFiltered", "kLowerFiltered"],
       "plotShape": "neoirma/track",

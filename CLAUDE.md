@@ -37,7 +37,7 @@ Controller Pack install (e.g. `~/Documents/FrenchVACC`) is already one.
 
 | Path | What |
 | --- | --- |
-| `packages.json` | The package: id, namespace (permanent: provider URL and server vAcc id), sector file, FIR folders, `excludeAsrs` (centre displays left out), ICAO/NavData folder, publish settings |
+| `packages.json` | The package: id, namespace (permanent: provider URL and server vAcc id), sector file, FIR folders, `excludeAsrs` and `excludeLoginFacilities` (centre displays and logins left out), ICAO/NavData folder, publish settings |
 | `scripts/build.py` | `assemble` (source tree → `build/<ID>/` environment) and `finalize` (after `neoradar-cli convert`: profiles, manifest) |
 | `scripts/cofrance.py` | CoFrance GeoJSON maps → NeoRadar map layers (EPSG:3857, item table, `showWhen` from CoFrance `activation`) |
 | `scripts/build-all.sh` | assemble → convert → finalize for all or some packages; CI and local both use it |

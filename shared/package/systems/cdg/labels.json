@@ -81,7 +81,21 @@
             {
               "itemName": "callsign",
               "leftClick": "callsignMenu",
-              "color": ["=reverseVideoText", "=handoffText"],
+              "color": [
+                "=incomingTransferText",
+                "=cdgAssumedTextLocalPGPB",
+                "=cdgAssumedTextArrSouth",
+                "=cdgAssumedTextArrNorth",
+                "=cdgAssumedTextArrBourget",
+                "=cdgAssumedTextArrOrly",
+                "=cdgAssumedTextArrPNPV",
+                "=cdgAssumedTextArrCDG",
+                "=cdgAssumedTextDepNN",
+                "=cdgAssumedTextDepOrly",
+                "=cdgAssumedTextDepCDG",
+                "=cdgAssumedTextVFR",
+                "=handoffText"
+              ],
               "backgroundColor": [
                 "=incomingTransferBox",
                 "=cdgAssumedBoxLocalPGPB",
@@ -245,7 +259,21 @@
             {
               "itemName": "callsign",
               "leftClick": "callsignMenu",
-              "color": ["=reverseVideoText", "=handoffText"],
+              "color": [
+                "=incomingTransferText",
+                "=cdgAssumedTextLocalPGPB",
+                "=cdgAssumedTextArrSouth",
+                "=cdgAssumedTextArrNorth",
+                "=cdgAssumedTextArrBourget",
+                "=cdgAssumedTextArrOrly",
+                "=cdgAssumedTextArrPNPV",
+                "=cdgAssumedTextArrCDG",
+                "=cdgAssumedTextDepNN",
+                "=cdgAssumedTextDepOrly",
+                "=cdgAssumedTextDepCDG",
+                "=cdgAssumedTextVFR",
+                "=handoffText"
+              ],
               "backgroundColor": [
                 "=incomingTransferBox",
                 "=cdgAssumedBoxLocalPGPB",
@@ -395,7 +423,21 @@
             {
               "itemName": "callsign",
               "leftClick": "callsignMenu",
-              "color": ["=reverseVideoText", "=handoffText"],
+              "color": [
+                "=incomingTransferText",
+                "=cdgAssumedTextLocalPGPB",
+                "=cdgAssumedTextArrSouth",
+                "=cdgAssumedTextArrNorth",
+                "=cdgAssumedTextArrBourget",
+                "=cdgAssumedTextArrOrly",
+                "=cdgAssumedTextArrPNPV",
+                "=cdgAssumedTextArrCDG",
+                "=cdgAssumedTextDepNN",
+                "=cdgAssumedTextDepOrly",
+                "=cdgAssumedTextDepCDG",
+                "=cdgAssumedTextVFR",
+                "=handoffText"
+              ],
               "backgroundColor": [
                 "=incomingTransferBox",
                 "=cdgAssumedBoxLocalPGPB",
@@ -512,7 +554,21 @@
             {
               "itemName": "callsign",
               "leftClick": "callsignMenu",
-              "color": ["=reverseVideoText", "=handoffText"],
+              "color": [
+                "=incomingTransferText",
+                "=cdgAssumedTextLocalPGPB",
+                "=cdgAssumedTextArrSouth",
+                "=cdgAssumedTextArrNorth",
+                "=cdgAssumedTextArrBourget",
+                "=cdgAssumedTextArrOrly",
+                "=cdgAssumedTextArrPNPV",
+                "=cdgAssumedTextArrCDG",
+                "=cdgAssumedTextDepNN",
+                "=cdgAssumedTextDepOrly",
+                "=cdgAssumedTextDepCDG",
+                "=cdgAssumedTextVFR",
+                "=handoffText"
+              ],
               "backgroundColor": [
                 "=incomingTransferBox",
                 "=cdgAssumedBoxLocalPGPB",
