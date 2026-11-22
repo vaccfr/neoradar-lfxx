@@ -66,6 +66,9 @@ The run fails on a missing input, a convert error or a schema error, before anyt
 published. It also fails if publishing was asked for and the R2 secrets are missing, or if
 `neoradar-cli distribute` does not report the package published. Read its warnings either way (see [Build warnings](#build-warnings)).
 
+Record what each release changes in `changelog/<AIRAC>.txt` (one file per AIRAC, a line per
+revision), and batch changes into a release rather than publishing each one.
+
 Versions are `<AIRAC>.<revision>`, e.g. `2611.1`: **revision** is a workflow input, 1 for the first
 release of a cycle. To republish within the same AIRAC, run it again with the next revision
 (`2611.2`). The client offers an update whenever the published version differs from the

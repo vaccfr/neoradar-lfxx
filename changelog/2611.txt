@@ -1,0 +1,45 @@
+LFXX - AIRAC 2611
+=================
+
+NeoRadar is used for approach, tower and ground for now.
+
+Package
+- Centre displays (FIR, UIR, CTR ASRs) and centre login profiles are no longer shipped.
+- Published to Cloudflare R2, served at https://pkg.neoradar.app/lfxx.
+- Squawks from CCAMS (squawk.http in the manifest).
+- The vIFF CDM plugin ships with the package; the CDM lists show its items.
+
+Radar systems
+- Two systems: cdg (Paris-CDG approach, LFPG and LFPB AVISOs) and neoirma (a stripless IRMA:
+  every other approach and AVISO). Both share one tag layout and one ground look; they differ in
+  colours and targets.
+- Track colours follow CoFrance's IRMA and Paris-CDG rules. neoIRMA: departures pink, arrivals
+  blue, other traffic grey. CDG: CoFrance's flows and letters (S/N by runway pair, B, O, A, V,
+  R, G/P, two-letter departure codes by route point, T, Z, X).
+- CDG letters above the disc for north arrivals (09/27) and north departures, below otherwise.
+- Flight state on the callsign: white text on a darkened box of the track colour when assumed,
+  on hand-off green when transferred to you; green text when transferred out.
+- Flights CoFrance never filters, and flights assumed or in transfer, show through the altitude
+  filter.
+- Trails: the old CDG trail rings, in each track colour.
+- Tags in the EuroScope font, with climb/descent/level arrows and the voice type (/r, /t).
+- Every target correlated (correlation mode always).
+- Route draw in CoFrance's route colours, labels on a dark plate.
+- RDF circle settings.
+- Lists readable: CoFrance's list colours, nearly opaque, 11 px text.
+
+AVISOs
+- Each AVISO draws its airport's vSMR AVISO (160 airports) and nothing else: surfaces, guidance
+  lines, gates, taxiway names, terminals, TORA, in the palette the ASR asks for.
+- LFPG East / West arrows draw only for the matching runway configuration (08/09 or 26/27).
+- Gate labels appear from the opening zoom and hide only once zoomed well out.
+- LFHY (Moulins) has no vSMR AVISO file: it draws the sector file's runways.
+
+Revisions
+- 2611.1  first release of the new package
+- 2611.2  lists, RDF, CDG letters and route draw, trend arrows, CDG on the LFPG/LFPB AVISOs, CCAMS
+- 2611.3  vIFF CDM plugin
+- 2611.4  CDG disc drawn filled on current clients, trail sprites
+- 2611.5  readable reverse-video callsigns
+- 2611.6  old CDG trail rings, EuroScope font, correlation always, CDG tag fixes
+- 2611.7  one tag layout for both systems
