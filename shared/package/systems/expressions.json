@@ -1,1240 +1,582 @@
 {
-  "$schema": "https://raw.githubusercontent.com/neoradar-project/schemas/main/systems/expressions.schema.json",
+  "$schema": "https://raw.githubusercontent.com/neoradar-project/schemas/refs/heads/main/systems/expressions.schema.json",
   "rules": {
-    "incorrectSquawkYellowColor": {
-      "value": "239, 247, 72",
-      "expression": [
-        "$incorrectSquawk"
-      ]
-    },
-    "incorrectSquawkRedColor": {
-      "value": "239, 20, 72",
-      "expression": [
-        "$incorrectSquawk"
-      ]
-    },
-    "emptyIfNoAssignedSquawk": {
-      "value": "",
-      "expression": [
-        "$noAssignedSquawk"
-      ]
-    },
-    "focusedAircraft": {
-      "value": "80, 80, 80",
-      "expression": [
-        "$isFocusedAircraft"
-      ]
-    },
-    "isMayday": {
-      "value": "EMRG",
-      "expression": [
-        "$isEmergency"
-      ]
-    },
-    "isRDOF": {
-      "value": "RDOF",
-      "expression": [
-        "$isLostComm"
-      ]
-    },
-    "emmergencyDescentArrow": {
-      "value": ":i",
-      "expression": [
-        "$isEmmergencyDescending"
-      ]
-    },
-    "pdcRequestedTextBlinkColour": {
-      "value": "255, 255, 255",
-      "expression": [
-        "$hasRejectedAcknowledgmentState",
-        "$isPDCRequestedState",
-        "$hasReceivedMessageState"
-      ]
-    },
-    "pdcRequestedColour": {
-      "value": "255, 255, 0",
-      "expression": [
-        "$isPDCRequestedState"
-      ]
-    },
-    "receivedMessageColour": {
-      "value": "255, 255, 0",
-      "expression": [
-        "$hasReceivedMessageState"
-      ]
-    },
-    "rejectedColour": {
-      "value": "255, 0, 0",
-      "expression": [
-        "$hasRejectedAcknowledgmentState"
-      ]
-    },
     "acknowledgmentColour": {
       "value": "0, 176, 0",
-      "expression": [
-        "$hasAcknowledgmentState"
-      ]
-    },
-    "sentMessageColour": {
-      "value": "255, 255, 0",
-      "expression": [
-        "$hasSentMessageState"
-      ]
-    },
-    "defaultDatalinkColour": {
-      "value": "130, 130, 130",
-      "expression": [
-        "$isDefaultDatalinkState"
-      ]
-    },
-    "emptySIDifNotDep": {
-      "value": "",
-      "expression": [
-        "$isNotDep"
-      ]
-    },
-    "suggestedSidIfNoAssigned": {
-      "value": "&suggestedSid",
-      "expression": [
-        "$isAssignedSidEmpty"
-      ]
-    },
-    "suggestedDepRunwayIfNoAssigned": {
-      "value": "&suggestedDepRunway",
-      "expression": [
-        "$isAssignedDepRunwayEmpty"
-      ]
-    },
-    "suggestedArrRunwayIfNoAssigned": {
-      "value": "&suggestedArrRunway",
-      "expression": [
-        "$isAssignedArrRunwayEmpty"
-      ]
-    },
-    "suggestedStarIfNoAssigned": {
-      "value": "&suggestedStar",
-      "expression": [
-        "$isAssignedStarEmpty"
-      ]
-    },
-    "colourControllerTimingOut": {
-      "value": "255, 180, 10",
-      "expression": [
-        "$isControllerTimingOut"
-      ]
-    },
-    "suggestedSidColor": {
-      "value": "142,142,142",
-      "expression": [
-        "$isAssignedSidEmpty"
-      ]
-    },
-    "suggestedDepRunwayColor": {
-      "value": "142,142,142",
-      "expression": [
-        "$isAssignedDepRunwayEmpty"
-      ]
-    },
-    "suggestedStarColor": {
-      "value": "142,142,142",
-      "expression": [
-        "$isAssignedStarEmpty"
-      ]
-    },
-    "suggestedArrRunwayColor": {
-      "value": "142,142,142",
-      "expression": [
-        "$isAssignedArrRunwayEmpty"
-      ]
-    },
-    "blueDepRunway": {
-      "value": "29,118,226",
-      "expression": [
-        "$isAssignedDepRunwayNotEmpty"
-      ]
-    },
-    "blueAssignedSid": {
-      "value": "29,118,226",
-      "expression": [
-        "$isAssignedSidNotEmpty"
-      ]
-    },
-    "blueArrRunway": {
-      "value": "29,118,226",
-      "expression": [
-        "$isAssignedArrRunwayNotEmpty"
-      ]
-    },
-    "blueAssignedStar": {
-      "value": "29,118,226",
-      "expression": [
-        "$isAssignedStarNotEmpty"
-      ]
-    },
-    "colourAssumed": {
-      "value": "246,246,246",
-      "expression": [
-        "$isAssumed"
-      ]
-    },
-    "colourUnconcerned": {
-      "value": "142,142,142",
-      "expression": [
-        "$isUnconcerned"
-      ]
-    },
-    "colourConcerned": {
-      "value": "175,201,128",
-      "expression": [
-        "$isConcerned"
-      ]
-    },
-    "colourInboundTransfer": {
-      "value": "190,225,191",
-      "expression": [
-        "$isInboundTransfer"
-      ]
-    },
-    "colourOutboundTransfer": {
-      "value": "94,175,180",
-      "expression": [
-        "$isOutboundTransfer"
-      ]
-    },
-    "cdgWhiteIfInStateOfInterest": {
-      "value": "255,255,255",
-      "expression": [
-        "$isInboundTransfer",
-        "$isOutboundTransfer",
-        "$isAssumed"
-      ]
-    },
-    "cdgNoir": {
-      "value": "11,11,11",
-      "expression": [
-        "$alwaysTrue"
-      ]
-    },
-    "cdgBlanc": {
-      "value": "212,212,185",
-      "expression": [
-        "$isAssumed"
-      ]
-    },
-    "cdgNord": {
-      "value": "227,184,203",
-      "expression": [
-        "$isLFPGNorthArrival"
-      ]
-    },
-    "cdgSud": {
-      "value": "227,157,157",
-      "expression": [
-        "$isLFPGSouthArrival"
-      ]
-    },
-    "cdgBourget": {
-      "value": "211,150,227",
-      "expression": [
-        "$isBourgetArrival"
-      ]
-    },
-    "cdgOrange": {
-      "value": "227,177,124",
-      "expression": [
-        "$isOrlyArrival",
-        "$isArr"
-      ]
-    },
-    "cdgDepBleu": {
-      "value": "161,227,227",
-      "expression": [
-        "$isCDGOrPBDeparture"
-      ]
-    },
-    "cdgDepSat": {
-      "value": "101,192,223",
-      "expression": [
-        "$isParisGroupDeparture",
-        "$isBeauvaisDeparture",
-        "$isDep"
-      ]
-    },
-    "assumedAndcdgNord": {
-      "value": "227,184,203",
-      "expression": [
-        "$assumedAndIsLFPGNorthArrival"
-      ]
-    },
-    "assumedAndcdgSud": {
-      "value": "227,157,157",
-      "expression": [
-        "$assumedAndIsLFPGSouthArrival"
-      ]
-    },
-    "assumedAndcdgBourget": {
-      "value": "211,150,227",
-      "expression": [
-        "$assumedAndIsBourgetArrival"
-      ]
-    },
-    "assumedAndcdgOrange": {
-      "value": "227,177,124",
-      "expression": [
-        "$assumedAndIsOrlyArrival",
-        "$assumedAndIsArr"
-      ]
-    },
-    "assumedAndcdgDepBleu": {
-      "value": "124, 176, 176",
-      "expression": [
-        "$assumedAndIsCDGOrPBDeparture"
-      ]
-    },
-    "assumedAndcdgDepSat": {
-      "value": "101,192,223",
-      "expression": [
-        "$assumedAndisParisGroupDeparture",
-        "$assumedAndIsBeauvaisDeparture",
-        "$assumedAndIsDep"
-      ]
-    },
-    "assumedAndArrival": {
-      "value": "77, 148, 172",
-      "expression": [
-        "$assumedAndIsArr"
-      ]
-    },
-    "assumedAndDeparture": {
-      "value": "157, 89, 90",
-      "expression": [
-        "$assumedAndIsDep"
-      ]
-    },
-    "assumedNCEDeparture": {
-      "value": "213, 151, 163",
-      "expression": [
-        "$isAssumedLFMNDeparture"
-      ]
-    },
-    "assumedNCEArrival": {
-      "value": "164, 204, 145",
-      "expression": [
-        "$isAssumedLFMNArrival"
-      ]
-    },
-    "assumedSATDeparture": {
-      "value": "162, 114, 123",
-      "expression": [
-        "$isAssumedNCEsatelliteDeparture"
-      ]
-    },
-    "assumedSATArrival": {
-      "value": "147, 204, 52",
-      "expression": [
-        "$isAssumedNCEsatelliteArrival"
-      ]
-    },
-    "assumedTransitIFR": {
-      "value": "152, 170, 30",
-      "expression": [
-        "$isAssumedTransitIFR"
-      ]
-    },
-    "assumedTransitVFR": {
-      "value": "164, 178, 105",
-      "expression": [
-        "$isAssumedTransitVFR"
-      ]
-    },
-    "assumedVFRandArrival": {
-      "value": "185, 178, 138",
-      "expression": [
-        "$isAssumedVFR"
-      ]
-    },
-    "assumedEmmergency": {
-      "value": "255,0,0",
-      "expression": [
-        "$isAssumedAndEmergency"
-      ]
-    },
-    "greenIncomingTransfer": {
-      "value": "36,114,41",
-      "expression": [
-        "$isInboundTransfer"
-      ]
-    },
-    "greenOutgoingTransfer": {
-      "value": "110,204,116",
-      "expression": [
-        "$isOutboundTransfer"
-      ]
-    },
-    "penWhenScratchpadNotEmpty": {
-      "value": ":i",
-      "expression": [
-        "$scratchPathNotEmpty"
-      ]
-    },
-    "blueColorScratchpadNotEmpty": {
-      "value": "29,118,226",
-      "expression": [
-        "$scratchPathNotEmpty"
-      ]
-    },
-    "altitudeBelowTAPrefix": {
-      "value": "A",
-      "expression": [
-        "$isBelowTransitionAltitude"
-      ]
-    },
-    "altitudeBelowTASuffix": {
-      "value": "00",
-      "expression": [
-        "$isBelowTransitionAltitude"
-      ]
-    },
-    "altitudeBelowTATruncate": {
-      "value": "1,3",
-      "expression": [
-        "$isBelowTransitionAltitude"
-      ]
+      "expression": ["$hasAcknowledgmentState"]
     },
     "altitudeAboveTATruncate": {
       "value": "0,3",
-      "expression": [
-        "$isAboveTransitionAltitude"
-      ]
+      "expression": ["$isAboveTransitionAltitude"]
     },
-    "truncateSlowDescending": {
-      "value": "0,2",
-      "expression": [
-        "$isSlowDescending"
-      ]
+    "altitudeBelowTAPrefix": {
+      "value": "A",
+      "expression": ["$isBelowTransitionAltitude"]
     },
-    "truncateSlowClimbing": {
-      "value": "0,1",
-      "expression": [
-        "$isSlowClimbing"
-      ]
+    "altitudeBelowTASuffix": {
+      "value": "00",
+      "expression": ["$isBelowTransitionAltitude"]
     },
-    "truncateFastDescending": {
-      "value": "0,3",
-      "expression": [
-        "$isNotSlowDescending"
-      ]
-    },
-    "truncateFastClimbing": {
-      "value": "0,2",
-      "expression": [
-        "$isNotSlowClimbing"
-      ]
+    "altitudeBelowTATruncate": {
+      "value": "1,3",
+      "expression": ["$isBelowTransitionAltitude"]
     },
     "assumedPrefix": {
       "value": "[",
-      "expression": [
-        "$isAssumed"
-      ]
+      "expression": ["$isAssumed"]
     },
     "assumedSuffix": {
       "value": "]",
-      "expression": [
-        "$isAssumed"
-      ]
+      "expression": ["$isAssumed"]
+    },
+    "blueArrRunway": {
+      "value": "29,118,226",
+      "expression": ["$isAssignedArrRunwayNotEmpty"]
+    },
+    "blueAssignedSid": {
+      "value": "29,118,226",
+      "expression": ["$isAssignedSidNotEmpty"]
+    },
+    "blueAssignedStar": {
+      "value": "29,118,226",
+      "expression": ["$isAssignedStarNotEmpty"]
+    },
+    "blueColorScratchpadNotEmpty": {
+      "value": "29,118,226",
+      "expression": ["$scratchPathNotEmpty"]
+    },
+    "blueDepRunway": {
+      "value": "29,118,226",
+      "expression": ["$isAssignedDepRunwayNotEmpty"]
+    },
+    "cdgAssumedBoxArrBourget": {
+      "value": "211,150,227",
+      "expression": ["$cdgAssumedBoxArrBourget"]
+    },
+    "cdgAssumedBoxArrCDG": {
+      "value": "212,212,185",
+      "expression": ["$cdgAssumedBoxArrCDG"]
+    },
+    "cdgAssumedBoxArrNorth": {
+      "value": "227,184,203",
+      "expression": ["$cdgAssumedBoxArrNorth"]
+    },
+    "cdgAssumedBoxArrOrly": {
+      "value": "227,177,124",
+      "expression": ["$cdgAssumedBoxArrOrly"]
+    },
+    "cdgAssumedBoxArrPNPV": {
+      "value": "76,188,56",
+      "expression": ["$cdgAssumedBoxArrPNPV"]
+    },
+    "cdgAssumedBoxArrSouth": {
+      "value": "227,157,157",
+      "expression": ["$cdgAssumedBoxArrSouth"]
+    },
+    "cdgAssumedBoxDepCDG": {
+      "value": "161,227,227",
+      "expression": ["$cdgAssumedBoxDepCDG"]
+    },
+    "cdgAssumedBoxDepNN": {
+      "value": "161,227,227",
+      "expression": ["$cdgAssumedBoxDepNN"]
+    },
+    "cdgAssumedBoxDepOrly": {
+      "value": "101,192,223",
+      "expression": ["$cdgAssumedBoxDepOrly"]
+    },
+    "cdgAssumedBoxLocalPGPB": {
+      "value": "212,212,185",
+      "expression": ["$cdgAssumedBoxLocalPGPB"]
+    },
+    "cdgAssumedBoxVFR": {
+      "value": "205,205,205",
+      "expression": ["$isAssumed"]
+    },
+    "colourAssumed": {
+      "value": "246,246,246",
+      "expression": ["$isAssumed"]
+    },
+    "colourConcerned": {
+      "value": "175,201,128",
+      "expression": ["$isConcerned"]
+    },
+    "colourControllerTimingOut": {
+      "value": "255, 180, 10",
+      "expression": ["$isControllerTimingOut"]
+    },
+    "colourInboundTransfer": {
+      "value": "190,225,191",
+      "expression": ["$isInboundTransfer"]
+    },
+    "colourOutboundTransfer": {
+      "value": "94,175,180",
+      "expression": ["$isOutboundTransfer"]
+    },
+    "colourUnconcerned": {
+      "value": "142,142,142",
+      "expression": ["$isUnconcerned"]
+    },
+    "defaultDatalinkColour": {
+      "value": "130, 130, 130",
+      "expression": ["$isDefaultDatalinkState"]
+    },
+    "emmergencyDescentArrow": {
+      "value": ":i",
+      "expression": ["$isEmmergencyDescending"]
+    },
+    "emptyIfNoAssignedSquawk": {
+      "value": "",
+      "expression": ["$noAssignedSquawk"]
+    },
+    "emptySIDifNotDep": {
+      "value": "",
+      "expression": ["$isNotDep"]
+    },
+    "focusedAircraft": {
+      "value": "80, 80, 80",
+      "expression": ["$isFocusedAircraft"]
+    },
+    "handoffText": {
+      "value": "160,216,180",
+      "expression": ["$isOutboundTransfer"]
+    },
+    "incomingTransferBox": {
+      "value": "160,216,180",
+      "expression": ["$isInboundTransfer"]
+    },
+    "incorrectSquawkRedColor": {
+      "value": "239, 20, 72",
+      "expression": ["$incorrectSquawk"]
+    },
+    "incorrectSquawkYellowColor": {
+      "value": "239, 247, 72",
+      "expression": ["$incorrectSquawk"]
+    },
+    "isMayday": {
+      "value": "EMRG",
+      "expression": ["$isEmergency"]
+    },
+    "isRDOF": {
+      "value": "RDOF",
+      "expression": ["$isLostComm"]
+    },
+    "neoirmaAssumedBoxArr": {
+      "value": "99,187,217",
+      "expression": ["$neoirmaAssumedBoxArr"]
+    },
+    "neoirmaAssumedBoxDep": {
+      "value": "213,151,163",
+      "expression": ["$neoirmaAssumedBoxDep"]
+    },
+    "neoirmaAssumedBoxIFR": {
+      "value": "255,255,255",
+      "expression": ["$neoirmaAssumedBoxIFR"]
+    },
+    "neoirmaAssumedBoxOther": {
+      "value": "142,142,142",
+      "expression": ["$isAssumed"]
+    },
+    "pdcRequestedColour": {
+      "value": "255, 255, 0",
+      "expression": ["$isPDCRequestedState"]
+    },
+    "pdcRequestedTextBlinkColour": {
+      "value": "255, 255, 255",
+      "expression": ["$hasRejectedAcknowledgmentState", "$isPDCRequestedState", "$hasReceivedMessageState"]
+    },
+    "penWhenScratchpadNotEmpty": {
+      "value": ":i",
+      "expression": ["$scratchPathNotEmpty"]
+    },
+    "receivedMessageColour": {
+      "value": "255, 255, 0",
+      "expression": ["$hasReceivedMessageState"]
+    },
+    "rejectedColour": {
+      "value": "255, 0, 0",
+      "expression": ["$hasRejectedAcknowledgmentState"]
+    },
+    "reverseVideoText": {
+      "value": "20,20,20",
+      "expression": ["$isAssumed", "$isInboundTransfer"]
+    },
+    "sentMessageColour": {
+      "value": "255, 255, 0",
+      "expression": ["$hasSentMessageState"]
+    },
+    "suggestedArrRunwayColor": {
+      "value": "142,142,142",
+      "expression": ["$isAssignedArrRunwayEmpty"]
+    },
+    "suggestedArrRunwayIfNoAssigned": {
+      "value": "&suggestedArrRunway",
+      "expression": ["$isAssignedArrRunwayEmpty"]
+    },
+    "suggestedDepRunwayColor": {
+      "value": "142,142,142",
+      "expression": ["$isAssignedDepRunwayEmpty"]
+    },
+    "suggestedDepRunwayIfNoAssigned": {
+      "value": "&suggestedDepRunway",
+      "expression": ["$isAssignedDepRunwayEmpty"]
+    },
+    "suggestedSidColor": {
+      "value": "142,142,142",
+      "expression": ["$isAssignedSidEmpty"]
+    },
+    "suggestedSidIfNoAssigned": {
+      "value": "&suggestedSid",
+      "expression": ["$isAssignedSidEmpty"]
+    },
+    "suggestedStarColor": {
+      "value": "142,142,142",
+      "expression": ["$isAssignedStarEmpty"]
+    },
+    "suggestedStarIfNoAssigned": {
+      "value": "&suggestedStar",
+      "expression": ["$isAssignedStarEmpty"]
+    },
+    "truncateFastClimbing": {
+      "value": "0,2",
+      "expression": ["$isNotSlowClimbing"]
+    },
+    "truncateFastDescending": {
+      "value": "0,3",
+      "expression": ["$isNotSlowDescending"]
+    },
+    "truncateSlowClimbing": {
+      "value": "0,1",
+      "expression": ["$isSlowClimbing"]
+    },
+    "truncateSlowDescending": {
+      "value": "0,2",
+      "expression": ["$isSlowDescending"]
     }
   },
   "expressions": {
-    "alwaysTrue": [
-      "notEmpty",
-      "callsign"
-    ],
-    "alwaysFalse": [
+    "isAssumed": ["==", "attentionState", "3"],
+    "isInboundTransfer": ["==", "attentionState", "2"],
+    "isOutboundTransfer": ["==", "attentionState", "4"],
+    "isOwnedOrOffered": ["OR", ["$isInboundTransfer", "$isAssumed", "$isOutboundTransfer"]],
+    "isIFR": ["contains", "flightRule", "I"],
+    "isVFR": ["contains", "flightRule", "V"],
+    "neoirmaDep": ["beginsWith", "origin", "LF"],
+    "neoirmaArr": ["beginsWith", "destination", "LF"],
+    "neoirmaThroughFilter": ["OR", ["$neoirmaDep", "$neoirmaArr", "$isOwnedOrOffered"]],
+    "neoirmaIFR": ["NOT", ["$isVFR"]],
+    "neoirmaAssumedBoxDep": ["AND", ["$isAssumed", "$neoirmaDep"]],
+    "neoirmaAssumedBoxArr": ["AND", ["$isAssumed", "$neoirmaArr"]],
+    "neoirmaAssumedBoxIFR": ["AND", ["$isAssumed", "$neoirmaIFR"]],
+    "cdgLocalPGPB": [
       "AND",
       [
+        ["OR", [["==", "origin", "LFPG"], ["==", "origin", "LFPB"]]],
+        ["OR", [["==", "destination", "LFPG"], ["==", "destination", "LFPB"]]]
+      ]
+    ],
+    "cdgLocalOrly": [
+      "AND",
+      [
+        ["OR", [["==", "origin", "LFPO"], ["==", "origin", "LFPN"], ["==", "origin", "LFPV"]]],
         [
-          "==",
-          "isDeparture",
-          "1"
-        ],
-        [
-          "==",
-          "isDeparture",
-          "0"
+          "OR",
+          [["==", "destination", "LFPO"], ["==", "destination", "LFPN"], ["==", "destination", "LFPV"]]
         ]
       ]
     ],
-    "isFocusedAircraft": [
-      "==",
-      "focusedAircraftCallsign",
-      "&callsign"
+    "cdgArrSouth": [
+      "AND",
+      [
+        ["==", "destination", "LFPG"],
+        "$isIFR",
+        [
+          "OR",
+          [
+            [
+              "OR",
+              [
+                ["==", "arrRunway", "08L"],
+                ["==", "arrRunway", "08R"],
+                ["==", "arrRunway", "26L"],
+                ["==", "arrRunway", "26R"]
+              ]
+            ],
+            [
+              "AND",
+              [
+                ["isEmpty", "arrRunway"],
+                [
+                  "OR",
+                  [
+                    ["==", "suggestedArrRunway", "08L"],
+                    ["==", "suggestedArrRunway", "08R"],
+                    ["==", "suggestedArrRunway", "26L"],
+                    ["==", "suggestedArrRunway", "26R"]
+                  ]
+                ]
+              ]
+            ]
+          ]
+        ]
+      ]
     ],
-    "isEmergency": [
-      "==",
-      "squawk",
-      "7700"
+    "cdgArrNorth": [
+      "AND",
+      [
+        ["==", "destination", "LFPG"],
+        [
+          "OR",
+          [
+            [
+              "OR",
+              [
+                ["==", "arrRunway", "09L"],
+                ["==", "arrRunway", "09R"],
+                ["==", "arrRunway", "27L"],
+                ["==", "arrRunway", "27R"]
+              ]
+            ],
+            [
+              "AND",
+              [
+                ["isEmpty", "arrRunway"],
+                [
+                  "OR",
+                  [
+                    ["==", "suggestedArrRunway", "09L"],
+                    ["==", "suggestedArrRunway", "09R"],
+                    ["==", "suggestedArrRunway", "27L"],
+                    ["==", "suggestedArrRunway", "27R"]
+                  ]
+                ]
+              ]
+            ]
+          ]
+        ]
+      ]
     ],
-    "isLostComm": [
-      "==",
-      "squawk",
-      "7600"
+    "cdgArrBourget": ["==", "destination", "LFPB"],
+    "cdgArrOrly": ["==", "destination", "LFPO"],
+    "cdgArrPTOB": ["AND", [["OR", [["==", "destination", "LFPT"], ["==", "destination", "LFOB"]]], "$isIFR"]],
+    "cdgArrPNPV": ["OR", [["==", "destination", "LFPN"], ["==", "destination", "LFPV"]]],
+    "cdgArrCDG": ["==", "destination", "LFPG"],
+    "cdgDepNN": [
+      "AND",
+      [["OR", [["==", "origin", "LFPG"], ["==", "origin", "LFPB"]]], ["has", "waypoints", "NURMO"]]
     ],
-    "isAssumedAndEmergency": [
+    "cdgDepNO": [
+      "AND",
+      [["OR", [["==", "origin", "LFPG"], ["==", "origin", "LFPB"]]], ["has", "waypoints", "OPALE"]]
+    ],
+    "cdgDepNA": [
+      "AND",
+      [["OR", [["==", "origin", "LFPG"], ["==", "origin", "LFPB"]]], ["has", "waypoints", "ATREX"]]
+    ],
+    "cdgDepNM": ["AND", [["OR", [["==", "origin", "LFPG"], ["==", "origin", "LFPB"]]], ["has", "waypoints", "MTD"]]],
+    "cdgDepER": [
+      "AND",
+      [["OR", [["==", "origin", "LFPG"], ["==", "origin", "LFPB"]]], ["has", "waypoints", "RANUX"]]
+    ],
+    "cdgDepEL": [
+      "AND",
+      [["OR", [["==", "origin", "LFPG"], ["==", "origin", "LFPB"]]], ["has", "waypoints", "LANVI"]]
+    ],
+    "cdgDepEB": [
+      "AND",
+      [["OR", [["==", "origin", "LFPG"], ["==", "origin", "LFPB"]]], ["has", "waypoints", "BUBLI"]]
+    ],
+    "cdgDepEN": [
+      "AND",
+      [["OR", [["==", "origin", "LFPG"], ["==", "origin", "LFPB"]]], ["has", "waypoints", "NIPOR"]]
+    ],
+    "cdgDepED": [
+      "AND",
+      [["OR", [["==", "origin", "LFPG"], ["==", "origin", "LFPB"]]], ["has", "waypoints", "DIKOL"]]
+    ],
+    "cdgDepEX": [
+      "AND",
+      [["OR", [["==", "origin", "LFPG"], ["==", "origin", "LFPB"]]], ["has", "waypoints", "BAXIR"]]
+    ],
+    "cdgDepSE": [
+      "AND",
+      [["OR", [["==", "origin", "LFPG"], ["==", "origin", "LFPB"]]], ["has", "waypoints", "ERIXU"]]
+    ],
+    "cdgDepSA": [
+      "AND",
+      [["OR", [["==", "origin", "LFPG"], ["==", "origin", "LFPB"]]], ["has", "waypoints", "AGOPA"]]
+    ],
+    "cdgDepSL": [
+      "AND",
+      [["OR", [["==", "origin", "LFPG"], ["==", "origin", "LFPB"]]], ["has", "waypoints", "LATRA"]]
+    ],
+    "cdgDepSO": [
+      "AND",
+      [["OR", [["==", "origin", "LFPG"], ["==", "origin", "LFPB"]]], ["has", "waypoints", "OKASI"]]
+    ],
+    "cdgDepSP": [
+      "AND",
+      [["OR", [["==", "origin", "LFPG"], ["==", "origin", "LFPB"]]], ["has", "waypoints", "PILUL"]]
+    ],
+    "cdgDepWE": [
+      "AND",
+      [["OR", [["==", "origin", "LFPG"], ["==", "origin", "LFPB"]]], ["has", "waypoints", "ELCOB"]]
+    ],
+    "cdgDepWL": ["AND", [["OR", [["==", "origin", "LFPG"], ["==", "origin", "LFPB"]]], ["has", "waypoints", "LGL"]]],
+    "cdgDepHO": [
+      "AND",
+      [["OR", [["==", "origin", "LFPG"], ["==", "origin", "LFPB"]]], ["has", "waypoints", "OLZOM"]]
+    ],
+    "cdgDepHM": [
+      "AND",
+      [["OR", [["==", "origin", "LFPG"], ["==", "origin", "LFPB"]]], ["has", "waypoints", "MONOT"]]
+    ],
+    "cdgDepHD": [
+      "AND",
+      [["OR", [["==", "origin", "LFPG"], ["==", "origin", "LFPB"]]], ["has", "waypoints", "DORDI"]]
+    ],
+    "cdgDepOrly": ["OR", [["==", "origin", "LFPO"], ["==", "origin", "LFPN"], ["==", "origin", "LFPV"]]],
+    "cdgDepPTOB": ["AND", [["OR", [["==", "origin", "LFPT"], ["==", "origin", "LFOB"]]], "$isIFR"]],
+    "cdgDepCDG": ["OR", [["==", "origin", "LFPG"], ["==", "origin", "LFPB"]]],
+    "cdgVFR": ["contains", "flightRule", "V"],
+    "cdgThroughFilter": [
+      "OR",
+      [
+        "$cdgLocalPGPB",
+        "$cdgLocalOrly",
+        "$cdgArrSouth",
+        "$cdgArrNorth",
+        "$cdgArrBourget",
+        "$cdgArrOrly",
+        "$cdgArrPTOB",
+        "$cdgArrPNPV",
+        "$cdgArrCDG",
+        "$cdgDepNN",
+        "$cdgDepNO",
+        "$cdgDepNA",
+        "$cdgDepNM",
+        "$cdgDepER",
+        "$cdgDepEL",
+        "$cdgDepEB",
+        "$cdgDepEN",
+        "$cdgDepED",
+        "$cdgDepEX",
+        "$cdgDepSE",
+        "$cdgDepSA",
+        "$cdgDepSL",
+        "$cdgDepSO",
+        "$cdgDepSP",
+        "$cdgDepWE",
+        "$cdgDepWL",
+        "$cdgDepHO",
+        "$cdgDepHM",
+        "$cdgDepHD",
+        "$cdgDepOrly",
+        "$cdgDepPTOB",
+        "$cdgDepCDG",
+        "$isOwnedOrOffered"
+      ]
+    ],
+    "cdgAssumedBoxLocalPGPB": ["AND", ["$isAssumed", ["OR", ["$cdgLocalPGPB", "$cdgLocalOrly"]]]],
+    "cdgAssumedBoxArrSouth": ["AND", ["$isAssumed", "$cdgArrSouth"]],
+    "cdgAssumedBoxArrNorth": ["AND", ["$isAssumed", "$cdgArrNorth"]],
+    "cdgAssumedBoxArrBourget": ["AND", ["$isAssumed", "$cdgArrBourget"]],
+    "cdgAssumedBoxArrOrly": ["AND", ["$isAssumed", ["OR", ["$cdgArrOrly", "$cdgArrPTOB"]]]],
+    "cdgAssumedBoxArrPNPV": ["AND", ["$isAssumed", "$cdgArrPNPV"]],
+    "cdgAssumedBoxArrCDG": ["AND", ["$isAssumed", "$cdgArrCDG"]],
+    "cdgAssumedBoxDepNN": [
       "AND",
       [
         "$isAssumed",
-        "$isEmergency"
-      ]
-    ],
-    "isPDCRequestedState": [
-      "==",
-      "isPDCRequested",
-      "1"
-    ],
-    "isPDCStandbyState": [
-      "==",
-      "isPDCStandby",
-      "1"
-    ],
-    "hasReceivedMessageState": [
-      "AND",
-      [
         [
-          "==",
-          "isPDCRequested",
-          "0"
-        ],
-        [
-          "==",
-          "hasReceivedHoppieMessage",
-          "1"
+          "OR",
+          [
+            "$cdgDepNN",
+            "$cdgDepNO",
+            "$cdgDepNA",
+            "$cdgDepNM",
+            "$cdgDepER",
+            "$cdgDepEL",
+            "$cdgDepEB",
+            "$cdgDepEN",
+            "$cdgDepED",
+            "$cdgDepEX",
+            "$cdgDepSE",
+            "$cdgDepSA",
+            "$cdgDepSL",
+            "$cdgDepSO",
+            "$cdgDepSP",
+            "$cdgDepWE",
+            "$cdgDepWL",
+            "$cdgDepHO",
+            "$cdgDepHM",
+            "$cdgDepHD"
+          ]
         ]
       ]
     ],
-    "hasRejectedAcknowledgmentState": [
-      "AND",
-      [
-        [
-          "==",
-          "isPDCRequested",
-          "0"
-        ],
-        [
-          "==",
-          "hasReceivedHoppieMessage",
-          "0"
-        ],
-        [
-          "==",
-          "hasCPDLCUnableAcknowledgment",
-          "1"
-        ]
-      ]
-    ],
+    "cdgAssumedBoxDepOrly": ["AND", ["$isAssumed", ["OR", ["$cdgDepOrly", "$cdgDepPTOB"]]]],
+    "cdgAssumedBoxDepCDG": ["AND", ["$isAssumed", "$cdgDepCDG"]],
     "hasAcknowledgmentState": [
       "AND",
       [
-        [
-          "==",
-          "isPDCRequested",
-          "0"
-        ],
-        [
-          "==",
-          "hasReceivedHoppieMessage",
-          "0"
-        ],
-        [
-          "==",
-          "hasCPDLCAcknowledgment",
-          "1"
-        ]
+        ["==", "isPDCRequested", "0"],
+        ["==", "hasReceivedHoppieMessage", "0"],
+        ["==", "hasCPDLCAcknowledgment", "1"]
+      ]
+    ],
+    "hasReceivedMessageState": ["AND", [["==", "isPDCRequested", "0"], ["==", "hasReceivedHoppieMessage", "1"]]],
+    "hasRejectedAcknowledgmentState": [
+      "AND",
+      [
+        ["==", "isPDCRequested", "0"],
+        ["==", "hasReceivedHoppieMessage", "0"],
+        ["==", "hasCPDLCUnableAcknowledgment", "1"]
       ]
     ],
     "hasSentMessageState": [
       "AND",
       [
-        [
-          "==",
-          "isPDCRequested",
-          "0"
-        ],
-        [
-          "==",
-          "hasReceivedHoppieMessage",
-          "0"
-        ],
-        [
-          "==",
-          "hasCPDLCAcknowledgment",
-          "0"
-        ],
-        [
-          "==",
-          "hasCPDLCSentMessage",
-          "1"
-        ]
+        ["==", "isPDCRequested", "0"],
+        ["==", "hasReceivedHoppieMessage", "0"],
+        ["==", "hasCPDLCAcknowledgment", "0"],
+        ["==", "hasCPDLCSentMessage", "1"]
       ]
     ],
+    "incorrectSquawk": ["!=", "squawk", "&assignedSquawk"],
+    "isAboveTransitionAltitude": [">=", "altitude", "&transitionAltitude"],
+    "isAssignedArrRunwayEmpty": ["isEmpty", "arrRunway"],
+    "isAssignedArrRunwayNotEmpty": ["notEmpty", "arrRunway"],
+    "isAssignedDepRunwayEmpty": ["isEmpty", "depRunway"],
+    "isAssignedDepRunwayNotEmpty": ["notEmpty", "depRunway"],
+    "isAssignedSidEmpty": ["isEmpty", "sid"],
+    "isAssignedSidNotEmpty": ["notEmpty", "sid"],
+    "isAssignedStarEmpty": ["isEmpty", "star"],
+    "isAssignedStarNotEmpty": ["notEmpty", "star"],
+    "isBelowTransitionAltitude": ["<", "altitude", "&transitionAltitude"],
+    "isConcerned": ["==", "attentionState", "1"],
+    "isControllerTimingOut": ["==", "controllerIsTimingOut", "1"],
     "isDefaultDatalinkState": [
       "AND",
       [
-        [
-          "==",
-          "isPDCRequested",
-          "0"
-        ],
-        [
-          "==",
-          "hasReceivedHoppieMessage",
-          "0"
-        ],
-        [
-          "==",
-          "hasCPDLCAcknowledgment",
-          "0"
-        ],
-        [
-          "==",
-          "hasCPDLCSentMessage",
-          "0"
-        ]
+        ["==", "isPDCRequested", "0"],
+        ["==", "hasReceivedHoppieMessage", "0"],
+        ["==", "hasCPDLCAcknowledgment", "0"],
+        ["==", "hasCPDLCSentMessage", "0"]
       ]
     ],
-    "isControllerTimingOut": [
-      "==",
-      "controllerIsTimingOut",
-      "1"
-    ],
-    "is_standby": [
-      "==",
-      "latestTransponderStatus",
-      "0"
-    ],
-    "is_modec": [
-      "==",
-      "latestTransponderStatus",
-      "1"
-    ],
-    "isDep": [
-      "==",
-      "isDeparture",
-      "1"
-    ],
-    "isArr": [
-      "==",
-      "isArrival",
-      "1"
-    ],
-    "isNotDep": [
-      "==",
-      "isDeparture",
-      "0"
-    ],
-    "isNotArr": [
-      "==",
-      "isArrival",
-      "0"
-    ],
-    "isSlowDescending": [
-      "AND",
-      [
-        [
-          ">",
-          "verticalSpeed",
-          "-1000"
-        ],
-        [
-          "<",
-          "verticalSpeed",
-          "0"
-        ]
-      ]
-    ],
-    "isSlowClimbing": [
-      "AND",
-      [
-        [
-          "<",
-          "verticalSpeed",
-          "1000"
-        ],
-        [
-          ">",
-          "verticalSpeed",
-          "0"
-        ]
-      ]
-    ],
-    "isNotSlowClimbing": [
-      ">=",
-      "verticalSpeed",
-      "1000"
-    ],
-    "isNotSlowDescending": [
-      "<=",
-      "verticalSpeed",
-      "-1000"
-    ],
-    "isEmmergencyDescending": [
-      "<=",
-      "verticalSpeed",
-      -4000
-    ],
-    "isNotEmmergencyDescending": [
-      "NOT",
-      [
-        "$isEmmergencyDescending"
-      ]
-    ],
-    "isVFR": [
-      "contains",
-      "flightRule",
-      "V"
-    ],
-    "isIFR": [
-      "contains",
-      "flightRule",
-      "I"
-    ],
-    "isVFRandDeparture": [
-      "AND",
-      [
-        [
-          "==",
-          "isDeparture",
-          "1"
-        ],
-        [
-          "contains",
-          "flightRule",
-          "V"
-        ]
-      ]
-    ],
-    "isVFRandArrival": [
-      "AND",
-      [
-        [
-          "==",
-          "isArrival",
-          "1"
-        ],
-        [
-          "contains",
-          "flightRule",
-          "V"
-        ]
-      ]
-    ],
-    "assumedAndIsArr": [
-      "AND",
-      [
-        [
-          "==",
-          "isArrival",
-          "1"
-        ],
-        [
-          "==",
-          "attentionState",
-          "3"
-        ]
-      ]
-    ],
-    "assumedAndIsDep": [
-      "AND",
-      [
-        [
-          "==",
-          "isDeparture",
-          "1"
-        ],
-        [
-          "==",
-          "attentionState",
-          "3"
-        ]
-      ]
-    ],
-    "incorrectSquawk": [
-      "!=",
-      "squawk",
-      "&assignedSquawk"
-    ],
-    "noAssignedSquawk": [
-      "==",
-      "assignedSquawk",
-      "0000"
-    ],
-    "isAssignedSidEmpty": [
-      "isEmpty",
-      "sid"
-    ],
-    "isAssignedDepRunwayEmpty": [
-      "isEmpty",
-      "depRunway"
-    ],
-    "isAssignedArrRunwayEmpty": [
-      "isEmpty",
-      "arrRunway"
-    ],
-    "isAssignedStarEmpty": [
-      "isEmpty",
-      "star"
-    ],
-    "isAssignedSidNotEmpty": [
-      "notEmpty",
-      "sid"
-    ],
-    "isAssignedDepRunwayNotEmpty": [
-      "notEmpty",
-      "depRunway"
-    ],
-    "isAssignedArrRunwayNotEmpty": [
-      "notEmpty",
-      "arrRunway"
-    ],
-    "isAssignedStarNotEmpty": [
-      "notEmpty",
-      "star"
-    ],
-    "hasAssignedSid": [
-      "notEmpty",
-      "sid"
-    ],
-    "isFlyingLow": [
-      "<",
-      "altitude",
-      "17000"
-    ],
-    "isBelowTransitionAltitude": [
-      "<",
-      "altitude",
-      "&transitionAltitude"
-    ],
-    "isAboveTransitionAltitude": [
-      ">=",
-      "altitude",
-      "&transitionAltitude"
-    ],
-    "scratchPathNotEmpty": [
-      "notEmpty",
-      "scratchpad"
-    ],
-    "isUnconcerned": [
-      "==",
-      "attentionState",
-      "0"
-    ],
-    "isConcerned": [
-      "==",
-      "attentionState",
-      "1"
-    ],
-    "isInboundTransfer": [
-      "==",
-      "attentionState",
-      "2"
-    ],
-    "isOutboundTransfer": [
-      "==",
-      "attentionState",
-      "4"
-    ],
-    "isAssumed": [
-      "==",
-      "attentionState",
-      "3"
-    ],
-    "notAssumed": [
-      "!=",
-      "attentionState",
-      "3"
-    ],
-    "isTransit": [
-      "AND",
-      [
-        "$isAssumed",
-        "$isNotDep",
-        "$isNotArr"
-      ]
-    ],
-    "isTransitIFR": [
-      "AND",
-      [
-        "$isTransit",
-        "$isIFR"
-      ]
-    ],
-    "isAssumedTransitIFR": [
-      "AND",
-      [
-        "$isTransitIFR",
-        "$isAssumed"
-      ]
-    ],
-    "isTransitVFR": [
-      "AND",
-      [
-        "$isTransit",
-        "$isVFR"
-      ]
-    ],
-    "isAssumedTransitVFR": [
-      "AND",
-      [
-        "$isTransitVFR",
-        "$isAssumed"
-      ]
-    ],
-    "isAssumedVFRarrival": [
-      "AND",
-      [
-        "$isVFRandArrival",
-        "$isAssumed"
-      ]
-    ],
-    "isAssumedVFR": [
-      "AND",
-      [
-        "$isVFR",
-        "$isAssumed"
-      ]
-    ],
-    "assumedAndisParisGroupArrival": [
-      "AND",
-      [
-        [
-          "==",
-          "attentionState",
-          "3"
-        ],
-        "$isParisGroupArrival"
-      ]
-    ],
-    "assumedAndisParisGroupDeparture": [
-      "AND",
-      [
-        [
-          "==",
-          "attentionState",
-          "3"
-        ],
-        "$isParisGroupDeparture"
-      ]
-    ],
-    "assumedAndIsBeauvaisDeparture": [
-      "AND",
-      [
-        [
-          "==",
-          "attentionState",
-          "3"
-        ],
-        "$isBeauvaisDeparture"
-      ]
-    ],
-    "assumedAndIsBourgetArrival": [
-      "AND",
-      [
-        [
-          "==",
-          "attentionState",
-          "3"
-        ],
-        "$isBourgetArrival"
-      ]
-    ],
-    "assumedAndIsOrlyArrival": [
-      "AND",
-      [
-        [
-          "==",
-          "attentionState",
-          "3"
-        ],
-        "$isOrlyArrival"
-      ]
-    ],
-    "assumedAndIsCDGOrPBDeparture": [
-      "AND",
-      [
-        [
-          "==",
-          "attentionState",
-          "3"
-        ],
-        "$isCDGOrPBDeparture"
-      ]
-    ],
-    "assumedAndIsLFPGNorthArrival": [
-      "AND",
-      [
-        [
-          "==",
-          "attentionState",
-          "3"
-        ],
-        "$isLFPGNorthArrival"
-      ]
-    ],
-    "assumedAndIsLFPGSouthArrival": [
-      "AND",
-      [
-        [
-          "==",
-          "attentionState",
-          "3"
-        ],
-        "$isLFPGSouthArrival"
-      ]
-    ],
-    "isParisGroupArrival": [
-      "beginsWith",
-      "destination",
-      "LFP"
-    ],
-    "isParisGroupDeparture": [
-      "beginsWith",
-      "origin",
-      "LFP"
-    ],
-    "isBeauvaisDeparture": [
-      "==",
-      "origin",
-      "LFOB"
-    ],
-    "isBourgetArrival": [
-      "==",
-      "destination",
-      "LFPB"
-    ],
-    "isOrlyArrival": [
-      "==",
-      "destination",
-      "LFPO"
-    ],
-    "isCDGOrPBDeparture": [
-      "OR",
-      [
-        [
-          "==",
-          "origin",
-          "LFPG"
-        ],
-        [
-          "==",
-          "origin",
-          "LFPB"
-        ]
-      ]
-    ],
-    "isLFPGNorthArrival": [
-      "AND",
-      [
-        [
-          "==",
-          "destination",
-          "LFPG"
-        ],
-        [
-          "OR",
-          [
-            [
-              "beginsWith",
-              "arrRunway",
-              "09"
-            ],
-            [
-              "beginsWith",
-              "arrRunway",
-              "27"
-            ],
-            [
-              "beginsWith",
-              "suggestedArrRunway",
-              "09"
-            ],
-            [
-              "beginsWith",
-              "suggestedArrRunway",
-              "27"
-            ]
-          ]
-        ],
-        [
-          "NOT",
-          [
-            [
-              "beginsWith",
-              "arrRunway",
-              "08"
-            ],
-            [
-              "beginsWith",
-              "arrRunway",
-              "26"
-            ],
-            [
-              "beginsWith",
-              "suggestedArrRunway",
-              "08"
-            ],
-            [
-              "beginsWith",
-              "suggestedArrRunway",
-              "26"
-            ]
-          ]
-        ]
-      ]
-    ],
-    "isLFPGSouthArrival": [
-      "AND",
-      [
-        [
-          "==",
-          "destination",
-          "LFPG"
-        ],
-        [
-          "OR",
-          [
-            [
-              "beginsWith",
-              "arrRunway",
-              "08"
-            ],
-            [
-              "beginsWith",
-              "arrRunway",
-              "26"
-            ],
-            [
-              "beginsWith",
-              "suggestedArrRunway",
-              "08"
-            ],
-            [
-              "beginsWith",
-              "suggestedArrRunway",
-              "26"
-            ]
-          ]
-        ],
-        [
-          "NOT",
-          [
-            [
-              "beginsWith",
-              "arrRunway",
-              "09"
-            ],
-            [
-              "beginsWith",
-              "arrRunway",
-              "27"
-            ],
-            [
-              "beginsWith",
-              "suggestedArrRunway",
-              "09"
-            ],
-            [
-              "beginsWith",
-              "suggestedArrRunway",
-              "27"
-            ]
-          ]
-        ]
-      ]
-    ],
-    "isNCEsatelliteDeparture": [
-      "OR",
-      [
-        [
-          "==",
-          "origin",
-          "LFMD"
-        ],
-        [
-          "==",
-          "origin",
-          "LFTH"
-        ],
-        [
-          "==",
-          "origin",
-          "LFTZ"
-        ]
-      ]
-    ],
-    "isAssumedNCEsatelliteDeparture": [
-      "AND",
-      [
-        "$isNCEsatelliteDeparture",
-        "$isAssumed"
-      ]
-    ],
-    "isNCEsatelliteArrival": [
-      "OR",
-      [
-        "$isLFMDArrival",
-        "$isLFTHArrival",
-        "$isLFMCArrival",
-        [
-          "==",
-          "destination",
-          "LFTZ"
-        ]
-      ]
-    ],
-    "isAssumedNCEsatelliteArrival": [
-      "AND",
-      [
-        "$isNCEsatelliteArrival",
-        "$isAssumed"
-      ]
-    ],
-    "isLFMDArrival": [
-      "==",
-      "destination",
-      "LFMD"
-    ],
-    "isLFMCArrival": [
-      "==",
-      "destination",
-      "LFMC"
-    ],
-    "isLFTHArrival": [
-      "==",
-      "destination",
-      "LFTH"
-    ],
-    "isLFMNDeparture": [
-      "==",
-      "origin",
-      "LFMN"
-    ],
-    "isAssumedLFMNDeparture": [
-      "AND",
-      [
-        "$isLFMNDeparture",
-        "$isAssumed"
-      ]
-    ],
-    "isLFMNArrival": [
-      "==",
-      "destination",
-      "LFMN"
-    ],
-    "isAssumedLFMNArrival": [
-      "AND",
-      [
-        "$isLFMNArrival",
-        "$isAssumed"
-      ]
-    ]
+    "isEmergency": ["==", "squawk", "7700"],
+    "isEmmergencyDescending": ["<=", "verticalSpeed", -4000],
+    "isFocusedAircraft": ["==", "focusedAircraftCallsign", "&callsign"],
+    "isLostComm": ["==", "squawk", "7600"],
+    "isNotDep": ["==", "isDeparture", "0"],
+    "isNotSlowClimbing": [">=", "verticalSpeed", "1000"],
+    "isNotSlowDescending": ["<=", "verticalSpeed", "-1000"],
+    "isPDCRequestedState": ["==", "isPDCRequested", "1"],
+    "isSlowClimbing": ["AND", [["<", "verticalSpeed", "1000"], [">", "verticalSpeed", "0"]]],
+    "isSlowDescending": ["AND", [[">", "verticalSpeed", "-1000"], ["<", "verticalSpeed", "0"]]],
+    "isUnconcerned": ["==", "attentionState", "0"],
+    "noAssignedSquawk": ["==", "assignedSquawk", "0000"],
+    "scratchPathNotEmpty": ["notEmpty", "scratchpad"]
   }
 }

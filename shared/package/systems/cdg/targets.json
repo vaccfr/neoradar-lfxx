@@ -1,145 +1,544 @@
 {
   "$schema": "https://raw.githubusercontent.com/neoradar-project/schemas/refs/heads/main/systems/targets.schema.json",
-  "groundSymbology": "#default",
+  "groundSymbology": "#neoirma",
   "airborneSymbology": [
     {
-      "description": "issy helico avec code 4217",
-      "applyWhen": ["==", "squawk", "4217"],
-      "plotImage": "plots/cdg/blanc/t0",
+      "description": "G: local flight Paris-CDG / Le Bourget",
+      "applyWhen": "$cdgLocalPGPB",
+      "applyToFilterStates": ["kUnfiltered", "kUpperFiltered", "kLowerFiltered"],
+      "plotShape": "cdg/localpgpb",
+      "plotColor": [212, 212, 185],
+      "historyTrailShape": {
+        "shape": "cdg/trail",
+        "steps": 6,
+        "color": [212, 212, 185],
+        "opacityRamp": [1, 0.85, 0.7, 0.55, 0.45, 0.35]
+      },
       "historyTrailsSkipSteps": 5,
-      "historyTrailImages": [
-        "plots/cdg/blanc/t1",
-        "plots/cdg/blanc/t2",
-        "plots/cdg/blanc/t3",
-        "plots/cdg/blanc/t4",
-        "plots/cdg/blanc/t5",
-        "plots/cdg/blanc/t6"
-      ]
+      "speedVectorColor": [212, 212, 185]
     },
     {
-      "description": "lfpg lfpb dep",
-      "applyWhen": "$isCDGOrPBDeparture",
-      "plotImage": "plots/cdg/D/t0",
+      "description": "P: local flight Orly group",
+      "applyWhen": "$cdgLocalOrly",
+      "applyToFilterStates": ["kUnfiltered", "kUpperFiltered", "kLowerFiltered"],
+      "plotShape": "cdg/localorly",
+      "plotColor": [212, 212, 185],
+      "historyTrailShape": {
+        "shape": "cdg/trail",
+        "steps": 6,
+        "color": [212, 212, 185],
+        "opacityRamp": [1, 0.85, 0.7, 0.55, 0.45, 0.35]
+      },
       "historyTrailsSkipSteps": 5,
-      "historyTrailImages": [
-        "plots/cdg/D/t1",
-        "plots/cdg/D/t2",
-        "plots/cdg/D/t3",
-        "plots/cdg/D/t4",
-        "plots/cdg/D/t5",
-        "plots/cdg/D/t6"
-      ]
+      "speedVectorColor": [212, 212, 185]
     },
     {
-      "description": "orly arrival",
-      "applyWhen": "$isOrlyArrival",
-      "plotImage": "plots/cdg/O/t0",
+      "description": "S: CDG arrival, IFR, south runways 08/26",
+      "applyWhen": "$cdgArrSouth",
+      "applyToFilterStates": ["kUnfiltered", "kUpperFiltered", "kLowerFiltered"],
+      "plotShape": "cdg/arrsouth",
+      "plotColor": [227, 157, 157],
+      "historyTrailShape": {
+        "shape": "cdg/trail",
+        "steps": 6,
+        "color": [227, 157, 157],
+        "opacityRamp": [1, 0.85, 0.7, 0.55, 0.45, 0.35]
+      },
       "historyTrailsSkipSteps": 5,
-      "historyTrailImages": [
-        "plots/cdg/O/t1",
-        "plots/cdg/O/t2",
-        "plots/cdg/O/t3",
-        "plots/cdg/O/t4",
-        "plots/cdg/O/t5",
-        "plots/cdg/O/t6"
-      ]
+      "speedVectorColor": [227, 157, 157]
     },
     {
-      "description": "lfpg south runway arrival",
-      "applyWhen": "$isLFPGSouthArrival",
-      "plotImage": "plots/cdg/S/t0",
+      "description": "N: CDG arrival, north runways 09/27",
+      "applyWhen": "$cdgArrNorth",
+      "applyToFilterStates": ["kUnfiltered", "kUpperFiltered", "kLowerFiltered"],
+      "plotShape": "cdg/arrnorth",
+      "plotColor": [227, 184, 203],
+      "historyTrailShape": {
+        "shape": "cdg/trail",
+        "steps": 6,
+        "color": [227, 184, 203],
+        "opacityRamp": [1, 0.85, 0.7, 0.55, 0.45, 0.35]
+      },
       "historyTrailsSkipSteps": 5,
-      "historyTrailImages": [
-        "plots/cdg/S/t1",
-        "plots/cdg/S/t2",
-        "plots/cdg/S/t3",
-        "plots/cdg/S/t4",
-        "plots/cdg/S/t5",
-        "plots/cdg/S/t6"
-      ]
+      "speedVectorColor": [227, 184, 203]
     },
     {
-      "description": "lfpg north runway arrival",
-      "applyWhen": "$isLFPGNorthArrival",
-      "plotImage": "plots/cdg/N/t0",
+      "description": "B: Le Bourget arrival",
+      "applyWhen": "$cdgArrBourget",
+      "applyToFilterStates": ["kUnfiltered", "kUpperFiltered", "kLowerFiltered"],
+      "plotShape": "cdg/arrbourget",
+      "plotColor": [211, 150, 227],
+      "historyTrailShape": {
+        "shape": "cdg/trail",
+        "steps": 6,
+        "color": [211, 150, 227],
+        "opacityRamp": [1, 0.85, 0.7, 0.55, 0.45, 0.35]
+      },
       "historyTrailsSkipSteps": 5,
-      "historyTrailImages": [
-        "plots/cdg/N/t1",
-        "plots/cdg/N/t2",
-        "plots/cdg/N/t3",
-        "plots/cdg/N/t4",
-        "plots/cdg/N/t5",
-        "plots/cdg/N/t6"
-      ]
+      "speedVectorColor": [211, 150, 227]
     },
     {
-      "description": "lfpb arrival",
-      "applyWhen": "$isBourgetArrival",
-      "plotImage": "plots/cdg/B/t0",
+      "description": "O: Orly arrival",
+      "applyWhen": "$cdgArrOrly",
+      "applyToFilterStates": ["kUnfiltered", "kUpperFiltered", "kLowerFiltered"],
+      "plotShape": "cdg/arrorly",
+      "plotColor": [227, 177, 124],
+      "historyTrailShape": {
+        "shape": "cdg/trail",
+        "steps": 6,
+        "color": [227, 177, 124],
+        "opacityRamp": [1, 0.85, 0.7, 0.55, 0.45, 0.35]
+      },
       "historyTrailsSkipSteps": 5,
-      "historyTrailImages": [
-        "plots/cdg/B/t1",
-        "plots/cdg/B/t2",
-        "plots/cdg/B/t3",
-        "plots/cdg/B/t4",
-        "plots/cdg/B/t5",
-        "plots/cdg/B/t6"
-      ]
+      "speedVectorColor": [227, 177, 124]
     },
     {
-      "description": "any other departure",
-      "applyWhen": ["OR", ["$isParisGroupDeparture", "$isBeauvaisDeparture", "$isDep"]],
-      "plotImage": "plots/cdg/T/t0",
+      "description": "A: Pontoise / Beauvais arrival, IFR",
+      "applyWhen": "$cdgArrPTOB",
+      "applyToFilterStates": ["kUnfiltered", "kUpperFiltered", "kLowerFiltered"],
+      "plotShape": "cdg/arrptob",
+      "plotColor": [227, 177, 124],
+      "historyTrailShape": {
+        "shape": "cdg/trail",
+        "steps": 6,
+        "color": [227, 177, 124],
+        "opacityRamp": [1, 0.85, 0.7, 0.55, 0.45, 0.35]
+      },
       "historyTrailsSkipSteps": 5,
-      "historyTrailImages": [
-        "plots/cdg/T/t1",
-        "plots/cdg/T/t2",
-        "plots/cdg/T/t3",
-        "plots/cdg/T/t4",
-        "plots/cdg/T/t5",
-        "plots/cdg/T/t6"
-      ]
+      "speedVectorColor": [227, 177, 124]
     },
     {
-      "description": "any other arrival",
-      "applyWhen": "$isArr",
-      "plotImage": "plots/cdg/A/t0",
+      "description": "V: Toussus / Villacoublay arrival",
+      "applyWhen": "$cdgArrPNPV",
+      "applyToFilterStates": ["kUnfiltered", "kUpperFiltered", "kLowerFiltered"],
+      "plotShape": "cdg/arrpnpv",
+      "plotColor": [76, 188, 56],
+      "historyTrailShape": {
+        "shape": "cdg/trail",
+        "steps": 6,
+        "color": [76, 188, 56],
+        "opacityRamp": [1, 0.85, 0.7, 0.55, 0.45, 0.35]
+      },
       "historyTrailsSkipSteps": 5,
-      "historyTrailImages": [
-        "plots/cdg/A/t1",
-        "plots/cdg/A/t2",
-        "plots/cdg/A/t3",
-        "plots/cdg/A/t4",
-        "plots/cdg/A/t5",
-        "plots/cdg/A/t6"
-      ]
+      "speedVectorColor": [76, 188, 56]
     },
     {
-      "description": "catch all for assumed target",
-      "applyToAttentionStates": ["kAssumed"],
-      "plotImage": "plots/cdg/blanc/t0",
+      "description": "R: CDG arrival, runway unknown",
+      "applyWhen": "$cdgArrCDG",
+      "applyToFilterStates": ["kUnfiltered", "kUpperFiltered", "kLowerFiltered"],
+      "plotShape": "cdg/arrcdg",
+      "plotColor": [212, 212, 185],
+      "historyTrailShape": {
+        "shape": "cdg/trail",
+        "steps": 6,
+        "color": [212, 212, 185],
+        "opacityRamp": [1, 0.85, 0.7, 0.55, 0.45, 0.35]
+      },
       "historyTrailsSkipSteps": 5,
-      "historyTrailImages": [
-        "plots/cdg/blanc/t1",
-        "plots/cdg/blanc/t2",
-        "plots/cdg/blanc/t3",
-        "plots/cdg/blanc/t4",
-        "plots/cdg/blanc/t5",
-        "plots/cdg/blanc/t6"
-      ]
+      "speedVectorColor": [212, 212, 185]
     },
     {
-      "description": "Unconcerned air",
-      "plotImage": "plots/cdg/noir/t0",
+      "description": "NN: CDG / Le Bourget departure via NURMO",
+      "applyWhen": "$cdgDepNN",
+      "applyToFilterStates": ["kUnfiltered", "kUpperFiltered", "kLowerFiltered"],
+      "plotShape": "cdg/depnn",
+      "plotColor": [161, 227, 227],
+      "historyTrailShape": {
+        "shape": "cdg/trail",
+        "steps": 6,
+        "color": [161, 227, 227],
+        "opacityRamp": [1, 0.85, 0.7, 0.55, 0.45, 0.35]
+      },
       "historyTrailsSkipSteps": 5,
-      "historyTrailImages": [
-        "plots/cdg/noir/t1",
-        "plots/cdg/noir/t2",
-        "plots/cdg/noir/t3",
-        "plots/cdg/noir/t4",
-        "plots/cdg/noir/t5",
-        "plots/cdg/noir/t6"
-      ]
+      "speedVectorColor": [161, 227, 227]
+    },
+    {
+      "description": "NO: CDG / Le Bourget departure via OPALE",
+      "applyWhen": "$cdgDepNO",
+      "applyToFilterStates": ["kUnfiltered", "kUpperFiltered", "kLowerFiltered"],
+      "plotShape": "cdg/depno",
+      "plotColor": [161, 227, 227],
+      "historyTrailShape": {
+        "shape": "cdg/trail",
+        "steps": 6,
+        "color": [161, 227, 227],
+        "opacityRamp": [1, 0.85, 0.7, 0.55, 0.45, 0.35]
+      },
+      "historyTrailsSkipSteps": 5,
+      "speedVectorColor": [161, 227, 227]
+    },
+    {
+      "description": "NA: CDG / Le Bourget departure via ATREX",
+      "applyWhen": "$cdgDepNA",
+      "applyToFilterStates": ["kUnfiltered", "kUpperFiltered", "kLowerFiltered"],
+      "plotShape": "cdg/depna",
+      "plotColor": [161, 227, 227],
+      "historyTrailShape": {
+        "shape": "cdg/trail",
+        "steps": 6,
+        "color": [161, 227, 227],
+        "opacityRamp": [1, 0.85, 0.7, 0.55, 0.45, 0.35]
+      },
+      "historyTrailsSkipSteps": 5,
+      "speedVectorColor": [161, 227, 227]
+    },
+    {
+      "description": "NM: CDG / Le Bourget departure via MTD",
+      "applyWhen": "$cdgDepNM",
+      "applyToFilterStates": ["kUnfiltered", "kUpperFiltered", "kLowerFiltered"],
+      "plotShape": "cdg/depnm",
+      "plotColor": [161, 227, 227],
+      "historyTrailShape": {
+        "shape": "cdg/trail",
+        "steps": 6,
+        "color": [161, 227, 227],
+        "opacityRamp": [1, 0.85, 0.7, 0.55, 0.45, 0.35]
+      },
+      "historyTrailsSkipSteps": 5,
+      "speedVectorColor": [161, 227, 227]
+    },
+    {
+      "description": "ER: CDG / Le Bourget departure via RANUX",
+      "applyWhen": "$cdgDepER",
+      "applyToFilterStates": ["kUnfiltered", "kUpperFiltered", "kLowerFiltered"],
+      "plotShape": "cdg/deper",
+      "plotColor": [161, 227, 227],
+      "historyTrailShape": {
+        "shape": "cdg/trail",
+        "steps": 6,
+        "color": [161, 227, 227],
+        "opacityRamp": [1, 0.85, 0.7, 0.55, 0.45, 0.35]
+      },
+      "historyTrailsSkipSteps": 5,
+      "speedVectorColor": [161, 227, 227]
+    },
+    {
+      "description": "EL: CDG / Le Bourget departure via LANVI",
+      "applyWhen": "$cdgDepEL",
+      "applyToFilterStates": ["kUnfiltered", "kUpperFiltered", "kLowerFiltered"],
+      "plotShape": "cdg/depel",
+      "plotColor": [161, 227, 227],
+      "historyTrailShape": {
+        "shape": "cdg/trail",
+        "steps": 6,
+        "color": [161, 227, 227],
+        "opacityRamp": [1, 0.85, 0.7, 0.55, 0.45, 0.35]
+      },
+      "historyTrailsSkipSteps": 5,
+      "speedVectorColor": [161, 227, 227]
+    },
+    {
+      "description": "EB: CDG / Le Bourget departure via BUBLI",
+      "applyWhen": "$cdgDepEB",
+      "applyToFilterStates": ["kUnfiltered", "kUpperFiltered", "kLowerFiltered"],
+      "plotShape": "cdg/depeb",
+      "plotColor": [161, 227, 227],
+      "historyTrailShape": {
+        "shape": "cdg/trail",
+        "steps": 6,
+        "color": [161, 227, 227],
+        "opacityRamp": [1, 0.85, 0.7, 0.55, 0.45, 0.35]
+      },
+      "historyTrailsSkipSteps": 5,
+      "speedVectorColor": [161, 227, 227]
+    },
+    {
+      "description": "EN: CDG / Le Bourget departure via NIPOR",
+      "applyWhen": "$cdgDepEN",
+      "applyToFilterStates": ["kUnfiltered", "kUpperFiltered", "kLowerFiltered"],
+      "plotShape": "cdg/depen",
+      "plotColor": [161, 227, 227],
+      "historyTrailShape": {
+        "shape": "cdg/trail",
+        "steps": 6,
+        "color": [161, 227, 227],
+        "opacityRamp": [1, 0.85, 0.7, 0.55, 0.45, 0.35]
+      },
+      "historyTrailsSkipSteps": 5,
+      "speedVectorColor": [161, 227, 227]
+    },
+    {
+      "description": "ED: CDG / Le Bourget departure via DIKOL",
+      "applyWhen": "$cdgDepED",
+      "applyToFilterStates": ["kUnfiltered", "kUpperFiltered", "kLowerFiltered"],
+      "plotShape": "cdg/deped",
+      "plotColor": [161, 227, 227],
+      "historyTrailShape": {
+        "shape": "cdg/trail",
+        "steps": 6,
+        "color": [161, 227, 227],
+        "opacityRamp": [1, 0.85, 0.7, 0.55, 0.45, 0.35]
+      },
+      "historyTrailsSkipSteps": 5,
+      "speedVectorColor": [161, 227, 227]
+    },
+    {
+      "description": "EX: CDG / Le Bourget departure via BAXIR",
+      "applyWhen": "$cdgDepEX",
+      "applyToFilterStates": ["kUnfiltered", "kUpperFiltered", "kLowerFiltered"],
+      "plotShape": "cdg/depex",
+      "plotColor": [161, 227, 227],
+      "historyTrailShape": {
+        "shape": "cdg/trail",
+        "steps": 6,
+        "color": [161, 227, 227],
+        "opacityRamp": [1, 0.85, 0.7, 0.55, 0.45, 0.35]
+      },
+      "historyTrailsSkipSteps": 5,
+      "speedVectorColor": [161, 227, 227]
+    },
+    {
+      "description": "SE: CDG / Le Bourget departure via ERIXU",
+      "applyWhen": "$cdgDepSE",
+      "applyToFilterStates": ["kUnfiltered", "kUpperFiltered", "kLowerFiltered"],
+      "plotShape": "cdg/depse",
+      "plotColor": [161, 227, 227],
+      "historyTrailShape": {
+        "shape": "cdg/trail",
+        "steps": 6,
+        "color": [161, 227, 227],
+        "opacityRamp": [1, 0.85, 0.7, 0.55, 0.45, 0.35]
+      },
+      "historyTrailsSkipSteps": 5,
+      "speedVectorColor": [161, 227, 227]
+    },
+    {
+      "description": "SA: CDG / Le Bourget departure via AGOPA",
+      "applyWhen": "$cdgDepSA",
+      "applyToFilterStates": ["kUnfiltered", "kUpperFiltered", "kLowerFiltered"],
+      "plotShape": "cdg/depsa",
+      "plotColor": [161, 227, 227],
+      "historyTrailShape": {
+        "shape": "cdg/trail",
+        "steps": 6,
+        "color": [161, 227, 227],
+        "opacityRamp": [1, 0.85, 0.7, 0.55, 0.45, 0.35]
+      },
+      "historyTrailsSkipSteps": 5,
+      "speedVectorColor": [161, 227, 227]
+    },
+    {
+      "description": "SL: CDG / Le Bourget departure via LATRA",
+      "applyWhen": "$cdgDepSL",
+      "applyToFilterStates": ["kUnfiltered", "kUpperFiltered", "kLowerFiltered"],
+      "plotShape": "cdg/depsl",
+      "plotColor": [161, 227, 227],
+      "historyTrailShape": {
+        "shape": "cdg/trail",
+        "steps": 6,
+        "color": [161, 227, 227],
+        "opacityRamp": [1, 0.85, 0.7, 0.55, 0.45, 0.35]
+      },
+      "historyTrailsSkipSteps": 5,
+      "speedVectorColor": [161, 227, 227]
+    },
+    {
+      "description": "SO: CDG / Le Bourget departure via OKASI",
+      "applyWhen": "$cdgDepSO",
+      "applyToFilterStates": ["kUnfiltered", "kUpperFiltered", "kLowerFiltered"],
+      "plotShape": "cdg/depso",
+      "plotColor": [161, 227, 227],
+      "historyTrailShape": {
+        "shape": "cdg/trail",
+        "steps": 6,
+        "color": [161, 227, 227],
+        "opacityRamp": [1, 0.85, 0.7, 0.55, 0.45, 0.35]
+      },
+      "historyTrailsSkipSteps": 5,
+      "speedVectorColor": [161, 227, 227]
+    },
+    {
+      "description": "SP: CDG / Le Bourget departure via PILUL",
+      "applyWhen": "$cdgDepSP",
+      "applyToFilterStates": ["kUnfiltered", "kUpperFiltered", "kLowerFiltered"],
+      "plotShape": "cdg/depsp",
+      "plotColor": [161, 227, 227],
+      "historyTrailShape": {
+        "shape": "cdg/trail",
+        "steps": 6,
+        "color": [161, 227, 227],
+        "opacityRamp": [1, 0.85, 0.7, 0.55, 0.45, 0.35]
+      },
+      "historyTrailsSkipSteps": 5,
+      "speedVectorColor": [161, 227, 227]
+    },
+    {
+      "description": "WE: CDG / Le Bourget departure via ELCOB",
+      "applyWhen": "$cdgDepWE",
+      "applyToFilterStates": ["kUnfiltered", "kUpperFiltered", "kLowerFiltered"],
+      "plotShape": "cdg/depwe",
+      "plotColor": [161, 227, 227],
+      "historyTrailShape": {
+        "shape": "cdg/trail",
+        "steps": 6,
+        "color": [161, 227, 227],
+        "opacityRamp": [1, 0.85, 0.7, 0.55, 0.45, 0.35]
+      },
+      "historyTrailsSkipSteps": 5,
+      "speedVectorColor": [161, 227, 227]
+    },
+    {
+      "description": "WL: CDG / Le Bourget departure via LGL",
+      "applyWhen": "$cdgDepWL",
+      "applyToFilterStates": ["kUnfiltered", "kUpperFiltered", "kLowerFiltered"],
+      "plotShape": "cdg/depwl",
+      "plotColor": [161, 227, 227],
+      "historyTrailShape": {
+        "shape": "cdg/trail",
+        "steps": 6,
+        "color": [161, 227, 227],
+        "opacityRamp": [1, 0.85, 0.7, 0.55, 0.45, 0.35]
+      },
+      "historyTrailsSkipSteps": 5,
+      "speedVectorColor": [161, 227, 227]
+    },
+    {
+      "description": "HO: CDG / Le Bourget departure via OLZOM",
+      "applyWhen": "$cdgDepHO",
+      "applyToFilterStates": ["kUnfiltered", "kUpperFiltered", "kLowerFiltered"],
+      "plotShape": "cdg/depho",
+      "plotColor": [161, 227, 227],
+      "historyTrailShape": {
+        "shape": "cdg/trail",
+        "steps": 6,
+        "color": [161, 227, 227],
+        "opacityRamp": [1, 0.85, 0.7, 0.55, 0.45, 0.35]
+      },
+      "historyTrailsSkipSteps": 5,
+      "speedVectorColor": [161, 227, 227]
+    },
+    {
+      "description": "HM: CDG / Le Bourget departure via MONOT",
+      "applyWhen": "$cdgDepHM",
+      "applyToFilterStates": ["kUnfiltered", "kUpperFiltered", "kLowerFiltered"],
+      "plotShape": "cdg/dephm",
+      "plotColor": [161, 227, 227],
+      "historyTrailShape": {
+        "shape": "cdg/trail",
+        "steps": 6,
+        "color": [161, 227, 227],
+        "opacityRamp": [1, 0.85, 0.7, 0.55, 0.45, 0.35]
+      },
+      "historyTrailsSkipSteps": 5,
+      "speedVectorColor": [161, 227, 227]
+    },
+    {
+      "description": "HD: CDG / Le Bourget departure via DORDI",
+      "applyWhen": "$cdgDepHD",
+      "applyToFilterStates": ["kUnfiltered", "kUpperFiltered", "kLowerFiltered"],
+      "plotShape": "cdg/dephd",
+      "plotColor": [161, 227, 227],
+      "historyTrailShape": {
+        "shape": "cdg/trail",
+        "steps": 6,
+        "color": [161, 227, 227],
+        "opacityRamp": [1, 0.85, 0.7, 0.55, 0.45, 0.35]
+      },
+      "historyTrailsSkipSteps": 5,
+      "speedVectorColor": [161, 227, 227]
+    },
+    {
+      "description": "T: Orly group departure",
+      "applyWhen": "$cdgDepOrly",
+      "applyToFilterStates": ["kUnfiltered", "kUpperFiltered", "kLowerFiltered"],
+      "plotShape": "cdg/deporly",
+      "plotColor": [101, 192, 223],
+      "historyTrailShape": {
+        "shape": "cdg/trail",
+        "steps": 6,
+        "color": [101, 192, 223],
+        "opacityRamp": [1, 0.85, 0.7, 0.55, 0.45, 0.35]
+      },
+      "historyTrailsSkipSteps": 5,
+      "speedVectorColor": [101, 192, 223]
+    },
+    {
+      "description": "T: Pontoise / Beauvais departure, IFR",
+      "applyWhen": "$cdgDepPTOB",
+      "applyToFilterStates": ["kUnfiltered", "kUpperFiltered", "kLowerFiltered"],
+      "plotShape": "cdg/depptob",
+      "plotColor": [101, 192, 223],
+      "historyTrailShape": {
+        "shape": "cdg/trail",
+        "steps": 6,
+        "color": [101, 192, 223],
+        "opacityRamp": [1, 0.85, 0.7, 0.55, 0.45, 0.35]
+      },
+      "historyTrailsSkipSteps": 5,
+      "speedVectorColor": [101, 192, 223]
+    },
+    {
+      "description": "CDG / Le Bourget departure",
+      "applyWhen": "$cdgDepCDG",
+      "applyToFilterStates": ["kUnfiltered", "kUpperFiltered", "kLowerFiltered"],
+      "plotShape": "cdg/track",
+      "plotColor": [161, 227, 227],
+      "historyTrailShape": {
+        "shape": "cdg/trail",
+        "steps": 6,
+        "color": [161, 227, 227],
+        "opacityRamp": [1, 0.85, 0.7, 0.55, 0.45, 0.35]
+      },
+      "historyTrailsSkipSteps": 5,
+      "speedVectorColor": [161, 227, 227]
+    },
+    {
+      "description": "Z: other VFR (yours or offered to you, shown through the altitude filter)",
+      "applyWhen": "$cdgVFR",
+      "applyToAttentionStates": ["kIncomingTransfer", "kAssumed", "kOutgoingTransfer"],
+      "applyToFilterStates": ["kUnfiltered", "kUpperFiltered", "kLowerFiltered"],
+      "plotShape": "cdg/vfr",
+      "plotColor": [0, 0, 0],
+      "historyTrailShape": {
+        "shape": "cdg/trail",
+        "steps": 6,
+        "color": [0, 0, 0],
+        "opacityRamp": [1, 0.85, 0.7, 0.55, 0.45, 0.35]
+      },
+      "historyTrailsSkipSteps": 5,
+      "speedVectorColor": [0, 0, 0]
+    },
+    {
+      "description": "Z: other VFR",
+      "applyWhen": "$cdgVFR",
+      "plotShape": "cdg/vfr",
+      "plotColor": [0, 0, 0],
+      "historyTrailShape": {
+        "shape": "cdg/trail",
+        "steps": 6,
+        "color": [0, 0, 0],
+        "opacityRamp": [1, 0.85, 0.7, 0.55, 0.45, 0.35]
+      },
+      "historyTrailsSkipSteps": 5,
+      "speedVectorColor": [0, 0, 0]
+    },
+    {
+      "description": "X: other traffic (yours or offered to you, shown through the altitude filter)",
+      "applyToAttentionStates": ["kIncomingTransfer", "kAssumed", "kOutgoingTransfer"],
+      "applyToFilterStates": ["kUnfiltered", "kUpperFiltered", "kLowerFiltered"],
+      "plotShape": "cdg/other",
+      "plotColor": [0, 0, 0],
+      "historyTrailShape": {
+        "shape": "cdg/trail",
+        "steps": 6,
+        "color": [0, 0, 0],
+        "opacityRamp": [1, 0.85, 0.7, 0.55, 0.45, 0.35]
+      },
+      "historyTrailsSkipSteps": 5,
+      "speedVectorColor": [0, 0, 0]
+    },
+    {
+      "description": "X: other traffic",
+      "plotShape": "cdg/other",
+      "plotColor": [0, 0, 0],
+      "historyTrailShape": {
+        "shape": "cdg/trail",
+        "steps": 6,
+        "color": [0, 0, 0],
+        "opacityRamp": [1, 0.85, 0.7, 0.55, 0.45, 0.35]
+      },
+      "historyTrailsSkipSteps": 5,
+      "speedVectorColor": [0, 0, 0]
     }
   ]
 }

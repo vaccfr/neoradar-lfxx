@@ -15,9 +15,13 @@ publishes laid over it, the layout the Controller Pack Installer produces:
 
 `assemble` writes one neoradar-cli package environment per entry of packages.json
 under build/<ID>/ (always from scratch), applies diffs/<ID>/*.patch and
-diffs/common/*.patch, and converts the CoFrance maps. `finalize` runs after
-neoradar-cli convert: it gives the converted profiles their ATM system, altitude
-filter and CoFrance map items, and prunes manifest layers whose dataset is absent.
+diffs/common/*.patch, and converts the CoFrance maps. Centre displays (packages.json
+`excludeAsrs`) are left out: the package serves approach, tower and ground. `finalize`
+runs after neoradar-cli convert: it gives the converted profiles their ATM system,
+altitude filter and CoFrance map items, and prunes manifest layers whose dataset is absent.
+
+The ATM systems are static, hand-maintained files in shared/package/systems: `cdg` for the
+Paris-CDG approach, `neoirma` for every other approach and for the ground displays.
 
 Standard library only.
 """
@@ -36,7 +40,6 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import cofrance  # noqa: E402
-import tag_formats  # noqa: E402
 
 REPO = Path(__file__).resolve().parent.parent
 SHARED = REPO / "shared"
@@ -61,10 +64,11 @@ SECTOR_LAYERS = [
     {"name": "label", "type": "geojson", "source": "label", "isLabelLayer": True, "defaultStyle": {"textStyle": {"color": [255, 255, 255], "fontSize": 12, "offset": [0, 0]}}},
 ]
 
-# CoFrance TagFormat -> NeoRadar ATM system (shared/package/systems/<name>).
-# A CoFrance TagFormat with no system in build-info.json (no tag_formats.json entry) falls back here.
-COFRANCE_DEFAULT_SYSTEM = "default"
-SMR_SYSTEM = "default"
+# NeoRadar ATM systems (shared/package/systems/<name>). A CoFrance tag format listed here gets its
+# own system; every other CoFrance display and every vSMR (AVISO) display uses neoIRMA, whose ground
+# section is the package's one ground look (cdg's ground points at it).
+SYSTEM_FOR_TAG_FORMAT = {"Paris-CDG": "cdg"}
+DEFAULT_SYSTEM = "neoirma"
 FRENCH_TRANSITION_ALTITUDE = 5000
 
 
@@ -140,16 +144,21 @@ def apply_replacements(text: str, target_rel: str, rules: list[dict]) -> str:
     return text
 
 
-def copy_tree_text(src: Path, dst: Path, suffix: str) -> int:
+def copy_tree_text(src: Path, dst: Path, suffix: str, exclude: list[str] | None = None) -> tuple[int, list[str]]:
     """Copies every *<suffix> file under src to dst, re-encoded as UTF-8 (the CLI reads UTF-8,
-    the French files are partly Windows-1252)."""
-    n = 0
+    the French files are partly Windows-1252). A file whose path relative to src matches one of
+    the `exclude` globs is skipped. Returns (files copied, relative paths skipped)."""
+    n, skipped = 0, []
     for f in sorted(src.rglob(f"*{suffix}")):
+        rel = f.relative_to(src).as_posix()
+        if any(fnmatch.fnmatch(rel, pattern) for pattern in exclude or []):
+            skipped.append(rel)
+            continue
         target = dst / f.relative_to(src)
         target.parent.mkdir(parents=True, exist_ok=True)
         target.write_text(read_text_any(f), encoding="utf-8", newline="\n")
         n += 1
-    return n
+    return n, skipped
 
 
 def drop_unidentified_positions(ese: Path) -> list[str]:
@@ -229,11 +238,13 @@ def assemble(pkg: dict, config: dict, source: Path, build: Path) -> None:
 
     # ASRs: one FIR straight in, several FIRs one folder each
     asr_root = env / "ASRs"
-    count = 0
+    count, left_out = 0, []
     for fir in pkg["firs"]:
         target = asr_root if len(pkg["firs"]) == 1 else asr_root / fir
-        count += copy_tree_text(source / fir / "ASR", target, ".asr")
-    log(f"  {count} ASR files")
+        copied, skipped = copy_tree_text(source / fir / "ASR", target, ".asr", pkg.get("excludeAsrs"))
+        count += copied
+        left_out += [f"{fir}/{rel}" for rel in skipped]
+    log(f"  {count} ASR files; left out by excludeAsrs: {', '.join(left_out) or 'none'}")
 
     # euroscope_data: alias + one LoginProfiles.txt, the FIRs' files concatenated so the CLI
     # groups every profile by callsign prefix (the first FIR wins a duplicated callsign)
@@ -288,25 +299,6 @@ def assemble(pkg: dict, config: dict, source: Path, build: Path) -> None:
         warn(f"CoFrance {pid}: sectors with no position in {pid}.ese (their sector-ownership rules never show): "
              + ", ".join(sorted(report.unresolved_sectors)))
 
-    # One ATM system per CoFrance tag format the package's ASRs use (scripts/tag_formats.py).
-    used_formats = {
-        parse_asr(a)["plugin"].get(("CoFrance", "TagFormat"), "")
-        for a in (env / "ASRs").rglob("*.asr")
-    } - {""}
-    formats_file = source / "LFXX" / "Plugins" / "CoFrance" / "config" / "tag_formats.json"
-    if formats_file.is_file():
-        format_systems, format_warnings = tag_formats.generate(formats_file, package / "systems", used_formats)
-        for w in format_warnings:
-            warn(f"{pid}: {w}")
-        generated = sorted({s for f, s in format_systems.items() if f in used_formats and s.startswith("cf-")})
-        log(f"  {len(generated)} systems generated from CoFrance tag formats: {', '.join(generated)}")
-    else:
-        warn(f"{formats_file} missing: every CoFrance profile falls back to {COFRANCE_DEFAULT_SYSTEM}")
-        format_systems = {}
-    unmapped = sorted(used_formats - set(format_systems))
-    if unmapped:
-        warn(f"{pid}: tag formats used by ASRs but absent from tag_formats.json, shown as {COFRANCE_DEFAULT_SYSTEM}: {', '.join(unmapped)}")
-
     fonts = sorted(p.name for p in (package / "fonts").glob("*.ttf"))
     manifest = {
         "$schema": SCHEMA_URL,
@@ -328,7 +320,6 @@ def assemble(pkg: dict, config: dict, source: Path, build: Path) -> None:
         "sectorFileMd5": md5(env / "sector_files" / f"{pid}.sct"),
         "cofrancePluginVersion": plugin_version,
         "cofranceItems": sorted(uuids),
-        "tagFormatSystems": format_systems,
     }, indent=2) + "\n", encoding="utf-8")
 
     apply_diffs(env, pid)
@@ -385,7 +376,6 @@ def finalize(pkg: dict, build: Path) -> None:
     log(f"== finalize {pid}")
     info = json.loads((env / "build-info.json").read_text(encoding="utf-8"))
     known = set(info["cofranceItems"])
-    format_systems = info.get("tagFormatSystems", {})
     package = env / "package"
     profiles = package / "profiles"
 
@@ -400,6 +390,7 @@ def finalize(pkg: dict, build: Path) -> None:
         for item in json.loads(layer.read_text(encoding="utf-8")).get("items", [])
     }
     touched = 0
+    systems_used: dict[str, int] = {}
     for asr in sorted((env / "ASRs").rglob("*.asr")):
         rel = asr.relative_to(env / "ASRs").with_suffix(".stp")
         stp = profiles / rel
@@ -410,7 +401,7 @@ def finalize(pkg: dict, build: Path) -> None:
         profile = json.loads(stp.read_text(encoding="utf-8"))
         if meta.get("DisplayTypeName", "").lower().startswith("cofrance"):
             fmt = meta["plugin"].get(("CoFrance", "TagFormat"), "")
-            profile["atmSystem"] = format_systems.get(fmt, COFRANCE_DEFAULT_SYSTEM)
+            profile["atmSystem"] = SYSTEM_FOR_TAG_FORMAT.get(fmt, DEFAULT_SYSTEM)
             radar = profile.setdefault("radarData", {})
             radar["transitionAltitude"] = FRENCH_TRANSITION_ALTITUDE
             for key, field in (("UpperAlt", "upperFilterValue"), ("LowerAlt", "lowerFilterValue")):
@@ -428,10 +419,12 @@ def finalize(pkg: dict, build: Path) -> None:
                 if uuid not in present:
                     items.append({"showLabel": False, "uuid": uuid})
                     present.add(uuid)
-        elif meta.get("DisplayTypeName", "").lower().startswith("smr"):
-            # vSMR displays (the AVISOs) use the ground look of shared/package/systems/default. Named
-            # explicitly: with no atmSystem the client falls back to the first system, cdg (approach).
-            profile["atmSystem"] = SMR_SYSTEM
+        else:
+            # vSMR displays (the AVISOs) and anything else: neoIRMA, whose ground section is the
+            # AVISO look. Named explicitly: with no atmSystem the client takes the first system
+            # alphabetically, cdg.
+            profile["atmSystem"] = DEFAULT_SYSTEM
+        systems_used[profile["atmSystem"]] = systems_used.get(profile["atmSystem"], 0) + 1
         if meta.get("DisplayTypeName", "").lower().startswith("smr") and not profile["map"].get("items"):
             # The French AVISO ASRs carry no map content (Sector-Files' maintenance script strips it):
             # the vSMR fork draws the AVISO of PLUGIN:vSMR:Airport itself. An empty item list would
@@ -462,7 +455,10 @@ def finalize(pkg: dict, build: Path) -> None:
         profile["map"]["items"] = kept_items
         stp.write_text(json.dumps(profile, indent=2) + "\n", encoding="utf-8")
         touched += 1
-    log(f"  {touched} profiles finalized")
+    log(f"  {touched} profiles finalized: " + ", ".join(f"{n} {name}" for name, n in sorted(systems_used.items())))
+    absent = sorted(name for name in systems_used if not (package / "systems" / name).is_dir())
+    if absent:
+        sys.exit(f"{pid}: profiles use systems that shared/package/systems does not have: {', '.join(absent)}")
     if runways_only:
         warn(f"{pid}: AVISO displays drawing runways only, the sector file has no ground layout for: {', '.join(sorted(runways_only))}")
     if no_aviso:

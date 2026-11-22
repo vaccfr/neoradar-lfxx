@@ -1,58 +1,780 @@
 {
   "$schema": "https://raw.githubusercontent.com/neoradar-project/schemas/refs/heads/main/systems/shapes.schema.json",
   "shapes": {
-    "base/aircraft": {
-      "description": "A plain asterisk, 10 units across. Colour comes from the variant's plotColor.",
-      "strokeWidth": 1,
-      "pixelSnap": true,
+    "cdg/arrbourget": {
+      "description": "CoFrance CDG track with subtext B.",
+      "rotateWithHeading": false,
+      "elements": [
+        {
+          "shapeRef": "cdg/track"
+        },
+        {
+          "shapeRef": "font/B",
+          "offset": [-2.0, 10.5]
+        }
+      ]
+    },
+    "cdg/arrcdg": {
+      "description": "CoFrance CDG track with subtext R.",
+      "rotateWithHeading": false,
+      "elements": [
+        {
+          "shapeRef": "cdg/track"
+        },
+        {
+          "shapeRef": "font/R",
+          "offset": [-2.0, 10.5]
+        }
+      ]
+    },
+    "cdg/arrnorth": {
+      "description": "CoFrance CDG track with subtext N.",
+      "rotateWithHeading": false,
+      "elements": [
+        {
+          "shapeRef": "cdg/track"
+        },
+        {
+          "shapeRef": "font/N",
+          "offset": [-2.0, -15.5]
+        }
+      ]
+    },
+    "cdg/arrorly": {
+      "description": "CoFrance CDG track with subtext O.",
+      "rotateWithHeading": false,
+      "elements": [
+        {
+          "shapeRef": "cdg/track"
+        },
+        {
+          "shapeRef": "font/O",
+          "offset": [-2.0, 10.5]
+        }
+      ]
+    },
+    "cdg/arrpnpv": {
+      "description": "CoFrance CDG track with subtext V.",
+      "rotateWithHeading": false,
+      "elements": [
+        {
+          "shapeRef": "cdg/track"
+        },
+        {
+          "shapeRef": "font/V",
+          "offset": [-2.0, 10.5]
+        }
+      ]
+    },
+    "cdg/arrptob": {
+      "description": "CoFrance CDG track with subtext A.",
+      "rotateWithHeading": false,
+      "elements": [
+        {
+          "shapeRef": "cdg/track"
+        },
+        {
+          "shapeRef": "font/A",
+          "offset": [-2.0, 10.5]
+        }
+      ]
+    },
+    "cdg/arrsouth": {
+      "description": "CoFrance CDG track with subtext S.",
+      "rotateWithHeading": false,
+      "elements": [
+        {
+          "shapeRef": "cdg/track"
+        },
+        {
+          "shapeRef": "font/S",
+          "offset": [-2.0, 10.5]
+        }
+      ]
+    },
+    "cdg/depeb": {
+      "description": "CoFrance CDG track with subtext EB.",
+      "rotateWithHeading": false,
+      "elements": [
+        {
+          "shapeRef": "cdg/track"
+        },
+        {
+          "shapeRef": "font/E",
+          "offset": [-5.0, 10.5]
+        },
+        {
+          "shapeRef": "font/B",
+          "offset": [1.0, 10.5]
+        }
+      ]
+    },
+    "cdg/deped": {
+      "description": "CoFrance CDG track with subtext ED.",
+      "rotateWithHeading": false,
+      "elements": [
+        {
+          "shapeRef": "cdg/track"
+        },
+        {
+          "shapeRef": "font/E",
+          "offset": [-5.0, 10.5]
+        },
+        {
+          "shapeRef": "font/D",
+          "offset": [1.0, 10.5]
+        }
+      ]
+    },
+    "cdg/depel": {
+      "description": "CoFrance CDG track with subtext EL.",
+      "rotateWithHeading": false,
+      "elements": [
+        {
+          "shapeRef": "cdg/track"
+        },
+        {
+          "shapeRef": "font/E",
+          "offset": [-5.0, 10.5]
+        },
+        {
+          "shapeRef": "font/L",
+          "offset": [1.0, 10.5]
+        }
+      ]
+    },
+    "cdg/depen": {
+      "description": "CoFrance CDG track with subtext EN.",
+      "rotateWithHeading": false,
+      "elements": [
+        {
+          "shapeRef": "cdg/track"
+        },
+        {
+          "shapeRef": "font/E",
+          "offset": [-5.0, 10.5]
+        },
+        {
+          "shapeRef": "font/N",
+          "offset": [1.0, 10.5]
+        }
+      ]
+    },
+    "cdg/deper": {
+      "description": "CoFrance CDG track with subtext ER.",
+      "rotateWithHeading": false,
+      "elements": [
+        {
+          "shapeRef": "cdg/track"
+        },
+        {
+          "shapeRef": "font/E",
+          "offset": [-5.0, 10.5]
+        },
+        {
+          "shapeRef": "font/R",
+          "offset": [1.0, 10.5]
+        }
+      ]
+    },
+    "cdg/depex": {
+      "description": "CoFrance CDG track with subtext EX.",
+      "rotateWithHeading": false,
+      "elements": [
+        {
+          "shapeRef": "cdg/track"
+        },
+        {
+          "shapeRef": "font/E",
+          "offset": [-5.0, 10.5]
+        },
+        {
+          "shapeRef": "font/X",
+          "offset": [1.0, 10.5]
+        }
+      ]
+    },
+    "cdg/dephd": {
+      "description": "CoFrance CDG track with subtext HD.",
+      "rotateWithHeading": false,
+      "elements": [
+        {
+          "shapeRef": "cdg/track"
+        },
+        {
+          "shapeRef": "font/H",
+          "offset": [-5.0, 10.5]
+        },
+        {
+          "shapeRef": "font/D",
+          "offset": [1.0, 10.5]
+        }
+      ]
+    },
+    "cdg/dephm": {
+      "description": "CoFrance CDG track with subtext HM.",
+      "rotateWithHeading": false,
+      "elements": [
+        {
+          "shapeRef": "cdg/track"
+        },
+        {
+          "shapeRef": "font/H",
+          "offset": [-5.0, 10.5]
+        },
+        {
+          "shapeRef": "font/M",
+          "offset": [1.0, 10.5]
+        }
+      ]
+    },
+    "cdg/depho": {
+      "description": "CoFrance CDG track with subtext HO.",
+      "rotateWithHeading": false,
+      "elements": [
+        {
+          "shapeRef": "cdg/track"
+        },
+        {
+          "shapeRef": "font/H",
+          "offset": [-5.0, 10.5]
+        },
+        {
+          "shapeRef": "font/O",
+          "offset": [1.0, 10.5]
+        }
+      ]
+    },
+    "cdg/depna": {
+      "description": "CoFrance CDG track with subtext NA.",
+      "rotateWithHeading": false,
+      "elements": [
+        {
+          "shapeRef": "cdg/track"
+        },
+        {
+          "shapeRef": "font/N",
+          "offset": [-5.0, 10.5]
+        },
+        {
+          "shapeRef": "font/A",
+          "offset": [1.0, 10.5]
+        }
+      ]
+    },
+    "cdg/depnm": {
+      "description": "CoFrance CDG track with subtext NM.",
+      "rotateWithHeading": false,
+      "elements": [
+        {
+          "shapeRef": "cdg/track"
+        },
+        {
+          "shapeRef": "font/N",
+          "offset": [-5.0, 10.5]
+        },
+        {
+          "shapeRef": "font/M",
+          "offset": [1.0, 10.5]
+        }
+      ]
+    },
+    "cdg/depnn": {
+      "description": "CoFrance CDG track with subtext NN.",
+      "rotateWithHeading": false,
+      "elements": [
+        {
+          "shapeRef": "cdg/track"
+        },
+        {
+          "shapeRef": "font/N",
+          "offset": [-5.0, 10.5]
+        },
+        {
+          "shapeRef": "font/N",
+          "offset": [1.0, 10.5]
+        }
+      ]
+    },
+    "cdg/depno": {
+      "description": "CoFrance CDG track with subtext NO.",
+      "rotateWithHeading": false,
+      "elements": [
+        {
+          "shapeRef": "cdg/track"
+        },
+        {
+          "shapeRef": "font/N",
+          "offset": [-5.0, 10.5]
+        },
+        {
+          "shapeRef": "font/O",
+          "offset": [1.0, 10.5]
+        }
+      ]
+    },
+    "cdg/deporly": {
+      "description": "CoFrance CDG track with subtext T.",
+      "rotateWithHeading": false,
+      "elements": [
+        {
+          "shapeRef": "cdg/track"
+        },
+        {
+          "shapeRef": "font/T",
+          "offset": [-2.0, 10.5]
+        }
+      ]
+    },
+    "cdg/depptob": {
+      "description": "CoFrance CDG track with subtext T.",
+      "rotateWithHeading": false,
+      "elements": [
+        {
+          "shapeRef": "cdg/track"
+        },
+        {
+          "shapeRef": "font/T",
+          "offset": [-2.0, 10.5]
+        }
+      ]
+    },
+    "cdg/depsa": {
+      "description": "CoFrance CDG track with subtext SA.",
+      "rotateWithHeading": false,
+      "elements": [
+        {
+          "shapeRef": "cdg/track"
+        },
+        {
+          "shapeRef": "font/S",
+          "offset": [-5.0, 10.5]
+        },
+        {
+          "shapeRef": "font/A",
+          "offset": [1.0, 10.5]
+        }
+      ]
+    },
+    "cdg/depse": {
+      "description": "CoFrance CDG track with subtext SE.",
+      "rotateWithHeading": false,
+      "elements": [
+        {
+          "shapeRef": "cdg/track"
+        },
+        {
+          "shapeRef": "font/S",
+          "offset": [-5.0, 10.5]
+        },
+        {
+          "shapeRef": "font/E",
+          "offset": [1.0, 10.5]
+        }
+      ]
+    },
+    "cdg/depsl": {
+      "description": "CoFrance CDG track with subtext SL.",
+      "rotateWithHeading": false,
+      "elements": [
+        {
+          "shapeRef": "cdg/track"
+        },
+        {
+          "shapeRef": "font/S",
+          "offset": [-5.0, 10.5]
+        },
+        {
+          "shapeRef": "font/L",
+          "offset": [1.0, 10.5]
+        }
+      ]
+    },
+    "cdg/depso": {
+      "description": "CoFrance CDG track with subtext SO.",
+      "rotateWithHeading": false,
+      "elements": [
+        {
+          "shapeRef": "cdg/track"
+        },
+        {
+          "shapeRef": "font/S",
+          "offset": [-5.0, 10.5]
+        },
+        {
+          "shapeRef": "font/O",
+          "offset": [1.0, 10.5]
+        }
+      ]
+    },
+    "cdg/depsp": {
+      "description": "CoFrance CDG track with subtext SP.",
+      "rotateWithHeading": false,
+      "elements": [
+        {
+          "shapeRef": "cdg/track"
+        },
+        {
+          "shapeRef": "font/S",
+          "offset": [-5.0, 10.5]
+        },
+        {
+          "shapeRef": "font/P",
+          "offset": [1.0, 10.5]
+        }
+      ]
+    },
+    "cdg/depwe": {
+      "description": "CoFrance CDG track with subtext WE.",
+      "rotateWithHeading": false,
+      "elements": [
+        {
+          "shapeRef": "cdg/track"
+        },
+        {
+          "shapeRef": "font/W",
+          "offset": [-5.0, 10.5]
+        },
+        {
+          "shapeRef": "font/E",
+          "offset": [1.0, 10.5]
+        }
+      ]
+    },
+    "cdg/depwl": {
+      "description": "CoFrance CDG track with subtext WL.",
+      "rotateWithHeading": false,
+      "elements": [
+        {
+          "shapeRef": "cdg/track"
+        },
+        {
+          "shapeRef": "font/W",
+          "offset": [-5.0, 10.5]
+        },
+        {
+          "shapeRef": "font/L",
+          "offset": [1.0, 10.5]
+        }
+      ]
+    },
+    "cdg/localorly": {
+      "description": "CoFrance CDG track with subtext P.",
+      "rotateWithHeading": false,
+      "elements": [
+        {
+          "shapeRef": "cdg/track"
+        },
+        {
+          "shapeRef": "font/P",
+          "offset": [-2.0, 10.5]
+        }
+      ]
+    },
+    "cdg/localpgpb": {
+      "description": "CoFrance CDG track with subtext G.",
+      "rotateWithHeading": false,
+      "elements": [
+        {
+          "shapeRef": "cdg/track"
+        },
+        {
+          "shapeRef": "font/G",
+          "offset": [-2.0, 10.5]
+        }
+      ]
+    },
+    "cdg/other": {
+      "description": "CoFrance CDG track with subtext X.",
+      "rotateWithHeading": false,
+      "elements": [
+        {
+          "shapeRef": "cdg/track"
+        },
+        {
+          "shapeRef": "font/X",
+          "offset": [-2.0, 10.5]
+        }
+      ]
+    },
+    "cdg/track": {
+      "description": "CoFrance Paris-CDG track: a 10 px disk. Filled circles need client support; older clients draw the outline.",
+      "rotateWithHeading": false,
+      "elements": [
+        {
+          "circle": {
+            "radius": 5
+          },
+          "fill": true
+        }
+      ]
+    },
+    "cdg/trail": {
+      "description": "CoFrance 'circle' history trail mark, a 6 px ring.",
+      "rotateWithHeading": false,
+      "elements": [
+        {
+          "circle": {
+            "radius": 2
+          },
+          "strokeWidth": 2
+        }
+      ]
+    },
+    "cdg/vfr": {
+      "description": "CoFrance CDG track with subtext Z.",
+      "rotateWithHeading": false,
+      "elements": [
+        {
+          "shapeRef": "cdg/track"
+        },
+        {
+          "shapeRef": "font/Z",
+          "offset": [-2.0, 10.5]
+        }
+      ]
+    },
+    "font/A": {
+      "description": "Stroke letter A, 4 x 5 units from its top-left corner, for track subtexts.",
+      "rotateWithHeading": false,
+      "elements": [
+        {
+          "line": [[0, 5], [0, 1.5], [2, 0], [4, 1.5], [4, 5]]
+        },
+        {
+          "line": [[0, 3], [4, 3]]
+        }
+      ]
+    },
+    "font/B": {
+      "description": "Stroke letter B, 4 x 5 units from its top-left corner, for track subtexts.",
+      "rotateWithHeading": false,
+      "elements": [
+        {
+          "line": [[0, 0], [0, 5], [3, 5], [4, 4.2], [4, 3.3], [3, 2.5], [0, 2.5]]
+        },
+        {
+          "line": [[0, 0], [3, 0], [4, 0.7], [4, 1.8], [3, 2.5]]
+        }
+      ]
+    },
+    "font/D": {
+      "description": "Stroke letter D, 4 x 5 units from its top-left corner, for track subtexts.",
+      "rotateWithHeading": false,
+      "elements": [
+        {
+          "line": [[0, 0], [0, 5], [2.5, 5], [4, 3.7], [4, 1.3], [2.5, 0], [0, 0]]
+        }
+      ]
+    },
+    "font/E": {
+      "description": "Stroke letter E, 4 x 5 units from its top-left corner, for track subtexts.",
+      "rotateWithHeading": false,
+      "elements": [
+        {
+          "line": [[4, 0], [0, 0], [0, 5], [4, 5]]
+        },
+        {
+          "line": [[0, 2.5], [3, 2.5]]
+        }
+      ]
+    },
+    "font/G": {
+      "description": "Stroke letter G, 4 x 5 units from its top-left corner, for track subtexts.",
+      "rotateWithHeading": false,
+      "elements": [
+        {
+          "line": [[4, 0.8], [3, 0], [1, 0], [0, 1], [0, 4], [1, 5], [3, 5], [4, 4], [4, 2.7], [2, 2.7]]
+        }
+      ]
+    },
+    "font/H": {
+      "description": "Stroke letter H, 4 x 5 units from its top-left corner, for track subtexts.",
+      "rotateWithHeading": false,
+      "elements": [
+        {
+          "line": [[0, 0], [0, 5]]
+        },
+        {
+          "line": [[4, 0], [4, 5]]
+        },
+        {
+          "line": [[0, 2.5], [4, 2.5]]
+        }
+      ]
+    },
+    "font/L": {
+      "description": "Stroke letter L, 4 x 5 units from its top-left corner, for track subtexts.",
+      "rotateWithHeading": false,
+      "elements": [
+        {
+          "line": [[0, 0], [0, 5], [4, 5]]
+        }
+      ]
+    },
+    "font/M": {
+      "description": "Stroke letter M, 4 x 5 units from its top-left corner, for track subtexts.",
+      "rotateWithHeading": false,
+      "elements": [
+        {
+          "line": [[0, 5], [0, 0], [2, 2.5], [4, 0], [4, 5]]
+        }
+      ]
+    },
+    "font/N": {
+      "description": "Stroke letter N, 4 x 5 units from its top-left corner, for track subtexts.",
+      "rotateWithHeading": false,
+      "elements": [
+        {
+          "line": [[0, 5], [0, 0], [4, 5], [4, 0]]
+        }
+      ]
+    },
+    "font/O": {
+      "description": "Stroke letter O, 4 x 5 units from its top-left corner, for track subtexts.",
+      "rotateWithHeading": false,
+      "elements": [
+        {
+          "line": [[1, 0], [3, 0], [4, 1], [4, 4], [3, 5], [1, 5], [0, 4], [0, 1], [1, 0]]
+        }
+      ]
+    },
+    "font/P": {
+      "description": "Stroke letter P, 4 x 5 units from its top-left corner, for track subtexts.",
+      "rotateWithHeading": false,
+      "elements": [
+        {
+          "line": [[0, 5], [0, 0], [3, 0], [4, 0.8], [4, 1.8], [3, 2.6], [0, 2.6]]
+        }
+      ]
+    },
+    "font/R": {
+      "description": "Stroke letter R, 4 x 5 units from its top-left corner, for track subtexts.",
+      "rotateWithHeading": false,
+      "elements": [
+        {
+          "line": [[0, 5], [0, 0], [3, 0], [4, 0.8], [4, 1.8], [3, 2.6], [0, 2.6]]
+        },
+        {
+          "line": [[2, 2.6], [4, 5]]
+        }
+      ]
+    },
+    "font/S": {
+      "description": "Stroke letter S, 4 x 5 units from its top-left corner, for track subtexts.",
+      "rotateWithHeading": false,
       "elements": [
         {
           "line": [
-            [
-              -4.5,
-              -4.5
-            ],
-            [
-              4.5,
-              4.5
-            ]
+            [4, 0.8],
+            [3, 0],
+            [1, 0],
+            [0, 0.8],
+            [0, 1.7],
+            [1, 2.5],
+            [3, 2.5],
+            [4, 3.3],
+            [4, 4.2],
+            [3, 5],
+            [1, 5],
+            [0, 4.2]
           ]
+        }
+      ]
+    },
+    "font/T": {
+      "description": "Stroke letter T, 4 x 5 units from its top-left corner, for track subtexts.",
+      "rotateWithHeading": false,
+      "elements": [
+        {
+          "line": [[0, 0], [4, 0]]
         },
         {
-          "line": [
-            [
-              4.5,
-              -4.5
-            ],
-            [
-              -4.5,
-              4.5
-            ]
-          ]
+          "line": [[2, 0], [2, 5]]
+        }
+      ]
+    },
+    "font/V": {
+      "description": "Stroke letter V, 4 x 5 units from its top-left corner, for track subtexts.",
+      "rotateWithHeading": false,
+      "elements": [
+        {
+          "line": [[0, 0], [2, 5], [4, 0]]
+        }
+      ]
+    },
+    "font/W": {
+      "description": "Stroke letter W, 4 x 5 units from its top-left corner, for track subtexts.",
+      "rotateWithHeading": false,
+      "elements": [
+        {
+          "line": [[0, 0], [1, 5], [2, 2.5], [3, 5], [4, 0]]
+        }
+      ]
+    },
+    "font/X": {
+      "description": "Stroke letter X, 4 x 5 units from its top-left corner, for track subtexts.",
+      "rotateWithHeading": false,
+      "elements": [
+        {
+          "line": [[0, 0], [4, 5]]
         },
         {
-          "line": [
-            [
-              0,
-              -4.5
-            ],
-            [
-              0,
-              4.5
-            ]
-          ]
-        },
+          "line": [[4, 0], [0, 5]]
+        }
+      ]
+    },
+    "font/Z": {
+      "description": "Stroke letter Z, 4 x 5 units from its top-left corner, for track subtexts.",
+      "rotateWithHeading": false,
+      "elements": [
         {
-          "line": [
-            [
-              -4.5,
-              0
-            ],
-            [
-              4.5,
-              0
-            ]
-          ]
+          "line": [[0, 0], [4, 0], [0, 5], [4, 5]]
+        }
+      ]
+    },
+    "neoirma/ground": {
+      "description": "Ground track: an 8 px ring over the raw video (AVISO look).",
+      "rotateWithHeading": false,
+      "elements": [
+        {
+          "circle": {
+            "radius": 3
+          },
+          "strokeWidth": 2
+        }
+      ]
+    },
+    "neoirma/ground-trail": {
+      "description": "Ground history trail mark, a 4 px square.",
+      "rotateWithHeading": false,
+      "elements": [
+        {
+          "rect": {
+            "size": [4, 4]
+          },
+          "fill": true
+        }
+      ]
+    },
+    "neoirma/track": {
+      "description": "CoFrance IRMA track symbol: an open triangle, coloured by the variant's plotColor.",
+      "rotateWithHeading": false,
+      "elements": [
+        {
+          "polygon": [[0, -4.5], [4.5, 3.5], [-4.5, 3.5]]
+        }
+      ]
+    },
+    "neoirma/trail": {
+      "description": "CoFrance 'dots' history trail mark.",
+      "rotateWithHeading": false,
+      "elements": [
+        {
+          "rect": {
+            "size": [2, 2]
+          },
+          "fill": true
         }
       ]
     }

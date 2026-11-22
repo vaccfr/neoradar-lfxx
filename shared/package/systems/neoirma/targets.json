@@ -1,0 +1,123 @@
+{
+  "$schema": "https://raw.githubusercontent.com/neoradar-project/schemas/refs/heads/main/systems/targets.schema.json",
+  "groundSymbology": {
+    "default": [
+      {
+        "plotShape": "neoirma/ground",
+        "plotColor": [212, 212, 185],
+        "primaryPlotColor": [255, 242, 73],
+        "primaryHistoryTrailColor": [[0, 255, 255], [0, 219, 219], [0, 183, 183]],
+        "historyTrailsSkipSteps": 3,
+        "historyTrailShape": {
+          "shape": "neoirma/ground-trail",
+          "steps": 3,
+          "color": [212, 212, 185]
+        }
+      }
+    ],
+    "departure": [
+      {
+        "plotShape": "neoirma/ground",
+        "plotColor": [212, 212, 185],
+        "primaryPlotColor": [240, 208, 48],
+        "primaryHistoryTrailColor": [[0, 255, 255], [0, 219, 219], [0, 183, 183]],
+        "historyTrailsSkipSteps": 3,
+        "historyTrailShape": {
+          "shape": "neoirma/ground-trail",
+          "steps": 3,
+          "color": [212, 212, 185]
+        }
+      }
+    ],
+    "arrival": [
+      {
+        "plotShape": "neoirma/ground",
+        "plotColor": [212, 212, 185],
+        "primaryPlotColor": [240, 208, 48],
+        "primaryHistoryTrailColor": [[0, 255, 255], [0, 219, 219], [0, 183, 183]],
+        "historyTrailsSkipSteps": 3,
+        "historyTrailShape": {
+          "shape": "neoirma/ground-trail",
+          "steps": 3,
+          "color": [212, 212, 185]
+        }
+      }
+    ]
+  },
+  "airborneSymbology": [
+    {
+      "description": "DEP: departs a French airport",
+      "applyWhen": "$neoirmaDep",
+      "applyToFilterStates": ["kUnfiltered", "kUpperFiltered", "kLowerFiltered"],
+      "plotShape": "neoirma/track",
+      "plotColor": [213, 151, 163],
+      "historyTrailShape": {
+        "shape": "neoirma/trail",
+        "steps": 5,
+        "color": [213, 151, 163],
+        "opacityRamp": [1, 0.85, 0.7, 0.55, 0.45]
+      },
+      "historyTrailsSkipSteps": 7,
+      "speedVectorColor": [213, 151, 163]
+    },
+    {
+      "description": "ARR: arrives at a French airport",
+      "applyWhen": "$neoirmaArr",
+      "applyToFilterStates": ["kUnfiltered", "kUpperFiltered", "kLowerFiltered"],
+      "plotShape": "neoirma/track",
+      "plotColor": [99, 187, 217],
+      "historyTrailShape": {
+        "shape": "neoirma/trail",
+        "steps": 5,
+        "color": [99, 187, 217],
+        "opacityRamp": [1, 0.85, 0.7, 0.55, 0.45]
+      },
+      "historyTrailsSkipSteps": 7,
+      "speedVectorColor": [99, 187, 217]
+    },
+    {
+      "description": "IFR, assumed or transferred out",
+      "applyWhen": "$neoirmaIFR",
+      "applyToAttentionStates": ["kAssumed", "kOutgoingTransfer"],
+      "applyToFilterStates": ["kUnfiltered", "kUpperFiltered", "kLowerFiltered"],
+      "plotShape": "neoirma/track",
+      "plotColor": [255, 255, 255],
+      "historyTrailShape": {
+        "shape": "neoirma/trail",
+        "steps": 5,
+        "color": [255, 255, 255],
+        "opacityRamp": [1, 0.85, 0.7, 0.55, 0.45]
+      },
+      "historyTrailsSkipSteps": 7,
+      "speedVectorColor": [255, 255, 255]
+    },
+    {
+      "description": "Other traffic, yours or offered to you, shown through the altitude filter",
+      "applyToAttentionStates": ["kIncomingTransfer", "kAssumed", "kOutgoingTransfer"],
+      "applyToFilterStates": ["kUnfiltered", "kUpperFiltered", "kLowerFiltered"],
+      "plotShape": "neoirma/track",
+      "plotColor": [142, 142, 142],
+      "historyTrailShape": {
+        "shape": "neoirma/trail",
+        "steps": 5,
+        "color": [142, 142, 142],
+        "opacityRamp": [1, 0.85, 0.7, 0.55, 0.45]
+      },
+      "historyTrailsSkipSteps": 7,
+      "speedVectorColor": [142, 142, 142]
+    },
+    {
+      "description": "Other traffic",
+      "plotShape": "neoirma/track",
+      "plotColor": [142, 142, 142],
+      "historyTrailShape": {
+        "shape": "neoirma/trail",
+        "steps": 5,
+        "color": [142, 142, 142],
+        "opacityRamp": [1, 0.85, 0.7, 0.55, 0.45]
+      },
+      "historyTrailsSkipSteps": 7,
+      "speedVectorColor": [142, 142, 142]
+    }
+  ]
+}

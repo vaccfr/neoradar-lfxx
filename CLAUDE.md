@@ -6,11 +6,13 @@ Guidance for Claude Code in this repository. Maintainer documentation is in
 ## What this is
 
 The build for the French vACC's NeoRadar package, `LFXX`: all of France in one package, built from
-the military GNG sector file (`LFFM`), which covers every French FIR. It holds scripts and settings
-only. The package is rebuilt from upstream on each run:
+the military GNG sector file (`LFFM`), which covers every French FIR. NeoRadar serves approach and
+below for now: centre ASRs are left out. It holds scripts and settings only. The package is
+rebuilt from upstream on each run:
 
 - `vaccfr/Sector-Files` (public): ASRs, login profiles, aliases
-- `alexisBalzano/CoFrance-config-files` (public): CoFrance maps and `config/tag_formats.json`
+- `alexisBalzano/CoFrance-config-files` (public): CoFrance maps (its `tag_formats.json` is the
+  reference the two systems were ported from, not a build input)
 - `vaccfr/data-sectorfiles` (PRIVATE): GNG `.sct`/`.ese`, ICAO, NavData
 
 Laid over each other, they form a "source tree" with the French Controller Pack layout. A local
@@ -35,14 +37,14 @@ Controller Pack install (e.g. `~/Documents/FrenchVACC`) is already one.
 
 | Path | What |
 | --- | --- |
-| `packages.json` | The package: id, namespace (permanent: provider URL and server vAcc id), sector file, FIR folders, ICAO/NavData folder, publish settings |
+| `packages.json` | The package: id, namespace (permanent: provider URL and server vAcc id), sector file, FIR folders, `excludeAsrs` (centre displays left out), ICAO/NavData folder, publish settings |
 | `scripts/build.py` | `assemble` (source tree → `build/<ID>/` environment) and `finalize` (after `neoradar-cli convert`: profiles, manifest) |
 | `scripts/cofrance.py` | CoFrance GeoJSON maps → NeoRadar map layers (EPSG:3857, item table, `showWhen` from CoFrance `activation`) |
-| `scripts/tag_formats.py` | One `cf-<format>` system per CoFrance tag format without a hand-made port |
 | `scripts/build-all.sh` | assemble → convert → finalize for all or some packages; CI and local both use it |
-| `scripts/validate.js` | Schema check of built packages (ajv) |
+| `scripts/validate.js` | Schema check of built packages (ajv), plus every `=rule`, `$expression`, shape and `#system` reference in the systems |
 | `shared/package/` | Copied into every package: systems, fonts, images, sounds |
-| `shared/package/systems/` | Hand-made systems: `irma` (IRMA, also the template for generated ones), `cdg` (Paris-CDG), `nce` (Nice), `default` (CoFrance base look: FIR/UIR and AVISO displays) |
+| `shared/package/systems/` | The two static systems: `neoirma` (stripless IRMA: every approach but CDG, and the one ground look, used by every AVISO) and `cdg` (Paris-CDG approach; its ground is `#neoirma`). Tracks are vector shapes in `shapes.json` |
+| `backup/` | The systems, sprite atlas and tag-format generator before the two-system cleanup. Not built, kept for reference |
 | `diffs/`, `transforms/` | Patches and text replacements applied to source files during `assemble` |
 | `.github/workflows/` | `release.yml` (build, validate, publish), `validate.yml` (repo checks) |
 
@@ -68,8 +70,16 @@ node scripts/validate.js <schemas checkout> build/*/package      # ajv@8 + js-ya
   system alphabetically (`cdg`). `finalize` sets one on every profile.
 - **A profile with an empty item list draws every layer.** `finalize` fills AVISO profiles, whose
   upstream ASRs carry no map content on purpose.
-- **Generated systems copy `irma`'s label rows.** All CoFrance formats share one tag layout; only
-  colours, symbols and conditions differ per format.
+- **Two systems, edited by hand.** The build does not read CoFrance's tag formats: a CoFrance
+  colour or rule change is ported into `shared/package/systems` by hand. Track colours follow
+  CoFrance's IRMA / Paris-CDG rules in priority order; the flight state is the callsign's reverse
+  video (docs/maintaining.md has the table).
+- **Filtered traffic is hidden unless a variant lists its filter state.** Variants for flows
+  CoFrance never filters, and for flights assumed or in transfer, list all `applyToFilterStates`;
+  tag layouts have a twin keyed on `$<system>ThroughFilter`. Keep targets, styles and layouts in
+  step.
+- **Shapes fill only axis-aligned rects in the client.** Circles and other polygons with `fill`
+  draw as outlines until the client supports them.
 - **The server's data is separate.** `server-dataset.json` is uploaded with
   `neoradar-cli push-dataset`; procedure rules and runway preferences are server config, not
   part of the package.

@@ -1,0 +1,145 @@
+{
+  "$schema": "https://raw.githubusercontent.com/neoradar-project/schemas/refs/heads/main/systems/targets.schema.json",
+  "groundSymbology": "#default",
+  "airborneSymbology": [
+    {
+      "description": "issy helico avec code 4217",
+      "applyWhen": ["==", "squawk", "4217"],
+      "plotImage": "plots/cdg/blanc/t0",
+      "historyTrailsSkipSteps": 5,
+      "historyTrailImages": [
+        "plots/cdg/blanc/t1",
+        "plots/cdg/blanc/t2",
+        "plots/cdg/blanc/t3",
+        "plots/cdg/blanc/t4",
+        "plots/cdg/blanc/t5",
+        "plots/cdg/blanc/t6"
+      ]
+    },
+    {
+      "description": "lfpg lfpb dep",
+      "applyWhen": "$isCDGOrPBDeparture",
+      "plotImage": "plots/cdg/D/t0",
+      "historyTrailsSkipSteps": 5,
+      "historyTrailImages": [
+        "plots/cdg/D/t1",
+        "plots/cdg/D/t2",
+        "plots/cdg/D/t3",
+        "plots/cdg/D/t4",
+        "plots/cdg/D/t5",
+        "plots/cdg/D/t6"
+      ]
+    },
+    {
+      "description": "orly arrival",
+      "applyWhen": "$isOrlyArrival",
+      "plotImage": "plots/cdg/O/t0",
+      "historyTrailsSkipSteps": 5,
+      "historyTrailImages": [
+        "plots/cdg/O/t1",
+        "plots/cdg/O/t2",
+        "plots/cdg/O/t3",
+        "plots/cdg/O/t4",
+        "plots/cdg/O/t5",
+        "plots/cdg/O/t6"
+      ]
+    },
+    {
+      "description": "lfpg south runway arrival",
+      "applyWhen": "$isLFPGSouthArrival",
+      "plotImage": "plots/cdg/S/t0",
+      "historyTrailsSkipSteps": 5,
+      "historyTrailImages": [
+        "plots/cdg/S/t1",
+        "plots/cdg/S/t2",
+        "plots/cdg/S/t3",
+        "plots/cdg/S/t4",
+        "plots/cdg/S/t5",
+        "plots/cdg/S/t6"
+      ]
+    },
+    {
+      "description": "lfpg north runway arrival",
+      "applyWhen": "$isLFPGNorthArrival",
+      "plotImage": "plots/cdg/N/t0",
+      "historyTrailsSkipSteps": 5,
+      "historyTrailImages": [
+        "plots/cdg/N/t1",
+        "plots/cdg/N/t2",
+        "plots/cdg/N/t3",
+        "plots/cdg/N/t4",
+        "plots/cdg/N/t5",
+        "plots/cdg/N/t6"
+      ]
+    },
+    {
+      "description": "lfpb arrival",
+      "applyWhen": "$isBourgetArrival",
+      "plotImage": "plots/cdg/B/t0",
+      "historyTrailsSkipSteps": 5,
+      "historyTrailImages": [
+        "plots/cdg/B/t1",
+        "plots/cdg/B/t2",
+        "plots/cdg/B/t3",
+        "plots/cdg/B/t4",
+        "plots/cdg/B/t5",
+        "plots/cdg/B/t6"
+      ]
+    },
+    {
+      "description": "any other departure",
+      "applyWhen": ["OR", ["$isParisGroupDeparture", "$isBeauvaisDeparture", "$isDep"]],
+      "plotImage": "plots/cdg/T/t0",
+      "historyTrailsSkipSteps": 5,
+      "historyTrailImages": [
+        "plots/cdg/T/t1",
+        "plots/cdg/T/t2",
+        "plots/cdg/T/t3",
+        "plots/cdg/T/t4",
+        "plots/cdg/T/t5",
+        "plots/cdg/T/t6"
+      ]
+    },
+    {
+      "description": "any other arrival",
+      "applyWhen": "$isArr",
+      "plotImage": "plots/cdg/A/t0",
+      "historyTrailsSkipSteps": 5,
+      "historyTrailImages": [
+        "plots/cdg/A/t1",
+        "plots/cdg/A/t2",
+        "plots/cdg/A/t3",
+        "plots/cdg/A/t4",
+        "plots/cdg/A/t5",
+        "plots/cdg/A/t6"
+      ]
+    },
+    {
+      "description": "catch all for assumed target",
+      "applyToAttentionStates": ["kAssumed"],
+      "plotImage": "plots/cdg/blanc/t0",
+      "historyTrailsSkipSteps": 5,
+      "historyTrailImages": [
+        "plots/cdg/blanc/t1",
+        "plots/cdg/blanc/t2",
+        "plots/cdg/blanc/t3",
+        "plots/cdg/blanc/t4",
+        "plots/cdg/blanc/t5",
+        "plots/cdg/blanc/t6"
+      ]
+    },
+    {
+      "description": "Unconcerned air",
+      "plotImage": "plots/cdg/noir/t0",
+      "historyTrailsSkipSteps": 5,
+      "historyTrailImages": [
+        "plots/cdg/noir/t1",
+        "plots/cdg/noir/t2",
+        "plots/cdg/noir/t3",
+        "plots/cdg/noir/t4",
+        "plots/cdg/noir/t5",
+        "plots/cdg/noir/t6"
+      ]
+    }
+  ]
+}

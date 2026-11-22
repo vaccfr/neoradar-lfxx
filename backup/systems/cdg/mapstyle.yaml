@@ -1,0 +1,41 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/neoradar-project/schemas/main/systems/mapstyle.schema.json
+inactiveSectorBackgroundColor: [42, 44, 48]
+activeSectorBackgroundColor: [33, 33, 33]
+
+neighborSectorBorderLineColor: [145, 82, 15]
+neighborSectorBorderLineWidth: 2
+
+extendedCenterlines:
+  lengthNm: 23
+  color: [101, 129, 101]
+  lineWidth: 2
+  thresholdOffsetNm: 2
+
+  majorTickType: 'circle'
+  majorTickSpacingNm: 3
+  majorTickWidth: 50
+
+layerStyles:
+  fix:
+    pointStyle:
+      type: cross
+      size: 6
+      strokeColor: [83, 94, 78]
+      fillColor: [83, 94, 78]
+      rotation: 45
+
+  vor:
+    pointStyle:
+      type: cross
+      size: 4
+      strokeColor: [83, 94, 78]
+      fillColor: [83, 94, 78]
+      rotation: 45
+
+  nbd:
+    pointStyle:
+      type: cross
+      size: 4
+      strokeColor: [83, 94, 78]
+      fillColor: [83, 94, 78]
+      rotation: 45

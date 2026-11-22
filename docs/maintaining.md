@@ -8,7 +8,7 @@ upstream, and a release is mostly "update the data, run the workflow".
 
 ```text
 vaccfr/Sector-Files (public)              ASRs, login profiles, aliases
-alexisBalzano/CoFrance-config-files       CoFrance maps and tag formats
+alexisBalzano/CoFrance-config-files       CoFrance maps
 vaccfr/data-sectorfiles (PRIVATE)         GNG sector files, ICAO, NavData
                 │
                 ▼  laid over each other into one "source tree"
@@ -28,6 +28,11 @@ vaccfr/data-sectorfiles (PRIVATE)         GNG sector files, ICAO, NavData
 It is defined in `packages.json`. ASRs, login profiles and CoFrance maps come from every FIR folder
 listed (the first FIR wins a duplicated callsign); ICAO and NavData come from `LFFM` (`dataFolder`).
 The per-FIR GNG files (`LFBB`, `LFFF`, `LFEE`, `LFMM`, `LFRR`) are no longer used.
+
+NeoRadar is used for approach and below for now, so the centre displays are left out:
+`excludeAsrs` in `packages.json` lists them as globs (`* FIR.asr`, `* UIR.asr`, `* CTR.asr`), and
+the build log names every ASR it skipped. Remove a pattern to ship those displays again (they
+would then need a system: see below).
 
 ## Each AIRAC
 
@@ -106,23 +111,54 @@ only for what is NeoRadar-specific or cannot wait.
 
 ### Tag colours, labels, symbols (radar systems)
 
-Each profile gets the system matching its ASR's `PLUGIN:CoFrance:TagFormat`:
+There are two systems, both static files in `shared/package/systems/`, edited by hand. The build
+no longer reads CoFrance's `tag_formats.json`: when CoFrance changes a colour or rule, port it here.
 
-| Tag format | System | Where it comes from |
+| System | Used by | Track logic from |
 | --- | --- | --- |
-| IRMA | `irma` | hand-made, `shared/package/systems/irma` |
-| Paris-CDG | `cdg` | hand-made |
-| Nice | `nce` | hand-made |
-| `default` (FIR / UIR displays) and AVISO displays | `default` | hand-made, CoFrance's base look |
-| every other format (Seine, Lyon, Paris-Orly…) | `cf-<format>` | generated at build time |
+| `neoirma` | every CoFrance approach display except Paris-CDG, and every AVISO (ground) display | CoFrance tag format `IRMA` |
+| `cdg` | the Paris-CDG approach (`PLUGIN:CoFrance:TagFormat:Paris-CDG`) | CoFrance tag format `Paris-CDG` |
 
-- **Hand-made systems**: edit the files in `shared/package/systems/<name>/`.
-- **Generated systems**: colours, symbols and which flights get them come from CoFrance's
-  `tag_formats.json`, so change them there. The tag *content* (rows and items) is copied from
-  `irma`: change `irma`'s labels and every generated system follows.
-- Rules shared by all systems live in `shared/package/systems/expressions.json`.
+`SYSTEM_FOR_TAG_FORMAT` in `scripts/build.py` maps tag formats to systems; anything else gets
+`neoirma`. neoIRMA is a stripless IRMA, not the real-world one. Its `ground` section (labels and
+targets) is the package's only ground look: the AVISO look, raw video with a small ring. `cdg`'s
+`ground` and `groundSymbology` are `"#neoirma"`, a reference to it.
 
-The schemas describe every field: <https://github.com/neoradar-project/schemas> (`systems/`).
+**Track colours** follow the CoFrance rules in their priority order (the first matching variant
+wins, as CoFrance's lowest priority number does):
+
+- `neoirma`: departing a French airport (`LF*`) pink `#D597A3`; arriving at one blue `#63BBD9`;
+  other IFR traffic that is assumed or transferred out white; everything else grey `#8E8E8E`.
+- `cdg`: CoFrance's Paris-CDG letters and colours: `S`/`N` CDG arrivals by runway pair (the
+  assigned arrival runway, or the server's suggestion while none is assigned), `B` Le Bourget,
+  `O` Orly, `A` Pontoise/Beauvais, `V` Toussus/Villacoublay, `R` CDG with no runway yet, `G`/`P`
+  local flights, two-letter departure codes by route point (`NN` NURMO, `EL` LANVI…), `T` other
+  Paris departures, black `Z` (VFR) and `X` (the rest).
+
+**Altitude filter.** CoFrance shows flights from a rule with `filtered: false`, and any flight
+assumed by you, in transfer to or from you, through the altitude filter. Each variant that does
+this lists every `applyToFilterStates`; the tag layouts have a twin keyed on
+`$neoirmaThroughFilter` / `$cdgThroughFilter` for the same flights.
+
+**Flight state** is on the callsign. CoFrance's IRMA and Paris-CDG formats colour by flow, not
+by state, so the state is shown in reverse video:
+
+| State | Callsign |
+| --- | --- |
+| Assumed | dark text on a box of the flight's track colour (CoFrance's assumed grey `205,205,205` when that colour is black) |
+| Transfer to you | dark text on CoFrance's hand-off green `160,216,180` |
+| Transferred out | hand-off green text, no box |
+| Other | the track colour, no box |
+
+Track symbols are vector shapes (`shapes.json`), coloured by each variant's `plotColor`, not
+sprites. CDG's letters are stroke glyphs (`font/A`…`font/Z`) composed under the disk. The CDG disk
+and IRMA's ground plot ask for `fill`. Current clients only fill axis-aligned rectangles and draw
+the others as outlines until filled circles and polygons are supported.
+
+Rules and expressions shared by both live in `expressions.json`; `lists.yaml` is shared too. The
+schemas describe every field: <https://github.com/neoradar-project/schemas> (`systems/`).
+`scripts/validate.js` also checks that every `=rule`, `$expression`, shape and `#system` named in
+the systems exists, since the client silently ignores a broken one.
 
 ### Maps
 
@@ -135,8 +171,9 @@ The schemas describe every field: <https://github.com/neoradar-project/schemas> 
 
 Profiles are converted from the ASRs on every build, then `finalize` adds:
 
-- CoFrance displays: the system, transition altitude 5000, CoFrance's altitude filter and maps.
-- AVISO displays: the `default` system and the airport's `<ICAO> AVISO` region and
+- CoFrance displays: the system (`cdg` or `neoirma`), transition altitude 5000, CoFrance's
+  altitude filter and maps.
+- AVISO displays: the `neoirma` system and the airport's `<ICAO> AVISO` region and
   `<ICAO> Groundlayout AVISO` geo. Airports without those get their ground layout and runways.
 
 To change a profile, change its ASR upstream.
@@ -165,7 +202,7 @@ upstream.
 | `CoFrance maps named by ASRs but absent` | An ASR enables a CoFrance map that does not exist | Fix the ASR or add the map in CoFrance-config-files |
 | `sets vSMR:Airport:X; using Y from its name` | An AVISO ASR points at the wrong airport | Fix the ASR in Sector-Files |
 | `AVISO displays drawing runways only` | The sector file has no ground layout for that airport | Nothing, or ask for a ground layout in GNG |
-| `tag format …: rule … skipped, unsupported condition` | CoFrance added a condition the generator does not know | Extend `scripts/tag_formats.py` |
+| `profiles use systems that shared/package/systems does not have` (fails the build) | `SYSTEM_FOR_TAG_FORMAT` names a system with no folder | Add the system or fix the mapping in `scripts/build.py` |
 | `replacement … matched nothing` | Upstream changed text a transform expects | Update `transforms/replacements.json` |
 | `ESE Parsing error` (neoradar-cli) | A malformed line in the GNG file, e.g. a SID with no route | Usually harmless; report to GNG if it matters |
 

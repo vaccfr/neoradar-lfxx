@@ -1,905 +1,32 @@
 {
   "$schema": "https://raw.githubusercontent.com/neoradar-project/schemas/refs/heads/main/systems/labels.schema.json",
-  "ground": {
-    "labels": [
-      {
-        "description": "Arrival detailed",
-        "detailed": true,
-        "applyToIsArrival": true,
-        "rows": [
-          [
-            {
-              "itemName": "callsign",
-              "fontWeight": "bold",
-              "fontSize": 12,
-              "leftClick": "callsignMenu",
-              "prefix": [
-                "=assumedPrefix"
-              ],
-              "suffix": [
-                "=assumedSuffix"
-              ]
-            },
-            {
-              "separatorBefore": true,
-              "itemName": "voiceType",
-              "mapping": {
-                "0": "",
-                "1": "/r",
-                "2": "/t"
-              },
-              "color": [
-                255,
-                220,
-                3
-              ]
-            },
-            {
-              "itemName": "acShortType",
-              "placeholder": "ATYP",
-              "leftClick": "fpDialog"
-            }
-          ],
-          [
-            {
-              "itemName": "scratchpad",
-              "placeholder": "...",
-              "leftClick": "triggerScratchpad"
-            }
-          ]
-        ]
-      },
-      {
-        "description": "Departure detailed",
-        "detailed": true,
-        "applyToIsDeparture": true,
-        "rows": [
-          [
-            {
-              "itemName": "callsign",
-              "fontWeight": "bold",
-              "fontSize": 12,
-              "leftClick": "callsignMenu",
-              "prefix": [
-                "=assumedPrefix"
-              ],
-              "suffix": [
-                "=assumedSuffix"
-              ],
-              "color": "=incorrectSquawkRedColor"
-            },
-            {
-              "separatorBefore": true,
-              "itemName": "voiceType",
-              "mapping": {
-                "0": "",
-                "1": "/r",
-                "2": "/t"
-              },
-              "color": [
-                255,
-                220,
-                3
-              ]
-            },
-            {
-              "itemName": "acShortType",
-              "placeholder": "ATYP",
-              "leftClick": "fpDialog"
-            }
-          ],
-          [
-            {
-              "itemName": "text",
-              "placeholder": "RWY",
-              "value": [
-                "=suggestedDepRunwayIfNoAssigned",
-                "&depRunway"
-              ],
-              "leftClick": "depRunwayMenu"
-            },
-            {
-              "itemName": "text",
-              "placeholder": "SID",
-              "value": [
-                "=suggestedSidIfNoAssigned",
-                "&sid"
-              ],
-              "leftClick": "sidMenu"
-            }
-          ],
-          [
-            {
-              "itemName": "groundStatus",
-              "leftClick": "groundStatusMenu",
-              "mapping": {
-                "0": "NOST",
-                "1": "STUP",
-                "2": "PUSH",
-                "3": "TAXI",
-                "4": "DEPA"
-              }
-            },
-            {
-              "itemName": "scratchpad",
-              "leftClick": "triggerScratchpad",
-              "placeholder": "..."
-            }
-          ]
-        ]
-      },
-      {
-        "description": "Detailed",
-        "detailed": true,
-        "rows": [
-          [
-            {
-              "itemName": "plugin:NeoVSID:TAG_ALERT",
-              "value": "No Push Clearance",
-              "fontSize": 12,
-              "fontWeight": "bold",
-              "backgroundColor": [
-                234,
-                171,
-                24
-              ]
-            }
-          ],
-          [
-            {
-              "itemName": "callsign",
-              "fontWeight": "bold",
-              "leftClick": "callsignMenu",
-              "prefix": [
-                "=assumedPrefix"
-              ],
-              "suffix": [
-                "=assumedSuffix"
-              ],
-              "fontSize": 12
-            },
-            {
-              "separatorBefore": true,
-              "itemName": "voiceType",
-              "mapping": {
-                "0": "",
-                "1": "/r",
-                "2": "/t"
-              },
-              "color": [
-                255,
-                220,
-                3
-              ]
-            },
-            {
-              "itemName": "squawk",
-              "prefix": "@"
-            }
-          ]
-        ]
-      },
-      {
-        "description": "Arrival",
-        "applyToIsArrival": true,
-        "rows": [
-          [
-            {
-              "itemName": "plugin:NeoVSID:TAG_ALERT",
-              "value": "No Push Clearance",
-              "fontSize": 12,
-              "fontWeight": "bold",
-              "backgroundColor": [
-                234,
-                171,
-                24
-              ]
-            }
-          ],
-          [
-            {
-              "itemName": "callsign",
-              "prefix": [
-                "=assumedPrefix"
-              ],
-              "suffix": [
-                "=assumedSuffix"
-              ],
-              "fontWeight": "bold",
-              "fontSize": 12
-            },
-            {
-              "separatorBefore": true,
-              "itemName": "voiceType",
-              "mapping": {
-                "0": "",
-                "1": "/r",
-                "2": "/t"
-              },
-              "color": [
-                255,
-                220,
-                3
-              ]
-            },
-            {
-              "itemName": "acShortType",
-              "placeholder": "ATYP"
-            }
-          ],
-          [
-            {
-              "itemName": "scratchpad"
-            }
-          ]
-        ]
-      },
-      {
-        "description": "Departure",
-        "applyToIsDeparture": true,
-        "rows": [
-          [
-            {
-              "itemName": "plugin:NeoVSID:TAG_ALERT",
-              "value": "No Push Clearance",
-              "fontSize": 12,
-              "fontWeight": "bold",
-              "backgroundColor": [
-                234,
-                171,
-                24
-              ]
-            }
-          ],
-          [
-            {
-              "itemName": "callsign",
-              "prefix": [
-                "=assumedPrefix"
-              ],
-              "suffix": [
-                "=assumedSuffix"
-              ],
-              "fontWeight": "bold",
-              "fontSize": 12,
-              "color": "=incorrectSquawkRedColor"
-            },
-            {
-              "separatorBefore": true,
-              "itemName": "voiceType",
-              "mapping": {
-                "0": "",
-                "1": "/r",
-                "2": "/t"
-              },
-              "color": [
-                255,
-                220,
-                3
-              ]
-            },
-            {
-              "itemName": "text",
-              "value": "=penWhenScratchpadNotEmpty",
-              "fontSize": 12,
-              "fontWeight": "bold"
-            },
-            {
-              "itemName": "acShortType",
-              "placeholder": "ATYP"
-            }
-          ],
-          [
-            {
-              "itemName": "text",
-              "placeholder": "RWY",
-              "value": [
-                "=suggestedDepRunwayIfNoAssigned",
-                "&depRunway"
-              ]
-            },
-            {
-              "itemName": "text",
-              "placeholder": "SID",
-              "value": [
-                "=suggestedSidIfNoAssigned",
-                "&sid"
-              ]
-            }
-          ]
-        ]
-      },
-      {
-        "description": "Default",
-        "rows": [
-          [
-            {
-              "itemName": "plugin:NeoVSID:TAG_ALERT",
-              "value": "No Push Clearance",
-              "fontSize": 12,
-              "fontWeight": "bold",
-              "backgroundColor": [
-                234,
-                171,
-                24
-              ]
-            }
-          ],
-          [
-            {
-              "itemName": "callsign",
-              "prefix": [
-                "=assumedPrefix"
-              ],
-              "suffix": [
-                "=assumedSuffix"
-              ],
-              "fontWeight": "bold",
-              "fontSize": 12
-            },
-            {
-              "separatorBefore": true,
-              "itemName": "voiceType",
-              "mapping": {
-                "0": "",
-                "1": "/r",
-                "2": "/t"
-              },
-              "color": [
-                255,
-                220,
-                3
-              ]
-            },
-            {
-              "itemName": "squawk",
-              "prefix": "@"
-            }
-          ]
-        ]
-      }
-    ],
-    "styleVariants": [
-      {
-        "applyWhen": "$isOutboundTransfer",
-        "backgroundColor": [
-          34,
-          117,
-          78
-        ],
-        "textColor": [
-          255,
-          255,
-          255
-        ],
-        "fontSize": 11,
-        "tagContainerPaddingBottom": 1,
-        "tagContainerPaddingTop": 1,
-        "tagContainerPaddingLeft": 1,
-        "tagContainerPaddingRight": 1,
-        "detailedTagContainerPaddingBottom": 1,
-        "detailedTagContainerPaddingTop": 1,
-        "detailedTagContainerPaddingLeft": 1,
-        "detailedTagContainerPaddingRight": 1,
-        "leaderLineColor": [
-          255,
-          255,
-          255
-        ]
-      },
-      {
-        "applyWhen": "$isInboundTransfer",
-        "backgroundColor": [
-          50,
-          170,
-          104
-        ],
-        "textColor": [
-          255,
-          255,
-          255
-        ],
-        "fontSize": 11,
-        "tagContainerPaddingBottom": 1,
-        "tagContainerPaddingTop": 1,
-        "tagContainerPaddingLeft": 1,
-        "tagContainerPaddingRight": 1,
-        "detailedTagContainerPaddingBottom": 1,
-        "detailedTagContainerPaddingTop": 1,
-        "detailedTagContainerPaddingLeft": 1,
-        "detailedTagContainerPaddingRight": 1,
-        "leaderLineColor": [
-          255,
-          255,
-          255
-        ]
-      },
-      {
-        "applyToIsDeparture": true,
-        "backgroundColor": [
-          40,
-          50,
-          200
-        ],
-        "textColor": [
-          255,
-          255,
-          255
-        ],
-        "fontSize": 11,
-        "tagContainerPaddingBottom": 1,
-        "tagContainerPaddingTop": 1,
-        "tagContainerPaddingLeft": 1,
-        "tagContainerPaddingRight": 1,
-        "detailedTagContainerPaddingBottom": 1,
-        "detailedTagContainerPaddingTop": 1,
-        "detailedTagContainerPaddingLeft": 1,
-        "detailedTagContainerPaddingRight": 1,
-        "leaderLineColor": [
-          255,
-          255,
-          255
-        ]
-      },
-      {
-        "applyToIsArrival": true,
-        "backgroundColor": [
-          170,
-          50,
-          50
-        ],
-        "textColor": [
-          255,
-          255,
-          255
-        ],
-        "fontSize": 11,
-        "tagContainerPaddingBottom": 1,
-        "tagContainerPaddingTop": 1,
-        "tagContainerPaddingLeft": 1,
-        "tagContainerPaddingRight": 1,
-        "detailedTagContainerPaddingBottom": 1,
-        "detailedTagContainerPaddingTop": 1,
-        "detailedTagContainerPaddingLeft": 1,
-        "detailedTagContainerPaddingRight": 1,
-        "leaderLineColor": [
-          255,
-          255,
-          255
-        ]
-      },
-      {
-        "applyToIsDeparture": true,
-        "backgroundColor": [
-          40,
-          50,
-          200
-        ],
-        "textColor": [
-          255,
-          255,
-          255
-        ],
-        "fontSize": 11,
-        "tagContainerPaddingBottom": 1,
-        "tagContainerPaddingTop": 1,
-        "tagContainerPaddingLeft": 1,
-        "tagContainerPaddingRight": 1,
-        "detailedTagContainerPaddingBottom": 1,
-        "detailedTagContainerPaddingTop": 1,
-        "detailedTagContainerPaddingLeft": 1,
-        "detailedTagContainerPaddingRight": 1,
-        "leaderLineColor": [
-          255,
-          255,
-          255
-        ]
-      },
-      {
-        "backgroundColor": [
-          48,
-          48,
-          48
-        ],
-        "textColor": [
-          255,
-          255,
-          255
-        ],
-        "fontSize": 11,
-        "tagContainerPaddingBottom": 1,
-        "tagContainerPaddingTop": 1,
-        "tagContainerPaddingLeft": 1,
-        "tagContainerPaddingRight": 1,
-        "detailedTagContainerPaddingBottom": 1,
-        "detailedTagContainerPaddingTop": 1,
-        "detailedTagContainerPaddingLeft": 1,
-        "detailedTagContainerPaddingRight": 1,
-        "leaderLineColor": [
-          255,
-          255,
-          255
-        ]
-      }
-    ]
-  },
+  "ground": "#neoirma",
   "airborne": {
+    "styleDefaults": {
+      "font": "OrlyLabelVATSIM",
+      "fontWeight": "normal",
+      "fontSize": 13,
+      "detailedBackgroundColor": [25, 25, 25],
+      "detailedBackgroundColorOpacity": 0.9,
+      "detailedRoundedCorners": 2
+    },
     "labels": [
       {
-        "description": "Unconcerned",
-        "applyToAttentionStates": [
-          "kUnconcerned"
-        ],
-        "rows": [
-          [
-            {
-              "itemName": "groundSpeed",
-              "padWithZeroLeft": 3,
-              "truncate": [
-                0,
-                2
-              ]
-            },
-            {
-              "itemName": "assignedMach",
-              "padWithZeroLeft": 3,
-              "truncate": [
-                0,
-                3
-              ],
-              "prefix": "m"
-            },
-            {
-              "itemName": "computedSpeed",
-              "prefix": "k"
-            },
-            {
-              "itemName": "verticalSpeed",
-              "truncate": [
-                0,
-                3
-              ],
-              "showPlusMinus": true,
-              "color": [
-                255,
-                255,
-                255
-              ],
-              "backgroundColor": [
-                218,
-                89,
-                50
-              ],
-              "applyWhen": "$isEmmergencyDescending"
-            },
-            {
-              "itemName": "text",
-              "value": [
-                "=emmergencyDescentArrow"
-              ],
-              "fontWeight": "bold",
-              "color": [
-                218,
-                89,
-                50
-              ],
-              "backgroundColor": [
-                1,
-                1,
-                1
-              ]
-            },
-            {
-              "separatorBefore": true,
-              "itemName": "text",
-              "value": [
-                "=isMayday",
-                "=isRDOF"
-              ],
-              "fontWeight": "bold",
-              "backgroundColor": [
-                1,
-                1,
-                1
-              ],
-              "color": [
-                218,
-                89,
-                50
-              ]
-            },
-            {
-              "itemName": "text",
-              "value": "=penWhenScratchpadNotEmpty",
-              "color": "=blueColorScratchpadNotEmpty"
-            }
-          ],
-          [
-            {
-              "itemName": "callsign",
-              "leftClick": "callsignMenu",
-              "color": "=cdgWhiteIfInStateOfInterest",
-              "backgroundColor": [
-                "=greenIncomingTransfer",
-                "=greenOutgoingTransfer",
-                "=assumedAndcdgNord",
-                "=assumedAndcdgSud",
-                "=assumedAndcdgBourget",
-                "=assumedAndcdgOrange",
-                "=assumedAndcdgDepBleu",
-                "=assumedAndcdgDepSat"
-              ]
-            },
-            {
-              "itemName": "text",
-              "truncate": [
-                0,
-                3
-              ],
-              "color": [
-                29,
-                118,
-                226
-              ],
-              "value": [
-                "=suggestedSidIfNoAssigned",
-                "&sid"
-              ]
-            }
-          ],
-          [
-            {
-              "itemName": "computedAltitude",
-              "prefix": [
-                "=altitudeBelowTAPrefix"
-              ],
-              "truncate": [
-                "=altitudeBelowTATruncate",
-                "=altitudeAboveTATruncate"
-              ],
-              "padWithZeroLeft": 5
-            },
-            {
-              "itemName": "verticalTrend",
-              "placeholder": ":u\u0014",
-              "mapping": {
-                "0": ":u\u0014",
-                "1": ":u\u0016",
-                "-1": ":u\u0015"
-              }
-            },
-            {
-              "itemName": "databaseIcaoWakeCat",
-              "placeholder": "Z"
-            },
-            {
-              "itemName": "clearedFlightLevel",
-              "padWithZeroLeft": 5,
-              "truncate": [
-                0,
-                2
-              ],
-              "mapping": {
-                "1": "CA",
-                "2": "VA"
-              }
-            },
-            {
-              "itemName": "assignedDirect",
-              "leftClick": "triggerScratchpad"
-            },
-            {
-              "itemName": "assignedHeading",
-              "padWithZeroLeft": 3,
-              "truncate": [
-                0,
-                3
-              ],
-              "prefix": "h"
-            }
-          ]
-        ]
-      },
-      {
-        "description": "Concerned",
-        "applyToAttentionStates": [
-          "kNotified",
-          "kIncomingTransfer",
-          "kAssumed",
-          "kOutgoingTransfer",
-          "kIntruder",
-          "kConcerned"
-        ],
-        "rows": [
-          [
-            {
-              "itemName": "groundSpeed",
-              "padWithZeroLeft": 3,
-              "truncate": [
-                0,
-                2
-              ]
-            },
-            {
-              "itemName": "assignedMach",
-              "padWithZeroLeft": 3,
-              "truncate": [
-                0,
-                3
-              ],
-              "prefix": "m"
-            },
-            {
-              "itemName": "computedSpeed",
-              "prefix": "k"
-            },
-            {
-              "itemName": "verticalSpeed",
-              "truncate": [
-                0,
-                3
-              ],
-              "showPlusMinus": true,
-              "color": [
-                255,
-                255,
-                255
-              ],
-              "backgroundColor": [
-                218,
-                89,
-                50
-              ],
-              "applyWhen": "$isEmmergencyDescending"
-            },
-            {
-              "itemName": "text",
-              "value": [
-                "=emmergencyDescentArrow"
-              ],
-              "fontWeight": "bold",
-              "color": [
-                218,
-                89,
-                50
-              ],
-              "backgroundColor": [
-                1,
-                1,
-                1
-              ]
-            },
-            {
-              "separatorBefore": true,
-              "itemName": "text",
-              "value": [
-                "=isMayday",
-                "=isRDOF"
-              ],
-              "fontWeight": "bold",
-              "backgroundColor": [
-                1,
-                1,
-                1
-              ],
-              "color": [
-                218,
-                89,
-                50
-              ]
-            },
-            {
-              "itemName": "text",
-              "value": "=penWhenScratchpadNotEmpty",
-              "color": "=blueColorScratchpadNotEmpty"
-            }
-          ],
-          [
-            {
-              "itemName": "callsign",
-              "leftClick": "callsignMenu",
-              "color": "=cdgWhiteIfInStateOfInterest",
-              "backgroundColor": [
-                "=greenIncomingTransfer",
-                "=greenOutgoingTransfer",
-                "=assumedAndcdgNord",
-                "=assumedAndcdgSud",
-                "=assumedAndcdgBourget",
-                "=assumedAndcdgOrange",
-                "=assumedAndcdgDepBleu",
-                "=assumedAndcdgDepSat"
-              ]
-            },
-            {
-              "itemName": "text",
-              "truncate": [
-                0,
-                3
-              ],
-              "color": [
-                29,
-                118,
-                226
-              ],
-              "value": [
-                "=suggestedSidIfNoAssigned",
-                "&sid"
-              ]
-            }
-          ],
-          [
-            {
-              "itemName": "computedAltitude",
-              "prefix": [
-                "=altitudeBelowTAPrefix"
-              ],
-              "truncate": [
-                "=altitudeBelowTATruncate",
-                "=altitudeAboveTATruncate"
-              ],
-              "padWithZeroLeft": 5
-            },
-            {
-              "itemName": "verticalTrend",
-              "placeholder": ":u\u0014",
-              "mapping": {
-                "0": ":u\u0014",
-                "1": ":u\u0016",
-                "-1": ":u\u0015"
-              }
-            },
-            {
-              "itemName": "databaseIcaoWakeCat",
-              "placeholder": "Z"
-            },
-            {
-              "itemName": "clearedFlightLevel",
-              "padWithZeroLeft": 5,
-              "truncate": [
-                0,
-                2
-              ],
-              "mapping": {
-                "1": "CA",
-                "2": "VA"
-              }
-            },
-            {
-              "itemName": "assignedDirect",
-              "leftClick": "triggerScratchpad"
-            },
-            {
-              "itemName": "assignedHeading",
-              "padWithZeroLeft": 3,
-              "truncate": [
-                0,
-                3
-              ],
-              "prefix": "h"
-            }
-          ]
-        ]
-      },
-      {
-        "description": "Detailed",
+        "description": "Detailed, flights CoFrance shows through the altitude filter",
         "detailed": true,
+        "applyWhen": "$cdgThroughFilter",
+        "applyToFilterStates": ["kUnfiltered", "kUpperFiltered", "kLowerFiltered"],
         "rows": [
           [
             {
               "itemName": "groundSpeed",
               "padWithZeroLeft": 3,
-              "truncate": [
-                0,
-                2
-              ]
+              "truncate": [0, 2]
             },
             {
               "itemName": "assignedMach",
               "padWithZeroLeft": 3,
-              "truncate": [
-                0,
-                3
-              ],
+              "truncate": [0, 3],
               "prefix": "m",
               "leftClick": "spd",
               "rightClick": "clearSpd"
@@ -913,58 +40,26 @@
             },
             {
               "itemName": "verticalSpeed",
-              "truncate": [
-                0,
-                3
-              ],
+              "truncate": [0, 3],
               "showPlusMinus": true,
-              "color": [
-                255,
-                255,
-                255
-              ],
-              "backgroundColor": [
-                218,
-                89,
-                50
-              ],
+              "color": [255, 255, 255],
+              "backgroundColor": [218, 89, 50],
               "applyWhen": "$isEmmergencyDescending"
             },
             {
               "itemName": "text",
-              "value": [
-                "=emmergencyDescentArrow"
-              ],
+              "value": ["=emmergencyDescentArrow"],
               "fontWeight": "bold",
-              "color": [
-                218,
-                89,
-                50
-              ],
-              "backgroundColor": [
-                1,
-                1,
-                1
-              ]
+              "color": [218, 89, 50],
+              "backgroundColor": [1, 1, 1]
             },
             {
               "separatorBefore": true,
               "itemName": "text",
-              "value": [
-                "=isMayday",
-                "=isRDOF"
-              ],
+              "value": ["=isMayday", "=isRDOF"],
               "fontWeight": "bold",
-              "backgroundColor": [
-                1,
-                1,
-                1
-              ],
-              "color": [
-                218,
-                89,
-                50
-              ]
+              "backgroundColor": [1, 1, 1],
+              "color": [218, 89, 50]
             },
             {
               "itemName": "scratchpad",
@@ -975,10 +70,7 @@
             {
               "itemName": "verticalSpeed",
               "padWithZeroLeft": 4,
-              "truncate": [
-                0,
-                3
-              ],
+              "truncate": [0, 3],
               "showPlusMinus": true
             },
             {
@@ -989,7 +81,21 @@
             {
               "itemName": "callsign",
               "leftClick": "callsignMenu",
-              "color": "=cdgWhiteIfInStateOfInterest"
+              "color": ["=reverseVideoText", "=handoffText"],
+              "backgroundColor": [
+                "=incomingTransferBox",
+                "=cdgAssumedBoxLocalPGPB",
+                "=cdgAssumedBoxArrSouth",
+                "=cdgAssumedBoxArrNorth",
+                "=cdgAssumedBoxArrBourget",
+                "=cdgAssumedBoxArrOrly",
+                "=cdgAssumedBoxArrPNPV",
+                "=cdgAssumedBoxArrCDG",
+                "=cdgAssumedBoxDepNN",
+                "=cdgAssumedBoxDepOrly",
+                "=cdgAssumedBoxDepCDG",
+                "=cdgAssumedBoxVFR"
+              ]
             },
             {
               "itemName": "sectorIndicator",
@@ -998,10 +104,7 @@
             {
               "itemName": "plannedFlightLevel",
               "padWithZeroLeft": 5,
-              "truncate": [
-                0,
-                2
-              ],
+              "truncate": [0, 2],
               "placeholder": "TaFL",
               "leftClick": "pfl"
             }
@@ -1009,13 +112,8 @@
           [
             {
               "itemName": "computedAltitude",
-              "prefix": [
-                "=altitudeBelowTAPrefix"
-              ],
-              "truncate": [
-                "=altitudeBelowTATruncate",
-                "=altitudeAboveTATruncate"
-              ],
+              "prefix": ["=altitudeBelowTAPrefix"],
+              "truncate": ["=altitudeBelowTATruncate", "=altitudeAboveTATruncate"],
               "padWithZeroLeft": 5,
               "leftClick": "routeDraw"
             },
@@ -1035,10 +133,7 @@
             {
               "itemName": "clearedFlightLevel",
               "padWithZeroLeft": 5,
-              "truncate": [
-                0,
-                2
-              ],
+              "truncate": [0, 2],
               "mapping": {
                 "1": "CA",
                 "2": "VA"
@@ -1054,10 +149,7 @@
             {
               "itemName": "assignedHeading",
               "padWithZeroLeft": 3,
-              "truncate": [
-                0,
-                3
-              ],
+              "truncate": [0, 3],
               "placeholder": "h...",
               "prefix": "h",
               "leftClick": "hdg",
@@ -1068,10 +160,7 @@
             {
               "itemName": "reportedHeading",
               "padWithZeroLeft": 3,
-              "truncate": [
-                0,
-                3
-              ],
+              "truncate": [0, 3],
               "placeholder": "@h...",
               "prefix": "@h"
             },
@@ -1087,238 +176,662 @@
             }
           ]
         ]
+      },
+      {
+        "description": "Detailed",
+        "detailed": true,
+        "rows": [
+          [
+            {
+              "itemName": "groundSpeed",
+              "padWithZeroLeft": 3,
+              "truncate": [0, 2]
+            },
+            {
+              "itemName": "assignedMach",
+              "padWithZeroLeft": 3,
+              "truncate": [0, 3],
+              "prefix": "m",
+              "leftClick": "spd",
+              "rightClick": "clearSpd"
+            },
+            {
+              "itemName": "computedSpeed",
+              "prefix": "k",
+              "placeholder": "k..",
+              "leftClick": "spd",
+              "rightClick": "clearSpd"
+            },
+            {
+              "itemName": "verticalSpeed",
+              "truncate": [0, 3],
+              "showPlusMinus": true,
+              "color": [255, 255, 255],
+              "backgroundColor": [218, 89, 50],
+              "applyWhen": "$isEmmergencyDescending"
+            },
+            {
+              "itemName": "text",
+              "value": ["=emmergencyDescentArrow"],
+              "fontWeight": "bold",
+              "color": [218, 89, 50],
+              "backgroundColor": [1, 1, 1]
+            },
+            {
+              "separatorBefore": true,
+              "itemName": "text",
+              "value": ["=isMayday", "=isRDOF"],
+              "fontWeight": "bold",
+              "backgroundColor": [1, 1, 1],
+              "color": [218, 89, 50]
+            },
+            {
+              "itemName": "scratchpad",
+              "placeholder": ":i",
+              "color": "=blueColorScratchpadNotEmpty",
+              "leftClick": "triggerScratchpad"
+            },
+            {
+              "itemName": "verticalSpeed",
+              "padWithZeroLeft": 4,
+              "truncate": [0, 3],
+              "showPlusMinus": true
+            },
+            {
+              "itemName": "acShortType"
+            }
+          ],
+          [
+            {
+              "itemName": "callsign",
+              "leftClick": "callsignMenu",
+              "color": ["=reverseVideoText", "=handoffText"],
+              "backgroundColor": [
+                "=incomingTransferBox",
+                "=cdgAssumedBoxLocalPGPB",
+                "=cdgAssumedBoxArrSouth",
+                "=cdgAssumedBoxArrNorth",
+                "=cdgAssumedBoxArrBourget",
+                "=cdgAssumedBoxArrOrly",
+                "=cdgAssumedBoxArrPNPV",
+                "=cdgAssumedBoxArrCDG",
+                "=cdgAssumedBoxDepNN",
+                "=cdgAssumedBoxDepOrly",
+                "=cdgAssumedBoxDepCDG",
+                "=cdgAssumedBoxVFR"
+              ]
+            },
+            {
+              "itemName": "sectorIndicator",
+              "placeholder": "---"
+            },
+            {
+              "itemName": "plannedFlightLevel",
+              "padWithZeroLeft": 5,
+              "truncate": [0, 2],
+              "placeholder": "TaFL",
+              "leftClick": "pfl"
+            }
+          ],
+          [
+            {
+              "itemName": "computedAltitude",
+              "prefix": ["=altitudeBelowTAPrefix"],
+              "truncate": ["=altitudeBelowTATruncate", "=altitudeAboveTATruncate"],
+              "padWithZeroLeft": 5,
+              "leftClick": "routeDraw"
+            },
+            {
+              "itemName": "verticalTrend",
+              "placeholder": ":u\u0014",
+              "mapping": {
+                "0": ":u\u0014",
+                "1": ":u\u0016",
+                "-1": ":u\u0015"
+              }
+            },
+            {
+              "itemName": "databaseIcaoWakeCat",
+              "placeholder": "Z"
+            },
+            {
+              "itemName": "clearedFlightLevel",
+              "padWithZeroLeft": 5,
+              "truncate": [0, 2],
+              "mapping": {
+                "1": "CA",
+                "2": "VA"
+              },
+              "placeholder": "cfl",
+              "leftClick": "cfl"
+            },
+            {
+              "itemName": "assignedDirect",
+              "leftClick": "directMenu",
+              "rightClick": "triggerScratchpad"
+            },
+            {
+              "itemName": "assignedHeading",
+              "padWithZeroLeft": 3,
+              "truncate": [0, 3],
+              "placeholder": "h...",
+              "prefix": "h",
+              "leftClick": "hdg",
+              "rightClick": "directMenu"
+            }
+          ],
+          [
+            {
+              "itemName": "reportedHeading",
+              "padWithZeroLeft": 3,
+              "truncate": [0, 3],
+              "placeholder": "@h...",
+              "prefix": "@h"
+            },
+            {
+              "itemName": "origin",
+              "placeholder": "ORIG",
+              "leftClick": "fpDialog"
+            },
+            {
+              "itemName": "destination",
+              "placeholder": "DEST",
+              "leftClick": "fpDialog"
+            }
+          ]
+        ]
+      },
+      {
+        "description": "Compact, flights CoFrance shows through the altitude filter",
+        "applyWhen": "$cdgThroughFilter",
+        "applyToFilterStates": ["kUnfiltered", "kUpperFiltered", "kLowerFiltered"],
+        "rows": [
+          [
+            {
+              "itemName": "groundSpeed",
+              "padWithZeroLeft": 3,
+              "truncate": [0, 2]
+            },
+            {
+              "itemName": "assignedMach",
+              "padWithZeroLeft": 3,
+              "truncate": [0, 3],
+              "prefix": "m"
+            },
+            {
+              "itemName": "computedSpeed",
+              "prefix": "k"
+            },
+            {
+              "itemName": "verticalSpeed",
+              "truncate": [0, 3],
+              "showPlusMinus": true,
+              "color": [255, 255, 255],
+              "backgroundColor": [218, 89, 50],
+              "applyWhen": "$isEmmergencyDescending"
+            },
+            {
+              "itemName": "text",
+              "value": ["=emmergencyDescentArrow"],
+              "fontWeight": "bold",
+              "color": [218, 89, 50],
+              "backgroundColor": [1, 1, 1]
+            },
+            {
+              "separatorBefore": true,
+              "itemName": "text",
+              "value": ["=isMayday", "=isRDOF"],
+              "fontWeight": "bold",
+              "backgroundColor": [1, 1, 1],
+              "color": [218, 89, 50]
+            },
+            {
+              "itemName": "text",
+              "value": "=penWhenScratchpadNotEmpty",
+              "color": "=blueColorScratchpadNotEmpty"
+            }
+          ],
+          [
+            {
+              "itemName": "callsign",
+              "leftClick": "callsignMenu",
+              "color": ["=reverseVideoText", "=handoffText"],
+              "backgroundColor": [
+                "=incomingTransferBox",
+                "=cdgAssumedBoxLocalPGPB",
+                "=cdgAssumedBoxArrSouth",
+                "=cdgAssumedBoxArrNorth",
+                "=cdgAssumedBoxArrBourget",
+                "=cdgAssumedBoxArrOrly",
+                "=cdgAssumedBoxArrPNPV",
+                "=cdgAssumedBoxArrCDG",
+                "=cdgAssumedBoxDepNN",
+                "=cdgAssumedBoxDepOrly",
+                "=cdgAssumedBoxDepCDG",
+                "=cdgAssumedBoxVFR"
+              ]
+            },
+            {
+              "itemName": "text",
+              "truncate": [0, 3],
+              "color": [29, 118, 226],
+              "value": ["=suggestedSidIfNoAssigned", "&sid"]
+            }
+          ],
+          [
+            {
+              "itemName": "computedAltitude",
+              "prefix": ["=altitudeBelowTAPrefix"],
+              "truncate": ["=altitudeBelowTATruncate", "=altitudeAboveTATruncate"],
+              "padWithZeroLeft": 5
+            },
+            {
+              "itemName": "verticalTrend",
+              "placeholder": ":u\u0014",
+              "mapping": {
+                "0": ":u\u0014",
+                "1": ":u\u0016",
+                "-1": ":u\u0015"
+              }
+            },
+            {
+              "itemName": "databaseIcaoWakeCat",
+              "placeholder": "Z"
+            },
+            {
+              "itemName": "clearedFlightLevel",
+              "padWithZeroLeft": 5,
+              "truncate": [0, 2],
+              "mapping": {
+                "1": "CA",
+                "2": "VA"
+              }
+            },
+            {
+              "itemName": "assignedDirect",
+              "leftClick": "triggerScratchpad"
+            },
+            {
+              "itemName": "assignedHeading",
+              "padWithZeroLeft": 3,
+              "truncate": [0, 3],
+              "prefix": "h"
+            }
+          ]
+        ]
+      },
+      {
+        "description": "Compact",
+        "rows": [
+          [
+            {
+              "itemName": "groundSpeed",
+              "padWithZeroLeft": 3,
+              "truncate": [0, 2]
+            },
+            {
+              "itemName": "assignedMach",
+              "padWithZeroLeft": 3,
+              "truncate": [0, 3],
+              "prefix": "m"
+            },
+            {
+              "itemName": "computedSpeed",
+              "prefix": "k"
+            },
+            {
+              "itemName": "verticalSpeed",
+              "truncate": [0, 3],
+              "showPlusMinus": true,
+              "color": [255, 255, 255],
+              "backgroundColor": [218, 89, 50],
+              "applyWhen": "$isEmmergencyDescending"
+            },
+            {
+              "itemName": "text",
+              "value": ["=emmergencyDescentArrow"],
+              "fontWeight": "bold",
+              "color": [218, 89, 50],
+              "backgroundColor": [1, 1, 1]
+            },
+            {
+              "separatorBefore": true,
+              "itemName": "text",
+              "value": ["=isMayday", "=isRDOF"],
+              "fontWeight": "bold",
+              "backgroundColor": [1, 1, 1],
+              "color": [218, 89, 50]
+            },
+            {
+              "itemName": "text",
+              "value": "=penWhenScratchpadNotEmpty",
+              "color": "=blueColorScratchpadNotEmpty"
+            }
+          ],
+          [
+            {
+              "itemName": "callsign",
+              "leftClick": "callsignMenu",
+              "color": ["=reverseVideoText", "=handoffText"],
+              "backgroundColor": [
+                "=incomingTransferBox",
+                "=cdgAssumedBoxLocalPGPB",
+                "=cdgAssumedBoxArrSouth",
+                "=cdgAssumedBoxArrNorth",
+                "=cdgAssumedBoxArrBourget",
+                "=cdgAssumedBoxArrOrly",
+                "=cdgAssumedBoxArrPNPV",
+                "=cdgAssumedBoxArrCDG",
+                "=cdgAssumedBoxDepNN",
+                "=cdgAssumedBoxDepOrly",
+                "=cdgAssumedBoxDepCDG",
+                "=cdgAssumedBoxVFR"
+              ]
+            },
+            {
+              "itemName": "text",
+              "truncate": [0, 3],
+              "color": [29, 118, 226],
+              "value": ["=suggestedSidIfNoAssigned", "&sid"]
+            }
+          ],
+          [
+            {
+              "itemName": "computedAltitude",
+              "prefix": ["=altitudeBelowTAPrefix"],
+              "truncate": ["=altitudeBelowTATruncate", "=altitudeAboveTATruncate"],
+              "padWithZeroLeft": 5
+            },
+            {
+              "itemName": "verticalTrend",
+              "placeholder": ":u\u0014",
+              "mapping": {
+                "0": ":u\u0014",
+                "1": ":u\u0016",
+                "-1": ":u\u0015"
+              }
+            },
+            {
+              "itemName": "databaseIcaoWakeCat",
+              "placeholder": "Z"
+            },
+            {
+              "itemName": "clearedFlightLevel",
+              "padWithZeroLeft": 5,
+              "truncate": [0, 2],
+              "mapping": {
+                "1": "CA",
+                "2": "VA"
+              }
+            },
+            {
+              "itemName": "assignedDirect",
+              "leftClick": "triggerScratchpad"
+            },
+            {
+              "itemName": "assignedHeading",
+              "padWithZeroLeft": 3,
+              "truncate": [0, 3],
+              "prefix": "h"
+            }
+          ]
+        ]
       }
     ],
     "styleVariants": [
       {
-        "description": "issy helico",
-        "applyWhen": [
-          "==",
-          "squawk",
-          "4217"
-        ],
-        "textColor": [
-          212,
-          212,
-          185
-        ],
-        "detailedBackgroundColor": [
-          25,
-          25,
-          25
-        ],
-        "detailedBackgroundColorOpacity": 0.9,
-        "detailedRoundedCorners": 2,
-        "font": "OrlyLabelVATSIM",
-        "fontWeight": "normal",
-        "fontSize": 13,
-        "leaderLineColor": [
-          212,
-          212,
-          185
-        ]
+        "description": "G: local flight Paris-CDG / Le Bourget",
+        "applyWhen": "$cdgLocalPGPB",
+        "applyToFilterStates": ["kUnfiltered", "kUpperFiltered", "kLowerFiltered"],
+        "textColor": [212, 212, 185],
+        "leaderLineColor": [212, 212, 185]
       },
       {
-        "description": "lfpg lfpb dep",
-        "applyWhen": "$isCDGOrPBDeparture",
-        "textColor": [
-          161,
-          227,
-          227
-        ],
-        "detailedBackgroundColor": [
-          25,
-          25,
-          25
-        ],
-        "detailedBackgroundColorOpacity": 0.9,
-        "detailedRoundedCorners": 2,
-        "font": "OrlyLabelVATSIM",
-        "fontWeight": "normal",
-        "fontSize": 13,
-        "leaderLineColor": [
-          161,
-          227,
-          227
-        ]
+        "description": "P: local flight Orly group",
+        "applyWhen": "$cdgLocalOrly",
+        "applyToFilterStates": ["kUnfiltered", "kUpperFiltered", "kLowerFiltered"],
+        "textColor": [212, 212, 185],
+        "leaderLineColor": [212, 212, 185]
       },
       {
-        "description": "lfpg south arrival",
-        "applyWhen": "$isLFPGSouthArrival",
-        "textColor": [
-          227,
-          157,
-          157
-        ],
-        "detailedBackgroundColor": [
-          25,
-          25,
-          25
-        ],
-        "detailedBackgroundColorOpacity": 0.9,
-        "detailedRoundedCorners": 2,
-        "font": "OrlyLabelVATSIM",
-        "fontWeight": "normal",
-        "fontSize": 13,
-        "leaderLineColor": [
-          227,
-          157,
-          157
-        ]
+        "description": "S: CDG arrival, IFR, south runways 08/26",
+        "applyWhen": "$cdgArrSouth",
+        "applyToFilterStates": ["kUnfiltered", "kUpperFiltered", "kLowerFiltered"],
+        "textColor": [227, 157, 157],
+        "leaderLineColor": [227, 157, 157]
       },
       {
-        "description": "lfpg north arrival",
-        "applyWhen": "$isLFPGNorthArrival",
-        "textColor": [
-          227,
-          184,
-          203
-        ],
-        "detailedBackgroundColor": [
-          25,
-          25,
-          25
-        ],
-        "detailedBackgroundColorOpacity": 0.9,
-        "detailedRoundedCorners": 2,
-        "font": "OrlyLabelVATSIM",
-        "fontWeight": "normal",
-        "fontSize": 13,
-        "leaderLineColor": [
-          227,
-          184,
-          203
-        ]
+        "description": "N: CDG arrival, north runways 09/27",
+        "applyWhen": "$cdgArrNorth",
+        "applyToFilterStates": ["kUnfiltered", "kUpperFiltered", "kLowerFiltered"],
+        "textColor": [227, 184, 203],
+        "leaderLineColor": [227, 184, 203]
       },
       {
-        "description": "lfpb arrival",
-        "applyWhen": "$isBourgetArrival",
-        "textColor": [
-          211,
-          150,
-          227
-        ],
-        "detailedBackgroundColor": [
-          25,
-          25,
-          25
-        ],
-        "detailedBackgroundColorOpacity": 0.9,
-        "detailedRoundedCorners": 2,
-        "font": "OrlyLabelVATSIM",
-        "fontWeight": "normal",
-        "fontSize": 13,
-        "leaderLineColor": [
-          211,
-          150,
-          227
-        ]
+        "description": "B: Le Bourget arrival",
+        "applyWhen": "$cdgArrBourget",
+        "applyToFilterStates": ["kUnfiltered", "kUpperFiltered", "kLowerFiltered"],
+        "textColor": [211, 150, 227],
+        "leaderLineColor": [211, 150, 227]
       },
       {
-        "description": "Orly / Sat arrivals",
-        "applyWhen": [
-          "OR",
-          [
-            "$isOrlyArrival",
-            "$isArr"
-          ]
-        ],
-        "textColor": [
-          227,
-          177,
-          124
-        ],
-        "detailedBackgroundColor": [
-          25,
-          25,
-          25
-        ],
-        "detailedBackgroundColorOpacity": 0.9,
-        "detailedRoundedCorners": 2,
-        "font": "OrlyLabelVATSIM",
-        "fontWeight": "normal",
-        "fontSize": 13,
-        "leaderLineColor": [
-          227,
-          177,
-          124
-        ]
+        "description": "O: Orly arrival",
+        "applyWhen": "$cdgArrOrly",
+        "applyToFilterStates": ["kUnfiltered", "kUpperFiltered", "kLowerFiltered"],
+        "textColor": [227, 177, 124],
+        "leaderLineColor": [227, 177, 124]
       },
       {
-        "description": "other departures",
-        "applyToIsDeparture": true,
-        "textColor": [
-          101,
-          192,
-          223
-        ],
-        "detailedBackgroundColor": [
-          25,
-          25,
-          25
-        ],
-        "detailedBackgroundColorOpacity": 0.9,
-        "detailedRoundedCorners": 2,
-        "font": "OrlyLabelVATSIM",
-        "fontWeight": "normal",
-        "fontSize": 13,
-        "leaderLineColor": [
-          101,
-          192,
-          223
-        ]
+        "description": "A: Pontoise / Beauvais arrival, IFR",
+        "applyWhen": "$cdgArrPTOB",
+        "applyToFilterStates": ["kUnfiltered", "kUpperFiltered", "kLowerFiltered"],
+        "textColor": [227, 177, 124],
+        "leaderLineColor": [227, 177, 124]
       },
       {
-        "description": "other assumed",
-        "applyWhen": "$isAssumed",
-        "textColor": [
-          212,
-          212,
-          185
-        ],
-        "detailedBackgroundColor": [
-          25,
-          25,
-          25
-        ],
-        "detailedBackgroundColorOpacity": 0.9,
-        "detailedRoundedCorners": 2,
-        "font": "OrlyLabelVATSIM",
-        "fontWeight": "normal",
-        "fontSize": 13,
-        "leaderLineColor": [
-          212,
-          212,
-          185
-        ]
+        "description": "V: Toussus / Villacoublay arrival",
+        "applyWhen": "$cdgArrPNPV",
+        "applyToFilterStates": ["kUnfiltered", "kUpperFiltered", "kLowerFiltered"],
+        "textColor": [76, 188, 56],
+        "leaderLineColor": [76, 188, 56]
       },
       {
-        "description": "catch all unconcerned default",
-        "textColor": [
-          11,
-          11,
-          11
-        ],
-        "detailedBackgroundColor": [
-          25,
-          25,
-          25
-        ],
-        "detailedBackgroundColorOpacity": 0.9,
-        "detailedRoundedCorners": 2,
-        "detailedTextColor": [
-          212,
-          212,
-          185
-        ],
-        "font": "OrlyLabelVATSIM",
-        "fontWeight": "normal",
-        "fontSize": 13,
-        "leaderLineColor": [
-          11,
-          11,
-          11
-        ]
+        "description": "R: CDG arrival, runway unknown",
+        "applyWhen": "$cdgArrCDG",
+        "applyToFilterStates": ["kUnfiltered", "kUpperFiltered", "kLowerFiltered"],
+        "textColor": [212, 212, 185],
+        "leaderLineColor": [212, 212, 185]
+      },
+      {
+        "description": "NN: CDG / Le Bourget departure via NURMO",
+        "applyWhen": "$cdgDepNN",
+        "applyToFilterStates": ["kUnfiltered", "kUpperFiltered", "kLowerFiltered"],
+        "textColor": [161, 227, 227],
+        "leaderLineColor": [161, 227, 227]
+      },
+      {
+        "description": "NO: CDG / Le Bourget departure via OPALE",
+        "applyWhen": "$cdgDepNO",
+        "applyToFilterStates": ["kUnfiltered", "kUpperFiltered", "kLowerFiltered"],
+        "textColor": [161, 227, 227],
+        "leaderLineColor": [161, 227, 227]
+      },
+      {
+        "description": "NA: CDG / Le Bourget departure via ATREX",
+        "applyWhen": "$cdgDepNA",
+        "applyToFilterStates": ["kUnfiltered", "kUpperFiltered", "kLowerFiltered"],
+        "textColor": [161, 227, 227],
+        "leaderLineColor": [161, 227, 227]
+      },
+      {
+        "description": "NM: CDG / Le Bourget departure via MTD",
+        "applyWhen": "$cdgDepNM",
+        "applyToFilterStates": ["kUnfiltered", "kUpperFiltered", "kLowerFiltered"],
+        "textColor": [161, 227, 227],
+        "leaderLineColor": [161, 227, 227]
+      },
+      {
+        "description": "ER: CDG / Le Bourget departure via RANUX",
+        "applyWhen": "$cdgDepER",
+        "applyToFilterStates": ["kUnfiltered", "kUpperFiltered", "kLowerFiltered"],
+        "textColor": [161, 227, 227],
+        "leaderLineColor": [161, 227, 227]
+      },
+      {
+        "description": "EL: CDG / Le Bourget departure via LANVI",
+        "applyWhen": "$cdgDepEL",
+        "applyToFilterStates": ["kUnfiltered", "kUpperFiltered", "kLowerFiltered"],
+        "textColor": [161, 227, 227],
+        "leaderLineColor": [161, 227, 227]
+      },
+      {
+        "description": "EB: CDG / Le Bourget departure via BUBLI",
+        "applyWhen": "$cdgDepEB",
+        "applyToFilterStates": ["kUnfiltered", "kUpperFiltered", "kLowerFiltered"],
+        "textColor": [161, 227, 227],
+        "leaderLineColor": [161, 227, 227]
+      },
+      {
+        "description": "EN: CDG / Le Bourget departure via NIPOR",
+        "applyWhen": "$cdgDepEN",
+        "applyToFilterStates": ["kUnfiltered", "kUpperFiltered", "kLowerFiltered"],
+        "textColor": [161, 227, 227],
+        "leaderLineColor": [161, 227, 227]
+      },
+      {
+        "description": "ED: CDG / Le Bourget departure via DIKOL",
+        "applyWhen": "$cdgDepED",
+        "applyToFilterStates": ["kUnfiltered", "kUpperFiltered", "kLowerFiltered"],
+        "textColor": [161, 227, 227],
+        "leaderLineColor": [161, 227, 227]
+      },
+      {
+        "description": "EX: CDG / Le Bourget departure via BAXIR",
+        "applyWhen": "$cdgDepEX",
+        "applyToFilterStates": ["kUnfiltered", "kUpperFiltered", "kLowerFiltered"],
+        "textColor": [161, 227, 227],
+        "leaderLineColor": [161, 227, 227]
+      },
+      {
+        "description": "SE: CDG / Le Bourget departure via ERIXU",
+        "applyWhen": "$cdgDepSE",
+        "applyToFilterStates": ["kUnfiltered", "kUpperFiltered", "kLowerFiltered"],
+        "textColor": [161, 227, 227],
+        "leaderLineColor": [161, 227, 227]
+      },
+      {
+        "description": "SA: CDG / Le Bourget departure via AGOPA",
+        "applyWhen": "$cdgDepSA",
+        "applyToFilterStates": ["kUnfiltered", "kUpperFiltered", "kLowerFiltered"],
+        "textColor": [161, 227, 227],
+        "leaderLineColor": [161, 227, 227]
+      },
+      {
+        "description": "SL: CDG / Le Bourget departure via LATRA",
+        "applyWhen": "$cdgDepSL",
+        "applyToFilterStates": ["kUnfiltered", "kUpperFiltered", "kLowerFiltered"],
+        "textColor": [161, 227, 227],
+        "leaderLineColor": [161, 227, 227]
+      },
+      {
+        "description": "SO: CDG / Le Bourget departure via OKASI",
+        "applyWhen": "$cdgDepSO",
+        "applyToFilterStates": ["kUnfiltered", "kUpperFiltered", "kLowerFiltered"],
+        "textColor": [161, 227, 227],
+        "leaderLineColor": [161, 227, 227]
+      },
+      {
+        "description": "SP: CDG / Le Bourget departure via PILUL",
+        "applyWhen": "$cdgDepSP",
+        "applyToFilterStates": ["kUnfiltered", "kUpperFiltered", "kLowerFiltered"],
+        "textColor": [161, 227, 227],
+        "leaderLineColor": [161, 227, 227]
+      },
+      {
+        "description": "WE: CDG / Le Bourget departure via ELCOB",
+        "applyWhen": "$cdgDepWE",
+        "applyToFilterStates": ["kUnfiltered", "kUpperFiltered", "kLowerFiltered"],
+        "textColor": [161, 227, 227],
+        "leaderLineColor": [161, 227, 227]
+      },
+      {
+        "description": "WL: CDG / Le Bourget departure via LGL",
+        "applyWhen": "$cdgDepWL",
+        "applyToFilterStates": ["kUnfiltered", "kUpperFiltered", "kLowerFiltered"],
+        "textColor": [161, 227, 227],
+        "leaderLineColor": [161, 227, 227]
+      },
+      {
+        "description": "HO: CDG / Le Bourget departure via OLZOM",
+        "applyWhen": "$cdgDepHO",
+        "applyToFilterStates": ["kUnfiltered", "kUpperFiltered", "kLowerFiltered"],
+        "textColor": [161, 227, 227],
+        "leaderLineColor": [161, 227, 227]
+      },
+      {
+        "description": "HM: CDG / Le Bourget departure via MONOT",
+        "applyWhen": "$cdgDepHM",
+        "applyToFilterStates": ["kUnfiltered", "kUpperFiltered", "kLowerFiltered"],
+        "textColor": [161, 227, 227],
+        "leaderLineColor": [161, 227, 227]
+      },
+      {
+        "description": "HD: CDG / Le Bourget departure via DORDI",
+        "applyWhen": "$cdgDepHD",
+        "applyToFilterStates": ["kUnfiltered", "kUpperFiltered", "kLowerFiltered"],
+        "textColor": [161, 227, 227],
+        "leaderLineColor": [161, 227, 227]
+      },
+      {
+        "description": "T: Orly group departure",
+        "applyWhen": "$cdgDepOrly",
+        "applyToFilterStates": ["kUnfiltered", "kUpperFiltered", "kLowerFiltered"],
+        "textColor": [101, 192, 223],
+        "leaderLineColor": [101, 192, 223]
+      },
+      {
+        "description": "T: Pontoise / Beauvais departure, IFR",
+        "applyWhen": "$cdgDepPTOB",
+        "applyToFilterStates": ["kUnfiltered", "kUpperFiltered", "kLowerFiltered"],
+        "textColor": [101, 192, 223],
+        "leaderLineColor": [101, 192, 223]
+      },
+      {
+        "description": "CDG / Le Bourget departure",
+        "applyWhen": "$cdgDepCDG",
+        "applyToFilterStates": ["kUnfiltered", "kUpperFiltered", "kLowerFiltered"],
+        "textColor": [161, 227, 227],
+        "leaderLineColor": [161, 227, 227]
+      },
+      {
+        "description": "Z: other VFR (yours or offered to you, shown through the altitude filter)",
+        "applyWhen": "$cdgVFR",
+        "applyToAttentionStates": ["kIncomingTransfer", "kAssumed", "kOutgoingTransfer"],
+        "applyToFilterStates": ["kUnfiltered", "kUpperFiltered", "kLowerFiltered"],
+        "textColor": [0, 0, 0],
+        "leaderLineColor": [0, 0, 0],
+        "detailedTextColor": [212, 212, 185]
+      },
+      {
+        "description": "Z: other VFR",
+        "applyWhen": "$cdgVFR",
+        "textColor": [0, 0, 0],
+        "leaderLineColor": [0, 0, 0],
+        "detailedTextColor": [212, 212, 185]
+      },
+      {
+        "description": "X: other traffic (yours or offered to you, shown through the altitude filter)",
+        "applyToAttentionStates": ["kIncomingTransfer", "kAssumed", "kOutgoingTransfer"],
+        "applyToFilterStates": ["kUnfiltered", "kUpperFiltered", "kLowerFiltered"],
+        "textColor": [0, 0, 0],
+        "leaderLineColor": [0, 0, 0],
+        "detailedTextColor": [212, 212, 185]
+      },
+      {
+        "description": "X: other traffic",
+        "textColor": [0, 0, 0],
+        "leaderLineColor": [0, 0, 0],
+        "detailedTextColor": [212, 212, 185]
       }
     ]
   }

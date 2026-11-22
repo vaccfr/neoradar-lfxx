@@ -32,7 +32,7 @@ layerStyles:
       fillColor: [83, 94, 78]
       rotation: 45
 
-  nbd:
+  ndb:
     pointStyle:
       type: cross
       size: 4

@@ -85,8 +85,45 @@ function check(pkg, file, rel) {
   for (const e of errors.slice(0, 8)) console.log(`    ${e.instancePath || "/"} ${e.message} ${JSON.stringify(e.params).slice(0, 120)}`);
 }
 
+// The schemas check each file alone. The client also ignores a reference that leads nowhere (a
+// "=rule", "$expression", shape or "#system" no file defines), so a typo there draws nothing and
+// says nothing: those are checked here across the systems folder.
+function checkReferences(pkg) {
+  const dir = path.join(pkg, "systems");
+  if (!fs.existsSync(dir)) return;
+  const load = (f) => (fs.existsSync(f) ? read(f) : {});
+  const expressions = load(path.join(dir, "expressions.json"));
+  const rules = new Set(Object.keys(expressions.rules || {}));
+  const exprs = new Set(Object.keys(expressions.expressions || {}));
+  const shapes = new Set(Object.keys(load(path.join(dir, "shapes.json")).shapes || {}));
+  const systems = new Set(fs.readdirSync(dir, { withFileTypes: true }).filter((e) => e.isDirectory()).map((e) => e.name));
+  const atlas = path.join(pkg, "images", "symbols.json");
+  const frames = fs.existsSync(atlas) ? new Set(Object.keys(read(atlas).frames || {})) : new Set();
+  const SHAPE_KEYS = new Set(["plotShape", "hoverShape", "shapeRef"]);
+  for (const f of walk(dir).filter((f) => /\.(json|ya?ml)$/.test(f))) {
+    const problems = new Set();
+    const visit = (value, key, parentKey) => {
+      if (Array.isArray(value)) return value.forEach((v) => visit(v, key, parentKey));
+      if (value && typeof value === "object") return Object.entries(value).forEach(([k, v]) => visit(v, k, key));
+      if (typeof value !== "string" || key === "$schema") return;
+      let m;
+      if ((m = /^=([A-Za-z_]\w*)$/.exec(value)) && !rules.has(m[1])) problems.add(`rule ${value}`);
+      if ((m = /^\$([A-Za-z_]\w*)$/.exec(value)) && !exprs.has(m[1])) problems.add(`expression ${value}`);
+      if ((SHAPE_KEYS.has(key) || (key === "shape" && parentKey === "historyTrailShape")) && !shapes.has(value)) problems.add(`shape ${value}`);
+      if ((key === "ground" || key === "groundSymbology") && value.startsWith("#") && !systems.has(value.slice(1))) problems.add(`system ${value}`);
+      if ((key === "plotImage" || key === "historyTrailImages") && !frames.has(value)) problems.add(`sprite ${value}`);
+    };
+    visit(read(f), "", "");
+    total++;
+    if (problems.size === 0) continue;
+    bad++;
+    console.log(`UNRESOLVED ${path.relative(pkg, f)}: ${[...problems].sort().join(", ")}`);
+  }
+}
+
 for (const pkg of packages) {
   const before = { total, bad };
+  checkReferences(pkg);
   check(pkg, path.join(pkg, "manifest.json"), "package/manifest.schema.json");
   for (const f of walk(path.join(pkg, "systems"))) {
     const base = path.basename(f).replace(/\.(json|ya?ml)$/, "");

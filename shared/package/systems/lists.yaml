@@ -300,7 +300,7 @@
       tagItem:
         itemName: assignedSquawk
         placeholder: "----"
-        color: "=incorrectSquawkColor"
+        color: "=incorrectSquawkYellowColor"
         leftClick: assignRandomSquawk
         rightClick: assignSq1000
     - name: pfl
