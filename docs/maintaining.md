@@ -163,10 +163,9 @@ by state, so the state is shown in reverse video:
 | Transferred out | hand-off green text, no box |
 | Other | the track colour, no box |
 
-The text on a box is dark `20,20,20` or white, whichever contrasts more with that box; every box
-reaches at least 4.5:1 (WCAG AA), the lowest being neoIRMA's grey at 5.6:1. When you change a
-track colour, keep its box at 4.5:1 or more with one of the two (each `…AssumedText…` rule in
-`expressions.json` sits next to its `…AssumedBox…` rule).
+The text on a box is white, and each box is its track colour darkened (same hue) until white
+reaches 4.8:1: dark text on the pale colours was hard to read at radar size. Keep that ratio
+when you change a track colour (the `…AssumedBox…` rules in `expressions.json`).
 
 Track symbols are vector shapes (`shapes.json`), coloured by each variant's `plotColor`, not
 sprites. CDG's letters are stroke glyphs (`font/A`…`font/Z`) composed under the disk. The CDG disk
