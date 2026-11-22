@@ -464,11 +464,11 @@
             },
             {
               "itemName": "verticalTrend",
-              "placeholder": ":u\u0014",
+              "placeholder": ":imove-right",
               "mapping": {
-                "0": ":u\u0014",
-                "1": ":u\u0016",
-                "-1": ":u\u0015"
+                "0": ":imove-right",
+                "1": ":imove-up-right",
+                "-1": ":imove-down-right"
               }
             },
             {
@@ -644,11 +644,11 @@
             },
             {
               "itemName": "verticalTrend",
-              "placeholder": ":u\u0014",
+              "placeholder": ":imove-right",
               "mapping": {
-                "0": ":u\u0014",
-                "1": ":u\u0016",
-                "-1": ":u\u0015"
+                "0": ":imove-right",
+                "1": ":imove-up-right",
+                "-1": ":imove-down-right"
               }
             },
             {
@@ -818,11 +818,11 @@
             },
             {
               "itemName": "verticalTrend",
-              "placeholder": ":u\u0014",
+              "placeholder": ":imove-right",
               "mapping": {
-                "0": ":u\u0014",
-                "1": ":u\u0016",
-                "-1": ":u\u0015"
+                "0": ":imove-right",
+                "1": ":imove-up-right",
+                "-1": ":imove-down-right"
               }
             },
             {
@@ -959,11 +959,11 @@
             },
             {
               "itemName": "verticalTrend",
-              "placeholder": ":u\u0014",
+              "placeholder": ":imove-right",
               "mapping": {
-                "0": ":u\u0014",
-                "1": ":u\u0016",
-                "-1": ":u\u0015"
+                "0": ":imove-right",
+                "1": ":imove-up-right",
+                "-1": ":imove-down-right"
               }
             },
             {
