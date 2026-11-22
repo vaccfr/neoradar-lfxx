@@ -1,6 +1,6 @@
 {
   "Name": "4-Flight",
-  "Description": "Colours of the French 4-Flight HMI (VOPS rev M): a light global menu over grey-teal windows, white text, 4-Flight blue, green and yellow",
+  "Description": "Colours of the French 4-Flight HMI (VOPS rev M): grey-teal windows and lists, dark slate bars, white text, 4-Flight blue, green, yellow and orange",
   "Colors": {
     "FG1": "#FFFFFFFF",
     "FG2": "#FFA9B2B6",
@@ -8,7 +8,6 @@
     "Text.Dim": "#FF6E7879",
     "Text.OnFilled": "#FFFFFFFF",
     "Text.OnBright": "#FF000000",
-
     "TitleBar": "#FF1F2427",
     "Window": "#FF343B3F",
     "Border0": "#FF2B3336",
@@ -16,57 +15,47 @@
     "Surface.Deepest": "#FF25292C",
     "Selection": "#4037B3FF",
     "Hover.Faint": "#0FFFFFFF",
-
     "ToolWindow.Header": "#FF292D30",
     "ToolWindow.Body": "#FF525A5D",
     "ToolWindow.Shadow": "#FF000000",
-
-    "ToolBar": "#FFF0F0F0",
-    "Toolbar.ItemBg": "#FFF0F0F0",
-    "Toolbar.ItemHover": "#FFFFFFFF",
-    "Toolbar.ItemBorder": "#FFD9D9D9",
-    "Toolbar.Text": "#FF1E2326",
-    "Toolbar.TextDim": "#FF50595F",
-    "Toolbar.ActiveBg": "#FFF26F00",
-    "Toolbar.ActiveBgHover": "#FFFF8A26",
-    "Toolbar.PopupBg": "#FFF0F0F0",
-
+    "ToolBar": "#FF25292C",
+    "Toolbar.ItemBg": "#FF3D4549",
+    "Toolbar.ItemHover": "#FF525A5D",
+    "Toolbar.ItemBorder": "#FF2B3336",
+    "Toolbar.Text": "#FFE6E9EB",
+    "Toolbar.TextDim": "#FFA9B2B6",
+    "Toolbar.ActiveBg": "#FFB45309",
+    "Toolbar.ActiveBgHover": "#FFBE5A0B",
+    "Toolbar.PopupBg": "#FF343B3F",
     "Accent": "#FF37B3FF",
     "Accent.Info": "#FF37B3FF",
     "Accent.InfoHover": "#FF5FC2FF",
     "Accent.Highlight": "#FF8AC1FF",
     "Accent.Secondary": "#FF345693",
     "Accent.Subtle": "#1A37B3FF",
-
     "Success.Bright": "#FFA8E3A9",
     "Success.Indicator": "#FFA8E3A9",
     "Warning": "#FFFFFF66",
     "Warning.Subtle": "#1AFFFF66",
-
     "Tab.ItemBg": "#FF343B3F",
     "Tab.ItemBgSelected": "#FF525A5D",
     "Tab.TextDim": "#FFA9B2B6",
     "Tab.AddBg": "#FF343B3F",
     "Tab.AddBgHover": "#FF525A5D",
-
     "Input.Bg": "#FF2A3235",
     "Input.Border": "#FF50595F",
-
     "Dropdown.PopupBg": "#FF343B3F",
     "Dropdown.ItemBg": "#FF343B3F",
     "Dropdown.ItemHover": "#FF525A5D",
     "Dropdown.ItemSelected": "#FF2A3235",
     "Dropdown.ItemBorder": "#FF25292C",
-
     "Row.Bg": "#FF525A5D",
     "Row.Border": "#FF2B3336",
     "Row.Hover": "#FF5E676B",
     "Row.Inherited": "#FF4A5155",
-
     "Chat.HeaderBg": "#FF292D30",
     "Chat.InputBg": "#FF2A3235",
     "Chat.FocusTagBg": "#FF525A5D",
-
     "Action.Background": "#FF525A5D",
     "Action.HeaderBg": "#FF292D30",
     "Action.Border": "#FF000000",
@@ -76,13 +65,11 @@
     "Action.InputBg": "#FF2A3235",
     "Action.InputFocus": "#FF37B3FF",
     "Action.Selected": "#FF345693",
-
     "Fp.FormBg": "#FF343B3F",
     "Fp.InputBg": "#FF2A3235",
     "Fp.InputBorder": "#FF50595F",
     "Fp.ButtonBg": "#FF3D4549",
     "Fp.ButtonOutline": "#FF000000",
-
     "Tag.Background": "#E6343B3F",
     "Tag.BackgroundHover": "#F02A3235"
   }
