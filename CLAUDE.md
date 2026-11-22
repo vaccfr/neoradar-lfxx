@@ -78,8 +78,8 @@ node scripts/validate.js <schemas checkout> build/*/package      # ajv@8 + js-ya
   CoFrance never filters, and for flights assumed or in transfer, list all `applyToFilterStates`;
   tag layouts have a twin keyed on `$<system>ThroughFilter`. Keep targets, styles and layouts in
   step.
-- **Shapes fill only axis-aligned rects in the client.** Circles and other polygons with `fill`
-  draw as outlines until the client supports them.
+- **Shapes fill axis-aligned rects and full circles in the client** (circles from client-sharp
+  develop `7a39b6c4f`). Any other polygon with `fill` draws as an outline.
 - **The server's data is separate.** `server-dataset.json` is uploaded with
   `neoradar-cli push-dataset`; procedure rules and runway preferences are server config, not
   part of the package.

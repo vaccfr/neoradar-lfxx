@@ -498,7 +498,7 @@
       ]
     },
     "cdg/track": {
-      "description": "CoFrance Paris-CDG track: a 10 px disk. Filled circles need client support; older clients draw the outline.",
+      "description": "CoFrance Paris-CDG track: a 10 px disk. Clients before client-sharp 7a39b6c4f draw the outline.",
       "rotateWithHeading": false,
       "elements": [
         {

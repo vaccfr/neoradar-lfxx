@@ -160,8 +160,9 @@ track colour, keep its box at 4.5:1 or more with one of the two (each `…Assume
 
 Track symbols are vector shapes (`shapes.json`), coloured by each variant's `plotColor`, not
 sprites. CDG's letters are stroke glyphs (`font/A`…`font/Z`) composed under the disk. The CDG disk
-is a circle with `fill`: current clients fill only axis-aligned rectangles and draw it as an
-outline until filled circles are supported.
+is a circle with `fill`. The client fills circles from `client-sharp` develop `7a39b6c4f` on
+(rows of bars, the old sprite's rows exactly); older clients draw it as an outline. Other
+polygons still fill only when they are axis-aligned rectangles.
 
 Rules and expressions shared by both live in `expressions.json`; `lists.yaml` is shared too. The
 schemas describe every field: <https://github.com/neoradar-project/schemas> (`systems/`).
