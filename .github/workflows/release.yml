@@ -108,7 +108,9 @@ jobs:
       - name: Setup pnpm
         uses: pnpm/action-setup@v4
         with:
-          version: 10
+          # Pinned: from 10.34 pnpm ignores --allow-build for the git-hosted sector-file-tools and
+          # wants it allowlisted by its exact tarball URL, which changes with every tag.
+          version: 10.33.2
 
       - name: Install neoradar CLI
         # neoradar-cli needs Node >= 24 and pnpm >= 10. pnpm refuses `add -g` unless its global
