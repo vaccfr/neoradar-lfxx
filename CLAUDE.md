@@ -79,7 +79,8 @@ node scripts/validate.js <schemas checkout> build/*/package      # ajv@8 + js-ya
 - **Two systems, edited by hand.** The build does not read CoFrance's tag formats: a CoFrance
   colour or rule change is ported into `shared/package/systems` by hand. Track colours follow
   CoFrance's IRMA / Paris-CDG rules in priority order; the flight state is the callsign's reverse
-  video (docs/maintaining.md has the table).
+  video (docs/maintaining.md has the table). The airborne tag rows are identical in both systems (only the
+  callsign colour rules differ): change both.
 - **Filtered traffic is hidden unless a variant lists its filter state.** Variants for flows
   CoFrance never filters, and for flights assumed or in transfer, list all `applyToFilterStates`;
   tag layouts have a twin keyed on `$<system>ThroughFilter`. Keep targets, styles and layouts in

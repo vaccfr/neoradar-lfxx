@@ -378,10 +378,22 @@
         "rows": [
           [
             {
+              "itemName": "groundSpeed",
+              "padWithZeroLeft": 3,
+              "truncate": [0, 2]
+            },
+            {
               "itemName": "assignedMach",
               "padWithZeroLeft": 3,
               "truncate": [0, 3],
               "prefix": "m",
+              "leftClick": "spd",
+              "rightClick": "clearSpd"
+            },
+            {
+              "itemName": "computedSpeed",
+              "prefix": "k",
+              "placeholder": "k..",
               "leftClick": "spd",
               "rightClick": "clearSpd"
             },
@@ -409,9 +421,19 @@
               "color": [218, 89, 50]
             },
             {
-              "itemName": "text",
-              "value": "=penWhenScratchpadNotEmpty",
-              "color": "=blueColorScratchpadNotEmpty"
+              "itemName": "scratchpad",
+              "placeholder": ":i",
+              "color": "=blueColorScratchpadNotEmpty",
+              "leftClick": "triggerScratchpad"
+            },
+            {
+              "itemName": "verticalSpeed",
+              "padWithZeroLeft": 4,
+              "truncate": [0, 3],
+              "showPlusMinus": true
+            },
+            {
+              "itemName": "acShortType"
             }
           ],
           [
@@ -433,7 +455,6 @@
               ]
             },
             {
-              "separatorBefore": false,
               "itemName": "voiceType",
               "leftClick": "voiceTypeMenu",
               "mapping": {
@@ -444,22 +465,23 @@
               "color": [255, 220, 3]
             },
             {
-              "itemName": "scratchpad",
-              "placeholder": ":i",
-              "color": "=blueColorScratchpadNotEmpty",
-              "leftClick": "triggerScratchpad"
-            },
-            {
               "itemName": "sectorIndicator",
               "placeholder": "---"
+            },
+            {
+              "itemName": "plannedFlightLevel",
+              "padWithZeroLeft": 5,
+              "truncate": [0, 2],
+              "placeholder": "TaFL",
+              "leftClick": "pfl"
             }
           ],
           [
             {
               "itemName": "computedAltitude",
+              "prefix": ["=altitudeBelowTAPrefix"],
               "truncate": ["=altitudeBelowTATruncate", "=altitudeAboveTATruncate"],
               "padWithZeroLeft": 5,
-              "suffix": ["=altitudeBelowTASuffix"],
               "leftClick": "routeDraw"
             },
             {
@@ -476,69 +498,39 @@
               "placeholder": "Z"
             },
             {
-              "itemName": "groundSpeed",
-              "padWithZeroLeft": 3,
-              "truncate": [0, 2]
-            },
-            {
-              "itemName": "plannedFlightLevel",
-              "padWithZeroLeft": 5,
-              "truncate": [0, 2],
-              "placeholder": "TaFL",
-              "leftClick": "pfl"
-            }
-          ],
-          [
-            {
-              "itemName": "verticalSpeed",
-              "padWithZeroLeft": 4,
-              "truncate": [0, 3],
-              "showPlusMinus": true
-            },
-            {
               "itemName": "clearedFlightLevel",
               "padWithZeroLeft": 5,
-              "truncate": [0, 3],
+              "truncate": [0, 2],
               "mapping": {
                 "1": "CA",
                 "2": "VA"
               },
               "placeholder": "cfl",
-              "leftClick": "cfl",
-              "prefix": "@"
+              "leftClick": "cfl"
             },
             {
-              "itemName": "computedSpeed",
-              "prefix": "@c",
-              "placeholder": "@spd",
-              "leftClick": "spd",
-              "rightClick": "clearSpd"
+              "itemName": "assignedDirect",
+              "leftClick": "directMenu",
+              "rightClick": "triggerScratchpad"
             },
             {
               "itemName": "assignedHeading",
               "padWithZeroLeft": 3,
               "truncate": [0, 3],
               "placeholder": "h...",
-              "prefix": "@c",
+              "prefix": "h",
               "leftClick": "hdg",
               "rightClick": "directMenu"
-            },
-            {
-              "itemName": "assignedDirect",
-              "leftClick": "directMenu",
-              "rightClick": "triggerScratchpad"
             }
           ],
           [
             {
-              "itemName": "acShortType"
+              "itemName": "reportedHeading",
+              "padWithZeroLeft": 3,
+              "truncate": [0, 3],
+              "placeholder": "@h...",
+              "prefix": "@h"
             },
-            {
-              "itemName": "databaseIcaoWakeCat",
-              "placeholder": "Z"
-            }
-          ],
-          [
             {
               "itemName": "origin",
               "placeholder": "ORIG",
@@ -558,10 +550,22 @@
         "rows": [
           [
             {
+              "itemName": "groundSpeed",
+              "padWithZeroLeft": 3,
+              "truncate": [0, 2]
+            },
+            {
               "itemName": "assignedMach",
               "padWithZeroLeft": 3,
               "truncate": [0, 3],
               "prefix": "m",
+              "leftClick": "spd",
+              "rightClick": "clearSpd"
+            },
+            {
+              "itemName": "computedSpeed",
+              "prefix": "k",
+              "placeholder": "k..",
               "leftClick": "spd",
               "rightClick": "clearSpd"
             },
@@ -589,9 +593,19 @@
               "color": [218, 89, 50]
             },
             {
-              "itemName": "text",
-              "value": "=penWhenScratchpadNotEmpty",
-              "color": "=blueColorScratchpadNotEmpty"
+              "itemName": "scratchpad",
+              "placeholder": ":i",
+              "color": "=blueColorScratchpadNotEmpty",
+              "leftClick": "triggerScratchpad"
+            },
+            {
+              "itemName": "verticalSpeed",
+              "padWithZeroLeft": 4,
+              "truncate": [0, 3],
+              "showPlusMinus": true
+            },
+            {
+              "itemName": "acShortType"
             }
           ],
           [
@@ -613,7 +627,6 @@
               ]
             },
             {
-              "separatorBefore": false,
               "itemName": "voiceType",
               "leftClick": "voiceTypeMenu",
               "mapping": {
@@ -624,22 +637,23 @@
               "color": [255, 220, 3]
             },
             {
-              "itemName": "scratchpad",
-              "placeholder": ":i",
-              "color": "=blueColorScratchpadNotEmpty",
-              "leftClick": "triggerScratchpad"
-            },
-            {
               "itemName": "sectorIndicator",
               "placeholder": "---"
+            },
+            {
+              "itemName": "plannedFlightLevel",
+              "padWithZeroLeft": 5,
+              "truncate": [0, 2],
+              "placeholder": "TaFL",
+              "leftClick": "pfl"
             }
           ],
           [
             {
               "itemName": "computedAltitude",
+              "prefix": ["=altitudeBelowTAPrefix"],
               "truncate": ["=altitudeBelowTATruncate", "=altitudeAboveTATruncate"],
               "padWithZeroLeft": 5,
-              "suffix": ["=altitudeBelowTASuffix"],
               "leftClick": "routeDraw"
             },
             {
@@ -656,69 +670,39 @@
               "placeholder": "Z"
             },
             {
-              "itemName": "groundSpeed",
-              "padWithZeroLeft": 3,
-              "truncate": [0, 2]
-            },
-            {
-              "itemName": "plannedFlightLevel",
-              "padWithZeroLeft": 5,
-              "truncate": [0, 2],
-              "placeholder": "TaFL",
-              "leftClick": "pfl"
-            }
-          ],
-          [
-            {
-              "itemName": "verticalSpeed",
-              "padWithZeroLeft": 4,
-              "truncate": [0, 3],
-              "showPlusMinus": true
-            },
-            {
               "itemName": "clearedFlightLevel",
               "padWithZeroLeft": 5,
-              "truncate": [0, 3],
+              "truncate": [0, 2],
               "mapping": {
                 "1": "CA",
                 "2": "VA"
               },
               "placeholder": "cfl",
-              "leftClick": "cfl",
-              "prefix": "@"
+              "leftClick": "cfl"
             },
             {
-              "itemName": "computedSpeed",
-              "prefix": "@c",
-              "placeholder": "@spd",
-              "leftClick": "spd",
-              "rightClick": "clearSpd"
+              "itemName": "assignedDirect",
+              "leftClick": "directMenu",
+              "rightClick": "triggerScratchpad"
             },
             {
               "itemName": "assignedHeading",
               "padWithZeroLeft": 3,
               "truncate": [0, 3],
               "placeholder": "h...",
-              "prefix": "@c",
+              "prefix": "h",
               "leftClick": "hdg",
               "rightClick": "directMenu"
-            },
-            {
-              "itemName": "assignedDirect",
-              "leftClick": "directMenu",
-              "rightClick": "triggerScratchpad"
             }
           ],
           [
             {
-              "itemName": "acShortType"
+              "itemName": "reportedHeading",
+              "padWithZeroLeft": 3,
+              "truncate": [0, 3],
+              "placeholder": "@h...",
+              "prefix": "@h"
             },
-            {
-              "itemName": "databaseIcaoWakeCat",
-              "placeholder": "Z"
-            }
-          ],
-          [
             {
               "itemName": "origin",
               "placeholder": "ORIG",
@@ -739,10 +723,19 @@
         "rows": [
           [
             {
+              "itemName": "groundSpeed",
+              "padWithZeroLeft": 3,
+              "truncate": [0, 2]
+            },
+            {
               "itemName": "assignedMach",
               "padWithZeroLeft": 3,
               "truncate": [0, 3],
               "prefix": "m"
+            },
+            {
+              "itemName": "computedSpeed",
+              "prefix": "k"
             },
             {
               "itemName": "verticalSpeed",
@@ -792,7 +785,6 @@
               ]
             },
             {
-              "separatorBefore": false,
               "itemName": "voiceType",
               "leftClick": "voiceTypeMenu",
               "mapping": {
@@ -812,9 +804,9 @@
           [
             {
               "itemName": "computedAltitude",
+              "prefix": ["=altitudeBelowTAPrefix"],
               "truncate": ["=altitudeBelowTATruncate", "=altitudeAboveTATruncate"],
-              "padWithZeroLeft": 5,
-              "suffix": ["=altitudeBelowTASuffix"]
+              "padWithZeroLeft": 5
             },
             {
               "itemName": "verticalTrend",
@@ -830,26 +822,13 @@
               "placeholder": "Z"
             },
             {
-              "itemName": "groundSpeed",
-              "padWithZeroLeft": 3,
-              "truncate": [0, 2]
-            }
-          ],
-          [
-            {
               "itemName": "clearedFlightLevel",
-              "prefix": "@",
               "padWithZeroLeft": 5,
-              "truncate": [0, 3],
+              "truncate": [0, 2],
               "mapping": {
                 "1": "CA",
                 "2": "VA"
               }
-            },
-            {
-              "itemName": "computedSpeed",
-              "prefix": "@i",
-              "suffix": "0"
             },
             {
               "itemName": "assignedDirect",
@@ -859,18 +838,7 @@
               "itemName": "assignedHeading",
               "padWithZeroLeft": 3,
               "truncate": [0, 3],
-              "prefix": "@c"
-            }
-          ],
-          [
-            {
-              "itemName": "verticalSpeed",
-              "truncate": [
-                "=truncateSlowDescending",
-                "=truncateSlowClimbing",
-                "=truncateFastDescending",
-                "=truncateFastClimbing"
-              ]
+              "prefix": "h"
             }
           ]
         ]
@@ -880,10 +848,19 @@
         "rows": [
           [
             {
+              "itemName": "groundSpeed",
+              "padWithZeroLeft": 3,
+              "truncate": [0, 2]
+            },
+            {
               "itemName": "assignedMach",
               "padWithZeroLeft": 3,
               "truncate": [0, 3],
               "prefix": "m"
+            },
+            {
+              "itemName": "computedSpeed",
+              "prefix": "k"
             },
             {
               "itemName": "verticalSpeed",
@@ -933,7 +910,6 @@
               ]
             },
             {
-              "separatorBefore": false,
               "itemName": "voiceType",
               "leftClick": "voiceTypeMenu",
               "mapping": {
@@ -953,9 +929,9 @@
           [
             {
               "itemName": "computedAltitude",
+              "prefix": ["=altitudeBelowTAPrefix"],
               "truncate": ["=altitudeBelowTATruncate", "=altitudeAboveTATruncate"],
-              "padWithZeroLeft": 5,
-              "suffix": ["=altitudeBelowTASuffix"]
+              "padWithZeroLeft": 5
             },
             {
               "itemName": "verticalTrend",
@@ -971,26 +947,13 @@
               "placeholder": "Z"
             },
             {
-              "itemName": "groundSpeed",
-              "padWithZeroLeft": 3,
-              "truncate": [0, 2]
-            }
-          ],
-          [
-            {
               "itemName": "clearedFlightLevel",
-              "prefix": "@",
               "padWithZeroLeft": 5,
-              "truncate": [0, 3],
+              "truncate": [0, 2],
               "mapping": {
                 "1": "CA",
                 "2": "VA"
               }
-            },
-            {
-              "itemName": "computedSpeed",
-              "prefix": "@i",
-              "suffix": "0"
             },
             {
               "itemName": "assignedDirect",
@@ -1000,18 +963,7 @@
               "itemName": "assignedHeading",
               "padWithZeroLeft": 3,
               "truncate": [0, 3],
-              "prefix": "@c"
-            }
-          ],
-          [
-            {
-              "itemName": "verticalSpeed",
-              "truncate": [
-                "=truncateSlowDescending",
-                "=truncateSlowClimbing",
-                "=truncateFastDescending",
-                "=truncateFastClimbing"
-              ]
+              "prefix": "h"
             }
           ]
         ]
