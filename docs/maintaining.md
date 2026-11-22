@@ -173,9 +173,9 @@ Boxes in the track colour were hard to tell apart from the map and from each oth
 per state, darker than the map, reads at a glance.
 
 Track symbols are vector shapes (`shapes.json`), coloured by each variant's `plotColor`, not
-sprites. CDG's letters are stroke glyphs (`font/A`…`font/Z`) in pixel bold (`bold/font/*`: the
-glyph drawn twice, one pixel apart, 6 x 7 px), composed above or below the disc at a HALF-pixel x
-(-2.5 for one letter, -6.5 and 1.5 for two). The client snaps vertical 1 px strokes to pixel
+sprites. CDG's letters are 1 px stroke glyphs (`font/A`…`font/Z`, 4 x 6), composed above or below
+the disc at a HALF-pixel x (-1.5 for one letter, -4.5 and 1.5 for two). A pixel-bold version (each
+glyph drawn twice, one pixel apart) was tried and read too heavy. The client snaps vertical 1 px strokes to pixel
 centres but not diagonals, so a glyph at a whole-pixel x gets one straight side and one round one
 (O read as D). The CDG disc is three filled rectangles kept inside a 4.5 px radius (every client
 fills rectangles) under a 1 px ring at 4.5 px, whose anti-aliased edge makes the disc round: the
