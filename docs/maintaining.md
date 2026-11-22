@@ -198,7 +198,9 @@ aircraft moves on every one, so the trail stalls and then jumps. The tag trend a
 icons (`:imove-up-right`…).
 
 **Tags.** The airborne rows are the same in both systems. The detailed tag (hover) shows
-everything the compact one does, and more: never let a hover lose an item. No runway item: at CDG
+everything the compact one does, and more: never let a hover lose an item. While you hand a
+flight to another controller (attention state 4), both show that controller's frequency after
+the SID, in hand-off green (`nextControllerFrequency`), so you know what to tell the pilot. No runway item: at CDG
 the runway is in the track colour and letter, and no other French airport lands on two runways
 at once.
 

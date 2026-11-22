@@ -636,6 +636,11 @@
               "leftClick": "sidMenu"
             },
             {
+              "itemName": "nextControllerFrequency",
+              "applyWhen": "$isOutboundTransfer",
+              "color": [160, 216, 180]
+            },
+            {
               "itemName": "sectorIndicator",
               "placeholder": "---"
             },
@@ -835,6 +840,11 @@
               "leftClick": "sidMenu"
             },
             {
+              "itemName": "nextControllerFrequency",
+              "applyWhen": "$isOutboundTransfer",
+              "color": [160, 216, 180]
+            },
+            {
               "itemName": "sectorIndicator",
               "placeholder": "---"
             },
@@ -1017,6 +1027,11 @@
               "truncate": [0, 3],
               "color": [29, 118, 226],
               "value": ["=emptySIDifNotDep", "=suggestedSidIfNoAssigned", "&sid"]
+            },
+            {
+              "itemName": "nextControllerFrequency",
+              "applyWhen": "$isOutboundTransfer",
+              "color": [160, 216, 180]
             }
           ],
           [
@@ -1162,6 +1177,11 @@
               "truncate": [0, 3],
               "color": [29, 118, 226],
               "value": ["=emptySIDifNotDep", "=suggestedSidIfNoAssigned", "&sid"]
+            },
+            {
+              "itemName": "nextControllerFrequency",
+              "applyWhen": "$isOutboundTransfer",
+              "color": [160, 216, 180]
             }
           ],
           [

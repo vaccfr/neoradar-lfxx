@@ -36,6 +36,7 @@ Radar systems
   blinking until acknowledged with a click; orange for a warning) and the manual alerts (MISAP,
   INBEST, IRREG, WX); the track turns red or orange.
 - The hover tag shows everything the compact tag does (it now has the SID).
+- While you hand a flight off, its tag shows the next controller's frequency.
 
 AVISOs
 - Each AVISO draws its airport's vSMR AVISO (160 airports) and nothing else: surfaces, guidance
@@ -56,5 +57,5 @@ Revisions
           big, three small rings), one callsign look per state (slate plate), B612 Mono font with
           a barred zero, safety nets (STCA, emergency squawk, RIMCAS) with alert lines in the tags,
           SID on the hover tag, sector file 261101-0003; old fonts, the NeoVSID tag item and the
-          old vACDM list removed; vector trails (scaleRamp), smooth CDG disc, crisp CDG letters, RDF circle 0.5 NM,
+          old vACDM list removed; vector trails (scaleRamp), smooth CDG disc, crisp CDG letters, next controller's frequency during a hand-off, RDF circle 0.5 NM,
           no Legacy APP displays, correlation left to the client's default
