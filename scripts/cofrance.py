@@ -66,6 +66,19 @@ SYMBOLS: dict[str, dict] = {
 }
 SMALL_SCALE = 0.7
 
+# CoFrance's zoom scale (views.json, map zoomin/zoomout; vSMR's AVISO label zoomLevel uses the same
+# 0-10 range): each level doubles the scale, 4 shows a whole FIR and 10 an airport, about an
+# AVISO's opening view. NeoRadar draws by logical pixels per nautical mile, so level 10 is taken
+# as ZOOM_10_PX_PER_NM (an AVISO window is about 5 nm across ~1700 px) and each level below halves it.
+ZOOM_10_PX_PER_NM = 320
+
+
+def zoom_px_per_nm(level) -> float | None:
+    """Pixels per nautical mile at a CoFrance zoom level, or None for a level that limits nothing."""
+    if not isinstance(level, (int, float)) or level <= 0:
+        return None
+    return round(ZOOM_10_PX_PER_NM * 2 ** (float(level) - 10), 2)
+
 
 def slug(text: str) -> str:
     return re.sub(r"-+", "-", re.sub(r"[^a-z0-9]+", "-", text.lower())).strip("-")
@@ -263,8 +276,11 @@ def convert_file(path: Path, ref: str, group_label: str, conditions: ConditionBu
         base = {"uuid": uuid, "type": f"CoFrance {group_label}"}
         if isinstance(props.get("name"), str) and props["name"]:
             base["name"] = props["name"]
-        if "zoomin" in props:
-            base["cofranceZoomin"] = props["zoomin"]
+        # zoomin: drawn from that zoom level in; zoomout: drawn up to that level.
+        if zoom_px_per_nm(props.get("zoomin")):
+            base["minPixelsPerNm"] = zoom_px_per_nm(props["zoomin"])
+        if zoom_px_per_nm(props.get("zoomout")):
+            base["maxPixelsPerNm"] = zoom_px_per_nm(props["zoomout"])
         activation = props.get("activation")
         if isinstance(activation, dict) and activation:
             cond = conditions.build(activation, f"{ref}")

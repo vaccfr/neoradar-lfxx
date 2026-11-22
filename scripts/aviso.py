@@ -17,7 +17,9 @@ AVISO profile lists:
 
 Colours are the palette the airport's AVISO ASR picks (PLUGIN:vSMR:AvisoColorPalette, "real" at the
 major airports), else the file's default_color_palette ("dark"). Label zoom levels become
-minPixelsPerNm (ZOOM_PX_PER_NM).
+minPixelsPerNm on CoFrance's zoom scale (cofrance.zoom_px_per_nm): a label of level 9 draws from
+160 px/nm, half the AVISO's opening scale, so labels show when the AVISO opens and hide only once
+it is zoomed well out.
 """
 from __future__ import annotations
 
@@ -26,11 +28,8 @@ import re
 from dataclasses import dataclass, field
 from pathlib import Path
 
-from cofrance import slug, to_mercator, project
+from cofrance import project, slug, to_mercator, zoom_px_per_nm
 
-# vSMR label zoom level -> NeoRadar minPixelsPerNm. vSMR's scale is not documented; zoom 7 is
-# taken as the AVISO's opening view (no limit) and each level above as twice the scale.
-ZOOM_PX_PER_NM = {8: 600, 9: 1200}
 BACKGROUND_MARGIN_DEG = 0.3
 DIRECTIONS = {"north": 0, "east": 90, "south": 180, "west": 270}
 
@@ -185,8 +184,8 @@ def convert_airport(path: Path, report: Report, palettes: dict[str, str]) -> tup
                 text_style["fontSize"] = paint["text-size"]
             d = {**base, "text": str(text), "textStyle": text_style}
             zoom = paint.get("zoomLevel")
-            if isinstance(zoom, (int, float)) and int(zoom) in ZOOM_PX_PER_NM:
-                d["minPixelsPerNm"] = ZOOM_PX_PER_NM[int(zoom)]
+            if zoom_px_per_nm(zoom):
+                d["minPixelsPerNm"] = zoom_px_per_nm(zoom)
             drawings.append({"type": "Feature", "properties": d, "geometry": {"type": "Point", "coordinates": to_mercator(*geometry["coordinates"][:2])}})
             continue
 

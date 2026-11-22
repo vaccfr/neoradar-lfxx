@@ -191,8 +191,12 @@ the systems exists, since the client silently ignores a broken one.
   taxiways, TORA…) and each vSMR group. A group named for a direction (LFPG's East / West Arrows)
   draws only while a runway end facing that way is active, for arrivals or departures. Colours
   are the palette the airport's ASR picks (`PLUGIN:vSMR:AvisoColorPalette`), else the file's
-  default. vSMR's label zoom levels become `minPixelsPerNm` (`ZOOM_PX_PER_NM` in the script: 8 is
-  600, 9 is 1200, 7 and below always); tune it there if gate labels appear too early or too late.
+  default. Label zoom levels (and CoFrance maps' `zoomin` / `zoomout`) are on CoFrance's 0-10
+  zoom scale, each level doubling the scale, 10 about an AVISO's opening view; they become
+  `minPixelsPerNm` / `maxPixelsPerNm` through `zoom_px_per_nm` in `scripts/cofrance.py`
+  (`ZOOM_10_PX_PER_NM` = 320: level 9 is 160 px/nm, 8 is 80). Gate labels (level 9) therefore show
+  when an AVISO opens and hide only once it is zoomed well out. Raise or lower that one constant
+  to move every threshold.
   Fix the content itself in Sector-Files: these files are what vSMR draws in EuroScope too.
 - **Sector-file maps** come from the GNG `.sct` via neoradar-cli.
 
