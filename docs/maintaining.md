@@ -54,6 +54,7 @@ would then need a system: see below).
 GitHub → Actions → **Publish Release** → Run workflow.
 
 - **packages**: leave empty (there is only `LFXX`).
+- **revision**: 1 for the first release of an AIRAC, then 2, 3… (the version is `<AIRAC>.<revision>`).
 - **publish**: untick to only build. The zips are then in the run's artifacts, to try first.
 
 The package goes to the Cloudflare R2 bucket `neoradar-packages` under `lfxx/`, which
@@ -65,7 +66,10 @@ The run fails on a missing input, a convert error or a schema error, before anyt
 published. It also fails if publishing was asked for and the R2 secrets are missing, or if
 `neoradar-cli distribute` does not report the package published. Read its warnings either way (see [Build warnings](#build-warnings)).
 
-Versions are `<AIRAC>_<commit>`, e.g. `2611_b7bea4a`.
+Versions are `<AIRAC>.<revision>`, e.g. `2611.1`: **revision** is a workflow input, 1 for the first
+release of a cycle. To republish within the same AIRAC, run it again with the next revision
+(`2611.2`). The client offers an update whenever the published version differs from the
+installed one, so never reuse a version for different content.
 
 ### Server datasets
 

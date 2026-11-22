@@ -7,6 +7,10 @@ on:
         description: "Package ids to build, comma-separated (empty = all: LFXX)"
         required: false
         default: ""
+      revision:
+        description: "Package revision within the AIRAC: the version is <AIRAC>.<revision>, e.g. 2611.1. Bump it to republish in the same cycle"
+        required: true
+        default: "1"
       publish:
         description: "Publish to the R2 package bucket (off = build and upload artifacts only)"
         type: boolean
@@ -146,8 +150,13 @@ jobs:
         env:
           NEORADAR_R2_ACCESS_KEY_ID: ${{ secrets.NEORADAR_R2_ACCESS_KEY_ID }}
           NEORADAR_R2_SECRET_ACCESS_KEY: ${{ secrets.NEORADAR_R2_SECRET_ACCESS_KEY }}
+          REVISION: ${{ inputs.revision }}
         run: |
           set -euo pipefail
+          if ! [[ "$REVISION" =~ ^[1-9][0-9]*$ ]]; then
+            echo "::error::revision must be a whole number from 1, got '$REVISION'"
+            exit 1
+          fi
           publish_flag=""
           if [ "${{ inputs.publish }}" = "true" ]; then
             publish_flag="--publish"
@@ -160,8 +169,9 @@ jobs:
           for env in build/*/; do
             id="$(basename "$env")"
             airac="$(python3 -c "import json;print(json.load(open('$env/build-info.json'))['airac'])")"
-            version="${airac}_${GITHUB_SHA::7}"
-            echo "::group::$id $version"
+            # The client offers an update whenever the published version differs from the installed one.
+            version="${airac}.${REVISION}"
+            echo "::group::$id $version (commit ${GITHUB_SHA::7})"
             (cd build && neoradar-cli distribute "$id" --new-version "$version" $publish_flag) 2>&1 | tee "distribute-$id.log"
             # distribute returns 0 when it skips publishing over a config problem, so ask for the proof.
             if [ -n "$publish_flag" ] && ! grep -q "Package published successfully" "distribute-$id.log"; then
