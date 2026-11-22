@@ -28,7 +28,7 @@ Controller Pack install (e.g. `~/Documents/FrenchVACC`) is already one.
 - **Prefer upstream fixes.** Wrong ASRs, maps or positions are wrong in EuroScope too. Report
   them; only work around them in the build (with a warning) when they break NeoRadar.
 - **Every build warning must say what is wrong and where to fix it.** Do not drop data silently.
-- **Validate before you finish**: build, then `node scripts/validate.js <schemas@develop> build/*/package`
+- **Validate before you finish**: build, then `node scripts/validate.js <schemas@main> build/*/package`
   must pass.
 - Commit and push only when the maintainer asks, and to where they say (they may want it
   straight on `main`).
@@ -59,9 +59,8 @@ node scripts/validate.js <schemas checkout> build/*/package      # ajv@8 + js-ya
 
 ## Things that are easy to get wrong
 
-- **neoradar-cli runs from `main`; the schemas stay on `develop`** until develop is merged: the
-  schemas' `main` still requires profile fields the package no longer writes. CI pins both through
-  `NEORADAR_CLI_REF` / `NEORADAR_SCHEMAS_REF` in `release.yml`.
+- **neoradar-cli and the schemas run from `main`.** CI pins both through `NEORADAR_CLI_REF` /
+  `NEORADAR_SCHEMAS_REF` in `release.yml`.
 - **Publishing goes to Cloudflare R2** (`publish` in `packages.json`: bucket `neoradar-packages`,
   path `lfxx`, served at `https://pkg.neoradar.app/lfxx`). The keys are the repository secrets
   `NEORADAR_R2_ACCESS_KEY_ID` / `NEORADAR_R2_SECRET_ACCESS_KEY`; never put them in a file.

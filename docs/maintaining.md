@@ -106,7 +106,7 @@ To check against the schemas:
 
 ```bash
 npm install --no-save --prefix scripts ajv@8 js-yaml@4
-git clone -b develop https://github.com/neoradar-project/schemas ../schemas
+git clone https://github.com/neoradar-project/schemas ../schemas
 node scripts/validate.js ../schemas build/*/package
 ```
 
@@ -229,10 +229,9 @@ upstream.
 - **Server-dependent tags.** Arrival runway colours (CDG), SID/runway suggestions and route-based
   rules need the server link and the uploaded server dataset.
 - **Not converted yet:** vSID procedure priorities and runway preferences.
-- **Schemas pinned to `develop`.** The CLI runs from `main` (`NEORADAR_CLI_REF`), but the schemas'
-  `main` still requires profile fields `develop` dropped, so the package fails against it. Once
-  schemas `develop` is merged to `main`, set `NEORADAR_SCHEMAS_REF` in `.github/workflows/release.yml`
-  and `ref:` in `validate.yml` to `main`.
+- **CLI and schemas from `main`.** `NEORADAR_CLI_REF` / `NEORADAR_SCHEMAS_REF` in
+  `.github/workflows/release.yml` (and `ref:` in `validate.yml`) pick the branches CI uses. Point
+  them at `develop` only to try changes that have not reached `main` yet.
 
 ## Secrets used by the workflows
 

@@ -23,10 +23,9 @@ env:
   # Private: the GNG AIRAC data (sector files, ICAO, NavData), never published as-is.
   LIVE_DATA_REPO_NAME: data-sectorfiles
   LIVE_DATA_REF: main
-  # The CLI's main has caught up with develop. The schemas' main has not: it still requires
-  # profile fields develop dropped, so the package fails against it. Move to main once it is merged.
+  # The CLI and the schemas, from their main branches.
   NEORADAR_CLI_REF: main
-  NEORADAR_SCHEMAS_REF: develop
+  NEORADAR_SCHEMAS_REF: main
 
 jobs:
   build:

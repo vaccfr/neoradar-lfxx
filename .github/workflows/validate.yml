@@ -59,7 +59,7 @@ jobs:
         uses: actions/checkout@v6
         with:
           repository: neoradar-project/schemas
-          ref: develop  # matches release.yml's NEORADAR_SCHEMAS_REF
+          ref: main  # matches release.yml's NEORADAR_SCHEMAS_REF
           path: .schemas
           persist-credentials: false
 
