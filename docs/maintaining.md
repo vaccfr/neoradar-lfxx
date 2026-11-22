@@ -177,15 +177,19 @@ sprites. CDG's letters are stroke glyphs (`font/A`…`font/Z`) in pixel bold (`b
 glyph drawn twice, one pixel apart, 6 x 7 px), composed above or below the disc at a HALF-pixel x
 (-2.5 for one letter, -6.5 and 1.5 for two). The client snaps vertical 1 px strokes to pixel
 centres but not diagonals, so a glyph at a whole-pixel x gets one straight side and one round one
-(O read as D). The CDG disc is three filled rectangles (the old sprite's rows); client 0.4.4 also
-fills full circles. Other polygons fill only when they are axis-aligned rectangles.
+(O read as D). The CDG disc is three filled rectangles kept inside a 4.5 px radius (every client
+fills rectangles) under a 1 px ring at 4.5 px, whose anti-aliased edge makes the disc round: the
+client fills a circle (0.4.4) with hard pixel rows, no smoother than the rectangles, and an older
+client would draw it hollow. Other polygons fill only when they are axis-aligned rectangles.
 
 Both mapstyles carry the CoFrance route draw (thin `route_line` green, small crosses, fix labels
 on a dark plate) and the RDF circle (0.5 NM: the radius is in NM and never clamped, so 10 NM
 filled an approach display; `circleThreshold` only hides one smaller than that many pixels).
 Trails are vector shapes in the track colour, sized per mark by `historyTrailShape.scaleRamp`
-(client 0.4.4): CDG's ring (`cdg/trail`) shrinking from 10 to 4 px like the old sprite, IRMA's
-4 px ring (`neoirma/trail`), three then three at 3 px.
+(client 0.4.4): CDG's ring (`cdg/trail`, radius 4.5, stroke 1.3) at 3.5, 3.5, 2.5, 2.5, 1.5,
+1.5 px radius, every mark inside the disc's size and on whole pixels (a ring of radius n + 0.5 on
+the pixel grid is the crispest a small circle gets); IRMA's 4 px ring (`neoirma/trail`), three
+then three at 3 px.
 Profiles refresh like a radar (`map.sweepIntervalSeconds`, from `build.py`): approach every
 `APPROACH_SWEEP_SECONDS` (2 s), AVISOs every `GROUND_SWEEP_SECONDS` (1 s). Aircraft and trails
 move together once per sweep, one trail mark per previous sweep, never one on the aircraft.

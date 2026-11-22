@@ -23,10 +23,10 @@ Radar systems
   the plate when transferred to you, green text when transferred out (same in both systems).
 - Flights CoFrance never filters, and flights assumed or in transfer, show through the altitude
   filter.
-- Trails: vector rings in each track colour, CDG's shrinking from 10 to 4 px, IRMA's 4 then 3 px;
-  displays refresh like a radar (approach 2 s, AVISO 1 s), so trails follow the aircraft sweep
-  by sweep.
-- CDG letters in pixel bold; O, D and B no longer look alike.
+- Trails: vector rings in each track colour, CDG's from 8 to 3 px (all smaller than the disc),
+  IRMA's 4 then 3 px; displays refresh like a radar (approach 2 s, AVISO 1 s), so trails follow
+  the aircraft sweep by sweep.
+- CDG disc drawn round and smooth; letters in pixel bold, O, D and B no longer look alike.
 - RDF circle 0.5 NM (it was 10 NM).
 - Tags in B612 Mono (barred zero), with climb/descent/level arrows and the voice type (/r, /t).
 - Route draw in CoFrance's route colours, labels on a dark plate.

@@ -654,14 +654,14 @@
       ]
     },
     "cdg/track": {
-      "description": "CoFrance Paris-CDG track: a 10 px disc, as three overlapping filled rectangles (rows 4, 8, 8, 10, 10...): released clients fill only rectangles.",
+      "description": "CoFrance Paris-CDG track: a 10 px disc. Three filled rectangles inside a 4.5 px radius (every client fills rectangles), under a 1 px anti-aliased ring at 4.5 px that smooths the edge.",
       "rotateWithHeading": false,
       "elements": [
         {
           "rect": {
             "size": [
-              10,
-              4
+              9,
+              3
             ]
           },
           "fill": true
@@ -669,8 +669,8 @@
         {
           "rect": {
             "size": [
-              8,
-              8
+              7,
+              7
             ]
           },
           "fill": true
@@ -678,11 +678,16 @@
         {
           "rect": {
             "size": [
-              4,
-              10
+              3,
+              9
             ]
           },
           "fill": true
+        },
+        {
+          "circle": {
+            "radius": 4.5
+          }
         }
       ]
     },
@@ -1432,12 +1437,13 @@
       ]
     },
     "cdg/trail": {
-      "description": "CDG history trail mark: a 10 px ring, the old CDG trail sprite; targets.json's scaleRamp shrinks it to 4 px down the trail.",
+      "description": "CDG history trail mark: a ring of 4.5 px radius, stroke 1.3, so it lands on whole pixels; targets.json's scaleRamp draws it at 3.5, 2.5 and 1.5 px (about 1 px of stroke each), every mark smaller than the 10 px disc.",
       "rotateWithHeading": false,
+      "strokeWidth": 1.3,
       "elements": [
         {
           "circle": {
-            "radius": 5
+            "radius": 4.5
           }
         }
       ]
