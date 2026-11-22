@@ -152,8 +152,8 @@ by state, so the state is shown in reverse video:
 
 Track symbols are vector shapes (`shapes.json`), coloured by each variant's `plotColor`, not
 sprites. CDG's letters are stroke glyphs (`font/A`…`font/Z`) composed under the disk. The CDG disk
-and IRMA's ground plot ask for `fill`. Current clients only fill axis-aligned rectangles and draw
-the others as outlines until filled circles and polygons are supported.
+is a circle with `fill`: current clients fill only axis-aligned rectangles and draw it as an
+outline until filled circles are supported.
 
 Rules and expressions shared by both live in `expressions.json`; `lists.yaml` is shared too. The
 schemas describe every field: <https://github.com/neoradar-project/schemas> (`systems/`).
