@@ -1,11 +1,12 @@
-"""History-trail sprites: the old CDG trail (6 rings shrinking from 10 to 4 px), in every trail colour.
+"""History-trail sprites from the old atlas, re-coloured into every trail colour.
 
     python scripts/trail_sprites.py
 
-Re-colours plots/cdg/blanc/t1..t6 from backup/images/symbols.png into shared/package/images/
-symbols.png + symbols.json (frames trails/<rrggbb>/t1..t6) and points every airborne variant's
-historyTrailImages at its colour's frames. Sprites, because released clients cannot size a trail
-shape per mark (historyTrailShape.scaleRamp is not released yet).
+cdg: the old CDG trail, six rings shrinking from 10 to 4 px (plots/cdg/blanc/t1..t6).
+neoirma: the old IRMA trail, three 4 px rings then three 3 px rings (plots/nce/F/t4, t5).
+Writes shared/package/images/symbols.png + symbols.json (frames trails/<style>/<rrggbb>/<frame>)
+and points every airborne variant's historyTrailImages at its colour's frames. Sprites, because
+released clients cannot size a trail shape per mark (historyTrailShape.scaleRamp is not released).
 """
 import json
 from pathlib import Path
@@ -16,7 +17,12 @@ REPO = Path(__file__).resolve().parent.parent
 SYSTEMS = REPO / "shared" / "package" / "systems"
 IMAGES = REPO / "shared" / "package" / "images"
 OLD = REPO / "backup" / "images"
-SOURCE = [f"plots/cdg/blanc/t{i}" for i in range(1, 7)]
+STYLES = {
+    "cdg": {"frames": {f"t{i}": f"plots/cdg/blanc/t{i}" for i in range(1, 7)},
+            "trail": [f"t{i}" for i in range(1, 7)]},
+    "neoirma": {"frames": {"big": "plots/nce/F/t4", "small": "plots/nce/F/t5"},
+                "trail": ["big"] * 3 + ["small"] * 3},
+}
 SKIP_STEPS = 5  # the old CDG trail spacing
 
 
@@ -28,29 +34,31 @@ def trail_color(variant):
 def main():
     old_atlas = Image.open(OLD / "symbols.png").convert("RGBA")
     old_frames = json.loads((OLD / "symbols.json").read_text(encoding="utf-8"))["frames"]
-    sources = []
-    for name in SOURCE:
-        f = old_frames[name]["frame"]
-        sources.append(old_atlas.crop((f["x"], f["y"], f["x"] + f["w"], f["y"] + f["h"])))
-    size = sources[0].width
 
-    targets = {s: json.loads((SYSTEMS / s / "targets.json").read_text(encoding="utf-8")) for s in ("cdg", "neoirma")}
-    colors = []
-    for doc in targets.values():
+    def crop(name):
+        f = old_frames[name]["frame"]
+        return old_atlas.crop((f["x"], f["y"], f["x"] + f["w"], f["y"] + f["h"]))
+
+    targets = {s: json.loads((SYSTEMS / s / "targets.json").read_text(encoding="utf-8")) for s in STYLES}
+    rows = []  # (system, colour)
+    for system, doc in targets.items():
         for v in doc["airborneSymbology"]:
             c = trail_color(v)
-            if c and c not in colors:
-                colors.append(c)
+            if c and (system, c) not in rows:
+                rows.append((system, c))
 
-    atlas = Image.new("RGBA", (size * len(sources), size * len(colors)), (0, 0, 0, 0))
+    size = 32
+    width = max(len(s["frames"]) for s in STYLES.values())
+    atlas = Image.new("RGBA", (size * width, size * len(rows)), (0, 0, 0, 0))
     frames = {}
-    for row, color in enumerate(colors):
+    for row, (system, color) in enumerate(rows):
         key = "%02x%02x%02x" % color
-        for i, src in enumerate(sources):
+        for i, (name, source) in enumerate(STYLES[system]["frames"].items()):
+            src = crop(source)
             tinted = Image.new("RGBA", src.size, (*color, 0))
             tinted.putalpha(src.getchannel("A"))
             atlas.paste(tinted, (i * size, row * size))
-            frames[f"trails/{key}/t{i + 1}"] = {
+            frames[f"trails/{system}/{key}/{name}"] = {
                 "frame": {"x": i * size, "y": row * size, "w": size, "h": size}, "rotated": False, "trimmed": False,
                 "spriteSourceSize": {"x": 0, "y": 0, "w": size, "h": size}, "sourceSize": {"w": size, "h": size},
                 "pivot": {"x": 0.5, "y": 0.5},
@@ -66,10 +74,10 @@ def main():
                 continue
             key = "%02x%02x%02x" % c
             v.pop("historyTrailShape", None)  # a trail shape would win over the images
-            v["historyTrailImages"] = [f"trails/{key}/t{i + 1}" for i in range(len(sources))]
+            v["historyTrailImages"] = [f"trails/{system}/{key}/{name}" for name in STYLES[system]["trail"]]
             v["historyTrailsSkipSteps"] = SKIP_STEPS
         (SYSTEMS / system / "targets.json").write_text(json.dumps(doc, indent=2, ensure_ascii=False) + "\n", encoding="utf-8", newline="\n")
-    print(f"{len(colors)} trail colours, {len(frames)} frames")
+    print(f"{len(rows)} trail colours, {len(frames)} frames")
 
 
 if __name__ == "__main__":

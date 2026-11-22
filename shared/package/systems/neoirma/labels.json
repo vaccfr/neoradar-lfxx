@@ -362,9 +362,9 @@
   },
   "airborne": {
     "styleDefaults": {
-      "font": "EuroScope",
+      "font": "B612MonoLFXX-Bold",
       "fontWeight": "normal",
-      "fontSize": 13,
+      "fontSize": 12,
       "detailedBackgroundColor": [25, 25, 25],
       "detailedBackgroundColorOpacity": 0.9,
       "detailedRoundedCorners": 2
@@ -440,19 +440,9 @@
             {
               "itemName": "callsign",
               "leftClick": "callsignMenu",
-              "color": [
-                "=incomingTransferText",
-                "=neoirmaAssumedTextDep",
-                "=neoirmaAssumedTextArr",
-                "=neoirmaAssumedTextOther",
-                "=handoffText"
-              ],
-              "backgroundColor": [
-                "=incomingTransferBox",
-                "=neoirmaAssumedBoxDep",
-                "=neoirmaAssumedBoxArr",
-                "=neoirmaAssumedBoxOther"
-              ]
+              "color": ["=incomingTransferText", "=assumedText", "=handoffText"],
+              "backgroundColor": ["=incomingTransferBox", "=assumedBox"],
+              "padding": [1, 3]
             },
             {
               "itemName": "voiceType",
@@ -612,19 +602,9 @@
             {
               "itemName": "callsign",
               "leftClick": "callsignMenu",
-              "color": [
-                "=incomingTransferText",
-                "=neoirmaAssumedTextDep",
-                "=neoirmaAssumedTextArr",
-                "=neoirmaAssumedTextOther",
-                "=handoffText"
-              ],
-              "backgroundColor": [
-                "=incomingTransferBox",
-                "=neoirmaAssumedBoxDep",
-                "=neoirmaAssumedBoxArr",
-                "=neoirmaAssumedBoxOther"
-              ]
+              "color": ["=incomingTransferText", "=assumedText", "=handoffText"],
+              "backgroundColor": ["=incomingTransferBox", "=assumedBox"],
+              "padding": [1, 3]
             },
             {
               "itemName": "voiceType",
@@ -770,19 +750,9 @@
             {
               "itemName": "callsign",
               "leftClick": "callsignMenu",
-              "color": [
-                "=incomingTransferText",
-                "=neoirmaAssumedTextDep",
-                "=neoirmaAssumedTextArr",
-                "=neoirmaAssumedTextOther",
-                "=handoffText"
-              ],
-              "backgroundColor": [
-                "=incomingTransferBox",
-                "=neoirmaAssumedBoxDep",
-                "=neoirmaAssumedBoxArr",
-                "=neoirmaAssumedBoxOther"
-              ]
+              "color": ["=incomingTransferText", "=assumedText", "=handoffText"],
+              "backgroundColor": ["=incomingTransferBox", "=assumedBox"],
+              "padding": [1, 3]
             },
             {
               "itemName": "voiceType",
@@ -895,19 +865,9 @@
             {
               "itemName": "callsign",
               "leftClick": "callsignMenu",
-              "color": [
-                "=incomingTransferText",
-                "=neoirmaAssumedTextDep",
-                "=neoirmaAssumedTextArr",
-                "=neoirmaAssumedTextOther",
-                "=handoffText"
-              ],
-              "backgroundColor": [
-                "=incomingTransferBox",
-                "=neoirmaAssumedBoxDep",
-                "=neoirmaAssumedBoxArr",
-                "=neoirmaAssumedBoxOther"
-              ]
+              "color": ["=incomingTransferText", "=assumedText", "=handoffText"],
+              "backgroundColor": ["=incomingTransferBox", "=assumedBox"],
+              "padding": [1, 3]
             },
             {
               "itemName": "voiceType",

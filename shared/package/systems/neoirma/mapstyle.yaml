@@ -62,9 +62,9 @@ routeDraw:
     fillOpacity: 0
   textStyle:
     color: [160, 216, 180]
-    fontFamily: EuroScope
-    fontSize: 11
-    lineHeight: 11
+    fontFamily: B612MonoLFXX-Bold
+    fontSize: 10
+    lineHeight: 12
     offset: [6, -6]
     backgroundColor: [45, 48, 54]
     backgroundOpacity: 0.85

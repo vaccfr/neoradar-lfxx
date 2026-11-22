@@ -49,94 +49,6 @@
       "value": "29,118,226",
       "expression": ["$isAssignedDepRunwayNotEmpty"]
     },
-    "cdgAssumedBoxArrBourget": {
-      "value": "139,99,150",
-      "expression": ["$cdgAssumedBoxArrBourget"]
-    },
-    "cdgAssumedBoxArrCDG": {
-      "value": "114,114,100",
-      "expression": ["$cdgAssumedBoxArrCDG"]
-    },
-    "cdgAssumedBoxArrNorth": {
-      "value": "132,107,118",
-      "expression": ["$cdgAssumedBoxArrNorth"]
-    },
-    "cdgAssumedBoxArrOrly": {
-      "value": "138,108,76",
-      "expression": ["$cdgAssumedBoxArrOrly"]
-    },
-    "cdgAssumedBoxArrPNPV": {
-      "value": "52,130,39",
-      "expression": ["$cdgAssumedBoxArrPNPV"]
-    },
-    "cdgAssumedBoxArrSouth": {
-      "value": "148,102,102",
-      "expression": ["$cdgAssumedBoxArrSouth"]
-    },
-    "cdgAssumedBoxDepCDG": {
-      "value": "85,120,120",
-      "expression": ["$cdgAssumedBoxDepCDG"]
-    },
-    "cdgAssumedBoxDepNN": {
-      "value": "85,120,120",
-      "expression": ["$cdgAssumedBoxDepNN"]
-    },
-    "cdgAssumedBoxDepOrly": {
-      "value": "64,121,140",
-      "expression": ["$cdgAssumedBoxDepOrly"]
-    },
-    "cdgAssumedBoxLocalPGPB": {
-      "value": "114,114,100",
-      "expression": ["$cdgAssumedBoxLocalPGPB"]
-    },
-    "cdgAssumedBoxVFR": {
-      "value": "113,113,113",
-      "expression": ["$isAssumed"]
-    },
-    "cdgAssumedTextArrBourget": {
-      "value": "255,255,255",
-      "expression": ["$cdgAssumedBoxArrBourget"]
-    },
-    "cdgAssumedTextArrCDG": {
-      "value": "255,255,255",
-      "expression": ["$cdgAssumedBoxArrCDG"]
-    },
-    "cdgAssumedTextArrNorth": {
-      "value": "255,255,255",
-      "expression": ["$cdgAssumedBoxArrNorth"]
-    },
-    "cdgAssumedTextArrOrly": {
-      "value": "255,255,255",
-      "expression": ["$cdgAssumedBoxArrOrly"]
-    },
-    "cdgAssumedTextArrPNPV": {
-      "value": "255,255,255",
-      "expression": ["$cdgAssumedBoxArrPNPV"]
-    },
-    "cdgAssumedTextArrSouth": {
-      "value": "255,255,255",
-      "expression": ["$cdgAssumedBoxArrSouth"]
-    },
-    "cdgAssumedTextDepCDG": {
-      "value": "255,255,255",
-      "expression": ["$cdgAssumedBoxDepCDG"]
-    },
-    "cdgAssumedTextDepNN": {
-      "value": "255,255,255",
-      "expression": ["$cdgAssumedBoxDepNN"]
-    },
-    "cdgAssumedTextDepOrly": {
-      "value": "255,255,255",
-      "expression": ["$cdgAssumedBoxDepOrly"]
-    },
-    "cdgAssumedTextLocalPGPB": {
-      "value": "255,255,255",
-      "expression": ["$cdgAssumedBoxLocalPGPB"]
-    },
-    "cdgAssumedTextVFR": {
-      "value": "255,255,255",
-      "expression": ["$isAssumed"]
-    },
     "colourAssumed": {
       "value": "246,246,246",
       "expression": ["$isAssumed"]
@@ -181,16 +93,24 @@
       "value": "80, 80, 80",
       "expression": ["$isFocusedAircraft"]
     },
+    "assumedText": {
+      "value": "242,244,247",
+      "expression": ["$isAssumed"]
+    },
+    "assumedBox": {
+      "value": "30,38,46",
+      "expression": ["$isAssumed"]
+    },
     "handoffText": {
       "value": "160,216,180",
       "expression": ["$isOutboundTransfer"]
     },
     "incomingTransferBox": {
-      "value": "90,121,101",
+      "value": "30,38,46",
       "expression": ["$isInboundTransfer"]
     },
     "incomingTransferText": {
-      "value": "255,255,255",
+      "value": "160,216,180",
       "expression": ["$isInboundTransfer"]
     },
     "incorrectSquawkRedColor": {
@@ -208,30 +128,6 @@
     "isRDOF": {
       "value": "RDOF",
       "expression": ["$isLostComm"]
-    },
-    "neoirmaAssumedBoxArr": {
-      "value": "63,120,139",
-      "expression": ["$neoirmaAssumedBoxArr"]
-    },
-    "neoirmaAssumedBoxDep": {
-      "value": "145,103,111",
-      "expression": ["$neoirmaAssumedBoxDep"]
-    },
-    "neoirmaAssumedBoxOther": {
-      "value": "114,114,114",
-      "expression": ["$isAssumed"]
-    },
-    "neoirmaAssumedTextArr": {
-      "value": "255,255,255",
-      "expression": ["$neoirmaAssumedBoxArr"]
-    },
-    "neoirmaAssumedTextDep": {
-      "value": "255,255,255",
-      "expression": ["$neoirmaAssumedBoxDep"]
-    },
-    "neoirmaAssumedTextOther": {
-      "value": "255,255,255",
-      "expression": ["$isAssumed"]
     },
     "pdcRequestedColour": {
       "value": "255, 255, 0",
@@ -316,8 +212,6 @@
     "neoirmaDep": ["==", "isDeparture", "1"],
     "neoirmaArr": ["==", "isArrival", "1"],
     "neoirmaThroughFilter": ["OR", ["$neoirmaDep", "$neoirmaArr", "$isOwnedOrOffered"]],
-    "neoirmaAssumedBoxDep": ["AND", ["$isAssumed", "$neoirmaDep"]],
-    "neoirmaAssumedBoxArr": ["AND", ["$isAssumed", "$neoirmaArr"]],
     "cdgLocalPGPB": [
       "AND",
       [
@@ -527,46 +421,6 @@
         "$isOwnedOrOffered"
       ]
     ],
-    "cdgAssumedBoxLocalPGPB": ["AND", ["$isAssumed", ["OR", ["$cdgLocalPGPB", "$cdgLocalOrly"]]]],
-    "cdgAssumedBoxArrSouth": ["AND", ["$isAssumed", "$cdgArrSouth"]],
-    "cdgAssumedBoxArrNorth": ["AND", ["$isAssumed", "$cdgArrNorth"]],
-    "cdgAssumedBoxArrBourget": ["AND", ["$isAssumed", "$cdgArrBourget"]],
-    "cdgAssumedBoxArrOrly": ["AND", ["$isAssumed", ["OR", ["$cdgArrOrly", "$cdgArrPTOB"]]]],
-    "cdgAssumedBoxArrPNPV": ["AND", ["$isAssumed", "$cdgArrPNPV"]],
-    "cdgAssumedBoxArrCDG": ["AND", ["$isAssumed", "$cdgArrCDG"]],
-    "cdgAssumedBoxDepNN": [
-      "AND",
-      [
-        "$isAssumed",
-        [
-          "OR",
-          [
-            "$cdgDepNN",
-            "$cdgDepNO",
-            "$cdgDepNA",
-            "$cdgDepNM",
-            "$cdgDepER",
-            "$cdgDepEL",
-            "$cdgDepEB",
-            "$cdgDepEN",
-            "$cdgDepED",
-            "$cdgDepEX",
-            "$cdgDepSE",
-            "$cdgDepSA",
-            "$cdgDepSL",
-            "$cdgDepSO",
-            "$cdgDepSP",
-            "$cdgDepWE",
-            "$cdgDepWL",
-            "$cdgDepHO",
-            "$cdgDepHM",
-            "$cdgDepHD"
-          ]
-        ]
-      ]
-    ],
-    "cdgAssumedBoxDepOrly": ["AND", ["$isAssumed", ["OR", ["$cdgDepOrly", "$cdgDepPTOB"]]]],
-    "cdgAssumedBoxDepCDG": ["AND", ["$isAssumed", "$cdgDepCDG"]],
     "hasAcknowledgmentState": [
       "AND",
       [
