@@ -492,3 +492,259 @@
           3: "TAXI"
           4: "DEPA"
         leftClick: groundStatusMenu
+
+# vIFF CDM (github.com/vaccfr/vIFF-neoradar): the CDM plugin's start-up list, in its column order.
+- name: VIFF CDM START-UP LIST
+  filterExpressions:
+    ["AND", [["==", "isMyDeparture", "1"], ["==", "onGround", "1"]]]
+  style:
+    background:
+      bodyOpacity: 0
+      headerOpacity: 0
+      rowColor: ["=focusedAircraft"]
+    headerTextSize: 10
+    headerOnlyBorder: true
+    bodyTextSize: 10
+  columns:
+    - name: sts
+      width: 45
+      tagItem:
+        itemName: groundStatus
+        mapping:
+          0: ""
+          1: "STUP"
+          2: "PUSH"
+          3: "TAXI"
+          4: "DEPA"
+        leftClick: groundStatusMenu
+    - name: v
+      width: 15
+      tagItem:
+        itemName: voiceType
+        leftClick: voiceTypeMenu
+        mapping:
+          0: "v"
+          1: "r"
+          2: "t"
+    - name: c/s
+      width: 80
+      tagItem:
+        itemName: callsign
+        color: |
+          =colourInboundTransfer
+          =colourOutboundTransfer
+          =colourAssumed
+          =colourConcerned
+          =colourUnconcerned
+        leftClick: callsignMenu
+    - name: atyp
+      width: 40
+      tagItem:
+        itemName: acShortType
+        leftClick: fpDialog
+    - name: sid
+      width: 80
+      tagItem:
+        itemName: text
+        value:
+          - =suggestedSidIfNoAssigned
+          - |
+            &sid
+        color:
+          - =suggestedSidColor
+          - =blueAssignedSid
+        leftClick: sidMenu
+        placeholder: "----"
+    - name: rwy
+      width: 30
+      tagItem:
+        itemName: text
+        value:
+          - =suggestedDepRunwayIfNoAssigned
+          - |
+            &depRunway
+        color:
+          - =suggestedDepRunwayColor
+          - =blueDepRunway
+        leftClick: sidMenu
+        placeholder: "---"
+    - name: cfl
+      width: 40
+      tagItem:
+        itemName: clearedFlightLevel
+        placeholder: "---"
+        padWithZeroLeft: 5
+        truncate: [0, 3]
+        leftClick: cfl
+    - name: assr
+      width: 50
+      tagItem:
+        itemName: text
+        value:
+          - =emptyIfNoAssignedSquawk
+          - |
+            &assignedSquawk
+        placeholder: "----"
+        color: "=incorrectSquawkYellowColor"
+        leftClick: assignRandomSquawk
+        rightClick: assignSq1000
+    - name: D
+      width: 16
+      tagItem:
+        itemName: datalinkStatus
+        color:
+          - =pdcRequestedColour
+          - =receivedMessageColour
+          - =rejectedColour
+          - =acknowledgmentColour
+          - =sentMessageColour
+          - =defaultDatalinkColour
+        blinkColor: ["=pdcRequestedTextBlinkColour"]
+        leftClick: pdcMenu
+    - name: pfl
+      width: 30
+      tagItem:
+        itemName: plannedFlightLevel
+        padWithZeroLeft: 5
+        truncate: [0, 3]
+        leftClick: pfl
+    - name: ades
+      width: 40
+      tagItem:
+        itemName: destination
+        leftClick: fpDialog
+    - name: r
+      width: 10
+      tagItem:
+        itemName: flightRule
+    - name: e
+      width: 16
+      tagItem:
+        itemName: clearanceIssued
+        placeholder: ":fa-regular fa-square"
+        mapping:
+          0: ":fa-regular fa-square"
+          1: ":fa-solid fa-square"
+        color: [255, 174, 23]
+        leftClick: toggleClearanceFlag
+    - name: BY
+      width: 15
+      tagItem:
+        itemName: "{P}TAG_BY"
+    - name: DEICE
+      width: 40
+      tagItem:
+        itemName: "{P}TAG_DEICE"
+        leftClick: "{P}ACTION_DEICE Menu"
+    - name: TTG
+      width: 25
+      tagItem:
+        itemName: "{P}TAG_TTG"
+    - name: TOBT
+      width: 35
+      tagItem:
+        itemName: "{P}TAG_TOBT"
+        leftClick: "{P}ACTION_TOBT Menu"
+        rightClick: "{P}ACTION_TOBT Menu"
+    - name: TSAT
+      width: 35
+      tagItem:
+        itemName: "{P}TAG_TSAT"
+    - name: ASAT
+      width: 35
+      tagItem:
+        itemName: "{P}TAG_ASAT"
+    - name: TTOT
+      width: 35
+      tagItem:
+        itemName: "{P}TAG_TTOT"
+        leftClick: "{P}ACTION_TTOT Menu"
+    - name: CTOT
+      width: 35
+      tagItem:
+        itemName: "{P}TAG_CTOT"
+        leftClick: "{P}ACTION_CTOT Menu"
+        rightClick: "{P}ACTION_CTOT Menu"
+    - name: ETFMS
+      width: 55
+      tagItem:
+        itemName: "{P}TAG_ETFMS"
+        leftClick: "{P}ACTION_ETFMS Menu"
+    - name: MSG
+      width: 30
+      tagItem:
+        itemName: "{P}TAG_MSG"
+    - name: adep
+      width: 40
+      tagItem:
+        itemName: origin
+        leftClick: fpDialog
+    - name: RDY
+      width: 30
+      tagItem:
+        itemName: "{P}TAG_RDY"
+        leftClick: "{P}ACTION_RDY"
+        rightClick: "{P}ACTION_RDY REA"
+    - name: ASRT
+      width: 35
+      tagItem:
+        itemName: "{P}TAG_ASRT"
+
+# Every flight with a CTOT or a suspended flight plan, wherever it departs from (vIFF CDM).
+- name: VIFF ATFCM
+  filterExpressions:
+    ["OR", [["==", "{P}EXP_Has CTOT", "1"], ["==", "{P}EXP_Suspended", "1"]]]
+  style:
+    background:
+      bodyOpacity: 0
+      headerOpacity: 0
+      rowColor: ["=focusedAircraft"]
+    headerTextSize: 10
+    headerOnlyBorder: true
+    bodyTextSize: 10
+  columns:
+    - name: c/s
+      width: 80
+      tagItem:
+        itemName: callsign
+        color: |
+          =colourInboundTransfer
+          =colourOutboundTransfer
+          =colourAssumed
+          =colourConcerned
+          =colourUnconcerned
+        leftClick: callsignMenu
+    - name: adep
+      width: 40
+      tagItem:
+        itemName: origin
+        leftClick: fpDialog
+    - name: ades
+      width: 40
+      tagItem:
+        itemName: destination
+        leftClick: fpDialog
+    - name: TOBT
+      width: 35
+      tagItem:
+        itemName: "plugin:vIFF CDM:TAG_TOBT"
+    - name: TSAT
+      width: 35
+      tagItem:
+        itemName: "plugin:vIFF CDM:TAG_TSAT"
+    - name: TTOT
+      width: 35
+      tagItem:
+        itemName: "plugin:vIFF CDM:TAG_TTOT"
+    - name: CTOT
+      width: 35
+      tagItem:
+        itemName: "plugin:vIFF CDM:TAG_CTOT"
+    - name: REG
+      width: 90
+      tagItem:
+        itemName: "plugin:vIFF CDM:TAG_REG"
+    - name: ETFMS
+      width: 55
+      tagItem:
+        itemName: "plugin:vIFF CDM:TAG_ETFMS"

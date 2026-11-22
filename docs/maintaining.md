@@ -235,6 +235,7 @@ upstream.
 | `… names N object(s) the sector file does not have, dropped` | An ASR names a runway, navaid or map that is gone (renumbered, withdrawn) | Fix the ASR in Sector-Files |
 | `CoFrance maps named by ASRs but absent` | An ASR enables a CoFrance map that does not exist | Fix the ASR or add the map in CoFrance-config-files |
 | `sets vSMR:Airport:X; using Y from its name` | An AVISO ASR points at the wrong airport | Fix the ASR in Sector-Files |
+| `AVISO files not named by an ICAO code, not converted` | A variant such as `LFPO_Work.geojson`: vSMR loads `<ICAO>.geojson`, so no ASR selects it | Nothing; it would have overwritten the airport's own AVISO |
 | `AVISO displays with no vSMR AVISO file` | No `vSMR_Data/AVISO/<ICAO>.geojson` for that airport; its AVISO comes from the sector file | Ask for the AVISO file in Sector-Files |
 | `AVISO ASRs listing map items of their own` | An AVISO ASR names map content; the build replaces it with the airport's AVISO | Fix the ASR in Sector-Files |
 | `AVISO … faces <direction> but no runway end does` | A vSMR group named for a direction matches no runway; it then draws whenever listed | Fix the group or the runways in the AVISO file |

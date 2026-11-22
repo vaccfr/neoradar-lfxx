@@ -97,7 +97,10 @@ def convert_airport(path: Path, report: Report, palettes: dict[str, str]) -> tup
     """Returns (ICAO, items, drawings, uuids the AVISO profile lists)."""
     data = json.loads(path.read_text(encoding="utf-8-sig"))
     meta = data.get("metadata") or {}
-    icao = str(meta.get("airport") or path.stem).upper()
+    # vSMR loads <ICAO>.geojson for PLUGIN:vSMR:Airport:<ICAO>, so the file name is the airport.
+    icao = path.stem.upper()
+    if meta.get("airport") and str(meta["airport"]).upper() != icao:
+        report.warnings.append(f"AVISO {path.name}: metadata says airport {meta['airport']}; drawn as {icao}, its file name")
     default = str(meta.get("default_color_palette") or "dark")
     palette = palettes.get(icao) or default
     if palette not in (meta.get("color_palettes") or [default]):
@@ -226,8 +229,16 @@ def convert(aviso_dir: Path, out_dir: Path, release: str | None, palettes: dict[
         report.warnings.append(f"{aviso_dir} missing: AVISO displays fall back to the sector file's AVISO items")
         return layers, profile_items, report
     out_dir.mkdir(parents=True, exist_ok=True)
+    variants = []
     for path in sorted(aviso_dir.glob("*.geojson")):
+        if not re.fullmatch(r"[A-Za-z]{4}", path.stem):
+            # LFPO_Work.geojson and the like: alternative AVISOs no ASR selects (vSMR loads
+            # <ICAO>.geojson). Converting them would overwrite the airport's own AVISO.
+            variants.append(path.name)
+            continue
         icao, items, drawings, listed = convert_airport(path, report, palettes)
+        if icao in profile_items:
+            raise SystemExit(f"AVISO {icao}: two files for one airport ({path.name})")
         if not drawings:
             report.warnings.append(f"AVISO {icao}: nothing drawable, no layer")
             continue
@@ -243,4 +254,6 @@ def convert(aviso_dir: Path, out_dir: Path, release: str | None, palettes: dict[
         report.layers += 1
         report.items += len(items)
         report.drawings += len(drawings)
+    if variants:
+        report.warnings.append("AVISO files not named by an ICAO code, not converted (alternative AVISOs no ASR selects): " + ", ".join(variants))
     return layers, profile_items, report
