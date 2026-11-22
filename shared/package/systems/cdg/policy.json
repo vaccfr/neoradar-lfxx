@@ -1,8 +1,5 @@
 {
   "$schema": "https://raw.githubusercontent.com/neoradar-project/schemas/refs/heads/main/systems/policy.schema.json",
-  "correlation": {
-    "mode": "always"
-  },
   "safetyNets": {
     "emergencySquawk": true,
     "stca": {

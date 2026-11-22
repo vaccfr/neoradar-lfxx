@@ -9,9 +9,9 @@
           "shapeRef": "cdg/track"
         },
         {
-          "shapeRef": "font/B",
+          "shapeRef": "bold/font/B",
           "offset": [
-            -2.0,
+            -2.5,
             8.5
           ]
         }
@@ -25,9 +25,9 @@
           "shapeRef": "cdg/track"
         },
         {
-          "shapeRef": "font/R",
+          "shapeRef": "bold/font/R",
           "offset": [
-            -2.0,
+            -2.5,
             8.5
           ]
         }
@@ -41,9 +41,9 @@
           "shapeRef": "cdg/track"
         },
         {
-          "shapeRef": "font/N",
+          "shapeRef": "bold/font/N",
           "offset": [
-            -2.0,
+            -2.5,
             -14.5
           ]
         }
@@ -57,9 +57,9 @@
           "shapeRef": "cdg/track"
         },
         {
-          "shapeRef": "font/O",
+          "shapeRef": "bold/font/O",
           "offset": [
-            -2.0,
+            -2.5,
             8.5
           ]
         }
@@ -73,9 +73,9 @@
           "shapeRef": "cdg/track"
         },
         {
-          "shapeRef": "font/V",
+          "shapeRef": "bold/font/V",
           "offset": [
-            -2.0,
+            -2.5,
             8.5
           ]
         }
@@ -89,9 +89,9 @@
           "shapeRef": "cdg/track"
         },
         {
-          "shapeRef": "font/A",
+          "shapeRef": "bold/font/A",
           "offset": [
-            -2.0,
+            -2.5,
             8.5
           ]
         }
@@ -105,9 +105,9 @@
           "shapeRef": "cdg/track"
         },
         {
-          "shapeRef": "font/S",
+          "shapeRef": "bold/font/S",
           "offset": [
-            -2.0,
+            -2.5,
             8.5
           ]
         }
@@ -121,16 +121,16 @@
           "shapeRef": "cdg/track"
         },
         {
-          "shapeRef": "font/E",
+          "shapeRef": "bold/font/E",
           "offset": [
-            -5.0,
+            -6.5,
             8.5
           ]
         },
         {
-          "shapeRef": "font/B",
+          "shapeRef": "bold/font/B",
           "offset": [
-            1.0,
+            1.5,
             8.5
           ]
         }
@@ -144,16 +144,16 @@
           "shapeRef": "cdg/track"
         },
         {
-          "shapeRef": "font/E",
+          "shapeRef": "bold/font/E",
           "offset": [
-            -5.0,
+            -6.5,
             8.5
           ]
         },
         {
-          "shapeRef": "font/D",
+          "shapeRef": "bold/font/D",
           "offset": [
-            1.0,
+            1.5,
             8.5
           ]
         }
@@ -167,16 +167,16 @@
           "shapeRef": "cdg/track"
         },
         {
-          "shapeRef": "font/E",
+          "shapeRef": "bold/font/E",
           "offset": [
-            -5.0,
+            -6.5,
             8.5
           ]
         },
         {
-          "shapeRef": "font/L",
+          "shapeRef": "bold/font/L",
           "offset": [
-            1.0,
+            1.5,
             8.5
           ]
         }
@@ -190,16 +190,16 @@
           "shapeRef": "cdg/track"
         },
         {
-          "shapeRef": "font/E",
+          "shapeRef": "bold/font/E",
           "offset": [
-            -5.0,
+            -6.5,
             8.5
           ]
         },
         {
-          "shapeRef": "font/N",
+          "shapeRef": "bold/font/N",
           "offset": [
-            1.0,
+            1.5,
             8.5
           ]
         }
@@ -213,16 +213,16 @@
           "shapeRef": "cdg/track"
         },
         {
-          "shapeRef": "font/E",
+          "shapeRef": "bold/font/E",
           "offset": [
-            -5.0,
+            -6.5,
             8.5
           ]
         },
         {
-          "shapeRef": "font/R",
+          "shapeRef": "bold/font/R",
           "offset": [
-            1.0,
+            1.5,
             8.5
           ]
         }
@@ -236,16 +236,16 @@
           "shapeRef": "cdg/track"
         },
         {
-          "shapeRef": "font/E",
+          "shapeRef": "bold/font/E",
           "offset": [
-            -5.0,
+            -6.5,
             8.5
           ]
         },
         {
-          "shapeRef": "font/X",
+          "shapeRef": "bold/font/X",
           "offset": [
-            1.0,
+            1.5,
             8.5
           ]
         }
@@ -259,16 +259,16 @@
           "shapeRef": "cdg/track"
         },
         {
-          "shapeRef": "font/H",
+          "shapeRef": "bold/font/H",
           "offset": [
-            -5.0,
+            -6.5,
             8.5
           ]
         },
         {
-          "shapeRef": "font/D",
+          "shapeRef": "bold/font/D",
           "offset": [
-            1.0,
+            1.5,
             8.5
           ]
         }
@@ -282,16 +282,16 @@
           "shapeRef": "cdg/track"
         },
         {
-          "shapeRef": "font/H",
+          "shapeRef": "bold/font/H",
           "offset": [
-            -5.0,
+            -6.5,
             8.5
           ]
         },
         {
-          "shapeRef": "font/M",
+          "shapeRef": "bold/font/M",
           "offset": [
-            1.0,
+            1.5,
             8.5
           ]
         }
@@ -305,16 +305,16 @@
           "shapeRef": "cdg/track"
         },
         {
-          "shapeRef": "font/H",
+          "shapeRef": "bold/font/H",
           "offset": [
-            -5.0,
+            -6.5,
             8.5
           ]
         },
         {
-          "shapeRef": "font/O",
+          "shapeRef": "bold/font/O",
           "offset": [
-            1.0,
+            1.5,
             8.5
           ]
         }
@@ -328,16 +328,16 @@
           "shapeRef": "cdg/track"
         },
         {
-          "shapeRef": "font/N",
+          "shapeRef": "bold/font/N",
           "offset": [
-            -5.0,
+            -6.5,
             -14.5
           ]
         },
         {
-          "shapeRef": "font/A",
+          "shapeRef": "bold/font/A",
           "offset": [
-            1.0,
+            1.5,
             -14.5
           ]
         }
@@ -351,16 +351,16 @@
           "shapeRef": "cdg/track"
         },
         {
-          "shapeRef": "font/N",
+          "shapeRef": "bold/font/N",
           "offset": [
-            -5.0,
+            -6.5,
             -14.5
           ]
         },
         {
-          "shapeRef": "font/M",
+          "shapeRef": "bold/font/M",
           "offset": [
-            1.0,
+            1.5,
             -14.5
           ]
         }
@@ -374,16 +374,16 @@
           "shapeRef": "cdg/track"
         },
         {
-          "shapeRef": "font/N",
+          "shapeRef": "bold/font/N",
           "offset": [
-            -5.0,
+            -6.5,
             -14.5
           ]
         },
         {
-          "shapeRef": "font/N",
+          "shapeRef": "bold/font/N",
           "offset": [
-            1.0,
+            1.5,
             -14.5
           ]
         }
@@ -397,16 +397,16 @@
           "shapeRef": "cdg/track"
         },
         {
-          "shapeRef": "font/N",
+          "shapeRef": "bold/font/N",
           "offset": [
-            -5.0,
+            -6.5,
             -14.5
           ]
         },
         {
-          "shapeRef": "font/O",
+          "shapeRef": "bold/font/O",
           "offset": [
-            1.0,
+            1.5,
             -14.5
           ]
         }
@@ -420,9 +420,9 @@
           "shapeRef": "cdg/track"
         },
         {
-          "shapeRef": "font/T",
+          "shapeRef": "bold/font/T",
           "offset": [
-            -2.0,
+            -2.5,
             8.5
           ]
         }
@@ -436,9 +436,9 @@
           "shapeRef": "cdg/track"
         },
         {
-          "shapeRef": "font/T",
+          "shapeRef": "bold/font/T",
           "offset": [
-            -2.0,
+            -2.5,
             8.5
           ]
         }
@@ -452,16 +452,16 @@
           "shapeRef": "cdg/track"
         },
         {
-          "shapeRef": "font/S",
+          "shapeRef": "bold/font/S",
           "offset": [
-            -5.0,
+            -6.5,
             8.5
           ]
         },
         {
-          "shapeRef": "font/A",
+          "shapeRef": "bold/font/A",
           "offset": [
-            1.0,
+            1.5,
             8.5
           ]
         }
@@ -475,16 +475,16 @@
           "shapeRef": "cdg/track"
         },
         {
-          "shapeRef": "font/S",
+          "shapeRef": "bold/font/S",
           "offset": [
-            -5.0,
+            -6.5,
             8.5
           ]
         },
         {
-          "shapeRef": "font/E",
+          "shapeRef": "bold/font/E",
           "offset": [
-            1.0,
+            1.5,
             8.5
           ]
         }
@@ -498,16 +498,16 @@
           "shapeRef": "cdg/track"
         },
         {
-          "shapeRef": "font/S",
+          "shapeRef": "bold/font/S",
           "offset": [
-            -5.0,
+            -6.5,
             8.5
           ]
         },
         {
-          "shapeRef": "font/L",
+          "shapeRef": "bold/font/L",
           "offset": [
-            1.0,
+            1.5,
             8.5
           ]
         }
@@ -521,16 +521,16 @@
           "shapeRef": "cdg/track"
         },
         {
-          "shapeRef": "font/S",
+          "shapeRef": "bold/font/S",
           "offset": [
-            -5.0,
+            -6.5,
             8.5
           ]
         },
         {
-          "shapeRef": "font/O",
+          "shapeRef": "bold/font/O",
           "offset": [
-            1.0,
+            1.5,
             8.5
           ]
         }
@@ -544,16 +544,16 @@
           "shapeRef": "cdg/track"
         },
         {
-          "shapeRef": "font/S",
+          "shapeRef": "bold/font/S",
           "offset": [
-            -5.0,
+            -6.5,
             8.5
           ]
         },
         {
-          "shapeRef": "font/P",
+          "shapeRef": "bold/font/P",
           "offset": [
-            1.0,
+            1.5,
             8.5
           ]
         }
@@ -567,16 +567,16 @@
           "shapeRef": "cdg/track"
         },
         {
-          "shapeRef": "font/W",
+          "shapeRef": "bold/font/W",
           "offset": [
-            -5.0,
+            -6.5,
             8.5
           ]
         },
         {
-          "shapeRef": "font/E",
+          "shapeRef": "bold/font/E",
           "offset": [
-            1.0,
+            1.5,
             8.5
           ]
         }
@@ -590,16 +590,16 @@
           "shapeRef": "cdg/track"
         },
         {
-          "shapeRef": "font/W",
+          "shapeRef": "bold/font/W",
           "offset": [
-            -5.0,
+            -6.5,
             8.5
           ]
         },
         {
-          "shapeRef": "font/L",
+          "shapeRef": "bold/font/L",
           "offset": [
-            1.0,
+            1.5,
             8.5
           ]
         }
@@ -613,9 +613,9 @@
           "shapeRef": "cdg/track"
         },
         {
-          "shapeRef": "font/P",
+          "shapeRef": "bold/font/P",
           "offset": [
-            -2.0,
+            -2.5,
             8.5
           ]
         }
@@ -629,9 +629,9 @@
           "shapeRef": "cdg/track"
         },
         {
-          "shapeRef": "font/G",
+          "shapeRef": "bold/font/G",
           "offset": [
-            -2.0,
+            -2.5,
             8.5
           ]
         }
@@ -645,9 +645,9 @@
           "shapeRef": "cdg/track"
         },
         {
-          "shapeRef": "font/X",
+          "shapeRef": "bold/font/X",
           "offset": [
-            -2.0,
+            -2.5,
             8.5
           ]
         }
@@ -694,9 +694,9 @@
           "shapeRef": "cdg/track"
         },
         {
-          "shapeRef": "font/Z",
+          "shapeRef": "bold/font/Z",
           "offset": [
-            -2.0,
+            -2.5,
             8.5
           ]
         }
@@ -1427,6 +1427,316 @@
               -4.5,
               3.5
             ]
+          ]
+        }
+      ]
+    },
+    "cdg/trail": {
+      "description": "CDG history trail mark: a 10 px ring, the old CDG trail sprite; targets.json's scaleRamp shrinks it to 4 px down the trail.",
+      "rotateWithHeading": false,
+      "elements": [
+        {
+          "circle": {
+            "radius": 5
+          }
+        }
+      ]
+    },
+    "neoirma/trail": {
+      "description": "IRMA history trail mark: a 4 px ring; targets.json's scaleRamp makes the last three 3 px.",
+      "rotateWithHeading": false,
+      "elements": [
+        {
+          "circle": {
+            "radius": 2
+          }
+        }
+      ]
+    },
+    "bold/font/A": {
+      "description": "font/A in pixel bold: the stroke glyph drawn twice, one pixel apart (6 x 7 px).",
+      "rotateWithHeading": false,
+      "elements": [
+        {
+          "shapeRef": "font/A"
+        },
+        {
+          "shapeRef": "font/A",
+          "offset": [
+            1,
+            0
+          ]
+        }
+      ]
+    },
+    "bold/font/B": {
+      "description": "font/B in pixel bold: the stroke glyph drawn twice, one pixel apart (6 x 7 px).",
+      "rotateWithHeading": false,
+      "elements": [
+        {
+          "shapeRef": "font/B"
+        },
+        {
+          "shapeRef": "font/B",
+          "offset": [
+            1,
+            0
+          ]
+        }
+      ]
+    },
+    "bold/font/D": {
+      "description": "font/D in pixel bold: the stroke glyph drawn twice, one pixel apart (6 x 7 px).",
+      "rotateWithHeading": false,
+      "elements": [
+        {
+          "shapeRef": "font/D"
+        },
+        {
+          "shapeRef": "font/D",
+          "offset": [
+            1,
+            0
+          ]
+        }
+      ]
+    },
+    "bold/font/E": {
+      "description": "font/E in pixel bold: the stroke glyph drawn twice, one pixel apart (6 x 7 px).",
+      "rotateWithHeading": false,
+      "elements": [
+        {
+          "shapeRef": "font/E"
+        },
+        {
+          "shapeRef": "font/E",
+          "offset": [
+            1,
+            0
+          ]
+        }
+      ]
+    },
+    "bold/font/G": {
+      "description": "font/G in pixel bold: the stroke glyph drawn twice, one pixel apart (6 x 7 px).",
+      "rotateWithHeading": false,
+      "elements": [
+        {
+          "shapeRef": "font/G"
+        },
+        {
+          "shapeRef": "font/G",
+          "offset": [
+            1,
+            0
+          ]
+        }
+      ]
+    },
+    "bold/font/H": {
+      "description": "font/H in pixel bold: the stroke glyph drawn twice, one pixel apart (6 x 7 px).",
+      "rotateWithHeading": false,
+      "elements": [
+        {
+          "shapeRef": "font/H"
+        },
+        {
+          "shapeRef": "font/H",
+          "offset": [
+            1,
+            0
+          ]
+        }
+      ]
+    },
+    "bold/font/L": {
+      "description": "font/L in pixel bold: the stroke glyph drawn twice, one pixel apart (6 x 7 px).",
+      "rotateWithHeading": false,
+      "elements": [
+        {
+          "shapeRef": "font/L"
+        },
+        {
+          "shapeRef": "font/L",
+          "offset": [
+            1,
+            0
+          ]
+        }
+      ]
+    },
+    "bold/font/M": {
+      "description": "font/M in pixel bold: the stroke glyph drawn twice, one pixel apart (6 x 7 px).",
+      "rotateWithHeading": false,
+      "elements": [
+        {
+          "shapeRef": "font/M"
+        },
+        {
+          "shapeRef": "font/M",
+          "offset": [
+            1,
+            0
+          ]
+        }
+      ]
+    },
+    "bold/font/N": {
+      "description": "font/N in pixel bold: the stroke glyph drawn twice, one pixel apart (6 x 7 px).",
+      "rotateWithHeading": false,
+      "elements": [
+        {
+          "shapeRef": "font/N"
+        },
+        {
+          "shapeRef": "font/N",
+          "offset": [
+            1,
+            0
+          ]
+        }
+      ]
+    },
+    "bold/font/O": {
+      "description": "font/O in pixel bold: the stroke glyph drawn twice, one pixel apart (6 x 7 px).",
+      "rotateWithHeading": false,
+      "elements": [
+        {
+          "shapeRef": "font/O"
+        },
+        {
+          "shapeRef": "font/O",
+          "offset": [
+            1,
+            0
+          ]
+        }
+      ]
+    },
+    "bold/font/P": {
+      "description": "font/P in pixel bold: the stroke glyph drawn twice, one pixel apart (6 x 7 px).",
+      "rotateWithHeading": false,
+      "elements": [
+        {
+          "shapeRef": "font/P"
+        },
+        {
+          "shapeRef": "font/P",
+          "offset": [
+            1,
+            0
+          ]
+        }
+      ]
+    },
+    "bold/font/R": {
+      "description": "font/R in pixel bold: the stroke glyph drawn twice, one pixel apart (6 x 7 px).",
+      "rotateWithHeading": false,
+      "elements": [
+        {
+          "shapeRef": "font/R"
+        },
+        {
+          "shapeRef": "font/R",
+          "offset": [
+            1,
+            0
+          ]
+        }
+      ]
+    },
+    "bold/font/S": {
+      "description": "font/S in pixel bold: the stroke glyph drawn twice, one pixel apart (6 x 7 px).",
+      "rotateWithHeading": false,
+      "elements": [
+        {
+          "shapeRef": "font/S"
+        },
+        {
+          "shapeRef": "font/S",
+          "offset": [
+            1,
+            0
+          ]
+        }
+      ]
+    },
+    "bold/font/T": {
+      "description": "font/T in pixel bold: the stroke glyph drawn twice, one pixel apart (6 x 7 px).",
+      "rotateWithHeading": false,
+      "elements": [
+        {
+          "shapeRef": "font/T"
+        },
+        {
+          "shapeRef": "font/T",
+          "offset": [
+            1,
+            0
+          ]
+        }
+      ]
+    },
+    "bold/font/V": {
+      "description": "font/V in pixel bold: the stroke glyph drawn twice, one pixel apart (6 x 7 px).",
+      "rotateWithHeading": false,
+      "elements": [
+        {
+          "shapeRef": "font/V"
+        },
+        {
+          "shapeRef": "font/V",
+          "offset": [
+            1,
+            0
+          ]
+        }
+      ]
+    },
+    "bold/font/W": {
+      "description": "font/W in pixel bold: the stroke glyph drawn twice, one pixel apart (6 x 7 px).",
+      "rotateWithHeading": false,
+      "elements": [
+        {
+          "shapeRef": "font/W"
+        },
+        {
+          "shapeRef": "font/W",
+          "offset": [
+            1,
+            0
+          ]
+        }
+      ]
+    },
+    "bold/font/X": {
+      "description": "font/X in pixel bold: the stroke glyph drawn twice, one pixel apart (6 x 7 px).",
+      "rotateWithHeading": false,
+      "elements": [
+        {
+          "shapeRef": "font/X"
+        },
+        {
+          "shapeRef": "font/X",
+          "offset": [
+            1,
+            0
+          ]
+        }
+      ]
+    },
+    "bold/font/Z": {
+      "description": "font/Z in pixel bold: the stroke glyph drawn twice, one pixel apart (6 x 7 px).",
+      "rotateWithHeading": false,
+      "elements": [
+        {
+          "shapeRef": "font/Z"
+        },
+        {
+          "shapeRef": "font/Z",
+          "offset": [
+            1,
+            0
           ]
         }
       ]

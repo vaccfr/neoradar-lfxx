@@ -65,12 +65,12 @@ routeDraw:
 
 # Radio direction finder: the circle drawn round an aircraft while it transmits.
 rdf:
-  circleRadius: 10
+  circleRadius: 0.5
   circlePrecision: 0
   lowPrecision: 0
   highPrecision: 0
   singleTransmissionColor: [170, 231, 197, 255]
   concurrentTransmissionColor: [255, 0, 0, 255]
-  circleThreshold: 10
+  circleThreshold: 6
   lowAltitude: 3000
   highAltitude: 41100

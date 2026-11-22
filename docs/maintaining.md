@@ -30,7 +30,8 @@ listed (the first FIR wins a duplicated callsign); ICAO and NavData come from `L
 The per-FIR GNG files (`LFBB`, `LFFF`, `LFEE`, `LFMM`, `LFRR`) are no longer used.
 
 NeoRadar is used for approach and below for now, so the centre displays are left out:
-`excludeAsrs` in `packages.json` lists them as globs (`* FIR.asr`, `* UIR.asr`, `* CTR.asr`), and
+`excludeAsrs` in `packages.json` lists them as globs (`* FIR.asr`, `* UIR.asr`, `* CTR.asr`; and
+`* Legacy APP.asr`, the old approach displays the CoFrance ones replace), and
 the build log names every ASR it skipped. The centre login profiles go too: `excludeLoginFacilities`
 lists EuroScope facility numbers (`6` is centre). Remove a pattern to ship those displays again (they
 would then need a system: see below).
@@ -172,21 +173,24 @@ Boxes in the track colour were hard to tell apart from the map and from each oth
 per state, darker than the map, reads at a glance.
 
 Track symbols are vector shapes (`shapes.json`), coloured by each variant's `plotColor`, not
-sprites. CDG's letters are stroke glyphs (`font/A`…`font/Z`) composed under the disk. The CDG disk
-is a circle with `fill`. The client fills circles from `client-sharp` develop `7a39b6c4f` on
-(rows of bars, the old sprite's rows exactly); older clients draw it as an outline. Other
-polygons still fill only when they are axis-aligned rectangles.
+sprites. CDG's letters are stroke glyphs (`font/A`…`font/Z`) in pixel bold (`bold/font/*`: the
+glyph drawn twice, one pixel apart, 6 x 7 px), composed above or below the disc at a HALF-pixel x
+(-2.5 for one letter, -6.5 and 1.5 for two). The client snaps vertical 1 px strokes to pixel
+centres but not diagonals, so a glyph at a whole-pixel x gets one straight side and one round one
+(O read as D). The CDG disc is three filled rectangles (the old sprite's rows); client 0.4.4 also
+fills full circles. Other polygons fill only when they are axis-aligned rectangles.
 
 Both mapstyles carry the CoFrance route draw (thin `route_line` green, small crosses, fix labels
-on a dark plate) and the RDF circle settings. Trails are the old trail sprites re-coloured per
-trail colour in `images/symbols.png`: CDG's 6 rings shrinking from 10 to 4 px, IRMA's three
-4 px rings then three 3 px rings (sized to the triangle). `scripts/trail_sprites.py` regenerates them.
+on a dark plate) and the RDF circle (0.5 NM: the radius is in NM and never clamped, so 10 NM
+filled an approach display; `circleThreshold` only hides one smaller than that many pixels).
+Trails are vector shapes in the track colour, sized per mark by `historyTrailShape.scaleRamp`
+(client 0.4.4): CDG's ring (`cdg/trail`) shrinking from 10 to 4 px like the old sprite, IRMA's
+4 px ring (`neoirma/trail`), three then three at 3 px.
 Profiles refresh like a radar (`map.sweepIntervalSeconds`, from `build.py`): approach every
 `APPROACH_SWEEP_SECONDS` (2 s), AVISOs every `GROUND_SWEEP_SECONDS` (1 s). Aircraft and trails
 move together once per sweep, one trail mark per previous sweep, never one on the aircraft.
 Without a sweep the client pins the marks to every `historyTrailsSkipSteps`-th update while the
-aircraft moves on every one, so the trail stalls and then jumps. Client 0.4.4 can size a trail
-shape per mark (`scaleRamp`), so trails could go back to shapes. The tag trend arrows are Lucide
+aircraft moves on every one, so the trail stalls and then jumps. The tag trend arrows are Lucide
 icons (`:imove-up-right`…).
 
 **Tags.** The airborne rows are the same in both systems. The detailed tag (hover) shows
@@ -217,8 +221,7 @@ their text could not be read over the map.
 
 Rules and expressions shared by both live in `expressions.json`; `lists.yaml` is shared too.
 
-Both systems correlate every target (`policy.json`, `correlation.mode: always`) and draw tags
-and route-draw labels in B612 Mono LFXX Bold (`fonts/B612MonoLFXX-Bold.ttf`): Airbus/ENAC's
+Both systems draw tags and route-draw labels in B612 Mono LFXX Bold (`fonts/B612MonoLFXX-Bold.ttf`): Airbus/ENAC's
 cockpit-display font B612 Mono Bold, with a bar added in the zero so 0 and O differ (B612 draws
 them alike). `scripts/font_zero.py` makes it from upstream's `B612Mono-Bold.ttf`. SIL OFL, no
 reserved name: keep `B612-OFL.txt` beside it. 12 px takes the width and line height of 13 px

@@ -22,14 +22,23 @@
         "=warningTrack",
         "=track_d4d4b9"
       ],
-      "historyTrailImages": [
-        "trails/cdg/d4d4b9/t1",
-        "trails/cdg/d4d4b9/t2",
-        "trails/cdg/d4d4b9/t3",
-        "trails/cdg/d4d4b9/t4",
-        "trails/cdg/d4d4b9/t5",
-        "trails/cdg/d4d4b9/t6"
-      ]
+      "historyTrailShape": {
+        "shape": "cdg/trail",
+        "steps": 6,
+        "color": [
+          "=alertTrack",
+          "=warningTrack",
+          "=track_d4d4b9"
+        ],
+        "scaleRamp": [
+          1,
+          0.8,
+          0.6,
+          0.6,
+          0.4,
+          0.4
+        ]
+      }
     },
     {
       "description": "P: local flight Orly group",
@@ -51,14 +60,23 @@
         "=warningTrack",
         "=track_d4d4b9"
       ],
-      "historyTrailImages": [
-        "trails/cdg/d4d4b9/t1",
-        "trails/cdg/d4d4b9/t2",
-        "trails/cdg/d4d4b9/t3",
-        "trails/cdg/d4d4b9/t4",
-        "trails/cdg/d4d4b9/t5",
-        "trails/cdg/d4d4b9/t6"
-      ]
+      "historyTrailShape": {
+        "shape": "cdg/trail",
+        "steps": 6,
+        "color": [
+          "=alertTrack",
+          "=warningTrack",
+          "=track_d4d4b9"
+        ],
+        "scaleRamp": [
+          1,
+          0.8,
+          0.6,
+          0.6,
+          0.4,
+          0.4
+        ]
+      }
     },
     {
       "description": "S: CDG arrival, IFR, south runways 08/26",
@@ -80,14 +98,23 @@
         "=warningTrack",
         "=track_e39d9d"
       ],
-      "historyTrailImages": [
-        "trails/cdg/e39d9d/t1",
-        "trails/cdg/e39d9d/t2",
-        "trails/cdg/e39d9d/t3",
-        "trails/cdg/e39d9d/t4",
-        "trails/cdg/e39d9d/t5",
-        "trails/cdg/e39d9d/t6"
-      ]
+      "historyTrailShape": {
+        "shape": "cdg/trail",
+        "steps": 6,
+        "color": [
+          "=alertTrack",
+          "=warningTrack",
+          "=track_e39d9d"
+        ],
+        "scaleRamp": [
+          1,
+          0.8,
+          0.6,
+          0.6,
+          0.4,
+          0.4
+        ]
+      }
     },
     {
       "description": "N: CDG arrival, north runways 09/27",
@@ -109,14 +136,23 @@
         "=warningTrack",
         "=track_e3b8cb"
       ],
-      "historyTrailImages": [
-        "trails/cdg/e3b8cb/t1",
-        "trails/cdg/e3b8cb/t2",
-        "trails/cdg/e3b8cb/t3",
-        "trails/cdg/e3b8cb/t4",
-        "trails/cdg/e3b8cb/t5",
-        "trails/cdg/e3b8cb/t6"
-      ]
+      "historyTrailShape": {
+        "shape": "cdg/trail",
+        "steps": 6,
+        "color": [
+          "=alertTrack",
+          "=warningTrack",
+          "=track_e3b8cb"
+        ],
+        "scaleRamp": [
+          1,
+          0.8,
+          0.6,
+          0.6,
+          0.4,
+          0.4
+        ]
+      }
     },
     {
       "description": "B: Le Bourget arrival",
@@ -138,14 +174,23 @@
         "=warningTrack",
         "=track_d396e3"
       ],
-      "historyTrailImages": [
-        "trails/cdg/d396e3/t1",
-        "trails/cdg/d396e3/t2",
-        "trails/cdg/d396e3/t3",
-        "trails/cdg/d396e3/t4",
-        "trails/cdg/d396e3/t5",
-        "trails/cdg/d396e3/t6"
-      ]
+      "historyTrailShape": {
+        "shape": "cdg/trail",
+        "steps": 6,
+        "color": [
+          "=alertTrack",
+          "=warningTrack",
+          "=track_d396e3"
+        ],
+        "scaleRamp": [
+          1,
+          0.8,
+          0.6,
+          0.6,
+          0.4,
+          0.4
+        ]
+      }
     },
     {
       "description": "O: Orly arrival",
@@ -167,14 +212,23 @@
         "=warningTrack",
         "=track_e3b17c"
       ],
-      "historyTrailImages": [
-        "trails/cdg/e3b17c/t1",
-        "trails/cdg/e3b17c/t2",
-        "trails/cdg/e3b17c/t3",
-        "trails/cdg/e3b17c/t4",
-        "trails/cdg/e3b17c/t5",
-        "trails/cdg/e3b17c/t6"
-      ]
+      "historyTrailShape": {
+        "shape": "cdg/trail",
+        "steps": 6,
+        "color": [
+          "=alertTrack",
+          "=warningTrack",
+          "=track_e3b17c"
+        ],
+        "scaleRamp": [
+          1,
+          0.8,
+          0.6,
+          0.6,
+          0.4,
+          0.4
+        ]
+      }
     },
     {
       "description": "A: Pontoise / Beauvais arrival, IFR",
@@ -196,14 +250,23 @@
         "=warningTrack",
         "=track_e3b17c"
       ],
-      "historyTrailImages": [
-        "trails/cdg/e3b17c/t1",
-        "trails/cdg/e3b17c/t2",
-        "trails/cdg/e3b17c/t3",
-        "trails/cdg/e3b17c/t4",
-        "trails/cdg/e3b17c/t5",
-        "trails/cdg/e3b17c/t6"
-      ]
+      "historyTrailShape": {
+        "shape": "cdg/trail",
+        "steps": 6,
+        "color": [
+          "=alertTrack",
+          "=warningTrack",
+          "=track_e3b17c"
+        ],
+        "scaleRamp": [
+          1,
+          0.8,
+          0.6,
+          0.6,
+          0.4,
+          0.4
+        ]
+      }
     },
     {
       "description": "V: Toussus / Villacoublay arrival",
@@ -225,14 +288,23 @@
         "=warningTrack",
         "=track_4cbc38"
       ],
-      "historyTrailImages": [
-        "trails/cdg/4cbc38/t1",
-        "trails/cdg/4cbc38/t2",
-        "trails/cdg/4cbc38/t3",
-        "trails/cdg/4cbc38/t4",
-        "trails/cdg/4cbc38/t5",
-        "trails/cdg/4cbc38/t6"
-      ]
+      "historyTrailShape": {
+        "shape": "cdg/trail",
+        "steps": 6,
+        "color": [
+          "=alertTrack",
+          "=warningTrack",
+          "=track_4cbc38"
+        ],
+        "scaleRamp": [
+          1,
+          0.8,
+          0.6,
+          0.6,
+          0.4,
+          0.4
+        ]
+      }
     },
     {
       "description": "R: CDG arrival, runway unknown",
@@ -254,14 +326,23 @@
         "=warningTrack",
         "=track_d4d4b9"
       ],
-      "historyTrailImages": [
-        "trails/cdg/d4d4b9/t1",
-        "trails/cdg/d4d4b9/t2",
-        "trails/cdg/d4d4b9/t3",
-        "trails/cdg/d4d4b9/t4",
-        "trails/cdg/d4d4b9/t5",
-        "trails/cdg/d4d4b9/t6"
-      ]
+      "historyTrailShape": {
+        "shape": "cdg/trail",
+        "steps": 6,
+        "color": [
+          "=alertTrack",
+          "=warningTrack",
+          "=track_d4d4b9"
+        ],
+        "scaleRamp": [
+          1,
+          0.8,
+          0.6,
+          0.6,
+          0.4,
+          0.4
+        ]
+      }
     },
     {
       "description": "NN: CDG / Le Bourget departure via NURMO",
@@ -283,14 +364,23 @@
         "=warningTrack",
         "=track_a1e3e3"
       ],
-      "historyTrailImages": [
-        "trails/cdg/a1e3e3/t1",
-        "trails/cdg/a1e3e3/t2",
-        "trails/cdg/a1e3e3/t3",
-        "trails/cdg/a1e3e3/t4",
-        "trails/cdg/a1e3e3/t5",
-        "trails/cdg/a1e3e3/t6"
-      ]
+      "historyTrailShape": {
+        "shape": "cdg/trail",
+        "steps": 6,
+        "color": [
+          "=alertTrack",
+          "=warningTrack",
+          "=track_a1e3e3"
+        ],
+        "scaleRamp": [
+          1,
+          0.8,
+          0.6,
+          0.6,
+          0.4,
+          0.4
+        ]
+      }
     },
     {
       "description": "NO: CDG / Le Bourget departure via OPALE",
@@ -312,14 +402,23 @@
         "=warningTrack",
         "=track_a1e3e3"
       ],
-      "historyTrailImages": [
-        "trails/cdg/a1e3e3/t1",
-        "trails/cdg/a1e3e3/t2",
-        "trails/cdg/a1e3e3/t3",
-        "trails/cdg/a1e3e3/t4",
-        "trails/cdg/a1e3e3/t5",
-        "trails/cdg/a1e3e3/t6"
-      ]
+      "historyTrailShape": {
+        "shape": "cdg/trail",
+        "steps": 6,
+        "color": [
+          "=alertTrack",
+          "=warningTrack",
+          "=track_a1e3e3"
+        ],
+        "scaleRamp": [
+          1,
+          0.8,
+          0.6,
+          0.6,
+          0.4,
+          0.4
+        ]
+      }
     },
     {
       "description": "NA: CDG / Le Bourget departure via ATREX",
@@ -341,14 +440,23 @@
         "=warningTrack",
         "=track_a1e3e3"
       ],
-      "historyTrailImages": [
-        "trails/cdg/a1e3e3/t1",
-        "trails/cdg/a1e3e3/t2",
-        "trails/cdg/a1e3e3/t3",
-        "trails/cdg/a1e3e3/t4",
-        "trails/cdg/a1e3e3/t5",
-        "trails/cdg/a1e3e3/t6"
-      ]
+      "historyTrailShape": {
+        "shape": "cdg/trail",
+        "steps": 6,
+        "color": [
+          "=alertTrack",
+          "=warningTrack",
+          "=track_a1e3e3"
+        ],
+        "scaleRamp": [
+          1,
+          0.8,
+          0.6,
+          0.6,
+          0.4,
+          0.4
+        ]
+      }
     },
     {
       "description": "NM: CDG / Le Bourget departure via MTD",
@@ -370,14 +478,23 @@
         "=warningTrack",
         "=track_a1e3e3"
       ],
-      "historyTrailImages": [
-        "trails/cdg/a1e3e3/t1",
-        "trails/cdg/a1e3e3/t2",
-        "trails/cdg/a1e3e3/t3",
-        "trails/cdg/a1e3e3/t4",
-        "trails/cdg/a1e3e3/t5",
-        "trails/cdg/a1e3e3/t6"
-      ]
+      "historyTrailShape": {
+        "shape": "cdg/trail",
+        "steps": 6,
+        "color": [
+          "=alertTrack",
+          "=warningTrack",
+          "=track_a1e3e3"
+        ],
+        "scaleRamp": [
+          1,
+          0.8,
+          0.6,
+          0.6,
+          0.4,
+          0.4
+        ]
+      }
     },
     {
       "description": "ER: CDG / Le Bourget departure via RANUX",
@@ -399,14 +516,23 @@
         "=warningTrack",
         "=track_a1e3e3"
       ],
-      "historyTrailImages": [
-        "trails/cdg/a1e3e3/t1",
-        "trails/cdg/a1e3e3/t2",
-        "trails/cdg/a1e3e3/t3",
-        "trails/cdg/a1e3e3/t4",
-        "trails/cdg/a1e3e3/t5",
-        "trails/cdg/a1e3e3/t6"
-      ]
+      "historyTrailShape": {
+        "shape": "cdg/trail",
+        "steps": 6,
+        "color": [
+          "=alertTrack",
+          "=warningTrack",
+          "=track_a1e3e3"
+        ],
+        "scaleRamp": [
+          1,
+          0.8,
+          0.6,
+          0.6,
+          0.4,
+          0.4
+        ]
+      }
     },
     {
       "description": "EL: CDG / Le Bourget departure via LANVI",
@@ -428,14 +554,23 @@
         "=warningTrack",
         "=track_a1e3e3"
       ],
-      "historyTrailImages": [
-        "trails/cdg/a1e3e3/t1",
-        "trails/cdg/a1e3e3/t2",
-        "trails/cdg/a1e3e3/t3",
-        "trails/cdg/a1e3e3/t4",
-        "trails/cdg/a1e3e3/t5",
-        "trails/cdg/a1e3e3/t6"
-      ]
+      "historyTrailShape": {
+        "shape": "cdg/trail",
+        "steps": 6,
+        "color": [
+          "=alertTrack",
+          "=warningTrack",
+          "=track_a1e3e3"
+        ],
+        "scaleRamp": [
+          1,
+          0.8,
+          0.6,
+          0.6,
+          0.4,
+          0.4
+        ]
+      }
     },
     {
       "description": "EB: CDG / Le Bourget departure via BUBLI",
@@ -457,14 +592,23 @@
         "=warningTrack",
         "=track_a1e3e3"
       ],
-      "historyTrailImages": [
-        "trails/cdg/a1e3e3/t1",
-        "trails/cdg/a1e3e3/t2",
-        "trails/cdg/a1e3e3/t3",
-        "trails/cdg/a1e3e3/t4",
-        "trails/cdg/a1e3e3/t5",
-        "trails/cdg/a1e3e3/t6"
-      ]
+      "historyTrailShape": {
+        "shape": "cdg/trail",
+        "steps": 6,
+        "color": [
+          "=alertTrack",
+          "=warningTrack",
+          "=track_a1e3e3"
+        ],
+        "scaleRamp": [
+          1,
+          0.8,
+          0.6,
+          0.6,
+          0.4,
+          0.4
+        ]
+      }
     },
     {
       "description": "EN: CDG / Le Bourget departure via NIPOR",
@@ -486,14 +630,23 @@
         "=warningTrack",
         "=track_a1e3e3"
       ],
-      "historyTrailImages": [
-        "trails/cdg/a1e3e3/t1",
-        "trails/cdg/a1e3e3/t2",
-        "trails/cdg/a1e3e3/t3",
-        "trails/cdg/a1e3e3/t4",
-        "trails/cdg/a1e3e3/t5",
-        "trails/cdg/a1e3e3/t6"
-      ]
+      "historyTrailShape": {
+        "shape": "cdg/trail",
+        "steps": 6,
+        "color": [
+          "=alertTrack",
+          "=warningTrack",
+          "=track_a1e3e3"
+        ],
+        "scaleRamp": [
+          1,
+          0.8,
+          0.6,
+          0.6,
+          0.4,
+          0.4
+        ]
+      }
     },
     {
       "description": "ED: CDG / Le Bourget departure via DIKOL",
@@ -515,14 +668,23 @@
         "=warningTrack",
         "=track_a1e3e3"
       ],
-      "historyTrailImages": [
-        "trails/cdg/a1e3e3/t1",
-        "trails/cdg/a1e3e3/t2",
-        "trails/cdg/a1e3e3/t3",
-        "trails/cdg/a1e3e3/t4",
-        "trails/cdg/a1e3e3/t5",
-        "trails/cdg/a1e3e3/t6"
-      ]
+      "historyTrailShape": {
+        "shape": "cdg/trail",
+        "steps": 6,
+        "color": [
+          "=alertTrack",
+          "=warningTrack",
+          "=track_a1e3e3"
+        ],
+        "scaleRamp": [
+          1,
+          0.8,
+          0.6,
+          0.6,
+          0.4,
+          0.4
+        ]
+      }
     },
     {
       "description": "EX: CDG / Le Bourget departure via BAXIR",
@@ -544,14 +706,23 @@
         "=warningTrack",
         "=track_a1e3e3"
       ],
-      "historyTrailImages": [
-        "trails/cdg/a1e3e3/t1",
-        "trails/cdg/a1e3e3/t2",
-        "trails/cdg/a1e3e3/t3",
-        "trails/cdg/a1e3e3/t4",
-        "trails/cdg/a1e3e3/t5",
-        "trails/cdg/a1e3e3/t6"
-      ]
+      "historyTrailShape": {
+        "shape": "cdg/trail",
+        "steps": 6,
+        "color": [
+          "=alertTrack",
+          "=warningTrack",
+          "=track_a1e3e3"
+        ],
+        "scaleRamp": [
+          1,
+          0.8,
+          0.6,
+          0.6,
+          0.4,
+          0.4
+        ]
+      }
     },
     {
       "description": "SE: CDG / Le Bourget departure via ERIXU",
@@ -573,14 +744,23 @@
         "=warningTrack",
         "=track_a1e3e3"
       ],
-      "historyTrailImages": [
-        "trails/cdg/a1e3e3/t1",
-        "trails/cdg/a1e3e3/t2",
-        "trails/cdg/a1e3e3/t3",
-        "trails/cdg/a1e3e3/t4",
-        "trails/cdg/a1e3e3/t5",
-        "trails/cdg/a1e3e3/t6"
-      ]
+      "historyTrailShape": {
+        "shape": "cdg/trail",
+        "steps": 6,
+        "color": [
+          "=alertTrack",
+          "=warningTrack",
+          "=track_a1e3e3"
+        ],
+        "scaleRamp": [
+          1,
+          0.8,
+          0.6,
+          0.6,
+          0.4,
+          0.4
+        ]
+      }
     },
     {
       "description": "SA: CDG / Le Bourget departure via AGOPA",
@@ -602,14 +782,23 @@
         "=warningTrack",
         "=track_a1e3e3"
       ],
-      "historyTrailImages": [
-        "trails/cdg/a1e3e3/t1",
-        "trails/cdg/a1e3e3/t2",
-        "trails/cdg/a1e3e3/t3",
-        "trails/cdg/a1e3e3/t4",
-        "trails/cdg/a1e3e3/t5",
-        "trails/cdg/a1e3e3/t6"
-      ]
+      "historyTrailShape": {
+        "shape": "cdg/trail",
+        "steps": 6,
+        "color": [
+          "=alertTrack",
+          "=warningTrack",
+          "=track_a1e3e3"
+        ],
+        "scaleRamp": [
+          1,
+          0.8,
+          0.6,
+          0.6,
+          0.4,
+          0.4
+        ]
+      }
     },
     {
       "description": "SL: CDG / Le Bourget departure via LATRA",
@@ -631,14 +820,23 @@
         "=warningTrack",
         "=track_a1e3e3"
       ],
-      "historyTrailImages": [
-        "trails/cdg/a1e3e3/t1",
-        "trails/cdg/a1e3e3/t2",
-        "trails/cdg/a1e3e3/t3",
-        "trails/cdg/a1e3e3/t4",
-        "trails/cdg/a1e3e3/t5",
-        "trails/cdg/a1e3e3/t6"
-      ]
+      "historyTrailShape": {
+        "shape": "cdg/trail",
+        "steps": 6,
+        "color": [
+          "=alertTrack",
+          "=warningTrack",
+          "=track_a1e3e3"
+        ],
+        "scaleRamp": [
+          1,
+          0.8,
+          0.6,
+          0.6,
+          0.4,
+          0.4
+        ]
+      }
     },
     {
       "description": "SO: CDG / Le Bourget departure via OKASI",
@@ -660,14 +858,23 @@
         "=warningTrack",
         "=track_a1e3e3"
       ],
-      "historyTrailImages": [
-        "trails/cdg/a1e3e3/t1",
-        "trails/cdg/a1e3e3/t2",
-        "trails/cdg/a1e3e3/t3",
-        "trails/cdg/a1e3e3/t4",
-        "trails/cdg/a1e3e3/t5",
-        "trails/cdg/a1e3e3/t6"
-      ]
+      "historyTrailShape": {
+        "shape": "cdg/trail",
+        "steps": 6,
+        "color": [
+          "=alertTrack",
+          "=warningTrack",
+          "=track_a1e3e3"
+        ],
+        "scaleRamp": [
+          1,
+          0.8,
+          0.6,
+          0.6,
+          0.4,
+          0.4
+        ]
+      }
     },
     {
       "description": "SP: CDG / Le Bourget departure via PILUL",
@@ -689,14 +896,23 @@
         "=warningTrack",
         "=track_a1e3e3"
       ],
-      "historyTrailImages": [
-        "trails/cdg/a1e3e3/t1",
-        "trails/cdg/a1e3e3/t2",
-        "trails/cdg/a1e3e3/t3",
-        "trails/cdg/a1e3e3/t4",
-        "trails/cdg/a1e3e3/t5",
-        "trails/cdg/a1e3e3/t6"
-      ]
+      "historyTrailShape": {
+        "shape": "cdg/trail",
+        "steps": 6,
+        "color": [
+          "=alertTrack",
+          "=warningTrack",
+          "=track_a1e3e3"
+        ],
+        "scaleRamp": [
+          1,
+          0.8,
+          0.6,
+          0.6,
+          0.4,
+          0.4
+        ]
+      }
     },
     {
       "description": "WE: CDG / Le Bourget departure via ELCOB",
@@ -718,14 +934,23 @@
         "=warningTrack",
         "=track_a1e3e3"
       ],
-      "historyTrailImages": [
-        "trails/cdg/a1e3e3/t1",
-        "trails/cdg/a1e3e3/t2",
-        "trails/cdg/a1e3e3/t3",
-        "trails/cdg/a1e3e3/t4",
-        "trails/cdg/a1e3e3/t5",
-        "trails/cdg/a1e3e3/t6"
-      ]
+      "historyTrailShape": {
+        "shape": "cdg/trail",
+        "steps": 6,
+        "color": [
+          "=alertTrack",
+          "=warningTrack",
+          "=track_a1e3e3"
+        ],
+        "scaleRamp": [
+          1,
+          0.8,
+          0.6,
+          0.6,
+          0.4,
+          0.4
+        ]
+      }
     },
     {
       "description": "WL: CDG / Le Bourget departure via LGL",
@@ -747,14 +972,23 @@
         "=warningTrack",
         "=track_a1e3e3"
       ],
-      "historyTrailImages": [
-        "trails/cdg/a1e3e3/t1",
-        "trails/cdg/a1e3e3/t2",
-        "trails/cdg/a1e3e3/t3",
-        "trails/cdg/a1e3e3/t4",
-        "trails/cdg/a1e3e3/t5",
-        "trails/cdg/a1e3e3/t6"
-      ]
+      "historyTrailShape": {
+        "shape": "cdg/trail",
+        "steps": 6,
+        "color": [
+          "=alertTrack",
+          "=warningTrack",
+          "=track_a1e3e3"
+        ],
+        "scaleRamp": [
+          1,
+          0.8,
+          0.6,
+          0.6,
+          0.4,
+          0.4
+        ]
+      }
     },
     {
       "description": "HO: CDG / Le Bourget departure via OLZOM",
@@ -776,14 +1010,23 @@
         "=warningTrack",
         "=track_a1e3e3"
       ],
-      "historyTrailImages": [
-        "trails/cdg/a1e3e3/t1",
-        "trails/cdg/a1e3e3/t2",
-        "trails/cdg/a1e3e3/t3",
-        "trails/cdg/a1e3e3/t4",
-        "trails/cdg/a1e3e3/t5",
-        "trails/cdg/a1e3e3/t6"
-      ]
+      "historyTrailShape": {
+        "shape": "cdg/trail",
+        "steps": 6,
+        "color": [
+          "=alertTrack",
+          "=warningTrack",
+          "=track_a1e3e3"
+        ],
+        "scaleRamp": [
+          1,
+          0.8,
+          0.6,
+          0.6,
+          0.4,
+          0.4
+        ]
+      }
     },
     {
       "description": "HM: CDG / Le Bourget departure via MONOT",
@@ -805,14 +1048,23 @@
         "=warningTrack",
         "=track_a1e3e3"
       ],
-      "historyTrailImages": [
-        "trails/cdg/a1e3e3/t1",
-        "trails/cdg/a1e3e3/t2",
-        "trails/cdg/a1e3e3/t3",
-        "trails/cdg/a1e3e3/t4",
-        "trails/cdg/a1e3e3/t5",
-        "trails/cdg/a1e3e3/t6"
-      ]
+      "historyTrailShape": {
+        "shape": "cdg/trail",
+        "steps": 6,
+        "color": [
+          "=alertTrack",
+          "=warningTrack",
+          "=track_a1e3e3"
+        ],
+        "scaleRamp": [
+          1,
+          0.8,
+          0.6,
+          0.6,
+          0.4,
+          0.4
+        ]
+      }
     },
     {
       "description": "HD: CDG / Le Bourget departure via DORDI",
@@ -834,14 +1086,23 @@
         "=warningTrack",
         "=track_a1e3e3"
       ],
-      "historyTrailImages": [
-        "trails/cdg/a1e3e3/t1",
-        "trails/cdg/a1e3e3/t2",
-        "trails/cdg/a1e3e3/t3",
-        "trails/cdg/a1e3e3/t4",
-        "trails/cdg/a1e3e3/t5",
-        "trails/cdg/a1e3e3/t6"
-      ]
+      "historyTrailShape": {
+        "shape": "cdg/trail",
+        "steps": 6,
+        "color": [
+          "=alertTrack",
+          "=warningTrack",
+          "=track_a1e3e3"
+        ],
+        "scaleRamp": [
+          1,
+          0.8,
+          0.6,
+          0.6,
+          0.4,
+          0.4
+        ]
+      }
     },
     {
       "description": "T: Orly group departure",
@@ -863,14 +1124,23 @@
         "=warningTrack",
         "=track_65c0df"
       ],
-      "historyTrailImages": [
-        "trails/cdg/65c0df/t1",
-        "trails/cdg/65c0df/t2",
-        "trails/cdg/65c0df/t3",
-        "trails/cdg/65c0df/t4",
-        "trails/cdg/65c0df/t5",
-        "trails/cdg/65c0df/t6"
-      ]
+      "historyTrailShape": {
+        "shape": "cdg/trail",
+        "steps": 6,
+        "color": [
+          "=alertTrack",
+          "=warningTrack",
+          "=track_65c0df"
+        ],
+        "scaleRamp": [
+          1,
+          0.8,
+          0.6,
+          0.6,
+          0.4,
+          0.4
+        ]
+      }
     },
     {
       "description": "T: Pontoise / Beauvais departure, IFR",
@@ -892,14 +1162,23 @@
         "=warningTrack",
         "=track_65c0df"
       ],
-      "historyTrailImages": [
-        "trails/cdg/65c0df/t1",
-        "trails/cdg/65c0df/t2",
-        "trails/cdg/65c0df/t3",
-        "trails/cdg/65c0df/t4",
-        "trails/cdg/65c0df/t5",
-        "trails/cdg/65c0df/t6"
-      ]
+      "historyTrailShape": {
+        "shape": "cdg/trail",
+        "steps": 6,
+        "color": [
+          "=alertTrack",
+          "=warningTrack",
+          "=track_65c0df"
+        ],
+        "scaleRamp": [
+          1,
+          0.8,
+          0.6,
+          0.6,
+          0.4,
+          0.4
+        ]
+      }
     },
     {
       "description": "CDG / Le Bourget departure",
@@ -921,14 +1200,23 @@
         "=warningTrack",
         "=track_a1e3e3"
       ],
-      "historyTrailImages": [
-        "trails/cdg/a1e3e3/t1",
-        "trails/cdg/a1e3e3/t2",
-        "trails/cdg/a1e3e3/t3",
-        "trails/cdg/a1e3e3/t4",
-        "trails/cdg/a1e3e3/t5",
-        "trails/cdg/a1e3e3/t6"
-      ]
+      "historyTrailShape": {
+        "shape": "cdg/trail",
+        "steps": 6,
+        "color": [
+          "=alertTrack",
+          "=warningTrack",
+          "=track_a1e3e3"
+        ],
+        "scaleRamp": [
+          1,
+          0.8,
+          0.6,
+          0.6,
+          0.4,
+          0.4
+        ]
+      }
     },
     {
       "description": "Z: other VFR (yours or offered to you, shown through the altitude filter)",
@@ -955,14 +1243,23 @@
         "=warningTrack",
         "=track_000000"
       ],
-      "historyTrailImages": [
-        "trails/cdg/000000/t1",
-        "trails/cdg/000000/t2",
-        "trails/cdg/000000/t3",
-        "trails/cdg/000000/t4",
-        "trails/cdg/000000/t5",
-        "trails/cdg/000000/t6"
-      ]
+      "historyTrailShape": {
+        "shape": "cdg/trail",
+        "steps": 6,
+        "color": [
+          "=alertTrack",
+          "=warningTrack",
+          "=track_000000"
+        ],
+        "scaleRamp": [
+          1,
+          0.8,
+          0.6,
+          0.6,
+          0.4,
+          0.4
+        ]
+      }
     },
     {
       "description": "Z: other VFR",
@@ -979,14 +1276,23 @@
         "=warningTrack",
         "=track_000000"
       ],
-      "historyTrailImages": [
-        "trails/cdg/000000/t1",
-        "trails/cdg/000000/t2",
-        "trails/cdg/000000/t3",
-        "trails/cdg/000000/t4",
-        "trails/cdg/000000/t5",
-        "trails/cdg/000000/t6"
-      ]
+      "historyTrailShape": {
+        "shape": "cdg/trail",
+        "steps": 6,
+        "color": [
+          "=alertTrack",
+          "=warningTrack",
+          "=track_000000"
+        ],
+        "scaleRamp": [
+          1,
+          0.8,
+          0.6,
+          0.6,
+          0.4,
+          0.4
+        ]
+      }
     },
     {
       "description": "X: other traffic (yours or offered to you, shown through the altitude filter)",
@@ -1012,14 +1318,23 @@
         "=warningTrack",
         "=track_000000"
       ],
-      "historyTrailImages": [
-        "trails/cdg/000000/t1",
-        "trails/cdg/000000/t2",
-        "trails/cdg/000000/t3",
-        "trails/cdg/000000/t4",
-        "trails/cdg/000000/t5",
-        "trails/cdg/000000/t6"
-      ]
+      "historyTrailShape": {
+        "shape": "cdg/trail",
+        "steps": 6,
+        "color": [
+          "=alertTrack",
+          "=warningTrack",
+          "=track_000000"
+        ],
+        "scaleRamp": [
+          1,
+          0.8,
+          0.6,
+          0.6,
+          0.4,
+          0.4
+        ]
+      }
     },
     {
       "description": "X: other traffic",
@@ -1035,14 +1350,23 @@
         "=warningTrack",
         "=track_000000"
       ],
-      "historyTrailImages": [
-        "trails/cdg/000000/t1",
-        "trails/cdg/000000/t2",
-        "trails/cdg/000000/t3",
-        "trails/cdg/000000/t4",
-        "trails/cdg/000000/t5",
-        "trails/cdg/000000/t6"
-      ]
+      "historyTrailShape": {
+        "shape": "cdg/trail",
+        "steps": 6,
+        "color": [
+          "=alertTrack",
+          "=warningTrack",
+          "=track_000000"
+        ],
+        "scaleRamp": [
+          1,
+          0.8,
+          0.6,
+          0.6,
+          0.4,
+          0.4
+        ]
+      }
     }
   ]
 }

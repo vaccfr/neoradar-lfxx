@@ -37,7 +37,7 @@ Controller Pack install (e.g. `~/Documents/FrenchVACC`) is already one.
 
 | Path | What |
 | --- | --- |
-| `packages.json` | The package: id, namespace (permanent: provider URL and server vAcc id), sector file, FIR folders, `excludeAsrs` and `excludeLoginFacilities` (centre displays and logins left out), ICAO/NavData folder, publish settings |
+| `packages.json` | The package: id, namespace (permanent: provider URL and server vAcc id), sector file, FIR folders, `excludeAsrs` and `excludeLoginFacilities` (centre and Legacy APP displays, centre logins left out), ICAO/NavData folder, publish settings |
 | `scripts/build.py` | `assemble` (source tree → `build/<ID>/` environment) and `finalize` (after `neoradar-cli convert`: profiles, manifest) |
 | `scripts/cofrance.py` | CoFrance GeoJSON maps → NeoRadar map layers (EPSG:3857, item table, `showWhen` from CoFrance `activation`) |
 | `scripts/aviso.py` | vSMR AVISO files → one "AVISO <ICAO>" layer per airport; AVISO profiles list only their airport's layer; direction-named groups (LFPG arrows) get a runway-configuration drawing `showWhen` |
@@ -46,7 +46,7 @@ Controller Pack install (e.g. `~/Documents/FrenchVACC`) is already one.
 | `shared/package/` | Copied into every package: systems, fonts, images, sounds, plugins |
 | `shared/package/plugins/` | Plugins as `.nrplugin` archives (now `vIFF-CDM-alpha`); `build.py` lists each in the manifest's `plugins` |
 | `shared/package/systems/` | The two static systems: `neoirma` (stripless IRMA: every approach but CDG, and the one ground look, used by every AVISO) and `cdg` (Paris-CDG approach; its ground is `#neoirma`). Tracks are vector shapes in `shapes.json` |
-| `backup/` | The systems, sprite atlas and tag-format generator before the two-system cleanup. Not built, kept for reference |
+| `backup/` | The systems, sprite atlas and tag-format generator before the two-system cleanup. Not built, kept for reference (trails are vector shapes now; the package has no sprite atlas) |
 | `diffs/`, `transforms/` | Patches and text replacements applied to source files during `assemble` |
 | `.github/workflows/` | `release.yml` (build, validate, publish), `validate.yml` (repo checks) |
 
@@ -85,8 +85,9 @@ node scripts/validate.js <schemas checkout> build/*/package      # ajv@8 + js-ya
   CoFrance never filters, and for flights assumed or in transfer, list all `applyToFilterStates`;
   tag layouts have a twin keyed on `$<system>ThroughFilter`. Keep targets, styles and layouts in
   step.
-- **Shapes fill axis-aligned rects and full circles in the client** (circles from client-sharp
-  develop `7a39b6c4f`). Any other polygon with `fill` draws as an outline.
+- **Shapes fill axis-aligned rects and full circles in the client** (circles from client 0.4.4).
+  Any other polygon with `fill` draws as an outline. Put 1 px vertical strokes on half pixels:
+  the client snaps them to pixel centres but not diagonals (see the CDG letters in docs/maintaining.md).
 - **The server's data is separate.** `server-dataset.json` is uploaded with
   `neoradar-cli push-dataset`; procedure rules and runway preferences are server config, not
   part of the package.

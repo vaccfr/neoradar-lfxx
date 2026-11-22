@@ -4,7 +4,8 @@ LFXX - AIRAC 2611
 NeoRadar is used for approach, tower and ground for now.
 
 Package
-- Centre displays (FIR, UIR, CTR ASRs) and centre login profiles are no longer shipped.
+- Centre displays (FIR, UIR, CTR ASRs), the Legacy APP displays and centre login profiles are no
+  longer shipped.
 - Published to Cloudflare R2, served at https://pkg.neoradar.app/lfxx.
 - Squawks from CCAMS (squawk.http in the manifest).
 - France Military sector file 261101-0003.
@@ -22,12 +23,13 @@ Radar systems
   the plate when transferred to you, green text when transferred out (same in both systems).
 - Flights CoFrance never filters, and flights assumed or in transfer, show through the altitude
   filter.
-- Trails: the old CDG trail rings and IRMA dots, in each track colour; displays refresh like a
-  radar (approach 2 s, AVISO 1 s), so trails follow the aircraft sweep by sweep.
+- Trails: vector rings in each track colour, CDG's shrinking from 10 to 4 px, IRMA's 4 then 3 px;
+  displays refresh like a radar (approach 2 s, AVISO 1 s), so trails follow the aircraft sweep
+  by sweep.
+- CDG letters in pixel bold; O, D and B no longer look alike.
+- RDF circle 0.5 NM (it was 10 NM).
 - Tags in B612 Mono (barred zero), with climb/descent/level arrows and the voice type (/r, /t).
-- Every target correlated (correlation mode always).
 - Route draw in CoFrance's route colours, labels on a dark plate.
-- RDF circle settings.
 - Lists readable: CoFrance's list colours, nearly opaque, 11 px text.
 - Safety nets: STCA (with the final-approach corridor and CDG's simultaneous runway pairs), the
   emergency squawk (7500/7600/7700) and RIMCAS on every runway. Tags carry an alert line (red,
@@ -54,4 +56,5 @@ Revisions
           big, three small rings), one callsign look per state (slate plate), B612 Mono font with
           a barred zero, safety nets (STCA, emergency squawk, RIMCAS) with alert lines in the tags,
           SID on the hover tag, sector file 261101-0003; old fonts, the NeoVSID tag item and the
-          old vACDM list removed
+          old vACDM list removed; vector trails (scaleRamp), bold CDG letters, RDF circle 0.5 NM,
+          no Legacy APP displays, correlation left to the client's default

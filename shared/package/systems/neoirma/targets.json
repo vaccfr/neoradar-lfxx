@@ -149,14 +149,23 @@
         "=warningTrack",
         "=track_d597a3"
       ],
-      "historyTrailImages": [
-        "trails/neoirma/d597a3/big",
-        "trails/neoirma/d597a3/big",
-        "trails/neoirma/d597a3/big",
-        "trails/neoirma/d597a3/small",
-        "trails/neoirma/d597a3/small",
-        "trails/neoirma/d597a3/small"
-      ]
+      "historyTrailShape": {
+        "shape": "neoirma/trail",
+        "steps": 6,
+        "color": [
+          "=alertTrack",
+          "=warningTrack",
+          "=track_d597a3"
+        ],
+        "scaleRamp": [
+          1,
+          1,
+          1,
+          0.75,
+          0.75,
+          0.75
+        ]
+      }
     },
     {
       "description": "ARR: arrives at one of your airports",
@@ -178,14 +187,23 @@
         "=warningTrack",
         "=track_63bbd9"
       ],
-      "historyTrailImages": [
-        "trails/neoirma/63bbd9/big",
-        "trails/neoirma/63bbd9/big",
-        "trails/neoirma/63bbd9/big",
-        "trails/neoirma/63bbd9/small",
-        "trails/neoirma/63bbd9/small",
-        "trails/neoirma/63bbd9/small"
-      ]
+      "historyTrailShape": {
+        "shape": "neoirma/trail",
+        "steps": 6,
+        "color": [
+          "=alertTrack",
+          "=warningTrack",
+          "=track_63bbd9"
+        ],
+        "scaleRamp": [
+          1,
+          1,
+          1,
+          0.75,
+          0.75,
+          0.75
+        ]
+      }
     },
     {
       "description": "Other traffic (yours or offered to you, shown through the altitude filter)",
@@ -211,14 +229,23 @@
         "=warningTrack",
         "=track_8e8e8e"
       ],
-      "historyTrailImages": [
-        "trails/neoirma/8e8e8e/big",
-        "trails/neoirma/8e8e8e/big",
-        "trails/neoirma/8e8e8e/big",
-        "trails/neoirma/8e8e8e/small",
-        "trails/neoirma/8e8e8e/small",
-        "trails/neoirma/8e8e8e/small"
-      ]
+      "historyTrailShape": {
+        "shape": "neoirma/trail",
+        "steps": 6,
+        "color": [
+          "=alertTrack",
+          "=warningTrack",
+          "=track_8e8e8e"
+        ],
+        "scaleRamp": [
+          1,
+          1,
+          1,
+          0.75,
+          0.75,
+          0.75
+        ]
+      }
     },
     {
       "description": "Other traffic",
@@ -234,14 +261,23 @@
         "=warningTrack",
         "=track_8e8e8e"
       ],
-      "historyTrailImages": [
-        "trails/neoirma/8e8e8e/big",
-        "trails/neoirma/8e8e8e/big",
-        "trails/neoirma/8e8e8e/big",
-        "trails/neoirma/8e8e8e/small",
-        "trails/neoirma/8e8e8e/small",
-        "trails/neoirma/8e8e8e/small"
-      ]
+      "historyTrailShape": {
+        "shape": "neoirma/trail",
+        "steps": 6,
+        "color": [
+          "=alertTrack",
+          "=warningTrack",
+          "=track_8e8e8e"
+        ],
+        "scaleRamp": [
+          1,
+          1,
+          1,
+          0.75,
+          0.75,
+          0.75
+        ]
+      }
     }
   ]
 }
