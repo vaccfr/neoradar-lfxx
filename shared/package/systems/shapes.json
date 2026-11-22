@@ -10,7 +10,7 @@
         },
         {
           "shapeRef": "font/B",
-          "offset": [-2.0, 10.5]
+          "offset": [-2.0, 8.5]
         }
       ]
     },
@@ -23,12 +23,12 @@
         },
         {
           "shapeRef": "font/R",
-          "offset": [-2.0, 10.5]
+          "offset": [-2.0, 8.5]
         }
       ]
     },
     "cdg/arrnorth": {
-      "description": "CoFrance CDG track with subtext N.",
+      "description": "CoFrance CDG track with subtext N. Letters above: north.",
       "rotateWithHeading": false,
       "elements": [
         {
@@ -36,7 +36,7 @@
         },
         {
           "shapeRef": "font/N",
-          "offset": [-2.0, -15.5]
+          "offset": [-2.0, -14.5]
         }
       ]
     },
@@ -49,7 +49,7 @@
         },
         {
           "shapeRef": "font/O",
-          "offset": [-2.0, 10.5]
+          "offset": [-2.0, 8.5]
         }
       ]
     },
@@ -62,7 +62,7 @@
         },
         {
           "shapeRef": "font/V",
-          "offset": [-2.0, 10.5]
+          "offset": [-2.0, 8.5]
         }
       ]
     },
@@ -75,7 +75,7 @@
         },
         {
           "shapeRef": "font/A",
-          "offset": [-2.0, 10.5]
+          "offset": [-2.0, 8.5]
         }
       ]
     },
@@ -88,7 +88,7 @@
         },
         {
           "shapeRef": "font/S",
-          "offset": [-2.0, 10.5]
+          "offset": [-2.0, 8.5]
         }
       ]
     },
@@ -101,11 +101,11 @@
         },
         {
           "shapeRef": "font/E",
-          "offset": [-5.0, 10.5]
+          "offset": [-5.0, 8.5]
         },
         {
           "shapeRef": "font/B",
-          "offset": [1.0, 10.5]
+          "offset": [1.0, 8.5]
         }
       ]
     },
@@ -118,11 +118,11 @@
         },
         {
           "shapeRef": "font/E",
-          "offset": [-5.0, 10.5]
+          "offset": [-5.0, 8.5]
         },
         {
           "shapeRef": "font/D",
-          "offset": [1.0, 10.5]
+          "offset": [1.0, 8.5]
         }
       ]
     },
@@ -135,11 +135,11 @@
         },
         {
           "shapeRef": "font/E",
-          "offset": [-5.0, 10.5]
+          "offset": [-5.0, 8.5]
         },
         {
           "shapeRef": "font/L",
-          "offset": [1.0, 10.5]
+          "offset": [1.0, 8.5]
         }
       ]
     },
@@ -152,11 +152,11 @@
         },
         {
           "shapeRef": "font/E",
-          "offset": [-5.0, 10.5]
+          "offset": [-5.0, 8.5]
         },
         {
           "shapeRef": "font/N",
-          "offset": [1.0, 10.5]
+          "offset": [1.0, 8.5]
         }
       ]
     },
@@ -169,11 +169,11 @@
         },
         {
           "shapeRef": "font/E",
-          "offset": [-5.0, 10.5]
+          "offset": [-5.0, 8.5]
         },
         {
           "shapeRef": "font/R",
-          "offset": [1.0, 10.5]
+          "offset": [1.0, 8.5]
         }
       ]
     },
@@ -186,11 +186,11 @@
         },
         {
           "shapeRef": "font/E",
-          "offset": [-5.0, 10.5]
+          "offset": [-5.0, 8.5]
         },
         {
           "shapeRef": "font/X",
-          "offset": [1.0, 10.5]
+          "offset": [1.0, 8.5]
         }
       ]
     },
@@ -203,11 +203,11 @@
         },
         {
           "shapeRef": "font/H",
-          "offset": [-5.0, 10.5]
+          "offset": [-5.0, 8.5]
         },
         {
           "shapeRef": "font/D",
-          "offset": [1.0, 10.5]
+          "offset": [1.0, 8.5]
         }
       ]
     },
@@ -220,11 +220,11 @@
         },
         {
           "shapeRef": "font/H",
-          "offset": [-5.0, 10.5]
+          "offset": [-5.0, 8.5]
         },
         {
           "shapeRef": "font/M",
-          "offset": [1.0, 10.5]
+          "offset": [1.0, 8.5]
         }
       ]
     },
@@ -237,16 +237,16 @@
         },
         {
           "shapeRef": "font/H",
-          "offset": [-5.0, 10.5]
+          "offset": [-5.0, 8.5]
         },
         {
           "shapeRef": "font/O",
-          "offset": [1.0, 10.5]
+          "offset": [1.0, 8.5]
         }
       ]
     },
     "cdg/depna": {
-      "description": "CoFrance CDG track with subtext NA.",
+      "description": "CoFrance CDG track with subtext NA. Letters above: north.",
       "rotateWithHeading": false,
       "elements": [
         {
@@ -254,16 +254,16 @@
         },
         {
           "shapeRef": "font/N",
-          "offset": [-5.0, 10.5]
+          "offset": [-5.0, -14.5]
         },
         {
           "shapeRef": "font/A",
-          "offset": [1.0, 10.5]
+          "offset": [1.0, -14.5]
         }
       ]
     },
     "cdg/depnm": {
-      "description": "CoFrance CDG track with subtext NM.",
+      "description": "CoFrance CDG track with subtext NM. Letters above: north.",
       "rotateWithHeading": false,
       "elements": [
         {
@@ -271,16 +271,16 @@
         },
         {
           "shapeRef": "font/N",
-          "offset": [-5.0, 10.5]
+          "offset": [-5.0, -14.5]
         },
         {
           "shapeRef": "font/M",
-          "offset": [1.0, 10.5]
+          "offset": [1.0, -14.5]
         }
       ]
     },
     "cdg/depnn": {
-      "description": "CoFrance CDG track with subtext NN.",
+      "description": "CoFrance CDG track with subtext NN. Letters above: north.",
       "rotateWithHeading": false,
       "elements": [
         {
@@ -288,16 +288,16 @@
         },
         {
           "shapeRef": "font/N",
-          "offset": [-5.0, 10.5]
+          "offset": [-5.0, -14.5]
         },
         {
           "shapeRef": "font/N",
-          "offset": [1.0, 10.5]
+          "offset": [1.0, -14.5]
         }
       ]
     },
     "cdg/depno": {
-      "description": "CoFrance CDG track with subtext NO.",
+      "description": "CoFrance CDG track with subtext NO. Letters above: north.",
       "rotateWithHeading": false,
       "elements": [
         {
@@ -305,11 +305,11 @@
         },
         {
           "shapeRef": "font/N",
-          "offset": [-5.0, 10.5]
+          "offset": [-5.0, -14.5]
         },
         {
           "shapeRef": "font/O",
-          "offset": [1.0, 10.5]
+          "offset": [1.0, -14.5]
         }
       ]
     },
@@ -322,7 +322,7 @@
         },
         {
           "shapeRef": "font/T",
-          "offset": [-2.0, 10.5]
+          "offset": [-2.0, 8.5]
         }
       ]
     },
@@ -335,7 +335,7 @@
         },
         {
           "shapeRef": "font/T",
-          "offset": [-2.0, 10.5]
+          "offset": [-2.0, 8.5]
         }
       ]
     },
@@ -348,11 +348,11 @@
         },
         {
           "shapeRef": "font/S",
-          "offset": [-5.0, 10.5]
+          "offset": [-5.0, 8.5]
         },
         {
           "shapeRef": "font/A",
-          "offset": [1.0, 10.5]
+          "offset": [1.0, 8.5]
         }
       ]
     },
@@ -365,11 +365,11 @@
         },
         {
           "shapeRef": "font/S",
-          "offset": [-5.0, 10.5]
+          "offset": [-5.0, 8.5]
         },
         {
           "shapeRef": "font/E",
-          "offset": [1.0, 10.5]
+          "offset": [1.0, 8.5]
         }
       ]
     },
@@ -382,11 +382,11 @@
         },
         {
           "shapeRef": "font/S",
-          "offset": [-5.0, 10.5]
+          "offset": [-5.0, 8.5]
         },
         {
           "shapeRef": "font/L",
-          "offset": [1.0, 10.5]
+          "offset": [1.0, 8.5]
         }
       ]
     },
@@ -399,11 +399,11 @@
         },
         {
           "shapeRef": "font/S",
-          "offset": [-5.0, 10.5]
+          "offset": [-5.0, 8.5]
         },
         {
           "shapeRef": "font/O",
-          "offset": [1.0, 10.5]
+          "offset": [1.0, 8.5]
         }
       ]
     },
@@ -416,11 +416,11 @@
         },
         {
           "shapeRef": "font/S",
-          "offset": [-5.0, 10.5]
+          "offset": [-5.0, 8.5]
         },
         {
           "shapeRef": "font/P",
-          "offset": [1.0, 10.5]
+          "offset": [1.0, 8.5]
         }
       ]
     },
@@ -433,11 +433,11 @@
         },
         {
           "shapeRef": "font/W",
-          "offset": [-5.0, 10.5]
+          "offset": [-5.0, 8.5]
         },
         {
           "shapeRef": "font/E",
-          "offset": [1.0, 10.5]
+          "offset": [1.0, 8.5]
         }
       ]
     },
@@ -450,11 +450,11 @@
         },
         {
           "shapeRef": "font/W",
-          "offset": [-5.0, 10.5]
+          "offset": [-5.0, 8.5]
         },
         {
           "shapeRef": "font/L",
-          "offset": [1.0, 10.5]
+          "offset": [1.0, 8.5]
         }
       ]
     },
@@ -467,7 +467,7 @@
         },
         {
           "shapeRef": "font/P",
-          "offset": [-2.0, 10.5]
+          "offset": [-2.0, 8.5]
         }
       ]
     },
@@ -480,7 +480,7 @@
         },
         {
           "shapeRef": "font/G",
-          "offset": [-2.0, 10.5]
+          "offset": [-2.0, 8.5]
         }
       ]
     },
@@ -493,7 +493,7 @@
         },
         {
           "shapeRef": "font/X",
-          "offset": [-2.0, 10.5]
+          "offset": [-2.0, 8.5]
         }
       ]
     },
@@ -510,14 +510,14 @@
       ]
     },
     "cdg/trail": {
-      "description": "CoFrance 'circle' history trail mark, a 6 px ring.",
+      "description": "CoFrance 'circle' history trail mark: a 4 px dot (clients before client-sharp 7a39b6c4f draw its outline).",
       "rotateWithHeading": false,
       "elements": [
         {
           "circle": {
             "radius": 2
           },
-          "strokeWidth": 2
+          "fill": true
         }
       ]
     },
@@ -530,206 +530,193 @@
         },
         {
           "shapeRef": "font/Z",
-          "offset": [-2.0, 10.5]
+          "offset": [-2.0, 8.5]
         }
       ]
     },
     "font/A": {
-      "description": "Stroke letter A, 4 x 5 units from its top-left corner, for track subtexts.",
+      "description": "Stroke letter A, 4 x 6 units from its top-left corner, for track subtexts.",
       "rotateWithHeading": false,
       "elements": [
         {
-          "line": [[0, 5], [0, 1.5], [2, 0], [4, 1.5], [4, 5]]
+          "line": [[0, 6], [0, 2], [2, 0], [4, 2], [4, 6]]
+        },
+        {
+          "line": [[0, 3.5], [4, 3.5]]
+        }
+      ]
+    },
+    "font/B": {
+      "description": "Stroke letter B, 4 x 6 units from its top-left corner, for track subtexts.",
+      "rotateWithHeading": false,
+      "elements": [
+        {
+          "line": [[0, 0], [0, 6], [3, 6], [4, 5], [4, 4], [3, 3], [0, 3]]
+        },
+        {
+          "line": [[0, 0], [3, 0], [4, 1], [4, 2], [3, 3]]
+        }
+      ]
+    },
+    "font/D": {
+      "description": "Stroke letter D, 4 x 6 units from its top-left corner, for track subtexts.",
+      "rotateWithHeading": false,
+      "elements": [
+        {
+          "line": [[0, 0], [0, 6], [2, 6], [4, 4], [4, 2], [2, 0], [0, 0]]
+        }
+      ]
+    },
+    "font/E": {
+      "description": "Stroke letter E, 4 x 6 units from its top-left corner, for track subtexts.",
+      "rotateWithHeading": false,
+      "elements": [
+        {
+          "line": [[4, 0], [0, 0], [0, 6], [4, 6]]
+        },
+        {
+          "line": [[0, 3], [3, 3]]
+        }
+      ]
+    },
+    "font/G": {
+      "description": "Stroke letter G, 4 x 6 units from its top-left corner, for track subtexts.",
+      "rotateWithHeading": false,
+      "elements": [
+        {
+          "line": [[4, 1], [3, 0], [1, 0], [0, 1], [0, 5], [1, 6], [3, 6], [4, 5], [4, 3], [2, 3]]
+        }
+      ]
+    },
+    "font/H": {
+      "description": "Stroke letter H, 4 x 6 units from its top-left corner, for track subtexts.",
+      "rotateWithHeading": false,
+      "elements": [
+        {
+          "line": [[0, 0], [0, 6]]
+        },
+        {
+          "line": [[4, 0], [4, 6]]
         },
         {
           "line": [[0, 3], [4, 3]]
         }
       ]
     },
-    "font/B": {
-      "description": "Stroke letter B, 4 x 5 units from its top-left corner, for track subtexts.",
-      "rotateWithHeading": false,
-      "elements": [
-        {
-          "line": [[0, 0], [0, 5], [3, 5], [4, 4.2], [4, 3.3], [3, 2.5], [0, 2.5]]
-        },
-        {
-          "line": [[0, 0], [3, 0], [4, 0.7], [4, 1.8], [3, 2.5]]
-        }
-      ]
-    },
-    "font/D": {
-      "description": "Stroke letter D, 4 x 5 units from its top-left corner, for track subtexts.",
-      "rotateWithHeading": false,
-      "elements": [
-        {
-          "line": [[0, 0], [0, 5], [2.5, 5], [4, 3.7], [4, 1.3], [2.5, 0], [0, 0]]
-        }
-      ]
-    },
-    "font/E": {
-      "description": "Stroke letter E, 4 x 5 units from its top-left corner, for track subtexts.",
-      "rotateWithHeading": false,
-      "elements": [
-        {
-          "line": [[4, 0], [0, 0], [0, 5], [4, 5]]
-        },
-        {
-          "line": [[0, 2.5], [3, 2.5]]
-        }
-      ]
-    },
-    "font/G": {
-      "description": "Stroke letter G, 4 x 5 units from its top-left corner, for track subtexts.",
-      "rotateWithHeading": false,
-      "elements": [
-        {
-          "line": [[4, 0.8], [3, 0], [1, 0], [0, 1], [0, 4], [1, 5], [3, 5], [4, 4], [4, 2.7], [2, 2.7]]
-        }
-      ]
-    },
-    "font/H": {
-      "description": "Stroke letter H, 4 x 5 units from its top-left corner, for track subtexts.",
-      "rotateWithHeading": false,
-      "elements": [
-        {
-          "line": [[0, 0], [0, 5]]
-        },
-        {
-          "line": [[4, 0], [4, 5]]
-        },
-        {
-          "line": [[0, 2.5], [4, 2.5]]
-        }
-      ]
-    },
     "font/L": {
-      "description": "Stroke letter L, 4 x 5 units from its top-left corner, for track subtexts.",
+      "description": "Stroke letter L, 4 x 6 units from its top-left corner, for track subtexts.",
       "rotateWithHeading": false,
       "elements": [
         {
-          "line": [[0, 0], [0, 5], [4, 5]]
+          "line": [[0, 0], [0, 6], [4, 6]]
         }
       ]
     },
     "font/M": {
-      "description": "Stroke letter M, 4 x 5 units from its top-left corner, for track subtexts.",
+      "description": "Stroke letter M, 4 x 6 units from its top-left corner, for track subtexts.",
       "rotateWithHeading": false,
       "elements": [
         {
-          "line": [[0, 5], [0, 0], [2, 2.5], [4, 0], [4, 5]]
+          "line": [[0, 6], [0, 0], [2, 3], [4, 0], [4, 6]]
         }
       ]
     },
     "font/N": {
-      "description": "Stroke letter N, 4 x 5 units from its top-left corner, for track subtexts.",
+      "description": "Stroke letter N, 4 x 6 units from its top-left corner, for track subtexts.",
       "rotateWithHeading": false,
       "elements": [
         {
-          "line": [[0, 5], [0, 0], [4, 5], [4, 0]]
+          "line": [[0, 6], [0, 0], [4, 6], [4, 0]]
         }
       ]
     },
     "font/O": {
-      "description": "Stroke letter O, 4 x 5 units from its top-left corner, for track subtexts.",
+      "description": "Stroke letter O, 4 x 6 units from its top-left corner, for track subtexts.",
       "rotateWithHeading": false,
       "elements": [
         {
-          "line": [[1, 0], [3, 0], [4, 1], [4, 4], [3, 5], [1, 5], [0, 4], [0, 1], [1, 0]]
+          "line": [[1, 0], [3, 0], [4, 1], [4, 5], [3, 6], [1, 6], [0, 5], [0, 1], [1, 0]]
         }
       ]
     },
     "font/P": {
-      "description": "Stroke letter P, 4 x 5 units from its top-left corner, for track subtexts.",
+      "description": "Stroke letter P, 4 x 6 units from its top-left corner, for track subtexts.",
       "rotateWithHeading": false,
       "elements": [
         {
-          "line": [[0, 5], [0, 0], [3, 0], [4, 0.8], [4, 1.8], [3, 2.6], [0, 2.6]]
+          "line": [[0, 6], [0, 0], [3, 0], [4, 1], [4, 2], [3, 3], [0, 3]]
         }
       ]
     },
     "font/R": {
-      "description": "Stroke letter R, 4 x 5 units from its top-left corner, for track subtexts.",
+      "description": "Stroke letter R, 4 x 6 units from its top-left corner, for track subtexts.",
       "rotateWithHeading": false,
       "elements": [
         {
-          "line": [[0, 5], [0, 0], [3, 0], [4, 0.8], [4, 1.8], [3, 2.6], [0, 2.6]]
+          "line": [[0, 6], [0, 0], [3, 0], [4, 1], [4, 2], [3, 3], [0, 3]]
         },
         {
-          "line": [[2, 2.6], [4, 5]]
+          "line": [[2, 3], [4, 6]]
         }
       ]
     },
     "font/S": {
-      "description": "Stroke letter S, 4 x 5 units from its top-left corner, for track subtexts.",
+      "description": "Stroke letter S, 4 x 6 units from its top-left corner, for track subtexts.",
       "rotateWithHeading": false,
       "elements": [
         {
-          "line": [
-            [4, 0.8],
-            [3, 0],
-            [1, 0],
-            [0, 0.8],
-            [0, 1.7],
-            [1, 2.5],
-            [3, 2.5],
-            [4, 3.3],
-            [4, 4.2],
-            [3, 5],
-            [1, 5],
-            [0, 4.2]
-          ]
+          "line": [[4, 1], [3, 0], [1, 0], [0, 1], [0, 2], [1, 3], [3, 3], [4, 4], [4, 5], [3, 6], [1, 6], [0, 5]]
         }
       ]
     },
     "font/T": {
-      "description": "Stroke letter T, 4 x 5 units from its top-left corner, for track subtexts.",
+      "description": "Stroke letter T, 4 x 6 units from its top-left corner, for track subtexts.",
       "rotateWithHeading": false,
       "elements": [
         {
           "line": [[0, 0], [4, 0]]
         },
         {
-          "line": [[2, 0], [2, 5]]
+          "line": [[2, 0], [2, 6]]
         }
       ]
     },
     "font/V": {
-      "description": "Stroke letter V, 4 x 5 units from its top-left corner, for track subtexts.",
+      "description": "Stroke letter V, 4 x 6 units from its top-left corner, for track subtexts.",
       "rotateWithHeading": false,
       "elements": [
         {
-          "line": [[0, 0], [2, 5], [4, 0]]
+          "line": [[0, 0], [2, 6], [4, 0]]
         }
       ]
     },
     "font/W": {
-      "description": "Stroke letter W, 4 x 5 units from its top-left corner, for track subtexts.",
+      "description": "Stroke letter W, 4 x 6 units from its top-left corner, for track subtexts.",
       "rotateWithHeading": false,
       "elements": [
         {
-          "line": [[0, 0], [1, 5], [2, 2.5], [3, 5], [4, 0]]
+          "line": [[0, 0], [1, 6], [2, 3], [3, 6], [4, 0]]
         }
       ]
     },
     "font/X": {
-      "description": "Stroke letter X, 4 x 5 units from its top-left corner, for track subtexts.",
+      "description": "Stroke letter X, 4 x 6 units from its top-left corner, for track subtexts.",
       "rotateWithHeading": false,
       "elements": [
         {
-          "line": [[0, 0], [4, 5]]
+          "line": [[0, 0], [4, 6]]
         },
         {
-          "line": [[4, 0], [0, 5]]
+          "line": [[4, 0], [0, 6]]
         }
       ]
     },
     "font/Z": {
-      "description": "Stroke letter Z, 4 x 5 units from its top-left corner, for track subtexts.",
+      "description": "Stroke letter Z, 4 x 6 units from its top-left corner, for track subtexts.",
       "rotateWithHeading": false,
       "elements": [
         {
-          "line": [[0, 0], [4, 0], [0, 5], [4, 5]]
+          "line": [[0, 0], [4, 0], [0, 6], [4, 6]]
         }
       ]
     },

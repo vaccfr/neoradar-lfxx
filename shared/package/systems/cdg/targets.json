@@ -10,11 +10,11 @@
       "plotColor": [212, 212, 185],
       "historyTrailShape": {
         "shape": "cdg/trail",
-        "steps": 6,
+        "steps": 8,
         "color": [212, 212, 185],
-        "opacityRamp": [1, 0.85, 0.7, 0.55, 0.45, 0.35]
+        "opacityRamp": [0.9, 0.75, 0.62, 0.5, 0.4, 0.3, 0.22, 0.15]
       },
-      "historyTrailsSkipSteps": 5,
+      "historyTrailsSkipSteps": 3,
       "speedVectorColor": [212, 212, 185]
     },
     {
@@ -25,11 +25,11 @@
       "plotColor": [212, 212, 185],
       "historyTrailShape": {
         "shape": "cdg/trail",
-        "steps": 6,
+        "steps": 8,
         "color": [212, 212, 185],
-        "opacityRamp": [1, 0.85, 0.7, 0.55, 0.45, 0.35]
+        "opacityRamp": [0.9, 0.75, 0.62, 0.5, 0.4, 0.3, 0.22, 0.15]
       },
-      "historyTrailsSkipSteps": 5,
+      "historyTrailsSkipSteps": 3,
       "speedVectorColor": [212, 212, 185]
     },
     {
@@ -40,11 +40,11 @@
       "plotColor": [227, 157, 157],
       "historyTrailShape": {
         "shape": "cdg/trail",
-        "steps": 6,
+        "steps": 8,
         "color": [227, 157, 157],
-        "opacityRamp": [1, 0.85, 0.7, 0.55, 0.45, 0.35]
+        "opacityRamp": [0.9, 0.75, 0.62, 0.5, 0.4, 0.3, 0.22, 0.15]
       },
-      "historyTrailsSkipSteps": 5,
+      "historyTrailsSkipSteps": 3,
       "speedVectorColor": [227, 157, 157]
     },
     {
@@ -55,11 +55,11 @@
       "plotColor": [227, 184, 203],
       "historyTrailShape": {
         "shape": "cdg/trail",
-        "steps": 6,
+        "steps": 8,
         "color": [227, 184, 203],
-        "opacityRamp": [1, 0.85, 0.7, 0.55, 0.45, 0.35]
+        "opacityRamp": [0.9, 0.75, 0.62, 0.5, 0.4, 0.3, 0.22, 0.15]
       },
-      "historyTrailsSkipSteps": 5,
+      "historyTrailsSkipSteps": 3,
       "speedVectorColor": [227, 184, 203]
     },
     {
@@ -70,11 +70,11 @@
       "plotColor": [211, 150, 227],
       "historyTrailShape": {
         "shape": "cdg/trail",
-        "steps": 6,
+        "steps": 8,
         "color": [211, 150, 227],
-        "opacityRamp": [1, 0.85, 0.7, 0.55, 0.45, 0.35]
+        "opacityRamp": [0.9, 0.75, 0.62, 0.5, 0.4, 0.3, 0.22, 0.15]
       },
-      "historyTrailsSkipSteps": 5,
+      "historyTrailsSkipSteps": 3,
       "speedVectorColor": [211, 150, 227]
     },
     {
@@ -85,11 +85,11 @@
       "plotColor": [227, 177, 124],
       "historyTrailShape": {
         "shape": "cdg/trail",
-        "steps": 6,
+        "steps": 8,
         "color": [227, 177, 124],
-        "opacityRamp": [1, 0.85, 0.7, 0.55, 0.45, 0.35]
+        "opacityRamp": [0.9, 0.75, 0.62, 0.5, 0.4, 0.3, 0.22, 0.15]
       },
-      "historyTrailsSkipSteps": 5,
+      "historyTrailsSkipSteps": 3,
       "speedVectorColor": [227, 177, 124]
     },
     {
@@ -100,11 +100,11 @@
       "plotColor": [227, 177, 124],
       "historyTrailShape": {
         "shape": "cdg/trail",
-        "steps": 6,
+        "steps": 8,
         "color": [227, 177, 124],
-        "opacityRamp": [1, 0.85, 0.7, 0.55, 0.45, 0.35]
+        "opacityRamp": [0.9, 0.75, 0.62, 0.5, 0.4, 0.3, 0.22, 0.15]
       },
-      "historyTrailsSkipSteps": 5,
+      "historyTrailsSkipSteps": 3,
       "speedVectorColor": [227, 177, 124]
     },
     {
@@ -115,11 +115,11 @@
       "plotColor": [76, 188, 56],
       "historyTrailShape": {
         "shape": "cdg/trail",
-        "steps": 6,
+        "steps": 8,
         "color": [76, 188, 56],
-        "opacityRamp": [1, 0.85, 0.7, 0.55, 0.45, 0.35]
+        "opacityRamp": [0.9, 0.75, 0.62, 0.5, 0.4, 0.3, 0.22, 0.15]
       },
-      "historyTrailsSkipSteps": 5,
+      "historyTrailsSkipSteps": 3,
       "speedVectorColor": [76, 188, 56]
     },
     {
@@ -130,11 +130,11 @@
       "plotColor": [212, 212, 185],
       "historyTrailShape": {
         "shape": "cdg/trail",
-        "steps": 6,
+        "steps": 8,
         "color": [212, 212, 185],
-        "opacityRamp": [1, 0.85, 0.7, 0.55, 0.45, 0.35]
+        "opacityRamp": [0.9, 0.75, 0.62, 0.5, 0.4, 0.3, 0.22, 0.15]
       },
-      "historyTrailsSkipSteps": 5,
+      "historyTrailsSkipSteps": 3,
       "speedVectorColor": [212, 212, 185]
     },
     {
@@ -145,11 +145,11 @@
       "plotColor": [161, 227, 227],
       "historyTrailShape": {
         "shape": "cdg/trail",
-        "steps": 6,
+        "steps": 8,
         "color": [161, 227, 227],
-        "opacityRamp": [1, 0.85, 0.7, 0.55, 0.45, 0.35]
+        "opacityRamp": [0.9, 0.75, 0.62, 0.5, 0.4, 0.3, 0.22, 0.15]
       },
-      "historyTrailsSkipSteps": 5,
+      "historyTrailsSkipSteps": 3,
       "speedVectorColor": [161, 227, 227]
     },
     {
@@ -160,11 +160,11 @@
       "plotColor": [161, 227, 227],
       "historyTrailShape": {
         "shape": "cdg/trail",
-        "steps": 6,
+        "steps": 8,
         "color": [161, 227, 227],
-        "opacityRamp": [1, 0.85, 0.7, 0.55, 0.45, 0.35]
+        "opacityRamp": [0.9, 0.75, 0.62, 0.5, 0.4, 0.3, 0.22, 0.15]
       },
-      "historyTrailsSkipSteps": 5,
+      "historyTrailsSkipSteps": 3,
       "speedVectorColor": [161, 227, 227]
     },
     {
@@ -175,11 +175,11 @@
       "plotColor": [161, 227, 227],
       "historyTrailShape": {
         "shape": "cdg/trail",
-        "steps": 6,
+        "steps": 8,
         "color": [161, 227, 227],
-        "opacityRamp": [1, 0.85, 0.7, 0.55, 0.45, 0.35]
+        "opacityRamp": [0.9, 0.75, 0.62, 0.5, 0.4, 0.3, 0.22, 0.15]
       },
-      "historyTrailsSkipSteps": 5,
+      "historyTrailsSkipSteps": 3,
       "speedVectorColor": [161, 227, 227]
     },
     {
@@ -190,11 +190,11 @@
       "plotColor": [161, 227, 227],
       "historyTrailShape": {
         "shape": "cdg/trail",
-        "steps": 6,
+        "steps": 8,
         "color": [161, 227, 227],
-        "opacityRamp": [1, 0.85, 0.7, 0.55, 0.45, 0.35]
+        "opacityRamp": [0.9, 0.75, 0.62, 0.5, 0.4, 0.3, 0.22, 0.15]
       },
-      "historyTrailsSkipSteps": 5,
+      "historyTrailsSkipSteps": 3,
       "speedVectorColor": [161, 227, 227]
     },
     {
@@ -205,11 +205,11 @@
       "plotColor": [161, 227, 227],
       "historyTrailShape": {
         "shape": "cdg/trail",
-        "steps": 6,
+        "steps": 8,
         "color": [161, 227, 227],
-        "opacityRamp": [1, 0.85, 0.7, 0.55, 0.45, 0.35]
+        "opacityRamp": [0.9, 0.75, 0.62, 0.5, 0.4, 0.3, 0.22, 0.15]
       },
-      "historyTrailsSkipSteps": 5,
+      "historyTrailsSkipSteps": 3,
       "speedVectorColor": [161, 227, 227]
     },
     {
@@ -220,11 +220,11 @@
       "plotColor": [161, 227, 227],
       "historyTrailShape": {
         "shape": "cdg/trail",
-        "steps": 6,
+        "steps": 8,
         "color": [161, 227, 227],
-        "opacityRamp": [1, 0.85, 0.7, 0.55, 0.45, 0.35]
+        "opacityRamp": [0.9, 0.75, 0.62, 0.5, 0.4, 0.3, 0.22, 0.15]
       },
-      "historyTrailsSkipSteps": 5,
+      "historyTrailsSkipSteps": 3,
       "speedVectorColor": [161, 227, 227]
     },
     {
@@ -235,11 +235,11 @@
       "plotColor": [161, 227, 227],
       "historyTrailShape": {
         "shape": "cdg/trail",
-        "steps": 6,
+        "steps": 8,
         "color": [161, 227, 227],
-        "opacityRamp": [1, 0.85, 0.7, 0.55, 0.45, 0.35]
+        "opacityRamp": [0.9, 0.75, 0.62, 0.5, 0.4, 0.3, 0.22, 0.15]
       },
-      "historyTrailsSkipSteps": 5,
+      "historyTrailsSkipSteps": 3,
       "speedVectorColor": [161, 227, 227]
     },
     {
@@ -250,11 +250,11 @@
       "plotColor": [161, 227, 227],
       "historyTrailShape": {
         "shape": "cdg/trail",
-        "steps": 6,
+        "steps": 8,
         "color": [161, 227, 227],
-        "opacityRamp": [1, 0.85, 0.7, 0.55, 0.45, 0.35]
+        "opacityRamp": [0.9, 0.75, 0.62, 0.5, 0.4, 0.3, 0.22, 0.15]
       },
-      "historyTrailsSkipSteps": 5,
+      "historyTrailsSkipSteps": 3,
       "speedVectorColor": [161, 227, 227]
     },
     {
@@ -265,11 +265,11 @@
       "plotColor": [161, 227, 227],
       "historyTrailShape": {
         "shape": "cdg/trail",
-        "steps": 6,
+        "steps": 8,
         "color": [161, 227, 227],
-        "opacityRamp": [1, 0.85, 0.7, 0.55, 0.45, 0.35]
+        "opacityRamp": [0.9, 0.75, 0.62, 0.5, 0.4, 0.3, 0.22, 0.15]
       },
-      "historyTrailsSkipSteps": 5,
+      "historyTrailsSkipSteps": 3,
       "speedVectorColor": [161, 227, 227]
     },
     {
@@ -280,11 +280,11 @@
       "plotColor": [161, 227, 227],
       "historyTrailShape": {
         "shape": "cdg/trail",
-        "steps": 6,
+        "steps": 8,
         "color": [161, 227, 227],
-        "opacityRamp": [1, 0.85, 0.7, 0.55, 0.45, 0.35]
+        "opacityRamp": [0.9, 0.75, 0.62, 0.5, 0.4, 0.3, 0.22, 0.15]
       },
-      "historyTrailsSkipSteps": 5,
+      "historyTrailsSkipSteps": 3,
       "speedVectorColor": [161, 227, 227]
     },
     {
@@ -295,11 +295,11 @@
       "plotColor": [161, 227, 227],
       "historyTrailShape": {
         "shape": "cdg/trail",
-        "steps": 6,
+        "steps": 8,
         "color": [161, 227, 227],
-        "opacityRamp": [1, 0.85, 0.7, 0.55, 0.45, 0.35]
+        "opacityRamp": [0.9, 0.75, 0.62, 0.5, 0.4, 0.3, 0.22, 0.15]
       },
-      "historyTrailsSkipSteps": 5,
+      "historyTrailsSkipSteps": 3,
       "speedVectorColor": [161, 227, 227]
     },
     {
@@ -310,11 +310,11 @@
       "plotColor": [161, 227, 227],
       "historyTrailShape": {
         "shape": "cdg/trail",
-        "steps": 6,
+        "steps": 8,
         "color": [161, 227, 227],
-        "opacityRamp": [1, 0.85, 0.7, 0.55, 0.45, 0.35]
+        "opacityRamp": [0.9, 0.75, 0.62, 0.5, 0.4, 0.3, 0.22, 0.15]
       },
-      "historyTrailsSkipSteps": 5,
+      "historyTrailsSkipSteps": 3,
       "speedVectorColor": [161, 227, 227]
     },
     {
@@ -325,11 +325,11 @@
       "plotColor": [161, 227, 227],
       "historyTrailShape": {
         "shape": "cdg/trail",
-        "steps": 6,
+        "steps": 8,
         "color": [161, 227, 227],
-        "opacityRamp": [1, 0.85, 0.7, 0.55, 0.45, 0.35]
+        "opacityRamp": [0.9, 0.75, 0.62, 0.5, 0.4, 0.3, 0.22, 0.15]
       },
-      "historyTrailsSkipSteps": 5,
+      "historyTrailsSkipSteps": 3,
       "speedVectorColor": [161, 227, 227]
     },
     {
@@ -340,11 +340,11 @@
       "plotColor": [161, 227, 227],
       "historyTrailShape": {
         "shape": "cdg/trail",
-        "steps": 6,
+        "steps": 8,
         "color": [161, 227, 227],
-        "opacityRamp": [1, 0.85, 0.7, 0.55, 0.45, 0.35]
+        "opacityRamp": [0.9, 0.75, 0.62, 0.5, 0.4, 0.3, 0.22, 0.15]
       },
-      "historyTrailsSkipSteps": 5,
+      "historyTrailsSkipSteps": 3,
       "speedVectorColor": [161, 227, 227]
     },
     {
@@ -355,11 +355,11 @@
       "plotColor": [161, 227, 227],
       "historyTrailShape": {
         "shape": "cdg/trail",
-        "steps": 6,
+        "steps": 8,
         "color": [161, 227, 227],
-        "opacityRamp": [1, 0.85, 0.7, 0.55, 0.45, 0.35]
+        "opacityRamp": [0.9, 0.75, 0.62, 0.5, 0.4, 0.3, 0.22, 0.15]
       },
-      "historyTrailsSkipSteps": 5,
+      "historyTrailsSkipSteps": 3,
       "speedVectorColor": [161, 227, 227]
     },
     {
@@ -370,11 +370,11 @@
       "plotColor": [161, 227, 227],
       "historyTrailShape": {
         "shape": "cdg/trail",
-        "steps": 6,
+        "steps": 8,
         "color": [161, 227, 227],
-        "opacityRamp": [1, 0.85, 0.7, 0.55, 0.45, 0.35]
+        "opacityRamp": [0.9, 0.75, 0.62, 0.5, 0.4, 0.3, 0.22, 0.15]
       },
-      "historyTrailsSkipSteps": 5,
+      "historyTrailsSkipSteps": 3,
       "speedVectorColor": [161, 227, 227]
     },
     {
@@ -385,11 +385,11 @@
       "plotColor": [161, 227, 227],
       "historyTrailShape": {
         "shape": "cdg/trail",
-        "steps": 6,
+        "steps": 8,
         "color": [161, 227, 227],
-        "opacityRamp": [1, 0.85, 0.7, 0.55, 0.45, 0.35]
+        "opacityRamp": [0.9, 0.75, 0.62, 0.5, 0.4, 0.3, 0.22, 0.15]
       },
-      "historyTrailsSkipSteps": 5,
+      "historyTrailsSkipSteps": 3,
       "speedVectorColor": [161, 227, 227]
     },
     {
@@ -400,11 +400,11 @@
       "plotColor": [161, 227, 227],
       "historyTrailShape": {
         "shape": "cdg/trail",
-        "steps": 6,
+        "steps": 8,
         "color": [161, 227, 227],
-        "opacityRamp": [1, 0.85, 0.7, 0.55, 0.45, 0.35]
+        "opacityRamp": [0.9, 0.75, 0.62, 0.5, 0.4, 0.3, 0.22, 0.15]
       },
-      "historyTrailsSkipSteps": 5,
+      "historyTrailsSkipSteps": 3,
       "speedVectorColor": [161, 227, 227]
     },
     {
@@ -415,11 +415,11 @@
       "plotColor": [161, 227, 227],
       "historyTrailShape": {
         "shape": "cdg/trail",
-        "steps": 6,
+        "steps": 8,
         "color": [161, 227, 227],
-        "opacityRamp": [1, 0.85, 0.7, 0.55, 0.45, 0.35]
+        "opacityRamp": [0.9, 0.75, 0.62, 0.5, 0.4, 0.3, 0.22, 0.15]
       },
-      "historyTrailsSkipSteps": 5,
+      "historyTrailsSkipSteps": 3,
       "speedVectorColor": [161, 227, 227]
     },
     {
@@ -430,11 +430,11 @@
       "plotColor": [161, 227, 227],
       "historyTrailShape": {
         "shape": "cdg/trail",
-        "steps": 6,
+        "steps": 8,
         "color": [161, 227, 227],
-        "opacityRamp": [1, 0.85, 0.7, 0.55, 0.45, 0.35]
+        "opacityRamp": [0.9, 0.75, 0.62, 0.5, 0.4, 0.3, 0.22, 0.15]
       },
-      "historyTrailsSkipSteps": 5,
+      "historyTrailsSkipSteps": 3,
       "speedVectorColor": [161, 227, 227]
     },
     {
@@ -445,11 +445,11 @@
       "plotColor": [101, 192, 223],
       "historyTrailShape": {
         "shape": "cdg/trail",
-        "steps": 6,
+        "steps": 8,
         "color": [101, 192, 223],
-        "opacityRamp": [1, 0.85, 0.7, 0.55, 0.45, 0.35]
+        "opacityRamp": [0.9, 0.75, 0.62, 0.5, 0.4, 0.3, 0.22, 0.15]
       },
-      "historyTrailsSkipSteps": 5,
+      "historyTrailsSkipSteps": 3,
       "speedVectorColor": [101, 192, 223]
     },
     {
@@ -460,11 +460,11 @@
       "plotColor": [101, 192, 223],
       "historyTrailShape": {
         "shape": "cdg/trail",
-        "steps": 6,
+        "steps": 8,
         "color": [101, 192, 223],
-        "opacityRamp": [1, 0.85, 0.7, 0.55, 0.45, 0.35]
+        "opacityRamp": [0.9, 0.75, 0.62, 0.5, 0.4, 0.3, 0.22, 0.15]
       },
-      "historyTrailsSkipSteps": 5,
+      "historyTrailsSkipSteps": 3,
       "speedVectorColor": [101, 192, 223]
     },
     {
@@ -475,11 +475,11 @@
       "plotColor": [161, 227, 227],
       "historyTrailShape": {
         "shape": "cdg/trail",
-        "steps": 6,
+        "steps": 8,
         "color": [161, 227, 227],
-        "opacityRamp": [1, 0.85, 0.7, 0.55, 0.45, 0.35]
+        "opacityRamp": [0.9, 0.75, 0.62, 0.5, 0.4, 0.3, 0.22, 0.15]
       },
-      "historyTrailsSkipSteps": 5,
+      "historyTrailsSkipSteps": 3,
       "speedVectorColor": [161, 227, 227]
     },
     {
@@ -491,11 +491,11 @@
       "plotColor": [0, 0, 0],
       "historyTrailShape": {
         "shape": "cdg/trail",
-        "steps": 6,
+        "steps": 8,
         "color": [0, 0, 0],
-        "opacityRamp": [1, 0.85, 0.7, 0.55, 0.45, 0.35]
+        "opacityRamp": [0.9, 0.75, 0.62, 0.5, 0.4, 0.3, 0.22, 0.15]
       },
-      "historyTrailsSkipSteps": 5,
+      "historyTrailsSkipSteps": 3,
       "speedVectorColor": [0, 0, 0]
     },
     {
@@ -505,11 +505,11 @@
       "plotColor": [0, 0, 0],
       "historyTrailShape": {
         "shape": "cdg/trail",
-        "steps": 6,
+        "steps": 8,
         "color": [0, 0, 0],
-        "opacityRamp": [1, 0.85, 0.7, 0.55, 0.45, 0.35]
+        "opacityRamp": [0.9, 0.75, 0.62, 0.5, 0.4, 0.3, 0.22, 0.15]
       },
-      "historyTrailsSkipSteps": 5,
+      "historyTrailsSkipSteps": 3,
       "speedVectorColor": [0, 0, 0]
     },
     {
@@ -520,11 +520,11 @@
       "plotColor": [0, 0, 0],
       "historyTrailShape": {
         "shape": "cdg/trail",
-        "steps": 6,
+        "steps": 8,
         "color": [0, 0, 0],
-        "opacityRamp": [1, 0.85, 0.7, 0.55, 0.45, 0.35]
+        "opacityRamp": [0.9, 0.75, 0.62, 0.5, 0.4, 0.3, 0.22, 0.15]
       },
-      "historyTrailsSkipSteps": 5,
+      "historyTrailsSkipSteps": 3,
       "speedVectorColor": [0, 0, 0]
     },
     {
@@ -533,11 +533,11 @@
       "plotColor": [0, 0, 0],
       "historyTrailShape": {
         "shape": "cdg/trail",
-        "steps": 6,
+        "steps": 8,
         "color": [0, 0, 0],
-        "opacityRamp": [1, 0.85, 0.7, 0.55, 0.45, 0.35]
+        "opacityRamp": [0.9, 0.75, 0.62, 0.5, 0.4, 0.3, 0.22, 0.15]
       },
-      "historyTrailsSkipSteps": 5,
+      "historyTrailsSkipSteps": 3,
       "speedVectorColor": [0, 0, 0]
     }
   ]
