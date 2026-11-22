@@ -4,42 +4,126 @@
     "default": [
       {
         "plotShape": "neoirma/ground",
-        "plotColor": [212, 212, 185],
-        "primaryPlotColor": [255, 242, 73],
-        "primaryHistoryTrailColor": [[0, 255, 255], [0, 219, 219], [0, 183, 183]],
+        "plotColor": [
+          212,
+          212,
+          185
+        ],
+        "primaryPlotColor": [
+          255,
+          242,
+          73
+        ],
+        "primaryHistoryTrailColor": [
+          [
+            0,
+            255,
+            255
+          ],
+          [
+            0,
+            219,
+            219
+          ],
+          [
+            0,
+            183,
+            183
+          ]
+        ],
         "historyTrailsSkipSteps": 3,
         "historyTrailShape": {
           "shape": "neoirma/ground-trail",
           "steps": 3,
-          "color": [212, 212, 185]
+          "color": [
+            212,
+            212,
+            185
+          ]
         }
       }
     ],
     "departure": [
       {
         "plotShape": "neoirma/ground",
-        "plotColor": [212, 212, 185],
-        "primaryPlotColor": [240, 208, 48],
-        "primaryHistoryTrailColor": [[0, 255, 255], [0, 219, 219], [0, 183, 183]],
+        "plotColor": [
+          212,
+          212,
+          185
+        ],
+        "primaryPlotColor": [
+          240,
+          208,
+          48
+        ],
+        "primaryHistoryTrailColor": [
+          [
+            0,
+            255,
+            255
+          ],
+          [
+            0,
+            219,
+            219
+          ],
+          [
+            0,
+            183,
+            183
+          ]
+        ],
         "historyTrailsSkipSteps": 3,
         "historyTrailShape": {
           "shape": "neoirma/ground-trail",
           "steps": 3,
-          "color": [212, 212, 185]
+          "color": [
+            212,
+            212,
+            185
+          ]
         }
       }
     ],
     "arrival": [
       {
         "plotShape": "neoirma/ground",
-        "plotColor": [212, 212, 185],
-        "primaryPlotColor": [240, 208, 48],
-        "primaryHistoryTrailColor": [[0, 255, 255], [0, 219, 219], [0, 183, 183]],
+        "plotColor": [
+          212,
+          212,
+          185
+        ],
+        "primaryPlotColor": [
+          240,
+          208,
+          48
+        ],
+        "primaryHistoryTrailColor": [
+          [
+            0,
+            255,
+            255
+          ],
+          [
+            0,
+            219,
+            219
+          ],
+          [
+            0,
+            183,
+            183
+          ]
+        ],
         "historyTrailsSkipSteps": 3,
         "historyTrailShape": {
           "shape": "neoirma/ground-trail",
           "steps": 3,
-          "color": [212, 212, 185]
+          "color": [
+            212,
+            212,
+            185
+          ]
         }
       }
     ]
@@ -48,64 +132,124 @@
     {
       "description": "DEP: departs one of your airports",
       "applyWhen": "$neoirmaDep",
-      "applyToFilterStates": ["kUnfiltered", "kUpperFiltered", "kLowerFiltered"],
+      "applyToFilterStates": [
+        "kUnfiltered",
+        "kUpperFiltered",
+        "kLowerFiltered"
+      ],
       "plotShape": "neoirma/track",
-      "plotColor": [213, 151, 163],
-      "historyTrailShape": {
-        "shape": "neoirma/trail",
-        "steps": 8,
-        "color": [213, 151, 163],
-        "opacityRamp": [0.9, 0.75, 0.62, 0.5, 0.4, 0.3, 0.22, 0.15],
-        "scaleRamp": [1, 0.85, 0.72, 0.6, 0.5, 0.42, 0.35, 0.3]
-      },
+      "plotColor": [
+        213,
+        151,
+        163
+      ],
       "historyTrailsSkipSteps": 3,
-      "speedVectorColor": [213, 151, 163]
+      "speedVectorColor": [
+        213,
+        151,
+        163
+      ],
+      "historyTrailImages": [
+        "trails/d597a3/t1",
+        "trails/d597a3/t2",
+        "trails/d597a3/t3",
+        "trails/d597a3/t4",
+        "trails/d597a3/t5",
+        "trails/d597a3/t6",
+        "trails/d597a3/t7",
+        "trails/d597a3/t8"
+      ]
     },
     {
       "description": "ARR: arrives at one of your airports",
       "applyWhen": "$neoirmaArr",
-      "applyToFilterStates": ["kUnfiltered", "kUpperFiltered", "kLowerFiltered"],
+      "applyToFilterStates": [
+        "kUnfiltered",
+        "kUpperFiltered",
+        "kLowerFiltered"
+      ],
       "plotShape": "neoirma/track",
-      "plotColor": [99, 187, 217],
-      "historyTrailShape": {
-        "shape": "neoirma/trail",
-        "steps": 8,
-        "color": [99, 187, 217],
-        "opacityRamp": [0.9, 0.75, 0.62, 0.5, 0.4, 0.3, 0.22, 0.15],
-        "scaleRamp": [1, 0.85, 0.72, 0.6, 0.5, 0.42, 0.35, 0.3]
-      },
+      "plotColor": [
+        99,
+        187,
+        217
+      ],
       "historyTrailsSkipSteps": 3,
-      "speedVectorColor": [99, 187, 217]
+      "speedVectorColor": [
+        99,
+        187,
+        217
+      ],
+      "historyTrailImages": [
+        "trails/63bbd9/t1",
+        "trails/63bbd9/t2",
+        "trails/63bbd9/t3",
+        "trails/63bbd9/t4",
+        "trails/63bbd9/t5",
+        "trails/63bbd9/t6",
+        "trails/63bbd9/t7",
+        "trails/63bbd9/t8"
+      ]
     },
     {
       "description": "Other traffic (yours or offered to you, shown through the altitude filter)",
-      "applyToAttentionStates": ["kIncomingTransfer", "kAssumed", "kOutgoingTransfer"],
-      "applyToFilterStates": ["kUnfiltered", "kUpperFiltered", "kLowerFiltered"],
+      "applyToAttentionStates": [
+        "kIncomingTransfer",
+        "kAssumed",
+        "kOutgoingTransfer"
+      ],
+      "applyToFilterStates": [
+        "kUnfiltered",
+        "kUpperFiltered",
+        "kLowerFiltered"
+      ],
       "plotShape": "neoirma/track",
-      "plotColor": [142, 142, 142],
-      "historyTrailShape": {
-        "shape": "neoirma/trail",
-        "steps": 8,
-        "color": [142, 142, 142],
-        "opacityRamp": [0.9, 0.75, 0.62, 0.5, 0.4, 0.3, 0.22, 0.15],
-        "scaleRamp": [1, 0.85, 0.72, 0.6, 0.5, 0.42, 0.35, 0.3]
-      },
+      "plotColor": [
+        142,
+        142,
+        142
+      ],
       "historyTrailsSkipSteps": 3,
-      "speedVectorColor": [142, 142, 142]
+      "speedVectorColor": [
+        142,
+        142,
+        142
+      ],
+      "historyTrailImages": [
+        "trails/8e8e8e/t1",
+        "trails/8e8e8e/t2",
+        "trails/8e8e8e/t3",
+        "trails/8e8e8e/t4",
+        "trails/8e8e8e/t5",
+        "trails/8e8e8e/t6",
+        "trails/8e8e8e/t7",
+        "trails/8e8e8e/t8"
+      ]
     },
     {
       "description": "Other traffic",
       "plotShape": "neoirma/track",
-      "plotColor": [142, 142, 142],
-      "historyTrailShape": {
-        "shape": "neoirma/trail",
-        "steps": 8,
-        "color": [142, 142, 142],
-        "opacityRamp": [0.9, 0.75, 0.62, 0.5, 0.4, 0.3, 0.22, 0.15],
-        "scaleRamp": [1, 0.85, 0.72, 0.6, 0.5, 0.42, 0.35, 0.3]
-      },
+      "plotColor": [
+        142,
+        142,
+        142
+      ],
       "historyTrailsSkipSteps": 3,
-      "speedVectorColor": [142, 142, 142]
+      "speedVectorColor": [
+        142,
+        142,
+        142
+      ],
+      "historyTrailImages": [
+        "trails/8e8e8e/t1",
+        "trails/8e8e8e/t2",
+        "trails/8e8e8e/t3",
+        "trails/8e8e8e/t4",
+        "trails/8e8e8e/t5",
+        "trails/8e8e8e/t6",
+        "trails/8e8e8e/t7",
+        "trails/8e8e8e/t8"
+      ]
     }
   ]
 }
