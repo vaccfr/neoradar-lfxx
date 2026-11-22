@@ -630,50 +630,50 @@
     - name: BY
       width: 15
       tagItem:
-        itemName: "{P}TAG_BY"
+        itemName: "plugin:vIFF CDM:TAG_BY"
     - name: DEICE
       width: 40
       tagItem:
-        itemName: "{P}TAG_DEICE"
-        leftClick: "{P}ACTION_DEICE Menu"
+        itemName: "plugin:vIFF CDM:TAG_DEICE"
+        leftClick: "plugin:vIFF CDM:ACTION_DEICE Menu"
     - name: TTG
       width: 25
       tagItem:
-        itemName: "{P}TAG_TTG"
+        itemName: "plugin:vIFF CDM:TAG_TTG"
     - name: TOBT
       width: 35
       tagItem:
-        itemName: "{P}TAG_TOBT"
-        leftClick: "{P}ACTION_TOBT Menu"
-        rightClick: "{P}ACTION_TOBT Menu"
+        itemName: "plugin:vIFF CDM:TAG_TOBT"
+        leftClick: "plugin:vIFF CDM:ACTION_TOBT Menu"
+        rightClick: "plugin:vIFF CDM:ACTION_TOBT Menu"
     - name: TSAT
       width: 35
       tagItem:
-        itemName: "{P}TAG_TSAT"
+        itemName: "plugin:vIFF CDM:TAG_TSAT"
     - name: ASAT
       width: 35
       tagItem:
-        itemName: "{P}TAG_ASAT"
+        itemName: "plugin:vIFF CDM:TAG_ASAT"
     - name: TTOT
       width: 35
       tagItem:
-        itemName: "{P}TAG_TTOT"
-        leftClick: "{P}ACTION_TTOT Menu"
+        itemName: "plugin:vIFF CDM:TAG_TTOT"
+        leftClick: "plugin:vIFF CDM:ACTION_TTOT Menu"
     - name: CTOT
       width: 35
       tagItem:
-        itemName: "{P}TAG_CTOT"
-        leftClick: "{P}ACTION_CTOT Menu"
-        rightClick: "{P}ACTION_CTOT Menu"
+        itemName: "plugin:vIFF CDM:TAG_CTOT"
+        leftClick: "plugin:vIFF CDM:ACTION_CTOT Menu"
+        rightClick: "plugin:vIFF CDM:ACTION_CTOT Menu"
     - name: ETFMS
       width: 55
       tagItem:
-        itemName: "{P}TAG_ETFMS"
-        leftClick: "{P}ACTION_ETFMS Menu"
+        itemName: "plugin:vIFF CDM:TAG_ETFMS"
+        leftClick: "plugin:vIFF CDM:ACTION_ETFMS Menu"
     - name: MSG
       width: 30
       tagItem:
-        itemName: "{P}TAG_MSG"
+        itemName: "plugin:vIFF CDM:TAG_MSG"
     - name: adep
       width: 40
       tagItem:
@@ -682,18 +682,18 @@
     - name: RDY
       width: 30
       tagItem:
-        itemName: "{P}TAG_RDY"
-        leftClick: "{P}ACTION_RDY"
-        rightClick: "{P}ACTION_RDY REA"
+        itemName: "plugin:vIFF CDM:TAG_RDY"
+        leftClick: "plugin:vIFF CDM:ACTION_RDY"
+        rightClick: "plugin:vIFF CDM:ACTION_RDY REA"
     - name: ASRT
       width: 35
       tagItem:
-        itemName: "{P}TAG_ASRT"
+        itemName: "plugin:vIFF CDM:TAG_ASRT"
 
 # Every flight with a CTOT or a suspended flight plan, wherever it departs from (vIFF CDM).
 - name: VIFF ATFCM
   filterExpressions:
-    ["OR", [["==", "{P}EXP_Has CTOT", "1"], ["==", "{P}EXP_Suspended", "1"]]]
+    ["OR", [["==", "plugin:vIFF CDM:EXP_Has CTOT", "1"], ["==", "plugin:vIFF CDM:EXP_Suspended", "1"]]]
   style:
     background:
       bodyOpacity: 0
