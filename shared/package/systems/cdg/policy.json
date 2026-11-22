@@ -2,5 +2,36 @@
   "$schema": "https://raw.githubusercontent.com/neoradar-project/schemas/refs/heads/main/systems/policy.schema.json",
   "correlation": {
     "mode": "always"
-  }
+  },
+  "safetyNets": {
+    "emergencySquawk": true,
+    "stca": {
+      "finalApproach": {},
+      "parallel": [
+        {
+          "icao": "LFPG",
+          "left": "26L",
+          "right": "27R"
+        },
+        {
+          "icao": "LFPG",
+          "left": "08R",
+          "right": "09L"
+        },
+        {
+          "icao": "LFPG",
+          "left": "26R",
+          "right": "27L",
+          "departure": true
+        },
+        {
+          "icao": "LFPG",
+          "left": "08L",
+          "right": "09R",
+          "departure": true
+        }
+      ]
+    }
+  },
+  "runwayMonitoring": {}
 }

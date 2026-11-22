@@ -185,10 +185,32 @@ Profiles refresh like a radar (`map.sweepIntervalSeconds`, from `build.py`): app
 `APPROACH_SWEEP_SECONDS` (2 s), AVISOs every `GROUND_SWEEP_SECONDS` (1 s). Aircraft and trails
 move together once per sweep, one trail mark per previous sweep, never one on the aircraft.
 Without a sweep the client pins the marks to every `historyTrailsSkipSteps`-th update while the
-aircraft moves on every one, so the trail stalls and then jumps. Released clients cannot
-size a trail shape per mark; once `scaleRamp` ships, they can go back to shapes. The tag
-trend arrows are Lucide icons (`:imove-up-right`…): the client does not draw a font's glyphs
-below U+0020, where the Orly label font keeps its own.
+aircraft moves on every one, so the trail stalls and then jumps. Client 0.4.4 can size a trail
+shape per mark (`scaleRamp`), so trails could go back to shapes. The tag trend arrows are Lucide
+icons (`:imove-up-right`…).
+
+**Tags.** The airborne rows are the same in both systems. The detailed tag (hover) shows
+everything the compact one does, and more: never let a hover lose an item. No runway item: at CDG
+the runway is in the track colour and letter, and no other French airport lands on two runways
+at once.
+
+**Safety nets** (`policy.json`, the same in both systems): STCA on the client's defaults (TopSky's
+thresholds, 2.75 NM / 750 ft below 9500 ft, shown when one of the pair is yours), with the
+final-approach corridor (2.5 NM in trail on final) and CDG's simultaneous runway pairs
+(`stca.parallel`: arrivals 26L/27R and 08R/09L, departures 26R/27L and 08L/09R); the emergency
+squawk (7500 HIJACK, 7600 RADIO FAILURE, 7700 EMERGENCY); RIMCAS on every runway, strips from the
+navdata (`runwayMonitoring: {}`). The client draws an alert only where a tag, list or target asks
+for it, so:
+
+- every tag has an alert line on top (it collapses when empty): the alert's own words, white on
+  red (CoFrance `alert_critical`) blinking until clicked (acknowledge) for an alert, dark on
+  orange (CoFrance `alert`) for a warning (RIMCAS stage one); airborne tags add the manual alert
+  (MISAP, INBEST, IRREG, WX) in CoFrance's warning yellow;
+- the track symbol, and the forced one-minute alert vector, turn red / orange (`=alertTrack`,
+  `=warningTrack` first in every `plotColor` and `speedVectorColor`).
+
+No sounds are authored, so the nets are silent. Other nets (CLAM, BUST, MSAW, APW, TCT…) stay
+off; MSAW and APW would need `msaw.geojson` / `areas.geojson` datasets.
 
 The lists (`lists.yaml`) draw on CoFrance's list colours, nearly opaque, at 11 px: transparent,
 their text could not be read over the map.
@@ -283,8 +305,8 @@ upstream.
   it builds the plugin **without the vIFF API key** and checks the DLL holds none, because this package is
   public and a key in a DLL can be read back out. Never pack a build that read a `.env` key.
   Controllers given the key set it in NeoRadar with `.cdm apikey`. The C# client loads only C#
-  plugins, so the old C++ ones (vACDM, CCAMS, RPC, RampAgent, VATCAN) do not load. Labels still
-  name `plugin:NeoVSID:*` and `plugin:NeoVACDM:*` items, which stay empty until C# ports exist.
+  plugins, so the old C++ ones (vACDM, CCAMS, RPC, RampAgent, VATCAN) do not load. Tags and lists
+  name no other plugin: the old `NeoVSID` tag item and `NeoVACDM` list are gone.
 - **Server-dependent tags.** Arrival runway colours (CDG), SID/runway suggestions and route-based
   rules need the server link and the uploaded server dataset.
 - **Not converted yet:** vSID procedure priorities and runway preferences.

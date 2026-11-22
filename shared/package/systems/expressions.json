@@ -13,10 +13,6 @@
       "value": "A",
       "expression": ["$isBelowTransitionAltitude"]
     },
-    "altitudeBelowTASuffix": {
-      "value": "00",
-      "expression": ["$isBelowTransitionAltitude"]
-    },
     "altitudeBelowTATruncate": {
       "value": "1,3",
       "expression": ["$isBelowTransitionAltitude"]
@@ -121,14 +117,6 @@
       "value": "239, 247, 72",
       "expression": ["$incorrectSquawk"]
     },
-    "isMayday": {
-      "value": "EMRG",
-      "expression": ["$isEmergency"]
-    },
-    "isRDOF": {
-      "value": "RDOF",
-      "expression": ["$isLostComm"]
-    },
     "pdcRequestedColour": {
       "value": "255, 255, 0",
       "expression": ["$isPDCRequestedState"]
@@ -185,21 +173,61 @@
       "value": "&suggestedStar",
       "expression": ["$isAssignedStarEmpty"]
     },
-    "truncateFastClimbing": {
-      "value": "0,2",
-      "expression": ["$isNotSlowClimbing"]
+    "alertTrack": {
+      "value": "220,60,40",
+      "expression": ["$isSafetyAlert"]
     },
-    "truncateFastDescending": {
-      "value": "0,3",
-      "expression": ["$isNotSlowDescending"]
+    "warningTrack": {
+      "value": "241,111,34",
+      "expression": ["$isSafetyWarning"]
     },
-    "truncateSlowClimbing": {
-      "value": "0,1",
-      "expression": ["$isSlowClimbing"]
+    "track_000000": {
+      "value": "0,0,0",
+      "expression": ["$isTrack"]
     },
-    "truncateSlowDescending": {
-      "value": "0,2",
-      "expression": ["$isSlowDescending"]
+    "track_4cbc38": {
+      "value": "76,188,56",
+      "expression": ["$isTrack"]
+    },
+    "track_63bbd9": {
+      "value": "99,187,217",
+      "expression": ["$isTrack"]
+    },
+    "track_65c0df": {
+      "value": "101,192,223",
+      "expression": ["$isTrack"]
+    },
+    "track_8e8e8e": {
+      "value": "142,142,142",
+      "expression": ["$isTrack"]
+    },
+    "track_a1e3e3": {
+      "value": "161,227,227",
+      "expression": ["$isTrack"]
+    },
+    "track_d396e3": {
+      "value": "211,150,227",
+      "expression": ["$isTrack"]
+    },
+    "track_d4d4b9": {
+      "value": "212,212,185",
+      "expression": ["$isTrack"]
+    },
+    "track_d597a3": {
+      "value": "213,151,163",
+      "expression": ["$isTrack"]
+    },
+    "track_e39d9d": {
+      "value": "227,157,157",
+      "expression": ["$isTrack"]
+    },
+    "track_e3b17c": {
+      "value": "227,177,124",
+      "expression": ["$isTrack"]
+    },
+    "track_e3b8cb": {
+      "value": "227,184,203",
+      "expression": ["$isTrack"]
     }
   },
   "expressions": {
@@ -208,7 +236,6 @@
     "isOutboundTransfer": ["==", "attentionState", "4"],
     "isOwnedOrOffered": ["OR", ["$isInboundTransfer", "$isAssumed", "$isOutboundTransfer"]],
     "isIFR": ["contains", "flightRule", "I"],
-    "isVFR": ["contains", "flightRule", "V"],
     "neoirmaDep": ["==", "isDeparture", "1"],
     "neoirmaArr": ["==", "isArrival", "1"],
     "neoirmaThroughFilter": ["OR", ["$neoirmaDep", "$neoirmaArr", "$isOwnedOrOffered"]],
@@ -469,18 +496,17 @@
         ["==", "hasCPDLCSentMessage", "0"]
       ]
     ],
-    "isEmergency": ["==", "squawk", "7700"],
     "isEmmergencyDescending": ["<=", "verticalSpeed", -4000],
     "isFocusedAircraft": ["==", "focusedAircraftCallsign", "&callsign"],
-    "isLostComm": ["==", "squawk", "7600"],
     "isNotDep": ["==", "isDeparture", "0"],
-    "isNotSlowClimbing": [">=", "verticalSpeed", "1000"],
-    "isNotSlowDescending": ["<=", "verticalSpeed", "-1000"],
     "isPDCRequestedState": ["==", "isPDCRequested", "1"],
-    "isSlowClimbing": ["AND", [["<", "verticalSpeed", "1000"], [">", "verticalSpeed", "0"]]],
-    "isSlowDescending": ["AND", [[">", "verticalSpeed", "-1000"], ["<", "verticalSpeed", "0"]]],
     "isUnconcerned": ["==", "attentionState", "0"],
     "noAssignedSquawk": ["==", "assignedSquawk", "0000"],
-    "scratchPathNotEmpty": ["notEmpty", "scratchpad"]
+    "scratchPathNotEmpty": ["notEmpty", "scratchpad"],
+    "isSafetyAlert": [">=", "alertSeverity", "3"],
+    "isSafetyAlertUnacknowledged": ["AND", [[">=", "alertSeverity", "3"], ["==", "alertAcknowledged", "0"]]],
+    "isSafetyAlertAcknowledged": ["AND", [[">=", "alertSeverity", "3"], ["==", "alertAcknowledged", "1"]]],
+    "isSafetyWarning": ["==", "alertSeverity", "2"],
+    "isTrack": ["!=", "callsign", ""]
   }
 }

@@ -5,9 +5,9 @@
       {
         "plotShape": "neoirma/ground",
         "plotColor": [
-          212,
-          212,
-          185
+          "=alertTrack",
+          "=warningTrack",
+          "=track_d4d4b9"
         ],
         "primaryPlotColor": [
           255,
@@ -47,9 +47,9 @@
       {
         "plotShape": "neoirma/ground",
         "plotColor": [
-          212,
-          212,
-          185
+          "=alertTrack",
+          "=warningTrack",
+          "=track_d4d4b9"
         ],
         "primaryPlotColor": [
           240,
@@ -89,9 +89,9 @@
       {
         "plotShape": "neoirma/ground",
         "plotColor": [
-          212,
-          212,
-          185
+          "=alertTrack",
+          "=warningTrack",
+          "=track_d4d4b9"
         ],
         "primaryPlotColor": [
           240,
@@ -139,15 +139,15 @@
       ],
       "plotShape": "neoirma/track",
       "plotColor": [
-        213,
-        151,
-        163
+        "=alertTrack",
+        "=warningTrack",
+        "=track_d597a3"
       ],
       "historyTrailsSkipSteps": 5,
       "speedVectorColor": [
-        213,
-        151,
-        163
+        "=alertTrack",
+        "=warningTrack",
+        "=track_d597a3"
       ],
       "historyTrailImages": [
         "trails/neoirma/d597a3/big",
@@ -168,15 +168,15 @@
       ],
       "plotShape": "neoirma/track",
       "plotColor": [
-        99,
-        187,
-        217
+        "=alertTrack",
+        "=warningTrack",
+        "=track_63bbd9"
       ],
       "historyTrailsSkipSteps": 5,
       "speedVectorColor": [
-        99,
-        187,
-        217
+        "=alertTrack",
+        "=warningTrack",
+        "=track_63bbd9"
       ],
       "historyTrailImages": [
         "trails/neoirma/63bbd9/big",
@@ -201,15 +201,15 @@
       ],
       "plotShape": "neoirma/track",
       "plotColor": [
-        142,
-        142,
-        142
+        "=alertTrack",
+        "=warningTrack",
+        "=track_8e8e8e"
       ],
       "historyTrailsSkipSteps": 5,
       "speedVectorColor": [
-        142,
-        142,
-        142
+        "=alertTrack",
+        "=warningTrack",
+        "=track_8e8e8e"
       ],
       "historyTrailImages": [
         "trails/neoirma/8e8e8e/big",
@@ -224,15 +224,15 @@
       "description": "Other traffic",
       "plotShape": "neoirma/track",
       "plotColor": [
-        142,
-        142,
-        142
+        "=alertTrack",
+        "=warningTrack",
+        "=track_8e8e8e"
       ],
       "historyTrailsSkipSteps": 5,
       "speedVectorColor": [
-        142,
-        142,
-        142
+        "=alertTrack",
+        "=warningTrack",
+        "=track_8e8e8e"
       ],
       "historyTrailImages": [
         "trails/neoirma/8e8e8e/big",

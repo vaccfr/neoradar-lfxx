@@ -686,18 +686,6 @@
         }
       ]
     },
-    "cdg/trail": {
-      "description": "CoFrance 'circle' history trail mark: a 4 px dot (clients before client-sharp 7a39b6c4f draw its outline).",
-      "rotateWithHeading": false,
-      "elements": [
-        {
-          "circle": {
-            "radius": 2
-          },
-          "fill": true
-        }
-      ]
-    },
     "cdg/vfr": {
       "description": "CoFrance CDG track with subtext Z.",
       "rotateWithHeading": false,
@@ -1440,18 +1428,6 @@
               3.5
             ]
           ]
-        }
-      ]
-    },
-    "neoirma/trail": {
-      "description": "History trail mark: a 4 px dot, tapered and faded along the trail by the variant's ramps (clients before client-sharp 7a39b6c4f draw its outline).",
-      "rotateWithHeading": false,
-      "elements": [
-        {
-          "circle": {
-            "radius": 2
-          },
-          "fill": true
         }
       ]
     }

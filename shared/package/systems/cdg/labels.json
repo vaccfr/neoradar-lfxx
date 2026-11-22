@@ -19,6 +19,44 @@
         "rows": [
           [
             {
+              "itemName": "alertText",
+              "applyWhen": "$isSafetyAlertUnacknowledged",
+              "leftClick": "acknowledgeAlert",
+              "color": [255, 255, 255],
+              "blinkColor": [220, 60, 40],
+              "backgroundColor": [220, 60, 40],
+              "padding": [1, 3]
+            },
+            {
+              "itemName": "alertText",
+              "applyWhen": "$isSafetyAlertAcknowledged",
+              "leftClick": "acknowledgeAlert",
+              "color": [255, 255, 255],
+              "backgroundColor": [220, 60, 40],
+              "padding": [1, 3]
+            },
+            {
+              "itemName": "alertText",
+              "applyWhen": "$isSafetyWarning",
+              "leftClick": "acknowledgeAlert",
+              "color": [20, 20, 20],
+              "backgroundColor": [241, 111, 34],
+              "padding": [1, 3]
+            },
+            {
+              "itemName": "manualAlert",
+              "mapping": {
+                "0": "",
+                "1": "MISAP",
+                "2": "INBEST",
+                "3": "IRREG",
+                "4": "WX"
+              },
+              "color": [230, 200, 70]
+            }
+          ],
+          [
+            {
               "itemName": "groundSpeed",
               "padWithZeroLeft": 3,
               "truncate": [0, 2]
@@ -54,14 +92,6 @@
               "backgroundColor": [1, 1, 1]
             },
             {
-              "separatorBefore": true,
-              "itemName": "text",
-              "value": ["=isMayday", "=isRDOF"],
-              "fontWeight": "bold",
-              "backgroundColor": [1, 1, 1],
-              "color": [218, 89, 50]
-            },
-            {
               "itemName": "scratchpad",
               "placeholder": ":i",
               "color": "=blueColorScratchpadNotEmpty",
@@ -94,6 +124,13 @@
                 "2": "/t"
               },
               "color": [255, 220, 3]
+            },
+            {
+              "itemName": "text",
+              "truncate": [0, 3],
+              "color": [29, 118, 226],
+              "value": ["=emptySIDifNotDep", "=suggestedSidIfNoAssigned", "&sid"],
+              "leftClick": "sidMenu"
             },
             {
               "itemName": "sectorIndicator",
@@ -181,6 +218,44 @@
         "rows": [
           [
             {
+              "itemName": "alertText",
+              "applyWhen": "$isSafetyAlertUnacknowledged",
+              "leftClick": "acknowledgeAlert",
+              "color": [255, 255, 255],
+              "blinkColor": [220, 60, 40],
+              "backgroundColor": [220, 60, 40],
+              "padding": [1, 3]
+            },
+            {
+              "itemName": "alertText",
+              "applyWhen": "$isSafetyAlertAcknowledged",
+              "leftClick": "acknowledgeAlert",
+              "color": [255, 255, 255],
+              "backgroundColor": [220, 60, 40],
+              "padding": [1, 3]
+            },
+            {
+              "itemName": "alertText",
+              "applyWhen": "$isSafetyWarning",
+              "leftClick": "acknowledgeAlert",
+              "color": [20, 20, 20],
+              "backgroundColor": [241, 111, 34],
+              "padding": [1, 3]
+            },
+            {
+              "itemName": "manualAlert",
+              "mapping": {
+                "0": "",
+                "1": "MISAP",
+                "2": "INBEST",
+                "3": "IRREG",
+                "4": "WX"
+              },
+              "color": [230, 200, 70]
+            }
+          ],
+          [
+            {
               "itemName": "groundSpeed",
               "padWithZeroLeft": 3,
               "truncate": [0, 2]
@@ -216,14 +291,6 @@
               "backgroundColor": [1, 1, 1]
             },
             {
-              "separatorBefore": true,
-              "itemName": "text",
-              "value": ["=isMayday", "=isRDOF"],
-              "fontWeight": "bold",
-              "backgroundColor": [1, 1, 1],
-              "color": [218, 89, 50]
-            },
-            {
               "itemName": "scratchpad",
               "placeholder": ":i",
               "color": "=blueColorScratchpadNotEmpty",
@@ -256,6 +323,13 @@
                 "2": "/t"
               },
               "color": [255, 220, 3]
+            },
+            {
+              "itemName": "text",
+              "truncate": [0, 3],
+              "color": [29, 118, 226],
+              "value": ["=emptySIDifNotDep", "=suggestedSidIfNoAssigned", "&sid"],
+              "leftClick": "sidMenu"
             },
             {
               "itemName": "sectorIndicator",
@@ -344,6 +418,44 @@
         "rows": [
           [
             {
+              "itemName": "alertText",
+              "applyWhen": "$isSafetyAlertUnacknowledged",
+              "leftClick": "acknowledgeAlert",
+              "color": [255, 255, 255],
+              "blinkColor": [220, 60, 40],
+              "backgroundColor": [220, 60, 40],
+              "padding": [1, 3]
+            },
+            {
+              "itemName": "alertText",
+              "applyWhen": "$isSafetyAlertAcknowledged",
+              "leftClick": "acknowledgeAlert",
+              "color": [255, 255, 255],
+              "backgroundColor": [220, 60, 40],
+              "padding": [1, 3]
+            },
+            {
+              "itemName": "alertText",
+              "applyWhen": "$isSafetyWarning",
+              "leftClick": "acknowledgeAlert",
+              "color": [20, 20, 20],
+              "backgroundColor": [241, 111, 34],
+              "padding": [1, 3]
+            },
+            {
+              "itemName": "manualAlert",
+              "mapping": {
+                "0": "",
+                "1": "MISAP",
+                "2": "INBEST",
+                "3": "IRREG",
+                "4": "WX"
+              },
+              "color": [230, 200, 70]
+            }
+          ],
+          [
+            {
               "itemName": "groundSpeed",
               "padWithZeroLeft": 3,
               "truncate": [0, 2]
@@ -372,14 +484,6 @@
               "fontWeight": "bold",
               "color": [218, 89, 50],
               "backgroundColor": [1, 1, 1]
-            },
-            {
-              "separatorBefore": true,
-              "itemName": "text",
-              "value": ["=isMayday", "=isRDOF"],
-              "fontWeight": "bold",
-              "backgroundColor": [1, 1, 1],
-              "color": [218, 89, 50]
             },
             {
               "itemName": "text",
@@ -459,6 +563,44 @@
         "rows": [
           [
             {
+              "itemName": "alertText",
+              "applyWhen": "$isSafetyAlertUnacknowledged",
+              "leftClick": "acknowledgeAlert",
+              "color": [255, 255, 255],
+              "blinkColor": [220, 60, 40],
+              "backgroundColor": [220, 60, 40],
+              "padding": [1, 3]
+            },
+            {
+              "itemName": "alertText",
+              "applyWhen": "$isSafetyAlertAcknowledged",
+              "leftClick": "acknowledgeAlert",
+              "color": [255, 255, 255],
+              "backgroundColor": [220, 60, 40],
+              "padding": [1, 3]
+            },
+            {
+              "itemName": "alertText",
+              "applyWhen": "$isSafetyWarning",
+              "leftClick": "acknowledgeAlert",
+              "color": [20, 20, 20],
+              "backgroundColor": [241, 111, 34],
+              "padding": [1, 3]
+            },
+            {
+              "itemName": "manualAlert",
+              "mapping": {
+                "0": "",
+                "1": "MISAP",
+                "2": "INBEST",
+                "3": "IRREG",
+                "4": "WX"
+              },
+              "color": [230, 200, 70]
+            }
+          ],
+          [
+            {
               "itemName": "groundSpeed",
               "padWithZeroLeft": 3,
               "truncate": [0, 2]
@@ -487,14 +629,6 @@
               "fontWeight": "bold",
               "color": [218, 89, 50],
               "backgroundColor": [1, 1, 1]
-            },
-            {
-              "separatorBefore": true,
-              "itemName": "text",
-              "value": ["=isMayday", "=isRDOF"],
-              "fontWeight": "bold",
-              "backgroundColor": [1, 1, 1],
-              "color": [218, 89, 50]
             },
             {
               "itemName": "text",

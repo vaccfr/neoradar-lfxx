@@ -7,6 +7,7 @@ Package
 - Centre displays (FIR, UIR, CTR ASRs) and centre login profiles are no longer shipped.
 - Published to Cloudflare R2, served at https://pkg.neoradar.app/lfxx.
 - Squawks from CCAMS (squawk.http in the manifest).
+- France Military sector file 261101-0003.
 - The vIFF CDM plugin ships with the package; the CDM lists show its items.
 
 Radar systems
@@ -28,6 +29,11 @@ Radar systems
 - Route draw in CoFrance's route colours, labels on a dark plate.
 - RDF circle settings.
 - Lists readable: CoFrance's list colours, nearly opaque, 11 px text.
+- Safety nets: STCA (with the final-approach corridor and CDG's simultaneous runway pairs), the
+  emergency squawk (7500/7600/7700) and RIMCAS on every runway. Tags carry an alert line (red,
+  blinking until acknowledged with a click; orange for a warning) and the manual alerts (MISAP,
+  INBEST, IRREG, WX); the track turns red or orange.
+- The hover tag shows everything the compact tag does (it now has the SID).
 
 AVISOs
 - Each AVISO draws its airport's vSMR AVISO (160 airports) and nothing else: surfaces, guidance
@@ -46,4 +52,6 @@ Revisions
 - 2611.7  one tag layout for both systems
 - 2611.8  radar refresh, approach 2 s and AVISO 1 s (trails follow the aircraft), IRMA trails (three
           big, three small rings), one callsign look per state (slate plate), B612 Mono font with
-          a barred zero
+          a barred zero, safety nets (STCA, emergency squawk, RIMCAS) with alert lines in the tags,
+          SID on the hover tag, sector file 261101-0003; old fonts, the NeoVSID tag item and the
+          old vACDM list removed
