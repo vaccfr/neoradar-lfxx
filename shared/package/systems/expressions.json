@@ -50,91 +50,91 @@
       "expression": ["$isAssignedDepRunwayNotEmpty"]
     },
     "cdgAssumedBoxArrBourget": {
-      "value": "211,150,227",
+      "value": "139,99,150",
       "expression": ["$cdgAssumedBoxArrBourget"]
     },
     "cdgAssumedBoxArrCDG": {
-      "value": "212,212,185",
+      "value": "114,114,100",
       "expression": ["$cdgAssumedBoxArrCDG"]
     },
     "cdgAssumedBoxArrNorth": {
-      "value": "227,184,203",
+      "value": "132,107,118",
       "expression": ["$cdgAssumedBoxArrNorth"]
     },
     "cdgAssumedBoxArrOrly": {
-      "value": "227,177,124",
+      "value": "138,108,76",
       "expression": ["$cdgAssumedBoxArrOrly"]
     },
     "cdgAssumedBoxArrPNPV": {
-      "value": "76,188,56",
+      "value": "52,130,39",
       "expression": ["$cdgAssumedBoxArrPNPV"]
     },
     "cdgAssumedBoxArrSouth": {
-      "value": "227,157,157",
+      "value": "148,102,102",
       "expression": ["$cdgAssumedBoxArrSouth"]
     },
     "cdgAssumedBoxDepCDG": {
-      "value": "161,227,227",
+      "value": "85,120,120",
       "expression": ["$cdgAssumedBoxDepCDG"]
     },
     "cdgAssumedBoxDepNN": {
-      "value": "161,227,227",
+      "value": "85,120,120",
       "expression": ["$cdgAssumedBoxDepNN"]
     },
     "cdgAssumedBoxDepOrly": {
-      "value": "101,192,223",
+      "value": "64,121,140",
       "expression": ["$cdgAssumedBoxDepOrly"]
     },
     "cdgAssumedBoxLocalPGPB": {
-      "value": "212,212,185",
+      "value": "114,114,100",
       "expression": ["$cdgAssumedBoxLocalPGPB"]
     },
     "cdgAssumedBoxVFR": {
-      "value": "205,205,205",
+      "value": "113,113,113",
       "expression": ["$isAssumed"]
     },
     "cdgAssumedTextArrBourget": {
-      "value": "20,20,20",
+      "value": "255,255,255",
       "expression": ["$cdgAssumedBoxArrBourget"]
     },
     "cdgAssumedTextArrCDG": {
-      "value": "20,20,20",
+      "value": "255,255,255",
       "expression": ["$cdgAssumedBoxArrCDG"]
     },
     "cdgAssumedTextArrNorth": {
-      "value": "20,20,20",
+      "value": "255,255,255",
       "expression": ["$cdgAssumedBoxArrNorth"]
     },
     "cdgAssumedTextArrOrly": {
-      "value": "20,20,20",
+      "value": "255,255,255",
       "expression": ["$cdgAssumedBoxArrOrly"]
     },
     "cdgAssumedTextArrPNPV": {
-      "value": "20,20,20",
+      "value": "255,255,255",
       "expression": ["$cdgAssumedBoxArrPNPV"]
     },
     "cdgAssumedTextArrSouth": {
-      "value": "20,20,20",
+      "value": "255,255,255",
       "expression": ["$cdgAssumedBoxArrSouth"]
     },
     "cdgAssumedTextDepCDG": {
-      "value": "20,20,20",
+      "value": "255,255,255",
       "expression": ["$cdgAssumedBoxDepCDG"]
     },
     "cdgAssumedTextDepNN": {
-      "value": "20,20,20",
+      "value": "255,255,255",
       "expression": ["$cdgAssumedBoxDepNN"]
     },
     "cdgAssumedTextDepOrly": {
-      "value": "20,20,20",
+      "value": "255,255,255",
       "expression": ["$cdgAssumedBoxDepOrly"]
     },
     "cdgAssumedTextLocalPGPB": {
-      "value": "20,20,20",
+      "value": "255,255,255",
       "expression": ["$cdgAssumedBoxLocalPGPB"]
     },
     "cdgAssumedTextVFR": {
-      "value": "20,20,20",
+      "value": "255,255,255",
       "expression": ["$isAssumed"]
     },
     "colourAssumed": {
@@ -186,11 +186,11 @@
       "expression": ["$isOutboundTransfer"]
     },
     "incomingTransferBox": {
-      "value": "160,216,180",
+      "value": "90,121,101",
       "expression": ["$isInboundTransfer"]
     },
     "incomingTransferText": {
-      "value": "20,20,20",
+      "value": "255,255,255",
       "expression": ["$isInboundTransfer"]
     },
     "incorrectSquawkRedColor": {
@@ -210,27 +210,27 @@
       "expression": ["$isLostComm"]
     },
     "neoirmaAssumedBoxArr": {
-      "value": "99,187,217",
+      "value": "63,120,139",
       "expression": ["$neoirmaAssumedBoxArr"]
     },
     "neoirmaAssumedBoxDep": {
-      "value": "213,151,163",
+      "value": "145,103,111",
       "expression": ["$neoirmaAssumedBoxDep"]
     },
     "neoirmaAssumedBoxOther": {
-      "value": "142,142,142",
+      "value": "114,114,114",
       "expression": ["$isAssumed"]
     },
     "neoirmaAssumedTextArr": {
-      "value": "20,20,20",
+      "value": "255,255,255",
       "expression": ["$neoirmaAssumedBoxArr"]
     },
     "neoirmaAssumedTextDep": {
-      "value": "20,20,20",
+      "value": "255,255,255",
       "expression": ["$neoirmaAssumedBoxDep"]
     },
     "neoirmaAssumedTextOther": {
-      "value": "20,20,20",
+      "value": "255,255,255",
       "expression": ["$isAssumed"]
     },
     "pdcRequestedColour": {
