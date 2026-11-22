@@ -75,13 +75,17 @@
   filterExpressions:
     ["AND", [["==", "isMyDeparture", "1"], ["==", "onGround", "1"]]]
   style:
+    # CoFrance's list colours (CoFrance.toml ui_bg / ui_list_bg), nearly opaque: a clear list
+    # let the map show through and its text, unconcerned grey especially, could not be read.
     background:
-      bodyOpacity: 0
-      headerOpacity: 0
+      headerColor: [43, 51, 54]
+      headerOpacity: 0.95
+      bodyColor: [41, 57, 59]
+      bodyOpacity: 0.9
       rowColor: ["=focusedAircraft"]
-    headerTextSize: 10
+    headerTextSize: 11
     headerOnlyBorder: true
-    bodyTextSize: 10
+    bodyTextSize: 11
   columns:
     - name: c/s
       width: 80
@@ -220,13 +224,17 @@
   filterExpressions:
     ["OR", ["$isAssumed", "$isInboundTransfer", "$isOutboundTransfer"]]
   style:
+    # CoFrance's list colours (CoFrance.toml ui_bg / ui_list_bg), nearly opaque: a clear list
+    # let the map show through and its text, unconcerned grey especially, could not be read.
     background:
-      bodyOpacity: 0
-      headerOpacity: 0
+      headerColor: [43, 51, 54]
+      headerOpacity: 0.95
+      bodyColor: [41, 57, 59]
+      bodyOpacity: 0.9
       rowColor: ["=focusedAircraft"]
-    headerTextSize: 10
+    headerTextSize: 11
     headerOnlyBorder: true
-    bodyTextSize: 10
+    bodyTextSize: 11
   columns:
     - name: c/s
       width: 80
@@ -319,13 +327,17 @@
   filterExpressions:
     ["AND", [["==", "isMyDeparture", "1"], ["==", "onGround", "1"]]]
   style:
+    # CoFrance's list colours (CoFrance.toml ui_bg / ui_list_bg), nearly opaque: a clear list
+    # let the map show through and its text, unconcerned grey especially, could not be read.
     background:
-      bodyOpacity: 0
-      headerOpacity: 0
+      headerColor: [43, 51, 54]
+      headerOpacity: 0.95
+      bodyColor: [41, 57, 59]
+      bodyOpacity: 0.9
       rowColor: ["=focusedAircraft"]
-    headerTextSize: 10
+    headerTextSize: 11
     headerOnlyBorder: true
-    bodyTextSize: 10
+    bodyTextSize: 11
   columns:
     - name: c/s
       width: 80
@@ -498,13 +510,17 @@
   filterExpressions:
     ["AND", [["==", "isMyDeparture", "1"], ["==", "onGround", "1"]]]
   style:
+    # CoFrance's list colours (CoFrance.toml ui_bg / ui_list_bg), nearly opaque: a clear list
+    # let the map show through and its text, unconcerned grey especially, could not be read.
     background:
-      bodyOpacity: 0
-      headerOpacity: 0
+      headerColor: [43, 51, 54]
+      headerOpacity: 0.95
+      bodyColor: [41, 57, 59]
+      bodyOpacity: 0.9
       rowColor: ["=focusedAircraft"]
-    headerTextSize: 10
+    headerTextSize: 11
     headerOnlyBorder: true
-    bodyTextSize: 10
+    bodyTextSize: 11
   columns:
     - name: sts
       width: 45
@@ -695,13 +711,17 @@
   filterExpressions:
     ["OR", [["==", "plugin:vIFF CDM:EXP_Has CTOT", "1"], ["==", "plugin:vIFF CDM:EXP_Suspended", "1"]]]
   style:
+    # CoFrance's list colours (CoFrance.toml ui_bg / ui_list_bg), nearly opaque: a clear list
+    # let the map show through and its text, unconcerned grey especially, could not be read.
     background:
-      bodyOpacity: 0
-      headerOpacity: 0
+      headerColor: [43, 51, 54]
+      headerOpacity: 0.95
+      bodyColor: [41, 57, 59]
+      bodyOpacity: 0.9
       rowColor: ["=focusedAircraft"]
-    headerTextSize: 10
+    headerTextSize: 11
     headerOnlyBorder: true
-    bodyTextSize: 10
+    bodyTextSize: 11
   columns:
     - name: c/s
       width: 80

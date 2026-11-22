@@ -69,6 +69,9 @@ SECTOR_LAYERS = [
 # own system; every other CoFrance display and every vSMR (AVISO) display uses neoIRMA, whose ground
 # section is the package's one ground look (cdg's ground points at it).
 SYSTEM_FOR_TAG_FORMAT = {"Paris-CDG": "cdg"}
+# AVISOs whose airborne traffic is CDG's: Charles de Gaulle and Le Bourget show the Paris-CDG
+# colours and letters around the airfield. Their ground look is the same (cdg's is #neoirma).
+SYSTEM_FOR_AVISO = {"LFPG": "cdg", "LFPB": "cdg"}
 DEFAULT_SYSTEM = "neoirma"
 FRENCH_TRANSITION_ALTITUDE = 5000
 
@@ -351,6 +354,8 @@ def assemble(pkg: dict, config: dict, source: Path, build: Path) -> None:
         "createdAt": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%S.000Z"),
         "mapLayers": SECTOR_LAYERS + layers,
         "fonts": [{"alias": Path(f).stem, "src": f} for f in fonts],
+        # The package's own squawk allocator (packages.json "squawk", e.g. CCAMS).
+        **({"squawk": pkg["squawk"]} if pkg.get("squawk") else {}),
         "plugins": [],
     }
     (package / "manifest.json").write_text(json.dumps(manifest, indent=2) + "\n", encoding="utf-8")
@@ -478,7 +483,6 @@ def finalize(pkg: dict, build: Path) -> None:
             # AVISO look. Named explicitly: with no atmSystem the client takes the first system
             # alphabetically, cdg.
             profile["atmSystem"] = DEFAULT_SYSTEM
-        systems_used[profile["atmSystem"]] = systems_used.get(profile["atmSystem"], 0) + 1
         if meta.get("DisplayTypeName", "").lower().startswith("smr"):
             # The French AVISO ASRs carry no map content (Sector-Files' maintenance script strips it):
             # the vSMR fork draws the AVISO of PLUGIN:vSMR:Airport itself, from its own AVISO file.
@@ -488,6 +492,7 @@ def finalize(pkg: dict, build: Path) -> None:
             set_icao = meta["plugin"].get(("vSMR", "Airport"), "").strip().upper()
             if set_icao != icao:
                 warn(f"{pid}: {asr.name} sets vSMR:Airport:{set_icao or '(none)'}; using {icao} from its name")
+            profile["atmSystem"] = SYSTEM_FOR_AVISO.get(icao, DEFAULT_SYSTEM)
             if profile["map"].get("items"):
                 replaced_items.add(asr.relative_to(env / "ASRs").as_posix())
             if aviso_profiles.get(icao):
@@ -502,6 +507,7 @@ def finalize(pkg: dict, build: Path) -> None:
                         runways_only.add(icao)
                 else:
                     no_aviso.add(f"{asr.relative_to(env / 'ASRs').as_posix()} ({icao or 'no vSMR airport'})")
+        systems_used[profile["atmSystem"]] = systems_used.get(profile["atmSystem"], 0) + 1
         # An ASR entry naming an object the sector file no longer has (a renumbered runway, a
         # withdrawn navaid) converts to an item no layer holds: EuroScope ignores such a line, so
         # drop the row and report it, upstream's ASR is what needs the fix.

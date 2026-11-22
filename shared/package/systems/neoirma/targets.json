@@ -53,11 +53,12 @@
       "plotColor": [213, 151, 163],
       "historyTrailShape": {
         "shape": "neoirma/trail",
-        "steps": 5,
+        "steps": 8,
         "color": [213, 151, 163],
-        "opacityRamp": [1, 0.85, 0.7, 0.55, 0.45]
+        "opacityRamp": [0.9, 0.75, 0.62, 0.5, 0.4, 0.3, 0.22, 0.15],
+        "scaleRamp": [1, 0.85, 0.72, 0.6, 0.5, 0.42, 0.35, 0.3]
       },
-      "historyTrailsSkipSteps": 7,
+      "historyTrailsSkipSteps": 3,
       "speedVectorColor": [213, 151, 163]
     },
     {
@@ -68,11 +69,12 @@
       "plotColor": [99, 187, 217],
       "historyTrailShape": {
         "shape": "neoirma/trail",
-        "steps": 5,
+        "steps": 8,
         "color": [99, 187, 217],
-        "opacityRamp": [1, 0.85, 0.7, 0.55, 0.45]
+        "opacityRamp": [0.9, 0.75, 0.62, 0.5, 0.4, 0.3, 0.22, 0.15],
+        "scaleRamp": [1, 0.85, 0.72, 0.6, 0.5, 0.42, 0.35, 0.3]
       },
-      "historyTrailsSkipSteps": 7,
+      "historyTrailsSkipSteps": 3,
       "speedVectorColor": [99, 187, 217]
     },
     {
@@ -83,11 +85,12 @@
       "plotColor": [142, 142, 142],
       "historyTrailShape": {
         "shape": "neoirma/trail",
-        "steps": 5,
+        "steps": 8,
         "color": [142, 142, 142],
-        "opacityRamp": [1, 0.85, 0.7, 0.55, 0.45]
+        "opacityRamp": [0.9, 0.75, 0.62, 0.5, 0.4, 0.3, 0.22, 0.15],
+        "scaleRamp": [1, 0.85, 0.72, 0.6, 0.5, 0.42, 0.35, 0.3]
       },
-      "historyTrailsSkipSteps": 7,
+      "historyTrailsSkipSteps": 3,
       "speedVectorColor": [142, 142, 142]
     },
     {
@@ -96,11 +99,12 @@
       "plotColor": [142, 142, 142],
       "historyTrailShape": {
         "shape": "neoirma/trail",
-        "steps": 5,
+        "steps": 8,
         "color": [142, 142, 142],
-        "opacityRamp": [1, 0.85, 0.7, 0.55, 0.45]
+        "opacityRamp": [0.9, 0.75, 0.62, 0.5, 0.4, 0.3, 0.22, 0.15],
+        "scaleRamp": [1, 0.85, 0.72, 0.6, 0.5, 0.42, 0.35, 0.3]
       },
-      "historyTrailsSkipSteps": 7,
+      "historyTrailsSkipSteps": 3,
       "speedVectorColor": [142, 142, 142]
     }
   ]

@@ -754,12 +754,12 @@
       ]
     },
     "neoirma/trail": {
-      "description": "CoFrance 'dots' history trail mark.",
+      "description": "History trail mark: a 4 px dot, tapered and faded along the trail by the variant's ramps (clients before client-sharp 7a39b6c4f draw its outline).",
       "rotateWithHeading": false,
       "elements": [
         {
-          "rect": {
-            "size": [2, 2]
+          "circle": {
+            "radius": 2
           },
           "fill": true
         }

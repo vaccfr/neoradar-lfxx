@@ -128,7 +128,7 @@ no longer reads CoFrance's `tag_formats.json`: when CoFrance changes a colour or
 | System | Used by | Track logic from |
 | --- | --- | --- |
 | `neoirma` | every CoFrance approach display except Paris-CDG, and every AVISO (ground) display | CoFrance tag format `IRMA` |
-| `cdg` | the Paris-CDG approach (`PLUGIN:CoFrance:TagFormat:Paris-CDG`) | CoFrance tag format `Paris-CDG` |
+| `cdg` | the Paris-CDG approach (`PLUGIN:CoFrance:TagFormat:Paris-CDG`), and the LFPG and LFPB AVISOs (`SYSTEM_FOR_AVISO`) | CoFrance tag format `Paris-CDG` |
 
 `SYSTEM_FOR_TAG_FORMAT` in `scripts/build.py` maps tag formats to systems; anything else gets
 `neoirma`. neoIRMA is a stripless IRMA, not the real-world one. Its `ground` section (labels and
@@ -174,7 +174,20 @@ is a circle with `fill`. The client fills circles from `client-sharp` develop `7
 (rows of bars, the old sprite's rows exactly); older clients draw it as an outline. Other
 polygons still fill only when they are axis-aligned rectangles.
 
-Rules and expressions shared by both live in `expressions.json`; `lists.yaml` is shared too. The
+Both mapstyles carry the CoFrance route draw (thin `route_line` green, small crosses, fix labels
+on a dark plate) and the RDF circle settings. Trails are 8 dots, tapered and faded by
+`scaleRamp` / `opacityRamp` (clients without `scaleRamp` draw them all the same size). The tag
+trend arrows are Lucide icons (`:imove-up-right`…): the client does not draw a font's glyphs
+below U+0020, where the Orly label font keeps its own.
+
+The lists (`lists.yaml`) draw on CoFrance's list colours, nearly opaque, at 11 px: transparent,
+their text could not be read over the map.
+
+Rules and expressions shared by both live in `expressions.json`; `lists.yaml` is shared too.
+
+**Squawks** come from CCAMS: `squawk.http` in `packages.json` is written to the package manifest
+as is (`package/manifest.schema.json` in the schemas describes it). Each system's policy can still
+rank or disable it by its name, `CCAMS`. The
 schemas describe every field: <https://github.com/neoradar-project/schemas> (`systems/`).
 `scripts/validate.js` also checks that every `=rule`, `$expression`, shape and `#system` named in
 the systems exists, since the client silently ignores a broken one.
