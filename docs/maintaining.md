@@ -82,10 +82,12 @@ navaids). The NeoRadar server needs it for routes, procedures and runway suggest
 run's `server-artifacts-<sha>` artifact. Upload each one with a staff token:
 
 ```bash
-NEORADAR_STAFF_TOKEN=... neoradar-cli push-dataset build/LFXX
+NEORADAR_STAFF_TOKEN=... neoradar-cli push-dataset --vacc lfxx --server https://<server> build/LFXX/server-dataset.json
 ```
 
-It shows what changes on the server and publishes only after you type the vAcc id.
+It stages the file, shows what changes on the server and publishes only after you type the vAcc id
+(`--stage-only` stops after the review). The vAcc id is the package namespace. A local build from
+the same sources gives the same file as CI, which copies it straight out of the build.
 
 ## Building locally
 
