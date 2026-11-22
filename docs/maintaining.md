@@ -279,9 +279,10 @@ upstream.
 - **One plugin.** The package ships `shared/package/plugins/vIFF-CDM-alpha.nrplugin`, the NeoRadar
   port of the CDM plugin ([vaccfr/vIFF-neoradar](https://github.com/vaccfr/vIFF-neoradar)); the
   build lists every `.nrplugin` there in the manifest, and the controller approves it in Plugin
-  Settings. To update it, build that repo and run
-  `neoradar-cli create-plugin-archives <dir> -o shared/package/plugins --no-confirmation`, where
-  `<dir>/vIFF-CDM-alpha/windows.dll` is the built `Viff.NeoRadar.dll`. The C# client loads only C#
+  Settings. To update it, run that repo's `scripts/pack-nrplugin.sh <this repo>/shared/package/plugins`:
+  it builds the plugin **without the vIFF API key** and checks the DLL holds none, because this package is
+  public and a key in a DLL can be read back out. Never pack a build that read a `.env` key.
+  Controllers given the key set it in NeoRadar with `.cdm apikey`. The C# client loads only C#
   plugins, so the old C++ ones (vACDM, CCAMS, RPC, RampAgent, VATCAN) do not load. Labels still
   name `plugin:NeoVSID:*` and `plugin:NeoVACDM:*` items, which stay empty until C# ports exist.
 - **Server-dependent tags.** Arrival runway colours (CDG), SID/runway suggestions and route-based
