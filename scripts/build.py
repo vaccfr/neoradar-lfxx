@@ -344,6 +344,9 @@ def assemble(pkg: dict, config: dict, source: Path, build: Path) -> None:
     layers = layers + aviso_layers
 
     fonts = sorted(p.name for p in (package / "fonts").glob("*.ttf"))
+    # Plugins ship as .nrplugin archives in shared/package/plugins; a bare .dll in a package is refused.
+    plugins = sorted(f"plugins/{p.name}" for p in (package / "plugins").glob("*.nrplugin"))
+    log(f"  plugins: {', '.join(plugins) or 'none'}")
     manifest = {
         "$schema": SCHEMA_URL,
         "id": pid,
@@ -356,7 +359,7 @@ def assemble(pkg: dict, config: dict, source: Path, build: Path) -> None:
         "fonts": [{"alias": Path(f).stem, "src": f} for f in fonts],
         # The package's own squawk allocator (packages.json "squawk", e.g. CCAMS).
         **({"squawk": pkg["squawk"]} if pkg.get("squawk") else {}),
-        "plugins": [],
+        "plugins": plugins,
     }
     (package / "manifest.json").write_text(json.dumps(manifest, indent=2) + "\n", encoding="utf-8")
     (env / "build-info.json").write_text(json.dumps({
