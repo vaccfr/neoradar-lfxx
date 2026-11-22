@@ -184,6 +184,16 @@ the systems exists, since the client silently ignores a broken one.
 - **CoFrance maps** are converted from the CoFrance config repo on every build
   (`scripts/cofrance.py`). Each CoFrance folder becomes one layer named "CoFrance …" and each map
   file one toggle. A CoFrance ASR's `EnabledMaps` line decides which ones its profile shows.
+- **AVISO maps** are converted from the vSMR fork's AVISO files
+  (`LFXX/Plugins/vSMR/vSMR_Data/AVISO/<ICAO>.geojson` in Sector-Files) on every build
+  (`scripts/aviso.py`): one layer "AVISO <ICAO>" per airport, with items for the background, the
+  ground layout (surfaces and guidance lines, in vSMR's paint order), each label kind (gates,
+  taxiways, TORA…) and each vSMR group. A group named for a direction (LFPG's East / West Arrows)
+  draws only while a runway end facing that way is active, for arrivals or departures. Colours
+  are the palette the airport's ASR picks (`PLUGIN:vSMR:AvisoColorPalette`), else the file's
+  default. vSMR's label zoom levels become `minPixelsPerNm` (`ZOOM_PX_PER_NM` in the script: 8 is
+  600, 9 is 1200, 7 and below always); tune it there if gate labels appear too early or too late.
+  Fix the content itself in Sector-Files: these files are what vSMR draws in EuroScope too.
 - **Sector-file maps** come from the GNG `.sct` via neoradar-cli.
 
 ### Profiles
@@ -192,8 +202,9 @@ Profiles are converted from the ASRs on every build, then `finalize` adds:
 
 - CoFrance displays: the system (`cdg` or `neoirma`), transition altitude 5000, CoFrance's
   altitude filter and maps.
-- AVISO displays: the `neoirma` system and the airport's `<ICAO> AVISO` region and
-  `<ICAO> Groundlayout AVISO` geo. Airports without those get their ground layout and runways.
+- AVISO displays: the `neoirma` system and exactly their airport's AVISO layer, nothing else.
+  An airport with no vSMR AVISO file falls back to the sector file's `<ICAO> AVISO` region and
+  `<ICAO> Groundlayout AVISO` geo, or its ground layout and runways.
 
 To change a profile, change its ASR upstream.
 
@@ -220,6 +231,9 @@ upstream.
 | `… names N object(s) the sector file does not have, dropped` | An ASR names a runway, navaid or map that is gone (renumbered, withdrawn) | Fix the ASR in Sector-Files |
 | `CoFrance maps named by ASRs but absent` | An ASR enables a CoFrance map that does not exist | Fix the ASR or add the map in CoFrance-config-files |
 | `sets vSMR:Airport:X; using Y from its name` | An AVISO ASR points at the wrong airport | Fix the ASR in Sector-Files |
+| `AVISO displays with no vSMR AVISO file` | No `vSMR_Data/AVISO/<ICAO>.geojson` for that airport; its AVISO comes from the sector file | Ask for the AVISO file in Sector-Files |
+| `AVISO ASRs listing map items of their own` | An AVISO ASR names map content; the build replaces it with the airport's AVISO | Fix the ASR in Sector-Files |
+| `AVISO … faces <direction> but no runway end does` | A vSMR group named for a direction matches no runway; it then draws whenever listed | Fix the group or the runways in the AVISO file |
 | `AVISO displays drawing runways only` | The sector file has no ground layout for that airport | Nothing, or ask for a ground layout in GNG |
 | `profiles use systems that shared/package/systems does not have` (fails the build) | `SYSTEM_FOR_TAG_FORMAT` names a system with no folder | Add the system or fix the mapping in `scripts/build.py` |
 | `replacement … matched nothing` | Upstream changed text a transform expects | Update `transforms/replacements.json` |

@@ -40,6 +40,7 @@ Controller Pack install (e.g. `~/Documents/FrenchVACC`) is already one.
 | `packages.json` | The package: id, namespace (permanent: provider URL and server vAcc id), sector file, FIR folders, `excludeAsrs` and `excludeLoginFacilities` (centre displays and logins left out), ICAO/NavData folder, publish settings |
 | `scripts/build.py` | `assemble` (source tree → `build/<ID>/` environment) and `finalize` (after `neoradar-cli convert`: profiles, manifest) |
 | `scripts/cofrance.py` | CoFrance GeoJSON maps → NeoRadar map layers (EPSG:3857, item table, `showWhen` from CoFrance `activation`) |
+| `scripts/aviso.py` | vSMR AVISO files → one "AVISO <ICAO>" layer per airport; AVISO profiles list only their airport's layer; direction-named groups (LFPG arrows) get a runway-configuration drawing `showWhen` |
 | `scripts/build-all.sh` | assemble → convert → finalize for all or some packages; CI and local both use it |
 | `scripts/validate.js` | Schema check of built packages (ajv), plus every `=rule`, `$expression`, shape and `#system` reference in the systems |
 | `shared/package/` | Copied into every package: systems, fonts, images, sounds |
@@ -71,7 +72,9 @@ node scripts/validate.js <schemas checkout> build/*/package      # ajv@8 + js-ya
 - **Profiles need an explicit `atmSystem`.** Without one the client falls back to the first
   system alphabetically (`cdg`). `finalize` sets one on every profile.
 - **A profile with an empty item list draws every layer.** `finalize` fills AVISO profiles, whose
-  upstream ASRs carry no map content on purpose.
+  upstream ASRs carry no map content on purpose, with their airport's AVISO layer only.
+- **A drawing's `showWhen` holds only where its item is listed; an item's `showWhen` shows it in
+  every profile.** Conditional AVISO content (runway-configuration arrows) uses the drawing one.
 - **Two systems, edited by hand.** The build does not read CoFrance's tag formats: a CoFrance
   colour or rule change is ported into `shared/package/systems` by hand. Track colours follow
   CoFrance's IRMA / Paris-CDG rules in priority order; the flight state is the callsign's reverse

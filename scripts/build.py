@@ -39,6 +39,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
+import aviso  # noqa: E402
 import cofrance  # noqa: E402
 
 REPO = Path(__file__).resolve().parent.parent
@@ -323,6 +324,22 @@ def assemble(pkg: dict, config: dict, source: Path, build: Path) -> None:
         warn(f"CoFrance {pid}: sectors with no position in {pid}.ese (their sector-ownership rules never show): "
              + ", ".join(sorted(report.unresolved_sectors)))
 
+    # The vSMR fork's AVISO files: one layer per airport, what the AVISO profiles draw.
+    vsmr_data = source / "LFXX" / "Plugins" / "vSMR" / "vSMR_Data"
+    inventory = vsmr_data / "AVISO-INVENTORY.json"
+    aviso_release = json.loads(inventory.read_text(encoding="utf-8-sig")).get("release") if inventory.is_file() else None
+    palettes = {}
+    for asr in (env / "ASRs").rglob("*.asr"):
+        meta = parse_asr(asr)
+        palette = meta["plugin"].get(("vSMR", "AvisoColorPalette"), "").strip()
+        if meta.get("DisplayTypeName", "").lower().startswith("smr") and palette:
+            palettes[aviso_airport(asr, meta)] = palette
+    aviso_layers, aviso_profiles, aviso_report = aviso.convert(vsmr_data / "AVISO", package / "datasets" / "maps", aviso_release, palettes)
+    log(f"  AVISO: {aviso_report.layers} airports, {aviso_report.items} items, {aviso_report.drawings} drawings")
+    for w in aviso_report.warnings:
+        warn(f"{pid}: {w}")
+    layers = layers + aviso_layers
+
     fonts = sorted(p.name for p in (package / "fonts").glob("*.ttf"))
     manifest = {
         "$schema": SCHEMA_URL,
@@ -344,6 +361,7 @@ def assemble(pkg: dict, config: dict, source: Path, build: Path) -> None:
         "sectorFileMd5": md5(env / "sector_files" / f"{pid}.sct"),
         "cofrancePluginVersion": plugin_version,
         "cofranceItems": sorted(uuids),
+        "avisoItems": aviso_profiles,
     }, indent=2) + "\n", encoding="utf-8")
 
     apply_diffs(env, pid)
@@ -363,6 +381,15 @@ def parse_asr(path: Path) -> dict:
             key, _, value = line.partition(":")
             out.setdefault(key.strip(), value.strip())
     return out
+
+
+def aviso_airport(asr: Path, meta: dict) -> str:
+    """The airport an AVISO ASR shows: PLUGIN:vSMR:Airport, unless the file is named for another
+    one ("LFAC Calais AVISO" pointing vSMR at LFAQ, a copy-paste slip upstream). The name is what
+    the controller picks the display by, so it wins."""
+    icao = meta["plugin"].get(("vSMR", "Airport"), "").strip().upper()
+    named = re.match(r"^([A-Z]{4}) .*AVISO$", asr.stem.upper())
+    return named.group(1) if named else icao
 
 
 def layer_items(datasets: Path, source: str) -> list[dict]:
@@ -400,6 +427,7 @@ def finalize(pkg: dict, build: Path) -> None:
     log(f"== finalize {pid}")
     info = json.loads((env / "build-info.json").read_text(encoding="utf-8"))
     known = set(info["cofranceItems"])
+    aviso_profiles: dict[str, list[str]] = info.get("avisoItems", {})
     package = env / "package"
     profiles = package / "profiles"
 
@@ -407,6 +435,8 @@ def finalize(pkg: dict, build: Path) -> None:
     missing_maps: set[str] = set()
     no_aviso: set[str] = set()
     runways_only: set[str] = set()
+    from_sector_file: set[str] = set()
+    replaced_items: set[str] = set()
     dangling: dict[str, list[str]] = {}
     all_items = {
         item["uuid"]
@@ -449,24 +479,29 @@ def finalize(pkg: dict, build: Path) -> None:
             # alphabetically, cdg.
             profile["atmSystem"] = DEFAULT_SYSTEM
         systems_used[profile["atmSystem"]] = systems_used.get(profile["atmSystem"], 0) + 1
-        if meta.get("DisplayTypeName", "").lower().startswith("smr") and not profile["map"].get("items"):
+        if meta.get("DisplayTypeName", "").lower().startswith("smr"):
             # The French AVISO ASRs carry no map content (Sector-Files' maintenance script strips it):
-            # the vSMR fork draws the AVISO of PLUGIN:vSMR:Airport itself. An empty item list would
-            # draw every layer, so list that airport's AVISO items the way vSMR picks them.
-            icao = meta["plugin"].get(("vSMR", "Airport"), "").strip().upper()
-            named_icao = re.match(r"^([A-Z]{4}) .*AVISO$", asr.stem.upper())
-            if named_icao and named_icao.group(1) != icao:
-                # The file is named for one airport and points vSMR at another: a copy-paste slip
-                # upstream. The name is what the controller picks the display by.
-                warn(f"{pid}: {asr.name} sets vSMR:Airport:{icao or '(none)'}; using {named_icao.group(1)} from its name")
-                icao = named_icao.group(1)
-            uuids, kind = aviso_items(sector_items, icao)
-            if uuids:
-                profile["map"]["items"] = [{"showLabel": False, "uuid": u} for u in uuids]
-                if kind == "runways":
-                    runways_only.add(icao)
+            # the vSMR fork draws the AVISO of PLUGIN:vSMR:Airport itself, from its own AVISO file.
+            # An empty item list would draw every layer, so the profile lists exactly that
+            # airport's AVISO layer (scripts/aviso.py), and nothing else.
+            icao = aviso_airport(asr, meta)
+            set_icao = meta["plugin"].get(("vSMR", "Airport"), "").strip().upper()
+            if set_icao != icao:
+                warn(f"{pid}: {asr.name} sets vSMR:Airport:{set_icao or '(none)'}; using {icao} from its name")
+            if profile["map"].get("items"):
+                replaced_items.add(asr.relative_to(env / "ASRs").as_posix())
+            if aviso_profiles.get(icao):
+                profile["map"]["items"] = [{"showLabel": False, "uuid": u} for u in aviso_profiles[icao]]
             else:
-                no_aviso.add(f"{asr.relative_to(env / 'ASRs').as_posix()} ({icao or 'no vSMR airport'})")
+                # No vSMR AVISO file for this airport: the sector file's AVISO items, as before.
+                uuids, kind = aviso_items(sector_items, icao)
+                profile["map"]["items"] = [{"showLabel": False, "uuid": u} for u in uuids]
+                if uuids:
+                    from_sector_file.add(icao)
+                    if kind == "runways":
+                        runways_only.add(icao)
+                else:
+                    no_aviso.add(f"{asr.relative_to(env / 'ASRs').as_posix()} ({icao or 'no vSMR airport'})")
         # An ASR entry naming an object the sector file no longer has (a renumbered runway, a
         # withdrawn navaid) converts to an item no layer holds: EuroScope ignores such a line, so
         # drop the row and report it, upstream's ASR is what needs the fix.
@@ -483,6 +518,10 @@ def finalize(pkg: dict, build: Path) -> None:
     absent = sorted(name for name in systems_used if not (package / "systems" / name).is_dir())
     if absent:
         sys.exit(f"{pid}: profiles use systems that shared/package/systems does not have: {', '.join(absent)}")
+    if from_sector_file:
+        warn(f"{pid}: AVISO displays with no vSMR AVISO file, drawn from the sector file's AVISO items instead (add LFXX/Plugins/vSMR/vSMR_Data/AVISO/<ICAO>.geojson in Sector-Files): {', '.join(sorted(from_sector_file))}")
+    if replaced_items:
+        warn(f"{pid}: AVISO ASRs listing map items of their own, replaced by the airport's AVISO (fix the ASR in Sector-Files): {', '.join(sorted(replaced_items))}")
     if runways_only:
         warn(f"{pid}: AVISO displays drawing runways only, the sector file has no ground layout for: {', '.join(sorted(runways_only))}")
     if no_aviso:
