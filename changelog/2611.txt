@@ -17,12 +17,13 @@ Radar systems
   blue, other traffic grey. CDG: CoFrance's flows and letters (S/N by runway pair, B, O, A, V,
   R, G/P, two-letter departure codes by route point, T, Z, X).
 - CDG letters above the disc for north arrivals (09/27) and north departures, below otherwise.
-- Flight state on the callsign: white text on a darkened box of the track colour when assumed,
-  on hand-off green when transferred to you; green text when transferred out.
+- Flight state on the callsign: white on a dark slate plate when assumed, hand-off green on
+  the plate when transferred to you, green text when transferred out (same in both systems).
 - Flights CoFrance never filters, and flights assumed or in transfer, show through the altitude
   filter.
-- Trails: the old CDG trail rings, in each track colour.
-- Tags in the EuroScope font, with climb/descent/level arrows and the voice type (/r, /t).
+- Trails: the old CDG trail rings and IRMA dots, in each track colour; approach displays refresh
+  every 4 s like a radar, so trails follow the aircraft sweep by sweep.
+- Tags in B612 Mono (barred zero), with climb/descent/level arrows and the voice type (/r, /t).
 - Every target correlated (correlation mode always).
 - Route draw in CoFrance's route colours, labels on a dark plate.
 - RDF circle settings.
@@ -43,3 +44,6 @@ Revisions
 - 2611.5  readable reverse-video callsigns
 - 2611.6  old CDG trail rings, EuroScope font, correlation always, CDG tag fixes
 - 2611.7  one tag layout for both systems
+- 2611.8  4 s radar sweep on approach displays (trails follow the aircraft), IRMA trails (three
+          big, three small rings), one callsign look per state (slate plate), B612 Mono font with
+          a barred zero

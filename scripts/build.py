@@ -74,6 +74,9 @@ SYSTEM_FOR_TAG_FORMAT = {"Paris-CDG": "cdg"}
 SYSTEM_FOR_AVISO = {"LFPG": "cdg", "LFPB": "cdg"}
 DEFAULT_SYSTEM = "neoirma"
 FRENCH_TRANSITION_ALTITUDE = 5000
+# Approach displays refresh like a radar: aircraft and trails move once per sweep, the trail dots
+# being the previous sweeps (map.sweepIntervalSeconds). AVISOs stay on every update.
+RADAR_SWEEP_SECONDS = 4
 
 
 def log(msg: str) -> None:
@@ -464,6 +467,7 @@ def finalize(pkg: dict, build: Path) -> None:
         if meta.get("DisplayTypeName", "").lower().startswith("cofrance"):
             fmt = meta["plugin"].get(("CoFrance", "TagFormat"), "")
             profile["atmSystem"] = SYSTEM_FOR_TAG_FORMAT.get(fmt, DEFAULT_SYSTEM)
+            profile["map"]["sweepIntervalSeconds"] = RADAR_SWEEP_SECONDS
             radar = profile.setdefault("radarData", {})
             radar["transitionAltitude"] = FRENCH_TRANSITION_ALTITUDE
             for key, field in (("UpperAlt", "upperFilterValue"), ("LowerAlt", "lowerFilterValue")):

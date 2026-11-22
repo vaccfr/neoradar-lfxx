@@ -180,7 +180,12 @@ polygons still fill only when they are axis-aligned rectangles.
 Both mapstyles carry the CoFrance route draw (thin `route_line` green, small crosses, fix labels
 on a dark plate) and the RDF circle settings. Trails are the old trail sprites re-coloured per
 trail colour in `images/symbols.png`: CDG's 6 rings shrinking from 10 to 4 px, IRMA's three
-4 px rings then three 3 px rings (sized to the triangle). `scripts/trail_sprites.py` regenerates them. Released clients cannot
+4 px rings then three 3 px rings (sized to the triangle). `scripts/trail_sprites.py` regenerates them.
+Approach profiles refresh like a radar, every `RADAR_SWEEP_SECONDS` (4 s, `build.py`, written as
+`map.sweepIntervalSeconds`): aircraft and trails move together once per sweep, one trail mark per
+previous sweep, never one on the aircraft. Without a sweep the client pins the marks to every
+`historyTrailsSkipSteps`-th update while the aircraft moves on every one, so the trail stalls and
+then jumps; that is still what the AVISO profiles do with airborne traffic. Released clients cannot
 size a trail shape per mark; once `scaleRamp` ships, they can go back to shapes. The tag
 trend arrows are Lucide icons (`:imove-up-right`…): the client does not draw a font's glyphs
 below U+0020, where the Orly label font keeps its own.
