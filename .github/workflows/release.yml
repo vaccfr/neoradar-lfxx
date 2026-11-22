@@ -114,15 +114,9 @@ jobs:
         # neoradar-cli needs Node >= 24 and pnpm >= 10. pnpm refuses `add -g` unless its global
         # bin dir is on PATH, and blocks build scripts by default (better-sqlite3 is native, the
         # git-hosted sector-file-tools dep builds on install), so both are whitelisted.
-        # neoradar-project/cli is private: NEORADAR_CLI_TOKEN reads it (Contents: read on that repo).
-        env:
-          NEORADAR_CLI_TOKEN: ${{ secrets.NEORADAR_CLI_TOKEN }}
+        # neoradar-project/cli must stay public: pnpm fetches it anonymously.
         run: |
           set -euo pipefail
-          if [ -z "$NEORADAR_CLI_TOKEN" ]; then
-            echo "::error::Secret NEORADAR_CLI_TOKEN is missing: neoradar-project/cli is private"
-            exit 1
-          fi
           export PNPM_HOME="$HOME/.local/share/pnpm"
           mkdir -p "$PNPM_HOME"
           export PATH="$PNPM_HOME:$PATH"
@@ -131,7 +125,7 @@ jobs:
           pnpm add -g \
             --allow-build=better-sqlite3 \
             --allow-build=sector-file-tools \
-            "git+https://x-access-token:${NEORADAR_CLI_TOKEN}@github.com/neoradar-project/cli.git#${NEORADAR_CLI_REF}"
+            "github:neoradar-project/cli#${NEORADAR_CLI_REF}"
           neoradar-cli --version
 
       - name: Build package environments

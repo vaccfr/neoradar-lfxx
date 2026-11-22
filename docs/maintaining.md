@@ -242,5 +242,4 @@ upstream.
 | Name | For |
 | --- | --- |
 | `LIVE_DATA_APP_ID` (variable), `LIVE_DATA_APP_PRIVATE_KEY` (secret) | Reading the private `data-sectorfiles` repo |
-| `NEORADAR_CLI_TOKEN` | Installing neoradar-cli, whose repo (`neoradar-project/cli`) is private: a fine-grained token with Contents: read on that repo |
 | `NEORADAR_R2_ACCESS_KEY_ID`, `NEORADAR_R2_SECRET_ACCESS_KEY` | An R2 API token with Object Read & Write on the `neoradar-packages` bucket, for uploading the package |
