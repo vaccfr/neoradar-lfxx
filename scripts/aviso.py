@@ -14,6 +14,8 @@ AVISO profile lists:
   <ICAO> <group>         one item per vSMR group (East Arrows...). A group named for a direction
                          draws only while a runway end facing that way is active, as a drawing
                          showWhen, so it shows only where its item is listed (that AVISO)
+  <ICAO> temporary closures  works areas and their boundaries, taken from the airport's variant
+                         files (LFPO_Work.geojson), drawn over the ground layout and groups
 
 Colours are the palette the airport's AVISO ASR picks (PLUGIN:vSMR:AvisoColorPalette, "real" at the
 major airports), else the file's default_color_palette ("dark"). Label zoom levels become
@@ -93,8 +95,16 @@ def group_direction(group: dict) -> str | None:
     return found[0] if len(set(found)) == 1 else None
 
 
-def convert_airport(path: Path, report: Report, palettes: dict[str, str]) -> tuple[str, list[dict], list[dict], list[str]]:
-    """Returns (ICAO, items, drawings, uuids the AVISO profile lists)."""
+def is_closure(feature: dict) -> bool:
+    """A temporary closure (works area or its boundary), which the vSMR fork keeps in <ICAO>_Work.geojson."""
+    category = str((feature.get("properties") or {}).get("category") or "")
+    return category.lower().startswith("temporary closure")
+
+
+def convert_airport(path: Path, report: Report, palettes: dict[str, str],
+                    extra: tuple[list[dict], dict] | None = None) -> tuple[str, list[dict], list[dict], list[str]]:
+    """Returns (ICAO, items, drawings, uuids the AVISO profile lists). `extra` adds features (and
+    their styles) from the airport's variant files: its temporary closures."""
     data = json.loads(path.read_text(encoding="utf-8-sig"))
     meta = data.get("metadata") or {}
     # vSMR loads <ICAO>.geojson for PLUGIN:vSMR:Airport:<ICAO>, so the file name is the airport.
@@ -106,7 +116,12 @@ def convert_airport(path: Path, report: Report, palettes: dict[str, str]) -> tup
     if palette not in (meta.get("color_palettes") or [default]):
         report.warnings.append(f"AVISO {icao}: the ASR asks for palette {palette!r}, the file has {meta.get('color_palettes')}; using {default!r}")
         palette = default
-    styles = data.get("styles") or {}
+    styles = dict(data.get("styles") or {})
+    extra_features = []
+    if extra:
+        extra_features, extra_styles = extra
+        for k, v in extra_styles.items():
+            styles.setdefault(k, v)
     runways = meta.get("runways") or []
 
     items: list[dict] = []
@@ -146,7 +161,7 @@ def convert_airport(path: Path, report: Report, palettes: dict[str, str]) -> tup
         group_items[gid] = (uuid, cond)
 
     layout_uuid = None
-    for feature in data.get("features") or []:
+    for feature in (data.get("features") or []) + extra_features:
         props = feature.get("properties") or {}
         geometry = feature.get("geometry")
         if not geometry:
@@ -167,6 +182,9 @@ def convert_airport(path: Path, report: Report, palettes: dict[str, str]) -> tup
             base["uuid"] = uuid
             if cond:
                 base["showWhen"] = cond
+        elif is_closure(feature):
+            # Above the ground layout (1) and the runway-direction groups (2).
+            base["uuid"] = add_item("temporary-closures", f"{icao} temporary closures", order=3)
         elif kind == "Label":
             category = clean_name(str(props.get("category") or style.get("name") or "Labels"))
             base["uuid"] = add_item(f"labels-{category}", f"{icao} {category}")
@@ -230,13 +248,27 @@ def convert(aviso_dir: Path, out_dir: Path, release: str | None, palettes: dict[
         return layers, profile_items, report
     out_dir.mkdir(parents=True, exist_ok=True)
     variants = []
+    closures: dict[str, tuple[list[dict], dict]] = {}
+    for path in sorted(aviso_dir.glob("*.geojson")):
+        m = re.fullmatch(r"([A-Za-z]{4})_.+", path.stem)
+        if m:
+            # LFPO_Work.geojson and the like: an alternative AVISO no ASR selects (vSMR loads
+            # <ICAO>.geojson). Only its temporary closures are taken, into the airport's AVISO.
+            data = json.loads(path.read_text(encoding="utf-8-sig"))
+            found = [f for f in data.get("features") or [] if is_closure(f)]
+            if found:
+                feats, sty = closures.setdefault(m.group(1).upper(), ([], {}))
+                feats.extend(found)
+                for f in found:
+                    sid = (f.get("properties") or {}).get("style_id")
+                    if sid in (data.get("styles") or {}):
+                        sty[sid] = data["styles"][sid]
+            else:
+                variants.append(path.name)
     for path in sorted(aviso_dir.glob("*.geojson")):
         if not re.fullmatch(r"[A-Za-z]{4}", path.stem):
-            # LFPO_Work.geojson and the like: alternative AVISOs no ASR selects (vSMR loads
-            # <ICAO>.geojson). Converting them would overwrite the airport's own AVISO.
-            variants.append(path.name)
             continue
-        icao, items, drawings, listed = convert_airport(path, report, palettes)
+        icao, items, drawings, listed = convert_airport(path, report, palettes, closures.pop(path.stem.upper(), None))
         if icao in profile_items:
             raise SystemExit(f"AVISO {icao}: two files for one airport ({path.name})")
         if not drawings:
@@ -255,5 +287,7 @@ def convert(aviso_dir: Path, out_dir: Path, release: str | None, palettes: dict[
         report.items += len(items)
         report.drawings += len(drawings)
     if variants:
-        report.warnings.append("AVISO files not named by an ICAO code, not converted (alternative AVISOs no ASR selects): " + ", ".join(variants))
+        report.warnings.append("AVISO files not named by an ICAO code, not converted (alternative AVISOs no ASR selects, with no temporary closure in them): " + ", ".join(variants))
+    for icao in closures:
+        report.warnings.append(f"AVISO {icao}: temporary closures in a variant file but no {icao}.geojson to draw them in")
     return layers, profile_items, report

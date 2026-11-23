@@ -73,7 +73,7 @@ SYSTEM_FOR_TAG_FORMAT = {"Paris-CDG": "cdg"}
 # colours and letters around the airfield. Their ground look is the same (cdg's is #neoirma).
 SYSTEM_FOR_AVISO = {"LFPG": "cdg", "LFPB": "cdg"}
 # AVISOs turned so the airport sits square on the screen (map.orientation, degrees).
-AVISO_ORIENTATION = {"LFPG": 356}
+AVISO_ORIENTATION = {"LFPG": 356, "LFMN": 135}
 DEFAULT_SYSTEM = "neoirma"
 FRENCH_TRANSITION_ALTITUDE = 5000
 # Displays refresh like a radar: aircraft and trails move once per sweep, the trail dots being the
