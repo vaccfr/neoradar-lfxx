@@ -72,6 +72,8 @@ SYSTEM_FOR_TAG_FORMAT = {"Paris-CDG": "cdg"}
 # AVISOs whose airborne traffic is CDG's: Charles de Gaulle and Le Bourget show the Paris-CDG
 # colours and letters around the airfield. Their ground look is the same (cdg's is #neoirma).
 SYSTEM_FOR_AVISO = {"LFPG": "cdg", "LFPB": "cdg"}
+# AVISOs turned so the airport sits square on the screen (map.orientation, degrees).
+AVISO_ORIENTATION = {"LFPG": 356}
 DEFAULT_SYSTEM = "neoirma"
 FRENCH_TRANSITION_ALTITUDE = 5000
 # Displays refresh like a radar: aircraft and trails move once per sweep, the trail dots being the
@@ -502,6 +504,8 @@ def finalize(pkg: dict, build: Path) -> None:
                 warn(f"{pid}: {asr.name} sets vSMR:Airport:{set_icao or '(none)'}; using {icao} from its name")
             profile["atmSystem"] = SYSTEM_FOR_AVISO.get(icao, DEFAULT_SYSTEM)
             profile["map"]["sweepIntervalSeconds"] = GROUND_SWEEP_SECONDS
+            if icao in AVISO_ORIENTATION:
+                profile["map"]["orientation"] = AVISO_ORIENTATION[icao]
             if profile["map"].get("items"):
                 replaced_items.add(asr.relative_to(env / "ASRs").as_posix())
             if aviso_profiles.get(icao):

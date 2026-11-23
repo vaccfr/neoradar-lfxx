@@ -42,6 +42,7 @@ AVISOs
 - Each AVISO draws its airport's vSMR AVISO (160 airports) and nothing else: surfaces, guidance
   lines, gates, taxiway names, terminals, TORA, in the palette the ASR asks for.
 - LFPG East / West arrows draw only for the matching runway configuration (08/09 or 26/27).
+- The LFPG AVISO is turned to 356 degrees so the airport sits square on the screen.
 - Gate labels appear from the opening zoom and hide only once zoomed well out.
 - LFHY (Moulins) has no vSMR AVISO file: it draws the sector file's runways.
 
@@ -57,5 +58,5 @@ Revisions
           big, three small rings), one callsign look per state (slate plate), B612 Mono font with
           a barred zero, safety nets (STCA, emergency squawk, RIMCAS) with alert lines in the tags,
           SID on the hover tag, sector file 261101-0003; old fonts, the NeoVSID tag item and the
-          old vACDM list removed; vector trails (scaleRamp), smooth CDG disc, crisp CDG letters, next controller's frequency during a hand-off, RDF circle 0.5 NM,
+          old vACDM list removed; vector trails (scaleRamp), smooth CDG disc, crisp CDG letters, next controller's frequency during a hand-off, LFPG AVISO turned to 356 degrees, RDF circle 0.5 NM,
           no Legacy APP displays, correlation left to the client's default
