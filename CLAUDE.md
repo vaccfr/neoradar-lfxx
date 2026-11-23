@@ -44,6 +44,7 @@ Controller Pack install (e.g. `~/Documents/FrenchVACC`) is already one.
 | `scripts/build-all.sh` | assemble → convert → finalize for all or some packages; CI and local both use it |
 | `scripts/validate.js` | Schema check of built packages (ajv), plus every `=rule`, `$expression`, shape and `#system` reference in the systems |
 | `shared/package/` | Copied into every package: systems, fonts, images, sounds, plugins |
+| `shared/package/cdm/` | `CDMconfig.xml` for the vIFF CDM plugin (French vACC's, FTP fields blank); its rate and taxi-zone files are downloaded from `vaccfr/vIFF-CDM` |
 | `shared/package/plugins/` | Plugins as `.nrplugin` archives (now `vIFF-CDM-alpha`); `build.py` lists each in the manifest's `plugins` |
 | `shared/package/systems/` | The two static systems: `neoirma` (stripless IRMA: every approach but CDG, and the one ground look, used by every AVISO) and `cdg` (Paris-CDG approach; its ground is `#neoirma`). Tracks are vector shapes in `shapes.json` |
 | `backup/` | The systems, sprite atlas and tag-format generator before the two-system cleanup. Not built, kept for reference (trails are vector shapes now; the package has no sprite atlas) |

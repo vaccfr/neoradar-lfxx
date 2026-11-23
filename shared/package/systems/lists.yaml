@@ -523,10 +523,408 @@
       tagItem:
         itemName: "plugin:vIFF CDM:TAG_ASRT"
 
-# Every flight with a CTOT or a suspended flight plan, wherever it departs from (vIFF CDM).
+# The CDM departures split in two short lists: NOW holds what needs doing (start-up within 10
+# minutes, ready, suspended, expired) and what has started; LATER the rest. TIME names the time
+# that matters (TOBT, TSAT, then TTOT), # is the take-off order (sort by it), CDM the status.
+- name: VIFF CDM NOW
+  filterExpressions:
+    ["AND", [["==", "isMyDeparture", "1"], ["==", "onGround", "1"], ["OR", [["==", "plugin:vIFF CDM:EXP_Stage", "now"], ["==", "plugin:vIFF CDM:EXP_Stage", "started"]]]]]
+  style:
+    # CoFrance's list colours (CoFrance.toml ui_bg / ui_list_bg), nearly opaque: a clear list
+    # let the map show through and its text, unconcerned grey especially, could not be read.
+    background:
+      headerColor: [43, 51, 54]
+      headerOpacity: 0.95
+      bodyColor: [41, 57, 59]
+      bodyOpacity: 0.9
+      rowColor: ["=focusedAircraft"]
+    headerTextSize: 11
+    headerOnlyBorder: true
+    bodyTextSize: 11
+  columns:
+    - name: sts
+      widthChars: 4
+      tagItem:
+        itemName: groundStatus
+        mapping:
+          0: ""
+          1: "STUP"
+          2: "PUSH"
+          3: "TAXI"
+          4: "DEPA"
+        leftClick: groundStatusMenu
+    - name: c/s
+      widthChars: 8
+      tagItem:
+        itemName: callsign
+        textAlign: left
+        color: |
+          =colourInboundTransfer
+          =colourOutboundTransfer
+          =colourAssumed
+          =colourConcerned
+          =colourUnconcerned
+        leftClick: callsignMenu
+    - name: sid
+      widthChars: 7
+      tagItem:
+        itemName: text
+        value:
+          - =suggestedSidIfNoAssigned
+          - |
+            &sid
+        color:
+          - =suggestedSidColor
+          - =blueAssignedSid
+        leftClick: sidMenu
+        placeholder: "----"
+    - name: rwy
+      widthChars: 3
+      tagItem:
+        itemName: text
+        value:
+          - =suggestedDepRunwayIfNoAssigned
+          - |
+            &depRunway
+        color:
+          - =suggestedDepRunwayColor
+          - =blueDepRunway
+        leftClick: sidMenu
+        placeholder: "---"
+    - name: assr
+      widthChars: 4
+      tagItem:
+        itemName: text
+        value:
+          - =emptyIfNoAssignedSquawk
+          - |
+            &assignedSquawk
+        placeholder: "----"
+        color: "=incorrectSquawkYellowColor"
+        leftClick: assignRandomSquawk
+        rightClick: assignSq1000
+    - name: D
+      widthChars: 2
+      tagItem:
+        itemName: datalinkStatus
+        color:
+          - =pdcRequestedColour
+          - =receivedMessageColour
+          - =rejectedColour
+          - =acknowledgmentColour
+          - =sentMessageColour
+          - =defaultDatalinkColour
+        blinkColor: ["=pdcRequestedTextBlinkColour"]
+        leftClick: pdcMenu
+    - name: e
+      widthChars: 2
+      tagItem:
+        itemName: clearanceIssued
+        placeholder: ":fa-regular fa-square"
+        mapping:
+          0: ":fa-regular fa-square"
+          1: ":fa-solid fa-square"
+        color: [255, 174, 23]
+        leftClick: toggleClearanceFlag
+    - name: "#"
+      widthChars: 2
+      tagItem:
+        itemName: "plugin:vIFF CDM:TAG_SEQ"
+    - name: TIME
+      widthChars: 9
+      tagItem:
+        itemName: "plugin:vIFF CDM:TAG_TIME"
+        textAlign: left
+        leftClick: "plugin:vIFF CDM:ACTION_TOBT Menu"
+        rightClick: "plugin:vIFF CDM:ACTION_CDM Menu"
+    - name: CTOT
+      widthChars: 4
+      tagItem:
+        itemName: "plugin:vIFF CDM:TAG_CTOT"
+        leftClick: "plugin:vIFF CDM:ACTION_CTOT Menu"
+        rightClick: "plugin:vIFF CDM:ACTION_CTOT Menu"
+    - name: CDM
+      widthChars: 4
+      tagItem:
+        itemName: "plugin:vIFF CDM:TAG_STATUS"
+        leftClick: "plugin:vIFF CDM:ACTION_RDY"
+        rightClick: "plugin:vIFF CDM:ACTION_RDY REA"
+
+- name: VIFF CDM LATER
+  filterExpressions:
+    ["AND", [["==", "isMyDeparture", "1"], ["==", "onGround", "1"], ["==", "plugin:vIFF CDM:EXP_Stage", "later"]]]
+  style:
+    # CoFrance's list colours (CoFrance.toml ui_bg / ui_list_bg), nearly opaque: a clear list
+    # let the map show through and its text, unconcerned grey especially, could not be read.
+    background:
+      headerColor: [43, 51, 54]
+      headerOpacity: 0.95
+      bodyColor: [41, 57, 59]
+      bodyOpacity: 0.9
+      rowColor: ["=focusedAircraft"]
+    headerTextSize: 11
+    headerOnlyBorder: true
+    bodyTextSize: 11
+  columns:
+    - name: sts
+      widthChars: 4
+      tagItem:
+        itemName: groundStatus
+        mapping:
+          0: ""
+          1: "STUP"
+          2: "PUSH"
+          3: "TAXI"
+          4: "DEPA"
+        leftClick: groundStatusMenu
+    - name: c/s
+      widthChars: 8
+      tagItem:
+        itemName: callsign
+        textAlign: left
+        color: |
+          =colourInboundTransfer
+          =colourOutboundTransfer
+          =colourAssumed
+          =colourConcerned
+          =colourUnconcerned
+        leftClick: callsignMenu
+    - name: sid
+      widthChars: 7
+      tagItem:
+        itemName: text
+        value:
+          - =suggestedSidIfNoAssigned
+          - |
+            &sid
+        color:
+          - =suggestedSidColor
+          - =blueAssignedSid
+        leftClick: sidMenu
+        placeholder: "----"
+    - name: rwy
+      widthChars: 3
+      tagItem:
+        itemName: text
+        value:
+          - =suggestedDepRunwayIfNoAssigned
+          - |
+            &depRunway
+        color:
+          - =suggestedDepRunwayColor
+          - =blueDepRunway
+        leftClick: sidMenu
+        placeholder: "---"
+    - name: assr
+      widthChars: 4
+      tagItem:
+        itemName: text
+        value:
+          - =emptyIfNoAssignedSquawk
+          - |
+            &assignedSquawk
+        placeholder: "----"
+        color: "=incorrectSquawkYellowColor"
+        leftClick: assignRandomSquawk
+        rightClick: assignSq1000
+    - name: D
+      widthChars: 2
+      tagItem:
+        itemName: datalinkStatus
+        color:
+          - =pdcRequestedColour
+          - =receivedMessageColour
+          - =rejectedColour
+          - =acknowledgmentColour
+          - =sentMessageColour
+          - =defaultDatalinkColour
+        blinkColor: ["=pdcRequestedTextBlinkColour"]
+        leftClick: pdcMenu
+    - name: e
+      widthChars: 2
+      tagItem:
+        itemName: clearanceIssued
+        placeholder: ":fa-regular fa-square"
+        mapping:
+          0: ":fa-regular fa-square"
+          1: ":fa-solid fa-square"
+        color: [255, 174, 23]
+        leftClick: toggleClearanceFlag
+    - name: "#"
+      widthChars: 2
+      tagItem:
+        itemName: "plugin:vIFF CDM:TAG_SEQ"
+    - name: TIME
+      widthChars: 9
+      tagItem:
+        itemName: "plugin:vIFF CDM:TAG_TIME"
+        textAlign: left
+        leftClick: "plugin:vIFF CDM:ACTION_TOBT Menu"
+        rightClick: "plugin:vIFF CDM:ACTION_CDM Menu"
+    - name: CTOT
+      widthChars: 4
+      tagItem:
+        itemName: "plugin:vIFF CDM:TAG_CTOT"
+        leftClick: "plugin:vIFF CDM:ACTION_CTOT Menu"
+        rightClick: "plugin:vIFF CDM:ACTION_CTOT Menu"
+    - name: CDM
+      widthChars: 4
+      tagItem:
+        itemName: "plugin:vIFF CDM:TAG_STATUS"
+        leftClick: "plugin:vIFF CDM:ACTION_RDY"
+        rightClick: "plugin:vIFF CDM:ACTION_RDY REA"
+
+# One departure list for a top-down position on a small screen, in place of DEPARTURE LIST and
+# the CDM lists: the same flights as DEPARTURE LIST, every column as narrow as its content. Three
+# groups: the flight (# take-off order, callsign, voice, ground status), the clearance (runway,
+# SID, CFL, squawk, PDC, clearance flag) and CDM (TIME with a one-letter name: B TOBT, S TSAT,
+# T TTOT, E EOBT; CTOT; CDM status). Sort by # for the departure sequence. Right click on TIME
+# opens every CDM action.
+- name: VIFF CDM TOPDOWN
+  filterExpressions:
+    ["AND", [["==", "isMyDeparture", "1"], ["==", "onGround", "1"]]]
+  style:
+    # CoFrance's list colours (CoFrance.toml ui_bg / ui_list_bg), nearly opaque: a clear list
+    # let the map show through and its text, unconcerned grey especially, could not be read.
+    background:
+      headerColor: [43, 51, 54]
+      headerOpacity: 0.95
+      bodyColor: [41, 57, 59]
+      bodyOpacity: 0.9
+      rowColor: ["=focusedAircraft"]
+    headerTextSize: 11
+    headerOnlyBorder: true
+    bodyTextSize: 11
+  columns:
+    - name: "#"
+      widthChars: 2
+      tagItem:
+        itemName: "plugin:vIFF CDM:TAG_SEQ"
+    - name: c/s
+      widthChars: 8
+      tagItem:
+        itemName: callsign
+        textAlign: left
+        color: |
+          =colourInboundTransfer
+          =colourOutboundTransfer
+          =colourAssumed
+          =colourConcerned
+          =colourUnconcerned
+        leftClick: callsignMenu
+    - name: v
+      widthChars: 2
+      tagItem:
+        itemName: voiceType
+        leftClick: voiceTypeMenu
+        mapping:
+          0: "v"
+          1: "r"
+          2: "t"
+    - name: sts
+      widthChars: 4
+      tagItem:
+        itemName: groundStatus
+        mapping:
+          0: ""
+          1: "STUP"
+          2: "PUSH"
+          3: "TAXI"
+          4: "DEPA"
+        leftClick: groundStatusMenu
+    - name: rwy
+      widthChars: 3
+      tagItem:
+        itemName: text
+        value:
+          - =suggestedDepRunwayIfNoAssigned
+          - |
+            &depRunway
+        color:
+          - =suggestedDepRunwayColor
+          - =blueDepRunway
+        leftClick: sidMenu
+        placeholder: "---"
+    - name: sid
+      widthChars: 7
+      tagItem:
+        itemName: text
+        value:
+          - =suggestedSidIfNoAssigned
+          - |
+            &sid
+        color:
+          - =suggestedSidColor
+          - =blueAssignedSid
+        leftClick: sidMenu
+        placeholder: "----"
+    - name: cfl
+      widthChars: 3
+      tagItem:
+        itemName: clearedFlightLevel
+        placeholder: "---"
+        padWithZeroLeft: 5
+        truncate: [0, 3]
+        leftClick: cfl
+    - name: assr
+      widthChars: 4
+      tagItem:
+        itemName: text
+        value:
+          - =emptyIfNoAssignedSquawk
+          - |
+            &assignedSquawk
+        placeholder: "----"
+        color: "=incorrectSquawkYellowColor"
+        leftClick: assignRandomSquawk
+        rightClick: assignSq1000
+    - name: D
+      widthChars: 2
+      tagItem:
+        itemName: datalinkStatus
+        color:
+          - =pdcRequestedColour
+          - =receivedMessageColour
+          - =rejectedColour
+          - =acknowledgmentColour
+          - =sentMessageColour
+          - =defaultDatalinkColour
+        blinkColor: ["=pdcRequestedTextBlinkColour"]
+        leftClick: pdcMenu
+    - name: e
+      widthChars: 2
+      tagItem:
+        itemName: clearanceIssued
+        placeholder: ":fa-regular fa-square"
+        mapping:
+          0: ":fa-regular fa-square"
+          1: ":fa-solid fa-square"
+        color: [255, 174, 23]
+        leftClick: toggleClearanceFlag
+    - name: TIME
+      widthChars: 5
+      tagItem:
+        itemName: "plugin:vIFF CDM:TAG_TIME S"
+        textAlign: left
+        leftClick: "plugin:vIFF CDM:ACTION_TOBT Menu"
+        rightClick: "plugin:vIFF CDM:ACTION_CDM Menu"
+    - name: CTOT
+      widthChars: 4
+      tagItem:
+        itemName: "plugin:vIFF CDM:TAG_CTOT"
+        leftClick: "plugin:vIFF CDM:ACTION_CTOT Menu"
+        rightClick: "plugin:vIFF CDM:ACTION_CTOT Menu"
+    - name: CDM
+      widthChars: 4
+      tagItem:
+        itemName: "plugin:vIFF CDM:TAG_STATUS"
+        leftClick: "plugin:vIFF CDM:ACTION_RDY"
+        rightClick: "plugin:vIFF CDM:ACTION_RDY REA"
+
+# Your departures with a CTOT or a suspended flight plan, whatever regulation set it (vIFF CDM).
 - name: VIFF ATFCM
   filterExpressions:
-    ["OR", [["==", "plugin:vIFF CDM:EXP_Has CTOT", "1"], ["==", "plugin:vIFF CDM:EXP_Suspended", "1"]]]
+    ["AND", [["==", "isMyDeparture", "1"], ["==", "onGround", "1"], ["OR", [["==", "plugin:vIFF CDM:EXP_Has CTOT", "1"], ["==", "plugin:vIFF CDM:EXP_Suspended", "1"]]]]]
   style:
     # CoFrance's list colours (CoFrance.toml ui_bg / ui_list_bg), nearly opaque: a clear list
     # let the map show through and its text, unconcerned grey especially, could not be read.

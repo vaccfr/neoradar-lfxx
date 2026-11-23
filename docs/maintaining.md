@@ -312,12 +312,19 @@ upstream.
 - **One plugin.** The package ships `shared/package/plugins/vIFF-CDM-alpha.nrplugin`, the NeoRadar
   port of the CDM plugin ([vaccfr/vIFF-neoradar](https://github.com/vaccfr/vIFF-neoradar)); the
   build lists every `.nrplugin` there in the manifest, and the controller approves it in Plugin
-  Settings. To update it, run that repo's `scripts/pack-nrplugin.sh <this repo>/shared/package/plugins`:
-  it builds the plugin **without the vIFF API key** and checks the DLL holds none, because this package is
-  public and a key in a DLL can be read back out. Never pack a build that read a `.env` key.
-  Controllers given the key set it in NeoRadar with `.cdm apikey`. The C# client loads only C#
+  Settings. To update it, run that repo's
+  `scripts/pack-nrplugin.sh --with-key <this repo>/shared/package/plugins` with the vIFF API key in its
+  `.env`: it builds for Windows, macOS and Linux with the key built in and checks it is there. The key
+  can be read back out of the archive, as from the EuroScope CDM plugin's DLL; the `.env` is never
+  committed. Without `--with-key` the plugin only reads vIFF until a controller sets the key with
+  `.cdm apikey`. The C# client loads only C#
   plugins, so the old C++ ones (vACDM, CCAMS, RPC, RampAgent, VATCAN) do not load. Tags and lists
   name no other plugin: the old `NeoVSID` tag item and `NeoVACDM` list are gone.
+- **CDM configuration.** `shared/package/cdm/CDMconfig.xml` is the French vACC's CDM plugin config
+  (from the Controller Pack, `LFXX/Plugins/CDM/`, with the FTP fields blanked: never commit an FTP
+  password). The plugin reads it from the package's `cdm/` folder and downloads the `rate.txt`,
+  `taxizones.txt`, `ctot.txt` and `sidInterval.txt` its URLs name (`vaccfr/vIFF-CDM`), so rates and
+  taxi zones are maintained there, not here. Copy the file again when the Controller Pack's changes.
 - **Server-dependent tags.** Arrival runway colours (CDG), SID/runway suggestions and route-based
   rules need the server link and the uploaded server dataset.
 - **Not converted yet:** vSID procedure priorities and runway preferences.
