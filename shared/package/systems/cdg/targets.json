@@ -10,13 +10,13 @@
         "kUpperFiltered",
         "kLowerFiltered"
       ],
-      "plotShape": "cdg/localpgpb",
+      "plotShape": "cdg/track",
       "plotColor": [
         "=alertTrack",
         "=warningTrack",
         "=track_d4d4b9"
       ],
-      "historyTrailsSkipSteps": 5,
+      "historyTrailsSkipSteps": 2,
       "speedVectorColor": [
         "=alertTrack",
         "=warningTrack",
@@ -48,13 +48,13 @@
         "kUpperFiltered",
         "kLowerFiltered"
       ],
-      "plotShape": "cdg/localorly",
+      "plotShape": "cdg/track",
       "plotColor": [
         "=alertTrack",
         "=warningTrack",
         "=track_d4d4b9"
       ],
-      "historyTrailsSkipSteps": 5,
+      "historyTrailsSkipSteps": 2,
       "speedVectorColor": [
         "=alertTrack",
         "=warningTrack",
@@ -86,13 +86,13 @@
         "kUpperFiltered",
         "kLowerFiltered"
       ],
-      "plotShape": "cdg/arrsouth",
+      "plotShape": "cdg/track",
       "plotColor": [
         "=alertTrack",
         "=warningTrack",
         "=track_e39d9d"
       ],
-      "historyTrailsSkipSteps": 5,
+      "historyTrailsSkipSteps": 2,
       "speedVectorColor": [
         "=alertTrack",
         "=warningTrack",
@@ -124,13 +124,13 @@
         "kUpperFiltered",
         "kLowerFiltered"
       ],
-      "plotShape": "cdg/arrnorth",
+      "plotShape": "cdg/track",
       "plotColor": [
         "=alertTrack",
         "=warningTrack",
         "=track_e3b8cb"
       ],
-      "historyTrailsSkipSteps": 5,
+      "historyTrailsSkipSteps": 2,
       "speedVectorColor": [
         "=alertTrack",
         "=warningTrack",
@@ -162,13 +162,13 @@
         "kUpperFiltered",
         "kLowerFiltered"
       ],
-      "plotShape": "cdg/arrbourget",
+      "plotShape": "cdg/track",
       "plotColor": [
         "=alertTrack",
         "=warningTrack",
         "=track_d396e3"
       ],
-      "historyTrailsSkipSteps": 5,
+      "historyTrailsSkipSteps": 2,
       "speedVectorColor": [
         "=alertTrack",
         "=warningTrack",
@@ -200,13 +200,13 @@
         "kUpperFiltered",
         "kLowerFiltered"
       ],
-      "plotShape": "cdg/arrorly",
+      "plotShape": "cdg/track",
       "plotColor": [
         "=alertTrack",
         "=warningTrack",
         "=track_e3b17c"
       ],
-      "historyTrailsSkipSteps": 5,
+      "historyTrailsSkipSteps": 2,
       "speedVectorColor": [
         "=alertTrack",
         "=warningTrack",
@@ -238,13 +238,13 @@
         "kUpperFiltered",
         "kLowerFiltered"
       ],
-      "plotShape": "cdg/arrptob",
+      "plotShape": "cdg/track",
       "plotColor": [
         "=alertTrack",
         "=warningTrack",
         "=track_e3b17c"
       ],
-      "historyTrailsSkipSteps": 5,
+      "historyTrailsSkipSteps": 2,
       "speedVectorColor": [
         "=alertTrack",
         "=warningTrack",
@@ -276,13 +276,13 @@
         "kUpperFiltered",
         "kLowerFiltered"
       ],
-      "plotShape": "cdg/arrpnpv",
+      "plotShape": "cdg/track",
       "plotColor": [
         "=alertTrack",
         "=warningTrack",
         "=track_4cbc38"
       ],
-      "historyTrailsSkipSteps": 5,
+      "historyTrailsSkipSteps": 2,
       "speedVectorColor": [
         "=alertTrack",
         "=warningTrack",
@@ -314,13 +314,13 @@
         "kUpperFiltered",
         "kLowerFiltered"
       ],
-      "plotShape": "cdg/arrcdg",
+      "plotShape": "cdg/track",
       "plotColor": [
         "=alertTrack",
         "=warningTrack",
         "=track_d4d4b9"
       ],
-      "historyTrailsSkipSteps": 5,
+      "historyTrailsSkipSteps": 2,
       "speedVectorColor": [
         "=alertTrack",
         "=warningTrack",
@@ -352,13 +352,13 @@
         "kUpperFiltered",
         "kLowerFiltered"
       ],
-      "plotShape": "cdg/depnn",
+      "plotShape": "cdg/track",
       "plotColor": [
         "=alertTrack",
         "=warningTrack",
         "=track_a1e3e3"
       ],
-      "historyTrailsSkipSteps": 5,
+      "historyTrailsSkipSteps": 2,
       "speedVectorColor": [
         "=alertTrack",
         "=warningTrack",
@@ -390,13 +390,13 @@
         "kUpperFiltered",
         "kLowerFiltered"
       ],
-      "plotShape": "cdg/depno",
+      "plotShape": "cdg/track",
       "plotColor": [
         "=alertTrack",
         "=warningTrack",
         "=track_a1e3e3"
       ],
-      "historyTrailsSkipSteps": 5,
+      "historyTrailsSkipSteps": 2,
       "speedVectorColor": [
         "=alertTrack",
         "=warningTrack",
@@ -428,13 +428,13 @@
         "kUpperFiltered",
         "kLowerFiltered"
       ],
-      "plotShape": "cdg/depna",
+      "plotShape": "cdg/track",
       "plotColor": [
         "=alertTrack",
         "=warningTrack",
         "=track_a1e3e3"
       ],
-      "historyTrailsSkipSteps": 5,
+      "historyTrailsSkipSteps": 2,
       "speedVectorColor": [
         "=alertTrack",
         "=warningTrack",
@@ -466,13 +466,13 @@
         "kUpperFiltered",
         "kLowerFiltered"
       ],
-      "plotShape": "cdg/depnm",
+      "plotShape": "cdg/track",
       "plotColor": [
         "=alertTrack",
         "=warningTrack",
         "=track_a1e3e3"
       ],
-      "historyTrailsSkipSteps": 5,
+      "historyTrailsSkipSteps": 2,
       "speedVectorColor": [
         "=alertTrack",
         "=warningTrack",
@@ -504,13 +504,13 @@
         "kUpperFiltered",
         "kLowerFiltered"
       ],
-      "plotShape": "cdg/deper",
+      "plotShape": "cdg/track",
       "plotColor": [
         "=alertTrack",
         "=warningTrack",
         "=track_a1e3e3"
       ],
-      "historyTrailsSkipSteps": 5,
+      "historyTrailsSkipSteps": 2,
       "speedVectorColor": [
         "=alertTrack",
         "=warningTrack",
@@ -542,13 +542,13 @@
         "kUpperFiltered",
         "kLowerFiltered"
       ],
-      "plotShape": "cdg/depel",
+      "plotShape": "cdg/track",
       "plotColor": [
         "=alertTrack",
         "=warningTrack",
         "=track_a1e3e3"
       ],
-      "historyTrailsSkipSteps": 5,
+      "historyTrailsSkipSteps": 2,
       "speedVectorColor": [
         "=alertTrack",
         "=warningTrack",
@@ -580,13 +580,13 @@
         "kUpperFiltered",
         "kLowerFiltered"
       ],
-      "plotShape": "cdg/depeb",
+      "plotShape": "cdg/track",
       "plotColor": [
         "=alertTrack",
         "=warningTrack",
         "=track_a1e3e3"
       ],
-      "historyTrailsSkipSteps": 5,
+      "historyTrailsSkipSteps": 2,
       "speedVectorColor": [
         "=alertTrack",
         "=warningTrack",
@@ -618,13 +618,13 @@
         "kUpperFiltered",
         "kLowerFiltered"
       ],
-      "plotShape": "cdg/depen",
+      "plotShape": "cdg/track",
       "plotColor": [
         "=alertTrack",
         "=warningTrack",
         "=track_a1e3e3"
       ],
-      "historyTrailsSkipSteps": 5,
+      "historyTrailsSkipSteps": 2,
       "speedVectorColor": [
         "=alertTrack",
         "=warningTrack",
@@ -656,13 +656,13 @@
         "kUpperFiltered",
         "kLowerFiltered"
       ],
-      "plotShape": "cdg/deped",
+      "plotShape": "cdg/track",
       "plotColor": [
         "=alertTrack",
         "=warningTrack",
         "=track_a1e3e3"
       ],
-      "historyTrailsSkipSteps": 5,
+      "historyTrailsSkipSteps": 2,
       "speedVectorColor": [
         "=alertTrack",
         "=warningTrack",
@@ -694,13 +694,13 @@
         "kUpperFiltered",
         "kLowerFiltered"
       ],
-      "plotShape": "cdg/depex",
+      "plotShape": "cdg/track",
       "plotColor": [
         "=alertTrack",
         "=warningTrack",
         "=track_a1e3e3"
       ],
-      "historyTrailsSkipSteps": 5,
+      "historyTrailsSkipSteps": 2,
       "speedVectorColor": [
         "=alertTrack",
         "=warningTrack",
@@ -732,13 +732,13 @@
         "kUpperFiltered",
         "kLowerFiltered"
       ],
-      "plotShape": "cdg/depse",
+      "plotShape": "cdg/track",
       "plotColor": [
         "=alertTrack",
         "=warningTrack",
         "=track_a1e3e3"
       ],
-      "historyTrailsSkipSteps": 5,
+      "historyTrailsSkipSteps": 2,
       "speedVectorColor": [
         "=alertTrack",
         "=warningTrack",
@@ -770,13 +770,13 @@
         "kUpperFiltered",
         "kLowerFiltered"
       ],
-      "plotShape": "cdg/depsa",
+      "plotShape": "cdg/track",
       "plotColor": [
         "=alertTrack",
         "=warningTrack",
         "=track_a1e3e3"
       ],
-      "historyTrailsSkipSteps": 5,
+      "historyTrailsSkipSteps": 2,
       "speedVectorColor": [
         "=alertTrack",
         "=warningTrack",
@@ -808,13 +808,13 @@
         "kUpperFiltered",
         "kLowerFiltered"
       ],
-      "plotShape": "cdg/depsl",
+      "plotShape": "cdg/track",
       "plotColor": [
         "=alertTrack",
         "=warningTrack",
         "=track_a1e3e3"
       ],
-      "historyTrailsSkipSteps": 5,
+      "historyTrailsSkipSteps": 2,
       "speedVectorColor": [
         "=alertTrack",
         "=warningTrack",
@@ -846,13 +846,13 @@
         "kUpperFiltered",
         "kLowerFiltered"
       ],
-      "plotShape": "cdg/depso",
+      "plotShape": "cdg/track",
       "plotColor": [
         "=alertTrack",
         "=warningTrack",
         "=track_a1e3e3"
       ],
-      "historyTrailsSkipSteps": 5,
+      "historyTrailsSkipSteps": 2,
       "speedVectorColor": [
         "=alertTrack",
         "=warningTrack",
@@ -884,13 +884,13 @@
         "kUpperFiltered",
         "kLowerFiltered"
       ],
-      "plotShape": "cdg/depsp",
+      "plotShape": "cdg/track",
       "plotColor": [
         "=alertTrack",
         "=warningTrack",
         "=track_a1e3e3"
       ],
-      "historyTrailsSkipSteps": 5,
+      "historyTrailsSkipSteps": 2,
       "speedVectorColor": [
         "=alertTrack",
         "=warningTrack",
@@ -922,13 +922,13 @@
         "kUpperFiltered",
         "kLowerFiltered"
       ],
-      "plotShape": "cdg/depwe",
+      "plotShape": "cdg/track",
       "plotColor": [
         "=alertTrack",
         "=warningTrack",
         "=track_a1e3e3"
       ],
-      "historyTrailsSkipSteps": 5,
+      "historyTrailsSkipSteps": 2,
       "speedVectorColor": [
         "=alertTrack",
         "=warningTrack",
@@ -960,13 +960,13 @@
         "kUpperFiltered",
         "kLowerFiltered"
       ],
-      "plotShape": "cdg/depwl",
+      "plotShape": "cdg/track",
       "plotColor": [
         "=alertTrack",
         "=warningTrack",
         "=track_a1e3e3"
       ],
-      "historyTrailsSkipSteps": 5,
+      "historyTrailsSkipSteps": 2,
       "speedVectorColor": [
         "=alertTrack",
         "=warningTrack",
@@ -998,13 +998,13 @@
         "kUpperFiltered",
         "kLowerFiltered"
       ],
-      "plotShape": "cdg/depho",
+      "plotShape": "cdg/track",
       "plotColor": [
         "=alertTrack",
         "=warningTrack",
         "=track_a1e3e3"
       ],
-      "historyTrailsSkipSteps": 5,
+      "historyTrailsSkipSteps": 2,
       "speedVectorColor": [
         "=alertTrack",
         "=warningTrack",
@@ -1036,13 +1036,13 @@
         "kUpperFiltered",
         "kLowerFiltered"
       ],
-      "plotShape": "cdg/dephm",
+      "plotShape": "cdg/track",
       "plotColor": [
         "=alertTrack",
         "=warningTrack",
         "=track_a1e3e3"
       ],
-      "historyTrailsSkipSteps": 5,
+      "historyTrailsSkipSteps": 2,
       "speedVectorColor": [
         "=alertTrack",
         "=warningTrack",
@@ -1074,13 +1074,13 @@
         "kUpperFiltered",
         "kLowerFiltered"
       ],
-      "plotShape": "cdg/dephd",
+      "plotShape": "cdg/track",
       "plotColor": [
         "=alertTrack",
         "=warningTrack",
         "=track_a1e3e3"
       ],
-      "historyTrailsSkipSteps": 5,
+      "historyTrailsSkipSteps": 2,
       "speedVectorColor": [
         "=alertTrack",
         "=warningTrack",
@@ -1112,13 +1112,13 @@
         "kUpperFiltered",
         "kLowerFiltered"
       ],
-      "plotShape": "cdg/deporly",
+      "plotShape": "cdg/track",
       "plotColor": [
         "=alertTrack",
         "=warningTrack",
         "=track_65c0df"
       ],
-      "historyTrailsSkipSteps": 5,
+      "historyTrailsSkipSteps": 2,
       "speedVectorColor": [
         "=alertTrack",
         "=warningTrack",
@@ -1150,13 +1150,13 @@
         "kUpperFiltered",
         "kLowerFiltered"
       ],
-      "plotShape": "cdg/depptob",
+      "plotShape": "cdg/track",
       "plotColor": [
         "=alertTrack",
         "=warningTrack",
         "=track_65c0df"
       ],
-      "historyTrailsSkipSteps": 5,
+      "historyTrailsSkipSteps": 2,
       "speedVectorColor": [
         "=alertTrack",
         "=warningTrack",
@@ -1194,7 +1194,7 @@
         "=warningTrack",
         "=track_a1e3e3"
       ],
-      "historyTrailsSkipSteps": 5,
+      "historyTrailsSkipSteps": 2,
       "speedVectorColor": [
         "=alertTrack",
         "=warningTrack",
@@ -1231,13 +1231,13 @@
         "kUpperFiltered",
         "kLowerFiltered"
       ],
-      "plotShape": "cdg/vfr",
+      "plotShape": "cdg/track",
       "plotColor": [
         "=alertTrack",
         "=warningTrack",
         "=track_000000"
       ],
-      "historyTrailsSkipSteps": 5,
+      "historyTrailsSkipSteps": 2,
       "speedVectorColor": [
         "=alertTrack",
         "=warningTrack",
@@ -1264,13 +1264,13 @@
     {
       "description": "Z: other VFR",
       "applyWhen": "$cdgVFR",
-      "plotShape": "cdg/vfr",
+      "plotShape": "cdg/track",
       "plotColor": [
         "=alertTrack",
         "=warningTrack",
         "=track_000000"
       ],
-      "historyTrailsSkipSteps": 5,
+      "historyTrailsSkipSteps": 2,
       "speedVectorColor": [
         "=alertTrack",
         "=warningTrack",
@@ -1306,13 +1306,13 @@
         "kUpperFiltered",
         "kLowerFiltered"
       ],
-      "plotShape": "cdg/other",
+      "plotShape": "cdg/track",
       "plotColor": [
         "=alertTrack",
         "=warningTrack",
         "=track_000000"
       ],
-      "historyTrailsSkipSteps": 5,
+      "historyTrailsSkipSteps": 2,
       "speedVectorColor": [
         "=alertTrack",
         "=warningTrack",
@@ -1338,13 +1338,13 @@
     },
     {
       "description": "X: other traffic",
-      "plotShape": "cdg/other",
+      "plotShape": "cdg/track",
       "plotColor": [
         "=alertTrack",
         "=warningTrack",
         "=track_000000"
       ],
-      "historyTrailsSkipSteps": 5,
+      "historyTrailsSkipSteps": 2,
       "speedVectorColor": [
         "=alertTrack",
         "=warningTrack",

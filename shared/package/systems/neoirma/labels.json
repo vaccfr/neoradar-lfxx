@@ -505,10 +505,16 @@
     ]
   },
   "airborne": {
+    "tagPositioning": {
+      "minLeaderLength": 60,
+      "maxLeaderLength": 150,
+      "initialBearing": 45,
+      "initialLeaderLength": 85
+    },
     "styleDefaults": {
       "font": "B612MonoLFXX-Bold",
       "fontWeight": "normal",
-      "fontSize": 12,
+      "fontSize": 13,
       "detailedBackgroundColor": [25, 25, 25],
       "detailedBackgroundColorOpacity": 0.9,
       "detailedRoundedCorners": 2
@@ -613,16 +619,24 @@
           [
             {
               "itemName": "callsign",
+              "applyWhen": "$hasCallsignBox",
               "leftClick": "callsignMenu",
-              "color": ["=incomingTransferText", "=assumedText", "=handoffText"],
+              "color": ["=incomingTransferText", "=assumedText"],
               "backgroundColor": ["=incomingTransferBox", "=assumedBox"],
               "padding": [1, 3]
+            },
+            {
+              "itemName": "callsign",
+              "applyWhen": "$hasNoCallsignBox",
+              "leftClick": "callsignMenu",
+              "color": ["=handoffText"],
+              "padding": [1, 0]
             },
             {
               "itemName": "voiceType",
               "leftClick": "voiceTypeMenu",
               "mapping": {
-                "0": "",
+                "0": "/v",
                 "1": "/r",
                 "2": "/t"
               },
@@ -662,11 +676,11 @@
             },
             {
               "itemName": "verticalTrend",
-              "placeholder": ":imove-right",
+              "placeholder": "—",
               "mapping": {
-                "0": ":imove-right",
-                "1": ":imove-up-right",
-                "-1": ":imove-down-right"
+                "0": "—",
+                "1": "↗",
+                "-1": "↘"
               }
             },
             {
@@ -817,16 +831,24 @@
           [
             {
               "itemName": "callsign",
+              "applyWhen": "$hasCallsignBox",
               "leftClick": "callsignMenu",
-              "color": ["=incomingTransferText", "=assumedText", "=handoffText"],
+              "color": ["=incomingTransferText", "=assumedText"],
               "backgroundColor": ["=incomingTransferBox", "=assumedBox"],
               "padding": [1, 3]
+            },
+            {
+              "itemName": "callsign",
+              "applyWhen": "$hasNoCallsignBox",
+              "leftClick": "callsignMenu",
+              "color": ["=handoffText"],
+              "padding": [1, 0]
             },
             {
               "itemName": "voiceType",
               "leftClick": "voiceTypeMenu",
               "mapping": {
-                "0": "",
+                "0": "/v",
                 "1": "/r",
                 "2": "/t"
               },
@@ -866,11 +888,11 @@
             },
             {
               "itemName": "verticalTrend",
-              "placeholder": ":imove-right",
+              "placeholder": "—",
               "mapping": {
-                "0": ":imove-right",
-                "1": ":imove-up-right",
-                "-1": ":imove-down-right"
+                "0": "—",
+                "1": "↗",
+                "-1": "↘"
               }
             },
             {
@@ -1007,10 +1029,18 @@
           [
             {
               "itemName": "callsign",
+              "applyWhen": "$hasCallsignBox",
               "leftClick": "callsignMenu",
-              "color": ["=incomingTransferText", "=assumedText", "=handoffText"],
+              "color": ["=incomingTransferText", "=assumedText"],
               "backgroundColor": ["=incomingTransferBox", "=assumedBox"],
               "padding": [1, 3]
+            },
+            {
+              "itemName": "callsign",
+              "applyWhen": "$hasNoCallsignBox",
+              "leftClick": "callsignMenu",
+              "color": ["=handoffText"],
+              "padding": [1, 0]
             },
             {
               "itemName": "voiceType",
@@ -1043,11 +1073,11 @@
             },
             {
               "itemName": "verticalTrend",
-              "placeholder": ":imove-right",
+              "placeholder": "—",
               "mapping": {
-                "0": ":imove-right",
-                "1": ":imove-up-right",
-                "-1": ":imove-down-right"
+                "0": "—",
+                "1": "↗",
+                "-1": "↘"
               }
             },
             {
@@ -1157,10 +1187,18 @@
           [
             {
               "itemName": "callsign",
+              "applyWhen": "$hasCallsignBox",
               "leftClick": "callsignMenu",
-              "color": ["=incomingTransferText", "=assumedText", "=handoffText"],
+              "color": ["=incomingTransferText", "=assumedText"],
               "backgroundColor": ["=incomingTransferBox", "=assumedBox"],
               "padding": [1, 3]
+            },
+            {
+              "itemName": "callsign",
+              "applyWhen": "$hasNoCallsignBox",
+              "leftClick": "callsignMenu",
+              "color": ["=handoffText"],
+              "padding": [1, 0]
             },
             {
               "itemName": "voiceType",
@@ -1193,11 +1231,11 @@
             },
             {
               "itemName": "verticalTrend",
-              "placeholder": ":imove-right",
+              "placeholder": "—",
               "mapping": {
-                "0": ":imove-right",
-                "1": ":imove-up-right",
-                "-1": ":imove-down-right"
+                "0": "—",
+                "1": "↗",
+                "-1": "↘"
               }
             },
             {

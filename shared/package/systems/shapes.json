@@ -1449,7 +1449,7 @@
       ]
     },
     "neoirma/trail": {
-      "description": "IRMA history trail mark: a 4 px ring; targets.json's scaleRamp makes the last three 3 px.",
+      "description": "IRMA history trail mark: a 4 px ring; targets.json's scaleRamp draws the first three at 5 px and the last three at 3 px (radius 2.5 then 1.5, crisp on the pixel grid).",
       "rotateWithHeading": false,
       "elements": [
         {

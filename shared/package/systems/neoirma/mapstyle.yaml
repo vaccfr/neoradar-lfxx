@@ -48,7 +48,8 @@ layerStyles:
   
 
 # Route draw in CoFrance's route colours (CoFrance.toml [Route display colors]): a thin line,
-# small crosses at the fixes, and labels on a dark plate so they stay readable over the map.
+# small crosses at the fixes, and labels as 4-Flight's flight leg draws them: a regular mono face on a
+# dark rounded box, so they stay readable over the map.
 routeDraw:
   lineStyle:
     color: [160, 216, 180]
@@ -62,13 +63,15 @@ routeDraw:
     fillOpacity: 0
   textStyle:
     color: [160, 216, 180]
-    fontFamily: B612MonoLFXX-Bold
-    fontSize: 10
-    lineHeight: 12
-    offset: [6, -6]
-    backgroundColor: [45, 48, 54]
-    backgroundOpacity: 0.85
-    padding: 2
+    fontFamily: RobotoMono
+    fontWeight: normal
+    fontSize: 12
+    lineHeight: 14
+    offset: [8, -8]
+    backgroundColor: [44, 50, 56]
+    backgroundOpacity: 0.9
+    padding: 3
+    cornerRadius: 4
 
 # Radio direction finder: the circle drawn round an aircraft while it transmits.
 rdf:

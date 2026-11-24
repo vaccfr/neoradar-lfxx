@@ -31,7 +31,7 @@
             183
           ]
         ],
-        "historyTrailsSkipSteps": 3,
+        "historyTrailsSkipSteps": 1,
         "historyTrailShape": {
           "shape": "neoirma/ground-trail",
           "steps": 3,
@@ -73,7 +73,7 @@
             183
           ]
         ],
-        "historyTrailsSkipSteps": 3,
+        "historyTrailsSkipSteps": 1,
         "historyTrailShape": {
           "shape": "neoirma/ground-trail",
           "steps": 3,
@@ -115,7 +115,7 @@
             183
           ]
         ],
-        "historyTrailsSkipSteps": 3,
+        "historyTrailsSkipSteps": 1,
         "historyTrailShape": {
           "shape": "neoirma/ground-trail",
           "steps": 3,
@@ -143,7 +143,7 @@
         "=warningTrack",
         "=track_d597a3"
       ],
-      "historyTrailsSkipSteps": 5,
+      "historyTrailsSkipSteps": 2,
       "speedVectorColor": [
         "=alertTrack",
         "=warningTrack",
@@ -158,9 +158,9 @@
           "=track_d597a3"
         ],
         "scaleRamp": [
-          1,
-          1,
-          1,
+          1.25,
+          1.25,
+          1.25,
           0.75,
           0.75,
           0.75
@@ -181,7 +181,7 @@
         "=warningTrack",
         "=track_63bbd9"
       ],
-      "historyTrailsSkipSteps": 5,
+      "historyTrailsSkipSteps": 2,
       "speedVectorColor": [
         "=alertTrack",
         "=warningTrack",
@@ -196,9 +196,9 @@
           "=track_63bbd9"
         ],
         "scaleRamp": [
-          1,
-          1,
-          1,
+          1.25,
+          1.25,
+          1.25,
           0.75,
           0.75,
           0.75
@@ -223,7 +223,7 @@
         "=warningTrack",
         "=track_8e8e8e"
       ],
-      "historyTrailsSkipSteps": 5,
+      "historyTrailsSkipSteps": 2,
       "speedVectorColor": [
         "=alertTrack",
         "=warningTrack",
@@ -238,9 +238,9 @@
           "=track_8e8e8e"
         ],
         "scaleRamp": [
-          1,
-          1,
-          1,
+          1.25,
+          1.25,
+          1.25,
           0.75,
           0.75,
           0.75
@@ -255,7 +255,7 @@
         "=warningTrack",
         "=track_8e8e8e"
       ],
-      "historyTrailsSkipSteps": 5,
+      "historyTrailsSkipSteps": 2,
       "speedVectorColor": [
         "=alertTrack",
         "=warningTrack",
@@ -270,9 +270,9 @@
           "=track_8e8e8e"
         ],
         "scaleRamp": [
-          1,
-          1,
-          1,
+          1.25,
+          1.25,
+          1.25,
           0.75,
           0.75,
           0.75

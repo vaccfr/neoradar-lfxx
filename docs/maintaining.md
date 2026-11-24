@@ -170,34 +170,46 @@ by state, so the state is shown in reverse video, the same in both systems whate
 | Transferred out | hand-off green text, no box |
 | Other | the track colour, no box |
 
-The callsign item has `padding: [1, 3]` so the plate does not sit hard against the glyphs.
+The callsign is two items: with its plate (`$hasCallsignBox`) it has `padding: [1, 3]` so the
+plate does not sit hard against the glyphs; without one (`$hasNoCallsignBox`) `[1, 0]`, so it
+lines up with the other rows. The detailed airborne tags show the voice type after it as `/v`,
+`/r` or `/t` (the compact ones only `/r` and `/t`), so the voice-type menu is always a click away.
 Boxes in the track colour were hard to tell apart from the map and from each other; one plate
 per state, darker than the map, reads at a glance.
 
 Track symbols are vector shapes (`shapes.json`), coloured by each variant's `plotColor`, not
-sprites. CDG's letters are 1 px stroke glyphs (`font/A`…`font/Z`, 4 x 6), composed above or below
-the disc at a HALF-pixel x (-1.5 for one letter, -4.5 and 1.5 for two). A pixel-bold version (each
-glyph drawn twice, one pixel apart) was tried and read too heavy. The client snaps vertical 1 px strokes to pixel
-centres but not diagonals, so a glyph at a whole-pixel x gets one straight side and one round one
-(O read as D). The CDG disc is three filled rectangles kept inside a 4.5 px radius (every client
+sprites. CDG's flow letters (`S`, `NN`…) are text at the base of the leader line, as at Paris-CDG:
+the plot is the bare disc (`cdg/track`), and each label style variant's `leaderBase` writes its
+flow's letters (`text`) 13 px from the aircraft towards the tag, in the tag's font and the track
+colour (alerts included), with the leader starting 22 px out, beyond them (client with
+`leaderBase`). The letters go round the disc with the tag: the CDG airborne `tagPositioning` puts
+a new tag up and right (`initialBearing` 45, 85 px to its centre) and keeps it on the eight 45
+degree positions while it is dragged (`snapWhileDragging`), 60 to 150 px out, so the letters take
+one of eight places too. IRMA's airborne tags start and stay within the same distances, but drag freely. They were first 4 x 6 stroke glyphs under the disc (`font/A`…`font/Z`,
+still in `shapes.json` with the old composites `cdg/arrsouth`…): too small, and scaled up they
+blurred or outgrew the tag text. The CDG disc is three filled rectangles kept inside a 4.5 px radius (every client
 fills rectangles) under a 1 px ring at 4.5 px, whose anti-aliased edge makes the disc round: the
 client fills a circle (0.4.4) with hard pixel rows, no smoother than the rectangles, and an older
 client would draw it hollow. Other polygons fill only when they are axis-aligned rectangles.
 
 Both mapstyles carry the CoFrance route draw (thin `route_line` green, small crosses, fix labels
-on a dark plate) and the RDF circle (0.5 NM: the radius is in NM and never clamped, so 10 NM
+as 4-Flight's flight leg draws them: RobotoMono regular 12 px, a client font, on a dark slate box
+with 4 px rounded corners, `cornerRadius`; the bold 10 px B612 on a square plate was hard to read) and the RDF circle (0.5 NM: the radius is in NM and never clamped, so 10 NM
 filled an approach display; `circleThreshold` only hides one smaller than that many pixels).
 Trails are vector shapes in the track colour, sized per mark by `historyTrailShape.scaleRamp`
 (client 0.4.4): CDG's ring (`cdg/trail`, radius 4.5, stroke 1.3) at 3.5, 3.5, 2.5, 2.5, 1.5,
 1.5 px radius, every mark inside the disc's size and on whole pixels (a ring of radius n + 0.5 on
-the pixel grid is the crispest a small circle gets); IRMA's 4 px ring (`neoirma/trail`), three
-then three at 3 px.
+the pixel grid is the crispest a small circle gets); IRMA's ring (`neoirma/trail`), three
+at 5 px then three at 3 px, so the recent half of the trail stands out.
 Profiles refresh like a radar (`map.sweepIntervalSeconds`, from `build.py`): approach every
 `APPROACH_SWEEP_SECONDS` (2 s), AVISOs every `GROUND_SWEEP_SECONDS` (1 s). Aircraft and trails
-move together once per sweep, one trail mark per previous sweep, never one on the aircraft.
-Without a sweep the client pins the marks to every `historyTrailsSkipSteps`-th update while the
-aircraft moves on every one, so the trail stalls and then jumps. The tag trend arrows are Lucide
-icons (`:imove-up-right`…).
+move together once per sweep, never a mark on the aircraft. `historyTrailsSkipSteps` spaces the
+marks in sweeps, counted back from the aircraft, and the trail still moves on every sweep: both
+approach systems put a mark every other sweep (2, so 4 s apart); the AVISO ground looks one per sweep (1). A client before the fix
+ignored it on a swept display (one mark per sweep), and without a sweep pinned the marks to
+every n-th update, so the trail stalled and then jumped. The tag's vertical trend is text in the
+tag font, as heavy as the rest of the tag: `↗` climbing, `↘` descending, a long dash `—` level
+(the Lucide icons `:imove-up-right`… were too thin to read, and an arrow for level flight misled).
 
 **Tags.** The airborne rows are the same in both systems. The detailed tag (hover) shows
 everything the compact one does, and more: never let a hover lose an item. While you hand a
@@ -233,7 +245,8 @@ Both systems draw tags and route-draw labels in B612 Mono LFXX Bold (`fonts/B612
 cockpit-display font B612 Mono Bold, with a bar added in the zero so 0 and O differ (B612 draws
 them alike). `scripts/font_zero.py` makes it from upstream's `B612Mono-Bold.ttf`. SIL OFL, no
 reserved name: keep `B612-OFL.txt` beside it. 12 px takes the width and line height of 13 px
-EuroScope, with taller capitals.
+EuroScope, with taller capitals; the airborne tags are 13 px, since the pastel track colours on
+the grey map read poorly at 12. A thinner stroke (`textWeight` -0.15) was tried and read worse.
 
 **Squawks** come from CCAMS: `squawk.http` in `packages.json` is written to the package manifest
 as is (`package/manifest.schema.json` in the schemas describes it). Each system's policy can still

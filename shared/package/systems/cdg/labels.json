@@ -2,10 +2,19 @@
   "$schema": "https://raw.githubusercontent.com/neoradar-project/schemas/refs/heads/main/systems/labels.schema.json",
   "ground": "#neoirma",
   "airborne": {
+    "tagPositioning": {
+      "rotationEnabled": true,
+      "stepDegrees": 45,
+      "snapWhileDragging": true,
+      "minLeaderLength": 60,
+      "maxLeaderLength": 150,
+      "initialBearing": 45,
+      "initialLeaderLength": 85
+    },
     "styleDefaults": {
       "font": "B612MonoLFXX-Bold",
       "fontWeight": "normal",
-      "fontSize": 12,
+      "fontSize": 13,
       "detailedBackgroundColor": [25, 25, 25],
       "detailedBackgroundColorOpacity": 0.9,
       "detailedRoundedCorners": 2
@@ -110,16 +119,24 @@
           [
             {
               "itemName": "callsign",
+              "applyWhen": "$hasCallsignBox",
               "leftClick": "callsignMenu",
-              "color": ["=incomingTransferText", "=assumedText", "=handoffText"],
+              "color": ["=incomingTransferText", "=assumedText"],
               "backgroundColor": ["=incomingTransferBox", "=assumedBox"],
               "padding": [1, 3]
+            },
+            {
+              "itemName": "callsign",
+              "applyWhen": "$hasNoCallsignBox",
+              "leftClick": "callsignMenu",
+              "color": ["=handoffText"],
+              "padding": [1, 0]
             },
             {
               "itemName": "voiceType",
               "leftClick": "voiceTypeMenu",
               "mapping": {
-                "0": "",
+                "0": "/v",
                 "1": "/r",
                 "2": "/t"
               },
@@ -159,11 +176,11 @@
             },
             {
               "itemName": "verticalTrend",
-              "placeholder": ":imove-right",
+              "placeholder": "—",
               "mapping": {
-                "0": ":imove-right",
-                "1": ":imove-up-right",
-                "-1": ":imove-down-right"
+                "0": "—",
+                "1": "↗",
+                "-1": "↘"
               }
             },
             {
@@ -314,16 +331,24 @@
           [
             {
               "itemName": "callsign",
+              "applyWhen": "$hasCallsignBox",
               "leftClick": "callsignMenu",
-              "color": ["=incomingTransferText", "=assumedText", "=handoffText"],
+              "color": ["=incomingTransferText", "=assumedText"],
               "backgroundColor": ["=incomingTransferBox", "=assumedBox"],
               "padding": [1, 3]
+            },
+            {
+              "itemName": "callsign",
+              "applyWhen": "$hasNoCallsignBox",
+              "leftClick": "callsignMenu",
+              "color": ["=handoffText"],
+              "padding": [1, 0]
             },
             {
               "itemName": "voiceType",
               "leftClick": "voiceTypeMenu",
               "mapping": {
-                "0": "",
+                "0": "/v",
                 "1": "/r",
                 "2": "/t"
               },
@@ -363,11 +388,11 @@
             },
             {
               "itemName": "verticalTrend",
-              "placeholder": ":imove-right",
+              "placeholder": "—",
               "mapping": {
-                "0": ":imove-right",
-                "1": ":imove-up-right",
-                "-1": ":imove-down-right"
+                "0": "—",
+                "1": "↗",
+                "-1": "↘"
               }
             },
             {
@@ -504,10 +529,18 @@
           [
             {
               "itemName": "callsign",
+              "applyWhen": "$hasCallsignBox",
               "leftClick": "callsignMenu",
-              "color": ["=incomingTransferText", "=assumedText", "=handoffText"],
+              "color": ["=incomingTransferText", "=assumedText"],
               "backgroundColor": ["=incomingTransferBox", "=assumedBox"],
               "padding": [1, 3]
+            },
+            {
+              "itemName": "callsign",
+              "applyWhen": "$hasNoCallsignBox",
+              "leftClick": "callsignMenu",
+              "color": ["=handoffText"],
+              "padding": [1, 0]
             },
             {
               "itemName": "voiceType",
@@ -540,11 +573,11 @@
             },
             {
               "itemName": "verticalTrend",
-              "placeholder": ":imove-right",
+              "placeholder": "—",
               "mapping": {
-                "0": ":imove-right",
-                "1": ":imove-up-right",
-                "-1": ":imove-down-right"
+                "0": "—",
+                "1": "↗",
+                "-1": "↘"
               }
             },
             {
@@ -654,10 +687,18 @@
           [
             {
               "itemName": "callsign",
+              "applyWhen": "$hasCallsignBox",
               "leftClick": "callsignMenu",
-              "color": ["=incomingTransferText", "=assumedText", "=handoffText"],
+              "color": ["=incomingTransferText", "=assumedText"],
               "backgroundColor": ["=incomingTransferBox", "=assumedBox"],
               "padding": [1, 3]
+            },
+            {
+              "itemName": "callsign",
+              "applyWhen": "$hasNoCallsignBox",
+              "leftClick": "callsignMenu",
+              "color": ["=handoffText"],
+              "padding": [1, 0]
             },
             {
               "itemName": "voiceType",
@@ -690,11 +731,11 @@
             },
             {
               "itemName": "verticalTrend",
-              "placeholder": ":imove-right",
+              "placeholder": "—",
               "mapping": {
-                "0": ":imove-right",
-                "1": ":imove-up-right",
-                "-1": ":imove-down-right"
+                "0": "—",
+                "1": "↗",
+                "-1": "↘"
               }
             },
             {
@@ -730,217 +771,248 @@
         "applyWhen": "$cdgLocalPGPB",
         "applyToFilterStates": ["kUnfiltered", "kUpperFiltered", "kLowerFiltered"],
         "textColor": [212, 212, 185],
-        "leaderLineColor": [212, 212, 185]
+        "leaderLineColor": [212, 212, 185],
+        "leaderBase": {"text": "G", "distance": 13, "leaderStart": 22, "color": ["=alertTrack", "=warningTrack", "=track_d4d4b9"]}
       },
       {
         "description": "P: local flight Orly group",
         "applyWhen": "$cdgLocalOrly",
         "applyToFilterStates": ["kUnfiltered", "kUpperFiltered", "kLowerFiltered"],
         "textColor": [212, 212, 185],
-        "leaderLineColor": [212, 212, 185]
+        "leaderLineColor": [212, 212, 185],
+        "leaderBase": {"text": "P", "distance": 13, "leaderStart": 22, "color": ["=alertTrack", "=warningTrack", "=track_d4d4b9"]}
       },
       {
         "description": "S: CDG arrival, IFR, south runways 08/26",
         "applyWhen": "$cdgArrSouth",
         "applyToFilterStates": ["kUnfiltered", "kUpperFiltered", "kLowerFiltered"],
         "textColor": [227, 157, 157],
-        "leaderLineColor": [227, 157, 157]
+        "leaderLineColor": [227, 157, 157],
+        "leaderBase": {"text": "S", "distance": 13, "leaderStart": 22, "color": ["=alertTrack", "=warningTrack", "=track_e39d9d"]}
       },
       {
         "description": "N: CDG arrival, north runways 09/27",
         "applyWhen": "$cdgArrNorth",
         "applyToFilterStates": ["kUnfiltered", "kUpperFiltered", "kLowerFiltered"],
         "textColor": [227, 184, 203],
-        "leaderLineColor": [227, 184, 203]
+        "leaderLineColor": [227, 184, 203],
+        "leaderBase": {"text": "N", "distance": 13, "leaderStart": 22, "color": ["=alertTrack", "=warningTrack", "=track_e3b8cb"]}
       },
       {
         "description": "B: Le Bourget arrival",
         "applyWhen": "$cdgArrBourget",
         "applyToFilterStates": ["kUnfiltered", "kUpperFiltered", "kLowerFiltered"],
         "textColor": [211, 150, 227],
-        "leaderLineColor": [211, 150, 227]
+        "leaderLineColor": [211, 150, 227],
+        "leaderBase": {"text": "B", "distance": 13, "leaderStart": 22, "color": ["=alertTrack", "=warningTrack", "=track_d396e3"]}
       },
       {
         "description": "O: Orly arrival",
         "applyWhen": "$cdgArrOrly",
         "applyToFilterStates": ["kUnfiltered", "kUpperFiltered", "kLowerFiltered"],
         "textColor": [227, 177, 124],
-        "leaderLineColor": [227, 177, 124]
+        "leaderLineColor": [227, 177, 124],
+        "leaderBase": {"text": "O", "distance": 13, "leaderStart": 22, "color": ["=alertTrack", "=warningTrack", "=track_e3b17c"]}
       },
       {
         "description": "A: Pontoise / Beauvais arrival, IFR",
         "applyWhen": "$cdgArrPTOB",
         "applyToFilterStates": ["kUnfiltered", "kUpperFiltered", "kLowerFiltered"],
         "textColor": [227, 177, 124],
-        "leaderLineColor": [227, 177, 124]
+        "leaderLineColor": [227, 177, 124],
+        "leaderBase": {"text": "A", "distance": 13, "leaderStart": 22, "color": ["=alertTrack", "=warningTrack", "=track_e3b17c"]}
       },
       {
         "description": "V: Toussus / Villacoublay arrival",
         "applyWhen": "$cdgArrPNPV",
         "applyToFilterStates": ["kUnfiltered", "kUpperFiltered", "kLowerFiltered"],
         "textColor": [76, 188, 56],
-        "leaderLineColor": [76, 188, 56]
+        "leaderLineColor": [76, 188, 56],
+        "leaderBase": {"text": "V", "distance": 13, "leaderStart": 22, "color": ["=alertTrack", "=warningTrack", "=track_4cbc38"]}
       },
       {
         "description": "R: CDG arrival, runway unknown",
         "applyWhen": "$cdgArrCDG",
         "applyToFilterStates": ["kUnfiltered", "kUpperFiltered", "kLowerFiltered"],
         "textColor": [212, 212, 185],
-        "leaderLineColor": [212, 212, 185]
+        "leaderLineColor": [212, 212, 185],
+        "leaderBase": {"text": "R", "distance": 13, "leaderStart": 22, "color": ["=alertTrack", "=warningTrack", "=track_d4d4b9"]}
       },
       {
         "description": "NN: CDG / Le Bourget departure via NURMO",
         "applyWhen": "$cdgDepNN",
         "applyToFilterStates": ["kUnfiltered", "kUpperFiltered", "kLowerFiltered"],
         "textColor": [161, 227, 227],
-        "leaderLineColor": [161, 227, 227]
+        "leaderLineColor": [161, 227, 227],
+        "leaderBase": {"text": "NN", "distance": 13, "leaderStart": 22, "color": ["=alertTrack", "=warningTrack", "=track_a1e3e3"]}
       },
       {
         "description": "NO: CDG / Le Bourget departure via OPALE",
         "applyWhen": "$cdgDepNO",
         "applyToFilterStates": ["kUnfiltered", "kUpperFiltered", "kLowerFiltered"],
         "textColor": [161, 227, 227],
-        "leaderLineColor": [161, 227, 227]
+        "leaderLineColor": [161, 227, 227],
+        "leaderBase": {"text": "NO", "distance": 13, "leaderStart": 22, "color": ["=alertTrack", "=warningTrack", "=track_a1e3e3"]}
       },
       {
         "description": "NA: CDG / Le Bourget departure via ATREX",
         "applyWhen": "$cdgDepNA",
         "applyToFilterStates": ["kUnfiltered", "kUpperFiltered", "kLowerFiltered"],
         "textColor": [161, 227, 227],
-        "leaderLineColor": [161, 227, 227]
+        "leaderLineColor": [161, 227, 227],
+        "leaderBase": {"text": "NA", "distance": 13, "leaderStart": 22, "color": ["=alertTrack", "=warningTrack", "=track_a1e3e3"]}
       },
       {
         "description": "NM: CDG / Le Bourget departure via MTD",
         "applyWhen": "$cdgDepNM",
         "applyToFilterStates": ["kUnfiltered", "kUpperFiltered", "kLowerFiltered"],
         "textColor": [161, 227, 227],
-        "leaderLineColor": [161, 227, 227]
+        "leaderLineColor": [161, 227, 227],
+        "leaderBase": {"text": "NM", "distance": 13, "leaderStart": 22, "color": ["=alertTrack", "=warningTrack", "=track_a1e3e3"]}
       },
       {
         "description": "ER: CDG / Le Bourget departure via RANUX",
         "applyWhen": "$cdgDepER",
         "applyToFilterStates": ["kUnfiltered", "kUpperFiltered", "kLowerFiltered"],
         "textColor": [161, 227, 227],
-        "leaderLineColor": [161, 227, 227]
+        "leaderLineColor": [161, 227, 227],
+        "leaderBase": {"text": "ER", "distance": 13, "leaderStart": 22, "color": ["=alertTrack", "=warningTrack", "=track_a1e3e3"]}
       },
       {
         "description": "EL: CDG / Le Bourget departure via LANVI",
         "applyWhen": "$cdgDepEL",
         "applyToFilterStates": ["kUnfiltered", "kUpperFiltered", "kLowerFiltered"],
         "textColor": [161, 227, 227],
-        "leaderLineColor": [161, 227, 227]
+        "leaderLineColor": [161, 227, 227],
+        "leaderBase": {"text": "EL", "distance": 13, "leaderStart": 22, "color": ["=alertTrack", "=warningTrack", "=track_a1e3e3"]}
       },
       {
         "description": "EB: CDG / Le Bourget departure via BUBLI",
         "applyWhen": "$cdgDepEB",
         "applyToFilterStates": ["kUnfiltered", "kUpperFiltered", "kLowerFiltered"],
         "textColor": [161, 227, 227],
-        "leaderLineColor": [161, 227, 227]
+        "leaderLineColor": [161, 227, 227],
+        "leaderBase": {"text": "EB", "distance": 13, "leaderStart": 22, "color": ["=alertTrack", "=warningTrack", "=track_a1e3e3"]}
       },
       {
         "description": "EN: CDG / Le Bourget departure via NIPOR",
         "applyWhen": "$cdgDepEN",
         "applyToFilterStates": ["kUnfiltered", "kUpperFiltered", "kLowerFiltered"],
         "textColor": [161, 227, 227],
-        "leaderLineColor": [161, 227, 227]
+        "leaderLineColor": [161, 227, 227],
+        "leaderBase": {"text": "EN", "distance": 13, "leaderStart": 22, "color": ["=alertTrack", "=warningTrack", "=track_a1e3e3"]}
       },
       {
         "description": "ED: CDG / Le Bourget departure via DIKOL",
         "applyWhen": "$cdgDepED",
         "applyToFilterStates": ["kUnfiltered", "kUpperFiltered", "kLowerFiltered"],
         "textColor": [161, 227, 227],
-        "leaderLineColor": [161, 227, 227]
+        "leaderLineColor": [161, 227, 227],
+        "leaderBase": {"text": "ED", "distance": 13, "leaderStart": 22, "color": ["=alertTrack", "=warningTrack", "=track_a1e3e3"]}
       },
       {
         "description": "EX: CDG / Le Bourget departure via BAXIR",
         "applyWhen": "$cdgDepEX",
         "applyToFilterStates": ["kUnfiltered", "kUpperFiltered", "kLowerFiltered"],
         "textColor": [161, 227, 227],
-        "leaderLineColor": [161, 227, 227]
+        "leaderLineColor": [161, 227, 227],
+        "leaderBase": {"text": "EX", "distance": 13, "leaderStart": 22, "color": ["=alertTrack", "=warningTrack", "=track_a1e3e3"]}
       },
       {
         "description": "SE: CDG / Le Bourget departure via ERIXU",
         "applyWhen": "$cdgDepSE",
         "applyToFilterStates": ["kUnfiltered", "kUpperFiltered", "kLowerFiltered"],
         "textColor": [161, 227, 227],
-        "leaderLineColor": [161, 227, 227]
+        "leaderLineColor": [161, 227, 227],
+        "leaderBase": {"text": "SE", "distance": 13, "leaderStart": 22, "color": ["=alertTrack", "=warningTrack", "=track_a1e3e3"]}
       },
       {
         "description": "SA: CDG / Le Bourget departure via AGOPA",
         "applyWhen": "$cdgDepSA",
         "applyToFilterStates": ["kUnfiltered", "kUpperFiltered", "kLowerFiltered"],
         "textColor": [161, 227, 227],
-        "leaderLineColor": [161, 227, 227]
+        "leaderLineColor": [161, 227, 227],
+        "leaderBase": {"text": "SA", "distance": 13, "leaderStart": 22, "color": ["=alertTrack", "=warningTrack", "=track_a1e3e3"]}
       },
       {
         "description": "SL: CDG / Le Bourget departure via LATRA",
         "applyWhen": "$cdgDepSL",
         "applyToFilterStates": ["kUnfiltered", "kUpperFiltered", "kLowerFiltered"],
         "textColor": [161, 227, 227],
-        "leaderLineColor": [161, 227, 227]
+        "leaderLineColor": [161, 227, 227],
+        "leaderBase": {"text": "SL", "distance": 13, "leaderStart": 22, "color": ["=alertTrack", "=warningTrack", "=track_a1e3e3"]}
       },
       {
         "description": "SO: CDG / Le Bourget departure via OKASI",
         "applyWhen": "$cdgDepSO",
         "applyToFilterStates": ["kUnfiltered", "kUpperFiltered", "kLowerFiltered"],
         "textColor": [161, 227, 227],
-        "leaderLineColor": [161, 227, 227]
+        "leaderLineColor": [161, 227, 227],
+        "leaderBase": {"text": "SO", "distance": 13, "leaderStart": 22, "color": ["=alertTrack", "=warningTrack", "=track_a1e3e3"]}
       },
       {
         "description": "SP: CDG / Le Bourget departure via PILUL",
         "applyWhen": "$cdgDepSP",
         "applyToFilterStates": ["kUnfiltered", "kUpperFiltered", "kLowerFiltered"],
         "textColor": [161, 227, 227],
-        "leaderLineColor": [161, 227, 227]
+        "leaderLineColor": [161, 227, 227],
+        "leaderBase": {"text": "SP", "distance": 13, "leaderStart": 22, "color": ["=alertTrack", "=warningTrack", "=track_a1e3e3"]}
       },
       {
         "description": "WE: CDG / Le Bourget departure via ELCOB",
         "applyWhen": "$cdgDepWE",
         "applyToFilterStates": ["kUnfiltered", "kUpperFiltered", "kLowerFiltered"],
         "textColor": [161, 227, 227],
-        "leaderLineColor": [161, 227, 227]
+        "leaderLineColor": [161, 227, 227],
+        "leaderBase": {"text": "WE", "distance": 13, "leaderStart": 22, "color": ["=alertTrack", "=warningTrack", "=track_a1e3e3"]}
       },
       {
         "description": "WL: CDG / Le Bourget departure via LGL",
         "applyWhen": "$cdgDepWL",
         "applyToFilterStates": ["kUnfiltered", "kUpperFiltered", "kLowerFiltered"],
         "textColor": [161, 227, 227],
-        "leaderLineColor": [161, 227, 227]
+        "leaderLineColor": [161, 227, 227],
+        "leaderBase": {"text": "WL", "distance": 13, "leaderStart": 22, "color": ["=alertTrack", "=warningTrack", "=track_a1e3e3"]}
       },
       {
         "description": "HO: CDG / Le Bourget departure via OLZOM",
         "applyWhen": "$cdgDepHO",
         "applyToFilterStates": ["kUnfiltered", "kUpperFiltered", "kLowerFiltered"],
         "textColor": [161, 227, 227],
-        "leaderLineColor": [161, 227, 227]
+        "leaderLineColor": [161, 227, 227],
+        "leaderBase": {"text": "HO", "distance": 13, "leaderStart": 22, "color": ["=alertTrack", "=warningTrack", "=track_a1e3e3"]}
       },
       {
         "description": "HM: CDG / Le Bourget departure via MONOT",
         "applyWhen": "$cdgDepHM",
         "applyToFilterStates": ["kUnfiltered", "kUpperFiltered", "kLowerFiltered"],
         "textColor": [161, 227, 227],
-        "leaderLineColor": [161, 227, 227]
+        "leaderLineColor": [161, 227, 227],
+        "leaderBase": {"text": "HM", "distance": 13, "leaderStart": 22, "color": ["=alertTrack", "=warningTrack", "=track_a1e3e3"]}
       },
       {
         "description": "HD: CDG / Le Bourget departure via DORDI",
         "applyWhen": "$cdgDepHD",
         "applyToFilterStates": ["kUnfiltered", "kUpperFiltered", "kLowerFiltered"],
         "textColor": [161, 227, 227],
-        "leaderLineColor": [161, 227, 227]
+        "leaderLineColor": [161, 227, 227],
+        "leaderBase": {"text": "HD", "distance": 13, "leaderStart": 22, "color": ["=alertTrack", "=warningTrack", "=track_a1e3e3"]}
       },
       {
         "description": "T: Orly group departure",
         "applyWhen": "$cdgDepOrly",
         "applyToFilterStates": ["kUnfiltered", "kUpperFiltered", "kLowerFiltered"],
         "textColor": [101, 192, 223],
-        "leaderLineColor": [101, 192, 223]
+        "leaderLineColor": [101, 192, 223],
+        "leaderBase": {"text": "T", "distance": 13, "leaderStart": 22, "color": ["=alertTrack", "=warningTrack", "=track_65c0df"]}
       },
       {
         "description": "T: Pontoise / Beauvais departure, IFR",
         "applyWhen": "$cdgDepPTOB",
         "applyToFilterStates": ["kUnfiltered", "kUpperFiltered", "kLowerFiltered"],
         "textColor": [101, 192, 223],
-        "leaderLineColor": [101, 192, 223]
+        "leaderLineColor": [101, 192, 223],
+        "leaderBase": {"text": "T", "distance": 13, "leaderStart": 22, "color": ["=alertTrack", "=warningTrack", "=track_65c0df"]}
       },
       {
         "description": "CDG / Le Bourget departure",
@@ -956,6 +1028,7 @@
         "applyToFilterStates": ["kUnfiltered", "kUpperFiltered", "kLowerFiltered"],
         "textColor": [0, 0, 0],
         "leaderLineColor": [0, 0, 0],
+        "leaderBase": {"text": "Z", "distance": 13, "leaderStart": 22, "color": ["=alertTrack", "=warningTrack", "=track_000000"]},
         "detailedTextColor": [212, 212, 185]
       },
       {
@@ -963,6 +1036,7 @@
         "applyWhen": "$cdgVFR",
         "textColor": [0, 0, 0],
         "leaderLineColor": [0, 0, 0],
+        "leaderBase": {"text": "Z", "distance": 13, "leaderStart": 22, "color": ["=alertTrack", "=warningTrack", "=track_000000"]},
         "detailedTextColor": [212, 212, 185]
       },
       {
@@ -971,12 +1045,14 @@
         "applyToFilterStates": ["kUnfiltered", "kUpperFiltered", "kLowerFiltered"],
         "textColor": [0, 0, 0],
         "leaderLineColor": [0, 0, 0],
+        "leaderBase": {"text": "X", "distance": 13, "leaderStart": 22, "color": ["=alertTrack", "=warningTrack", "=track_000000"]},
         "detailedTextColor": [212, 212, 185]
       },
       {
         "description": "X: other traffic",
         "textColor": [0, 0, 0],
         "leaderLineColor": [0, 0, 0],
+        "leaderBase": {"text": "X", "distance": 13, "leaderStart": 22, "color": ["=alertTrack", "=warningTrack", "=track_000000"]},
         "detailedTextColor": [212, 212, 185]
       }
     ]

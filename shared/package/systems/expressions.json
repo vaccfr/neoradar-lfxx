@@ -235,6 +235,8 @@
     "isInboundTransfer": ["==", "attentionState", "2"],
     "isOutboundTransfer": ["==", "attentionState", "4"],
     "isOwnedOrOffered": ["OR", ["$isInboundTransfer", "$isAssumed", "$isOutboundTransfer"]],
+    "hasCallsignBox": ["OR", ["$isInboundTransfer", "$isAssumed"]],
+    "hasNoCallsignBox": ["NOT", ["$isInboundTransfer", "$isAssumed"]],
     "isIFR": ["contains", "flightRule", "I"],
     "neoirmaDep": ["==", "isDeparture", "1"],
     "neoirmaArr": ["==", "isArrival", "1"],

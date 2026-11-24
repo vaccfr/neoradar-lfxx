@@ -109,7 +109,7 @@ function checkReferences(pkg) {
       let m;
       if ((m = /^=([A-Za-z_]\w*)$/.exec(value)) && !rules.has(m[1])) problems.add(`rule ${value}`);
       if ((m = /^\$([A-Za-z_]\w*)$/.exec(value)) && !exprs.has(m[1])) problems.add(`expression ${value}`);
-      if ((SHAPE_KEYS.has(key) || (key === "shape" && parentKey === "historyTrailShape")) && !shapes.has(value)) problems.add(`shape ${value}`);
+      if ((SHAPE_KEYS.has(key) || (key === "shape" && (parentKey === "historyTrailShape" || parentKey === "leaderBase"))) && !shapes.has(value)) problems.add(`shape ${value}`);
       if ((key === "ground" || key === "groundSymbology") && value.startsWith("#") && !systems.has(value.slice(1))) problems.add(`system ${value}`);
       if ((key === "plotImage" || key === "historyTrailImages") && !frames.has(value)) problems.add(`sprite ${value}`);
     };
