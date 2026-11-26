@@ -13,7 +13,7 @@ rebuilt from upstream on each run:
 - `vaccfr/Sector-Files` (public): ASRs, login profiles, aliases
 - `alexisBalzano/CoFrance-config-files` (public): CoFrance maps (its `tag_formats.json` is the
   reference the two systems were ported from, not a build input)
-- `vaccfr/data-sectorfiles` (PRIVATE): GNG `.sct`/`.ese`, ICAO, NavData
+- `vaccfr/data-sectorfiles` (PRIVATE): GNG `.sct`/`.ese`, ICAO
 
 Laid over each other, they form a "source tree" with the French Controller Pack layout. A local
 Controller Pack install (e.g. `~/Documents/FrenchVACC`) is already one.
@@ -37,7 +37,7 @@ Controller Pack install (e.g. `~/Documents/FrenchVACC`) is already one.
 
 | Path | What |
 | --- | --- |
-| `packages.json` | The package: id, namespace (permanent: provider URL and server vAcc id), sector file, FIR folders, `excludeAsrs` and `excludeLoginFacilities` (centre and Legacy APP displays, centre logins left out), ICAO/NavData folder, publish settings |
+| `packages.json` | The package: id, namespace (permanent: provider URL and server vAcc id), sector file, FIR folders, `excludeAsrs` and `excludeLoginFacilities` (centre and Legacy APP displays, centre logins left out), ICAO folder, publish settings |
 | `scripts/build.py` | `assemble` (source tree → `build/<ID>/` environment) and `finalize` (after `neoradar-cli convert`: profiles, manifest) |
 | `scripts/cofrance.py` | CoFrance GeoJSON maps → NeoRadar map layers (EPSG:3857, item table, `showWhen` from CoFrance `activation`) |
 | `scripts/aviso.py` | vSMR AVISO files → one "AVISO <ICAO>" layer per airport; AVISO profiles list only their airport's layer; direction-named groups (LFPG arrows) get a runway-configuration drawing `showWhen` |

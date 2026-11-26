@@ -9,7 +9,7 @@ upstream, and a release is mostly "update the data, run the workflow".
 ```text
 vaccfr/Sector-Files (public)              ASRs, login profiles, aliases
 alexisBalzano/CoFrance-config-files       CoFrance maps
-vaccfr/data-sectorfiles (PRIVATE)         GNG sector files, ICAO, NavData
+vaccfr/data-sectorfiles (PRIVATE)         GNG sector files, ICAO
                 │
                 ▼  laid over each other into one "source tree"
    scripts/build.py assemble   → build/<ID>/        one neoradar-cli environment per package
@@ -26,7 +26,7 @@ vaccfr/data-sectorfiles (PRIVATE)         GNG sector files, ICAO, NavData
 | `LFXX` | `LFXX/Sectors/LFFM.sct/.ese` (the military GNG file, all French FIRs) | LFFF, LFEE, LFRR, LFBB, LFMM, LFFM |
 
 It is defined in `packages.json`. ASRs, login profiles and CoFrance maps come from every FIR folder
-listed (the first FIR wins a duplicated callsign); ICAO and NavData come from `LFFM` (`dataFolder`).
+listed (the first FIR wins a duplicated callsign); ICAO comes from `LFFM` (`dataFolder`).
 The per-FIR GNG files (`LFBB`, `LFFF`, `LFEE`, `LFMM`, `LFRR`) are no longer used, and
 `data-sectorfiles` no longer carries them.
 
@@ -42,7 +42,7 @@ would then need a system: see below).
 1. Download the France Military (`LFFM`) package from GNG.
 2. Copy it into your clone of `vaccfr/data-sectorfiles` (its README has the exact steps):
    - `LFXX/Sectors/`: the military file renamed `LFFM.sct` / `LFFM.ese`, and `current_airac.txt`
-   - `LFFM/ICAO/`, `LFFM/NavData/`
+   - `LFFM/ICAO/`
 
    Copy nothing else: anything else in that repo overrides the public Sector-Files copy.
 3. Commit as the AIRAC (e.g. `2612`) and push.

@@ -24,7 +24,7 @@ env:
   # downloads these at runtime, so this repo is what controllers actually draw.
   COFRANCE_CONFIG_REPO: alexisBalzano/CoFrance-config-files
   COFRANCE_CONFIG_REF: main
-  # Private: the GNG AIRAC data (sector files, ICAO, NavData), never published as-is.
+  # Private: the GNG AIRAC data (sector files, ICAO), never published as-is.
   LIVE_DATA_REPO_NAME: data-sectorfiles
   LIVE_DATA_REF: main
   # The CLI and the schemas, from their main branches.
@@ -84,7 +84,7 @@ jobs:
 
       - name: Lay GNG data over Sector-Files
         # data-sectorfiles mirrors the Controller Pack layout for the GNG-owned files:
-        #   LFXX/Sectors/<FIR>.sct + .ese + current_airac.txt, <FIR>/ICAO/*.txt, <FIR>/NavData/*.txt
+        #   LFXX/Sectors/<FIR>.sct + .ese + current_airac.txt, <FIR>/ICAO/*.txt
         run: |
           set -euo pipefail
           rsync -a --exclude .git .live-data/ .source/
@@ -138,14 +138,13 @@ jobs:
           npm install --no-save --no-package-lock --prefix scripts ajv@8 js-yaml@4
           node scripts/validate.js .schemas build/*/package
 
-      - name: Build airways databases (server-only)
-        # Navigraph-derived and licensed: kept next to the environment, never inside package/.
+      - name: Collect server datasets
+        # For neoradar-cli push-dataset. The server's airways.db is built and uploaded elsewhere.
         run: |
           set -euo pipefail
           for env in build/*/; do
             id="$(basename "$env")"
-            [ -d "$env/navdata" ] || continue
-            neoradar-cli build-airways "$env/navdata" -o "server-artifacts/$id/airways.db"
+            mkdir -p "server-artifacts/$id"
             cp "$env/server-dataset.json" "server-artifacts/$id/server-dataset.json"
           done
 

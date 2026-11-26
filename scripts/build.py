@@ -9,7 +9,7 @@
 The source tree is a checkout of vaccfr/Sector-Files with the AIRAC data GNG
 publishes laid over it, the layout the Controller Pack Installer produces:
 
-    <FIR>/ASR/**.asr, <FIR>/Settings/LoginProfiles.txt, <FIR>/ICAO/*.txt, <FIR>/NavData/
+    <FIR>/ASR/**.asr, <FIR>/Settings/LoginProfiles.txt, <FIR>/ICAO/*.txt
     LFXX/Sectors/<FIR>.sct + .ese, LFXX/Sectors/current_airac.txt
     LFXX/Alias/alias.txt, LFXX/Plugins/CoFrance/maps/
 
@@ -306,11 +306,6 @@ def assemble(pkg: dict, config: dict, source: Path, build: Path) -> None:
             src = source / "LFXX" / "ICAO" / name
         shutil.copyfile(src, icao / name)
     shutil.copyfile(SHARED / "icao_data" / "recat.json", icao / "recat.json")
-
-    # NavData for build-airways: server-only, kept outside package/
-    navdata = source / data_folder / "NavData"
-    if navdata.is_dir():
-        shutil.copytree(navdata, env / "navdata")
 
     # package/: shared content + manifest
     package = env / "package"
