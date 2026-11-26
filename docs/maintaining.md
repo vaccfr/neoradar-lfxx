@@ -27,7 +27,8 @@ vaccfr/data-sectorfiles (PRIVATE)         GNG sector files, ICAO, NavData
 
 It is defined in `packages.json`. ASRs, login profiles and CoFrance maps come from every FIR folder
 listed (the first FIR wins a duplicated callsign); ICAO and NavData come from `LFFM` (`dataFolder`).
-The per-FIR GNG files (`LFBB`, `LFFF`, `LFEE`, `LFMM`, `LFRR`) are no longer used.
+The per-FIR GNG files (`LFBB`, `LFFF`, `LFEE`, `LFMM`, `LFRR`) are no longer used, and
+`data-sectorfiles` no longer carries them.
 
 NeoRadar is used for approach and below for now, so the centre displays are left out:
 `excludeAsrs` in `packages.json` lists them as globs (`* FIR.asr`, `* UIR.asr`, `* CTR.asr`; and
@@ -38,12 +39,10 @@ would then need a system: see below).
 
 ## Each AIRAC
 
-1. Update your Controller Pack with the French vACC installer so it has the new GNG files.
-2. Copy the GNG files into your clone of `vaccfr/data-sectorfiles`, at the same paths:
+1. Download the France Military (`LFFM`) package from GNG.
+2. Copy it into your clone of `vaccfr/data-sectorfiles` (its README has the exact steps):
    - `LFXX/Sectors/`: the military file renamed `LFFM.sct` / `LFFM.ese`, and `current_airac.txt`
-   - `LFXX/ICAO/`, `LFXX/NavData/`
-   - `LFFM/ICAO/`, `LFFM/NavData/` (from the military download)
-   - for each of LFBB, LFEE, LFFF, LFMM, LFRR: `Settings/VoiceChannels.txt`
+   - `LFFM/ICAO/`, `LFFM/NavData/`
 
    Copy nothing else: anything else in that repo overrides the public Sector-Files copy.
 3. Commit as the AIRAC (e.g. `2612`) and push.
