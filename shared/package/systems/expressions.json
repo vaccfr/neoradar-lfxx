@@ -126,7 +126,7 @@
       "expression": ["$hasRejectedAcknowledgmentState", "$isPDCRequestedState", "$hasReceivedMessageState"]
     },
     "penWhenScratchpadNotEmpty": {
-      "value": ":i",
+      "value": "i",
       "expression": ["$scratchPathNotEmpty"]
     },
     "receivedMessageColour": {

@@ -102,7 +102,7 @@
             },
             {
               "itemName": "scratchpad",
-              "placeholder": ":i",
+              "placeholder": "...",
               "color": "=blueColorScratchpadNotEmpty",
               "leftClick": "triggerScratchpad"
             },
@@ -314,7 +314,7 @@
             },
             {
               "itemName": "scratchpad",
-              "placeholder": ":i",
+              "placeholder": "...",
               "color": "=blueColorScratchpadNotEmpty",
               "leftClick": "triggerScratchpad"
             },

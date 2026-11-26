@@ -1,0 +1,13 @@
+LFXX - AIRAC 2612
+=================
+
+Package
+- France Military sector file 261201-0001.
+- Sector-Files 2612: LFMP update, LFLJ_I_TWR, plugin updates, CDM training lists.
+- Squawks are allocated by the NeoRadar server; the manifest no longer carries a squawk section
+  (CCAMS removed).
+
+Radar systems (both cdg and neoirma)
+- RDF circle 3 NM (it was 0.5 NM), drawn more transparent.
+- Detailed tags show the scratchpad, "..." when it is empty (click to edit).
+- Compact tags show a small blue "i" when the scratchpad holds text.

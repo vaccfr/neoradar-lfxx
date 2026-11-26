@@ -363,8 +363,6 @@ def assemble(pkg: dict, config: dict, source: Path, build: Path) -> None:
         "createdAt": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%S.000Z"),
         "mapLayers": SECTOR_LAYERS + layers,
         "fonts": [{"alias": Path(f).stem, "src": f} for f in fonts],
-        # The package's own squawk allocator (packages.json "squawk", e.g. CCAMS).
-        **({"squawk": pkg["squawk"]} if pkg.get("squawk") else {}),
         "plugins": plugins,
     }
     (package / "manifest.json").write_text(json.dumps(manifest, indent=2) + "\n", encoding="utf-8")

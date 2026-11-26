@@ -193,8 +193,9 @@ client would draw it hollow. Other polygons fill only when they are axis-aligned
 
 Both mapstyles carry the CoFrance route draw (thin `route_line` green, small crosses, fix labels
 as 4-Flight's flight leg draws them: RobotoMono regular 12 px, a client font, on a dark slate box
-with 4 px rounded corners, `cornerRadius`; the bold 10 px B612 on a square plate was hard to read) and the RDF circle (0.5 NM: the radius is in NM and never clamped, so 10 NM
-filled an approach display; `circleThreshold` only hides one smaller than that many pixels).
+with 4 px rounded corners, `cornerRadius`; the bold 10 px B612 on a square plate was hard to read) and the RDF circle (3 NM, at alpha 150: the radius is in NM and never clamped, so 10 NM
+filled an approach display and 0.5 NM was too small to see; `circleThreshold` only hides one
+smaller than that many pixels; the client has no RDF width or dash setting yet).
 Trails are vector shapes in the track colour, sized per mark by `historyTrailShape.scaleRamp`
 (client 0.4.4): CDG's ring (`cdg/trail`, radius 4.5, stroke 1.3) at 3.5, 3.5, 2.5, 2.5, 1.5,
 1.5 px radius, every mark inside the disc's size and on whole pixels (a ring of radius n + 0.5 on
@@ -247,9 +248,9 @@ reserved name: keep `B612-OFL.txt` beside it. 12 px takes the width and line hei
 EuroScope, with taller capitals; the airborne tags are 13 px, since the pastel track colours on
 the grey map read poorly at 12. A thinner stroke (`textWeight` -0.15) was tried and read worse.
 
-**Squawks** come from CCAMS: `squawk.http` in `packages.json` is written to the package manifest
-as is (`package/manifest.schema.json` in the schemas describes it). Each system's policy can still
-rank or disable it by its name, `CCAMS`. The
+**Squawks** are allocated by the NeoRadar server (provider `Server`); the vACC's allocator is set
+in the hub, not in the package, so the manifest carries no `squawk` section. Each system's policy
+can still rank or disable a provider by its name. The
 schemas describe every field: <https://github.com/neoradar-project/schemas> (`systems/`).
 `scripts/validate.js` also checks that every `=rule`, `$expression`, shape and `#system` named in
 the systems exists, since the client silently ignores a broken one.
