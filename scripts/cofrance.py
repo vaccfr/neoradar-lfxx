@@ -19,6 +19,9 @@ CoFrance `activation` rules become drawing-level showWhen conditions:
   sectorOwnedByOthers (same shape)                   -> NOT of the above
 Within one airport and direction any listed runway satisfies the rule; airports
 and directions combine with AND; '+' joins sectors that must all be covered.
+A configuration rule (an arrival and a departure runway for one airport) also takes
+that airport's CONFIGURATION_ARRIVALS_ALSO on arrival (Orly's 02, used in both
+configurations).
 
 unactiveRunway is not the plain NOT of activeRunways: NOT(arr 25 AND dep 24) still
 holds when an airport runs 25 alone or 25 both ways, so a map's "other airport
@@ -140,6 +143,15 @@ class Report:
         self.warnings.append(msg)
 
 
+# Arrival runways an airport uses in either of its configurations, the departure runway telling
+# which. CoFrance's configuration rules (an arrival and a departure runway for the airport) name only
+# the usual arrival runway, so with these on arrival no configuration map drew. They are added to
+# those rules only: a rule naming an arrival runway alone (an ILS axis) is left as it is, and
+# unactiveRunway is too (the departure runway already settles it). At Orly, 02 arrivals run with 07
+# departures (east) or 24 departures (west). Remove an entry once CoFrance's maps list it.
+CONFIGURATION_ARRIVALS_ALSO: dict[str, list[str]] = {"LFPO": ["02"]}
+
+
 class ConditionBuilder:
     """Turns CoFrance activation objects into NeoRadar showWhen expressions."""
 
@@ -147,6 +159,7 @@ class ConditionBuilder:
         self.position_ids = position_ids  # ESE callsign -> position id
         self.ownership = sector_ownership  # "LFEE-HE" -> [callsign, ...]
         self.report = report
+        self.widened: dict[str, set[str]] = {}  # "LFPO arrival 02" -> map refs whose rules it joined
 
     def _sector_position(self, sector: str) -> str | None:
         fir, _, code = sector.partition("-")
@@ -169,12 +182,17 @@ class ConditionBuilder:
             return None
         return alternatives[0] if len(alternatives) == 1 else ["OR", alternatives]
 
-    @staticmethod
-    def _runways(spec: dict):
+    def _runways(self, spec: dict, where: str = ""):
         terms = []
         for icao, kinds in sorted(spec.items()):
+            kinds = kinds or {}
             for kind, key in (("arr", "arrivalRunways"), ("dep", "departureRunways")):
-                rwys = (kinds or {}).get(kind) or []
+                rwys = list(kinds.get(kind) or [])
+                if kind == "arr" and rwys and kinds.get("dep"):
+                    for extra in CONFIGURATION_ARRIVALS_ALSO.get(icao, []):
+                        if extra not in rwys:
+                            rwys.append(extra)
+                            self.widened.setdefault(f"{icao} arrival {extra}", set()).add(where)
                 alts = [["has", key, f"{icao}{r}"] for r in rwys]
                 if alts:
                     terms.append(alts[0] if len(alts) == 1 else ["OR", alts])
@@ -205,7 +223,7 @@ class ConditionBuilder:
         terms = []
         for key, value in activation.items():
             if key == "activeRunways":
-                cond = self._runways(value)
+                cond = self._runways(value, where)
             elif key in ("unactiveRunway", "unactiveRunways"):
                 cond = self._inactive_runways(value)
             elif key == "sectorOwnedByMe":
@@ -432,4 +450,10 @@ def convert(maps_root: Path, folders: list[str], out_dir: Path, position_ids: di
             report.layers += 1
             report.items += len(items)
             report.drawings += len(drawings)
+    for runway, refs in sorted(conditions.widened.items()):
+        report.warn(
+            f"{runway} added to the configuration rules of {', '.join(sorted(refs))}: CoFrance's maps name "
+            f"only the usual arrival runway, so no configuration map drew with it on arrival (add it to the "
+            f"activeRunways arr lists in CoFrance-config-files, then drop it from CONFIGURATION_ARRIVALS_ALSO "
+            f"in scripts/cofrance.py)")
     return layers, uuids, report

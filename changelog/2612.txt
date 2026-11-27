@@ -37,3 +37,6 @@ Radar systems (both cdg and neoirma)
   outside groups always were.
 - RDF circle off-white (it was green), and on every transmitting aircraft: it was drawn only at
   or above 3000 ft, so finals, ground and departures never showed one.
+- Orly configuration maps (procedure lines, EST LIE / OUEST LIE, the TMA, configuration fixes)
+  also draw with arrivals on 02: the departure runway tells east (07) from west (24). CoFrance's
+  maps list only 06 and 25 on arrival.
