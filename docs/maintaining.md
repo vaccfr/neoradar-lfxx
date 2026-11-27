@@ -205,7 +205,7 @@ client would draw it hollow. Other polygons fill only when they are axis-aligned
 
 Every mapstyle carries the CoFrance route draw (thin `route_line` green, small crosses, fix labels
 as 4-Flight's flight leg draws them: RobotoMono regular 12 px, a client font, on a dark slate box
-with 4 px rounded corners, `cornerRadius`; the bold 10 px B612 on a square plate was hard to read) and the RDF circle (3 NM, at alpha 150: the radius is in NM and never clamped, so 10 NM
+with 4 px rounded corners, `cornerRadius`; the bold 10 px B612 on a square plate was hard to read) and the RDF circle (3 NM, off-white `225,225,215` at alpha 150: the radius is in NM and never clamped, so 10 NM
 filled an approach display and 0.5 NM was too small to see; `circleThreshold` only hides one
 smaller than that many pixels; the client has no RDF width or dash setting yet). `lowAltitude` is a
 floor on pressure altitude below which no circle draws: at the schema default 3000 ft, finals, ground

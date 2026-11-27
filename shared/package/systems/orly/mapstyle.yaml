@@ -79,7 +79,7 @@ rdf:
   circlePrecision: 0
   lowPrecision: 0
   highPrecision: 0
-  singleTransmissionColor: [170, 231, 197, 150]
+  singleTransmissionColor: [225, 225, 215, 150]
   concurrentTransmissionColor: [255, 0, 0, 255]
   circleThreshold: 6
   # A floor on pressure altitude: no circle below it. Under the ground at any QNH, so approach
