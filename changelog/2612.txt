@@ -18,3 +18,10 @@ Radar systems (both cdg and neoirma)
 - Lists with a SID column: the cfl column shows the CFL once set, else the SID's suggested initial
   climb in grey. Added to the sector, CDM NOW and CDM LATER lists.
 - Every departure list, CDM ones included, shows the departure airport next to the callsign.
+
+2612.3
+- CoFrance maps: a map drawn for one airport's runways while another airport is not in a given
+  configuration (CDG with Orly, Orly with CDG) now shows only when that other airport has a
+  runway set and none of the listed runways is in use. Before, both variants drew over each
+  other whenever the other airport's runways were only partly set (e.g. Orly 25 for arrivals
+  only) or not set at all.

@@ -14,11 +14,17 @@ one to one onto profile map items (see `map_uuid`).
 
 CoFrance `activation` rules become drawing-level showWhen conditions:
   activeRunways   {ICAO: {arr: [...], dep: [...]}}  -> has arrivalRunways / departureRunways
-  unactiveRunway  (same shape)                       -> NOT of the above
+  unactiveRunway  (same shape, also unactiveRunways) -> per airport: some runway set, none listed in use
   sectorOwnedByMe ["LFEE-HE", "LFFF-DG+LFFF-HP"]    -> has coveredPositions <ESE position id>
   sectorOwnedByOthers (same shape)                   -> NOT of the above
 Within one airport and direction any listed runway satisfies the rule; airports
 and directions combine with AND; '+' joins sectors that must all be covered.
+
+unactiveRunway is not the plain NOT of activeRunways: NOT(arr 25 AND dep 24) still
+holds when an airport runs 25 alone or 25 both ways, so a map's "other airport
+west" and "other airport east" variants both drew. It reads instead as "none of
+the listed runways is in use", and an airport with no runway set at all shows
+neither variant, as an activeRunways rule shows nothing then either.
 """
 from __future__ import annotations
 
@@ -176,14 +182,32 @@ class ConditionBuilder:
             return None
         return terms[0] if len(terms) == 1 else ["AND", terms]
 
+    @staticmethod
+    def _inactive_runways(spec: dict):
+        """Per airport: it has some runway set, and none of the listed runways is in use."""
+        terms = []
+        for icao, kinds in sorted(spec.items()):
+            listed = [
+                ["has", key, f"{icao}{r}"]
+                for kind, key in (("arr", "arrivalRunways"), ("dep", "departureRunways"))
+                for r in (kinds or {}).get(kind) or []
+            ]
+            if not listed:
+                continue
+            terms.append(["OR", [["contains", "arrivalRunways", icao], ["contains", "departureRunways", icao]]])
+            # NOT over several conditions holds when none of them does.
+            terms.append(["NOT", listed])
+        if not terms:
+            return None
+        return terms[0] if len(terms) == 1 else ["AND", terms]
+
     def build(self, activation: dict, where: str):
         terms = []
         for key, value in activation.items():
             if key == "activeRunways":
                 cond = self._runways(value)
-            elif key == "unactiveRunway":
-                inner = self._runways(value)
-                cond = ["NOT", [inner]] if inner else None
+            elif key in ("unactiveRunway", "unactiveRunways"):
+                cond = self._inactive_runways(value)
             elif key == "sectorOwnedByMe":
                 cond = self._sectors(value)
                 if cond is None:
