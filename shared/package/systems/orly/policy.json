@@ -2,6 +2,14 @@
   "$schema": "https://raw.githubusercontent.com/neoradar-project/schemas/refs/heads/main/systems/policy.schema.json",
   "safetyNets": {
     "emergencySquawk": true,
+    "emergencyCodes": {
+      "7600": {
+        "text": "RCF"
+      },
+      "7700": {
+        "text": "EMERG"
+      }
+    },
     "stca": {
       "finalApproach": {},
       "parallel": [

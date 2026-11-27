@@ -43,7 +43,7 @@
           [
             {
               "itemName": "alertText",
-              "applyWhen": "$isSafetyAlertUnacknowledged",
+              "applyWhen": "$isAlertBlinking",
               "leftClick": "acknowledgeAlert",
               "color": [
                 255,
@@ -67,7 +67,7 @@
             },
             {
               "itemName": "alertText",
-              "applyWhen": "$isSafetyAlertAcknowledged",
+              "applyWhen": "$isAlertSteady",
               "leftClick": "acknowledgeAlert",
               "color": [
                 255,
@@ -264,17 +264,9 @@
               "leftClick": "sidMenu"
             },
             {
-              "itemName": "nextControllerFrequency",
-              "applyWhen": "$isOutboundTransfer",
-              "color": [
-                160,
-                216,
-                180
-              ]
-            },
-            {
               "itemName": "sectorIndicator",
-              "placeholder": "---"
+              "placeholder": "---",
+              "color": ["=handoffText"]
             },
             {
               "itemName": "plannedFlightLevel",
@@ -339,6 +331,38 @@
             }
           ],
           [
+            {
+              "itemName": "sectorEntryLevel",
+              "applyWhen": "$hasEfl",
+              "format": "flightLevel",
+              "prefix": "e",
+              "leftClick": "copnAltitudeMenu"
+            },
+            {
+              "itemName": "text",
+              "applyWhen": "$hasNoEfl",
+              "value": [
+                "=emptyIfNoEfl"
+              ],
+              "placeholder": "efl",
+              "leftClick": "copnAltitudeMenu"
+            },
+            {
+              "itemName": "sectorExitLevel",
+              "applyWhen": "$hasXfl",
+              "format": "flightLevel",
+              "prefix": "x",
+              "leftClick": "copxAltitudeMenu"
+            },
+            {
+              "itemName": "text",
+              "applyWhen": "$hasNoXfl",
+              "value": [
+                "=emptyIfNoXfl"
+              ],
+              "placeholder": "xfl",
+              "leftClick": "copxAltitudeMenu"
+            },
             {
               "itemName": "reportedHeading",
               "padWithZeroLeft": 3,
@@ -369,7 +393,7 @@
           [
             {
               "itemName": "alertText",
-              "applyWhen": "$isSafetyAlertUnacknowledged",
+              "applyWhen": "$isAlertBlinking",
               "leftClick": "acknowledgeAlert",
               "color": [
                 255,
@@ -393,7 +417,7 @@
             },
             {
               "itemName": "alertText",
-              "applyWhen": "$isSafetyAlertAcknowledged",
+              "applyWhen": "$isAlertSteady",
               "leftClick": "acknowledgeAlert",
               "color": [
                 255,
@@ -590,17 +614,9 @@
               "leftClick": "sidMenu"
             },
             {
-              "itemName": "nextControllerFrequency",
-              "applyWhen": "$isOutboundTransfer",
-              "color": [
-                160,
-                216,
-                180
-              ]
-            },
-            {
               "itemName": "sectorIndicator",
-              "placeholder": "---"
+              "placeholder": "---",
+              "color": ["=handoffText"]
             },
             {
               "itemName": "plannedFlightLevel",
@@ -665,6 +681,38 @@
             }
           ],
           [
+            {
+              "itemName": "sectorEntryLevel",
+              "applyWhen": "$hasEfl",
+              "format": "flightLevel",
+              "prefix": "e",
+              "leftClick": "copnAltitudeMenu"
+            },
+            {
+              "itemName": "text",
+              "applyWhen": "$hasNoEfl",
+              "value": [
+                "=emptyIfNoEfl"
+              ],
+              "placeholder": "efl",
+              "leftClick": "copnAltitudeMenu"
+            },
+            {
+              "itemName": "sectorExitLevel",
+              "applyWhen": "$hasXfl",
+              "format": "flightLevel",
+              "prefix": "x",
+              "leftClick": "copxAltitudeMenu"
+            },
+            {
+              "itemName": "text",
+              "applyWhen": "$hasNoXfl",
+              "value": [
+                "=emptyIfNoXfl"
+              ],
+              "placeholder": "xfl",
+              "leftClick": "copxAltitudeMenu"
+            },
             {
               "itemName": "reportedHeading",
               "padWithZeroLeft": 3,
@@ -700,7 +748,7 @@
           [
             {
               "itemName": "alertText",
-              "applyWhen": "$isSafetyAlertUnacknowledged",
+              "applyWhen": "$isAlertBlinking",
               "leftClick": "acknowledgeAlert",
               "color": [
                 255,
@@ -724,7 +772,7 @@
             },
             {
               "itemName": "alertText",
-              "applyWhen": "$isSafetyAlertAcknowledged",
+              "applyWhen": "$isAlertSteady",
               "leftClick": "acknowledgeAlert",
               "color": [
                 255,
@@ -953,6 +1001,22 @@
                 3
               ],
               "prefix": "h"
+            }
+          ],
+          [
+            {
+              "itemName": "sectorEntryLevel",
+              "applyWhen": "$hasEfl",
+              "format": "flightLevel",
+              "prefix": "e",
+              "leftClick": "copnAltitudeMenu"
+            },
+            {
+              "itemName": "sectorExitLevel",
+              "applyWhen": "$hasXfl",
+              "format": "flightLevel",
+              "prefix": "x",
+              "leftClick": "copxAltitudeMenu"
             }
           ]
         ]
@@ -963,7 +1027,7 @@
           [
             {
               "itemName": "alertText",
-              "applyWhen": "$isSafetyAlertUnacknowledged",
+              "applyWhen": "$isAlertBlinking",
               "leftClick": "acknowledgeAlert",
               "color": [
                 255,
@@ -987,7 +1051,7 @@
             },
             {
               "itemName": "alertText",
-              "applyWhen": "$isSafetyAlertAcknowledged",
+              "applyWhen": "$isAlertSteady",
               "leftClick": "acknowledgeAlert",
               "color": [
                 255,
@@ -1216,6 +1280,22 @@
                 3
               ],
               "prefix": "h"
+            }
+          ],
+          [
+            {
+              "itemName": "sectorEntryLevel",
+              "applyWhen": "$hasEfl",
+              "format": "flightLevel",
+              "prefix": "e",
+              "leftClick": "copnAltitudeMenu"
+            },
+            {
+              "itemName": "sectorExitLevel",
+              "applyWhen": "$hasXfl",
+              "format": "flightLevel",
+              "prefix": "x",
+              "leftClick": "copxAltitudeMenu"
             }
           ]
         ]

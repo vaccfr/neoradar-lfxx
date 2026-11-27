@@ -246,7 +246,9 @@ navdata (`runwayMonitoring: {}`). The client draws an alert only where a tag, li
 for it, so:
 
 - every tag has an alert line on top (it collapses when empty): the alert's own words, white on
-  red (CoFrance `alert_critical`) blinking until clicked (acknowledge) for an alert, dark on
+  red (CoFrance `alert_critical`) blinking until clicked (acknowledge) for an alert, except an
+  emergency squawk, which stays a steady red plate from the start (`$isAlertBlinking` /
+  `$isAlertSteady`), reading `EMERG 7700`, `RCF 7600`, `HIJACK 7500` (policy `emergencyCodes`), dark on
   orange (CoFrance `alert`) for a warning (RIMCAS stage one); airborne tags add the manual alert
   (MISAP, INBEST, IRREG, WX) in CoFrance's warning yellow;
 - the track symbol, and the forced one-minute alert vector, turn red / orange (`=alertTrack`,

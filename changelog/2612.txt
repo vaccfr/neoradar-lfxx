@@ -43,3 +43,14 @@ Radar systems (both cdg and neoirma)
 - EGA Paris-Orly in CoFrance Lyon's colours: the airspace you own green-grey, the rest grey, the
   border to an active neighbour green-grey. Orly's map had one flat grey over everything, which
   the build now leaves out so the owned/unowned shading shows.
+
+2612.5
+- Tags show the coordinated levels: XFL (exit) and EFL (entry), agreed or negotiated only, never
+  the filed level. Detailed tags: e120 x240 on the last row, an efl / xfl placeholder when none,
+  a click opens the COPN / COPX level list. Compact tags: e120 x240 on their own line under the
+  altitude, only when set (the line goes when neither is).
+- Detailed tags show the next controller's frequency once during a transfer (it was twice), in
+  hand-off green.
+- Emergency squawks no longer blink: a steady red plate from the start (other alerts still blink
+  until acknowledged), worded EMERG (7700), RCF (7600), HIJACK (7500). The code itself goes from
+  the text with the next NeoRadar client.

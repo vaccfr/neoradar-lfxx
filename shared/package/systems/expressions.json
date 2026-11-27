@@ -157,6 +157,14 @@
       "value": "&defaultSidLevel",
       "expression": ["$isClearedLevelEmpty"]
     },
+    "emptyIfNoXfl": {
+      "value": "",
+      "expression": ["$hasNoXfl"]
+    },
+    "emptyIfNoEfl": {
+      "value": "",
+      "expression": ["$hasNoEfl"]
+    },
     "suggestedSidIfNoAssigned": {
       "value": "&suggestedSid",
       "expression": ["$isAssignedSidEmpty"]
@@ -540,6 +548,10 @@
     "isAssignedStarEmpty": ["isEmpty", "star"],
     "isAssignedStarNotEmpty": ["notEmpty", "star"],
     "isClearedLevelEmpty": ["==", "clearedFlightLevel", "0"],
+    "hasXfl": ["OR", [["==", "sectorExitLevelSource", "agreed"], ["==", "sectorExitLevelSource", "negotiated"]]],
+    "hasNoXfl": ["AND", [["!=", "sectorExitLevelSource", "agreed"], ["!=", "sectorExitLevelSource", "negotiated"]]],
+    "hasEfl": ["OR", [["==", "sectorEntryLevelSource", "agreed"], ["==", "sectorEntryLevelSource", "negotiated"]]],
+    "hasNoEfl": ["AND", [["!=", "sectorEntryLevelSource", "agreed"], ["!=", "sectorEntryLevelSource", "negotiated"]]],
     "isConcerned": ["==", "attentionState", "1"],
     "isControllerTimingOut": ["==", "controllerIsTimingOut", "1"],
     "isDefaultDatalinkState": [
@@ -559,8 +571,14 @@
     "noAssignedSquawk": ["==", "assignedSquawk", "0000"],
     "scratchPathNotEmpty": ["notEmpty", "scratchpad"],
     "isSafetyAlert": [">=", "alertSeverity", "3"],
-    "isSafetyAlertUnacknowledged": ["AND", [[">=", "alertSeverity", "3"], ["==", "alertAcknowledged", "0"]]],
-    "isSafetyAlertAcknowledged": ["AND", [[">=", "alertSeverity", "3"], ["==", "alertAcknowledged", "1"]]],
+    "isAlertBlinking": [
+      "AND",
+      [[">=", "alertSeverity", "3"], ["==", "alertAcknowledged", "0"], ["!=", "alertKind", "13"]]
+    ],
+    "isAlertSteady": [
+      "AND",
+      [[">=", "alertSeverity", "3"], ["OR", [["==", "alertAcknowledged", "1"], ["==", "alertKind", "13"]]]]
+    ],
     "isSafetyWarning": ["==", "alertSeverity", "2"],
     "isTrack": ["!=", "callsign", ""]
   }
