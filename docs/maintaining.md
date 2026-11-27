@@ -209,7 +209,8 @@ with 4 px rounded corners, `cornerRadius`; the bold 10 px B612 on a square plate
 filled an approach display and 0.5 NM was too small to see; `circleThreshold` only hides one
 smaller than that many pixels; the client has no RDF width or dash setting yet). `lowAltitude` is a
 floor on pressure altitude below which no circle draws: at the schema default 3000 ft, finals, ground
-and departures had none, so it is -2000 (under the ground at any QNH).
+and departures had none, so it is 0, the schema's minimum (a ground aircraft at a very high QNH,
+whose pressure altitude dips below 0, still gets none).
 Trails are vector shapes in the track colour, sized per mark by `historyTrailShape.scaleRamp`
 (client 0.4.4): CDG's ring (`cdg/trail`, radius 4.5, stroke 1.3) at 3.5, 3.5, 2.5, 2.5, 1.5,
 1.5 px radius, every mark inside the disc's size and on whole pixels (a ring of radius n + 0.5 on
