@@ -40,3 +40,6 @@ Radar systems (both cdg and neoirma)
 - Orly configuration maps (procedure lines, EST LIE / OUEST LIE, the TMA, configuration fixes)
   also draw with arrivals on 02: the departure runway tells east (07) from west (24). CoFrance's
   maps list only 06 and 25 on arrival.
+- EGA Paris-Orly in CoFrance Lyon's colours: the airspace you own green-grey, the rest grey, the
+  border to an active neighbour green-grey. Orly's map had one flat grey over everything, which
+  the build now leaves out so the owned/unowned shading shows.

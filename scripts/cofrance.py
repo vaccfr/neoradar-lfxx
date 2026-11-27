@@ -151,6 +151,12 @@ class Report:
 # departures (east) or 24 departures (west). Remove an entry once CoFrance's maps list it.
 CONFIGURATION_ARRIVALS_ALSO: dict[str, list[str]] = {"LFPO": ["02"]}
 
+# Flat background fills left out of a map, by map ref and feature name. The client draws a system's
+# sector shading (mapstyle inactive/activeSectorBackgroundColor: unowned ground, owned airspace)
+# under the map layers, so a map's opaque background hides it. Orly's map has one flat fill and no
+# area of its own; without it the orly system's Lyon-style shading shows which airspace is yours.
+DROPPED_BACKGROUNDS: dict[str, set[str]] = {"LFFF/LFPO/0_CCA_Paris-Orly": {"CCA Paris-Orly Background"}}
+
 
 class ConditionBuilder:
     """Turns CoFrance activation objects into NeoRadar showWhen expressions."""
@@ -310,6 +316,16 @@ def convert_file(path: Path, ref: str, group_label: str, conditions: ConditionBu
         item["order"] = order
 
     features = [f for f in data.get("features", []) if f.get("geometry")]
+    dropped = DROPPED_BACKGROUNDS.get(ref, set())
+    if dropped:
+        kept = [f for f in features if (f.get("properties") or {}).get("name") not in dropped]
+        if len(kept) != len(features):
+            report.warn(f"{ref}: background {', '.join(sorted(dropped))} left out, so the system's sector shading "
+                        f"(owned / unowned) shows (DROPPED_BACKGROUNDS in scripts/cofrance.py)")
+        else:
+            report.warn(f"{ref}: DROPPED_BACKGROUNDS names {', '.join(sorted(dropped))}, which the map no longer has; "
+                        f"remove the entry from scripts/cofrance.py")
+        features = kept
     features.sort(key=lambda f: (f.get("properties") or {}).get("z-index", 0) or 0)
     drawings = []
     for feature in features:

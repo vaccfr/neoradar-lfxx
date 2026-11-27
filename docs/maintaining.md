@@ -145,6 +145,10 @@ and `orly`'s `ground` and `groundSymbology` are `"#neoirma"`, a reference to it.
 `mapstyle.yaml` and `policy.json` are neoIRMA's, copied (the CoFrance Orly display differs from the
 other approach displays only by its maps and tag format). Only the track and style variants differ.
 A change to neoIRMA's tags, mapstyle or safety nets is made in `orly` too.
+The one exception is its sector colours: CoFrance Lyon's (`0_CCA_Lyon`), as live ownership, unowned
+airspace `71,71,71` and owned `51,56,51`, neighbour border `124,136,117`. The client draws that
+shading under the map layers, so the build leaves out Orly's flat CoFrance background
+(`DROPPED_BACKGROUNDS` in `scripts/cofrance.py`) for it to show.
 
 **Track colours** follow the CoFrance rules in their priority order (the first matching variant
 wins, as CoFrance's lowest priority number does):

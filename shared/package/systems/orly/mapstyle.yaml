@@ -1,9 +1,13 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/neoradar-project/schemas/main/systems/mapstyle.schema.json
-inactiveSectorBackgroundColor: [51,51,51]
-activeSectorBackgroundColor: [70,70,70]
+# CoFrance Lyon's colours (0_CCA_Lyon: basemap 71, AoR 51,56,51 edged 124,136,117) as live
+# ownership: unowned airspace and the ground in the basemap grey, the airspace you own in the AoR
+# green-grey. Orly's own CoFrance map has one flat fill over all of it, left out by the build
+# (DROPPED_BACKGROUNDS in scripts/cofrance.py) so this shows.
+inactiveSectorBackgroundColor: [71,71,71]
+activeSectorBackgroundColor: [51,56,51]
 
 
-neighborSectorBorderLineColor: [145, 82, 15]
+neighborSectorBorderLineColor: [124, 136, 117]
 neighborSectorBorderLineWidth: 2
 
 extendedCenterlines:
