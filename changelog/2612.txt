@@ -11,3 +11,10 @@ Radar systems (both cdg and neoirma)
 - RDF circle 3 NM (it was 0.5 NM), drawn more transparent.
 - Detailed tags show the scratchpad, "..." when it is empty (click to edit).
 - Compact tags show a small blue "i" when the scratchpad holds text.
+
+2612.2
+- Tags: below the transition altitude the altitude reads "A" plus hundreds of feet (A45), using
+  the client's own QNH/FL decision.
+- Lists with a SID column: the cfl column shows the CFL once set, else the SID's suggested initial
+  climb in grey. Added to the sector, CDM NOW and CDM LATER lists.
+- Every departure list, CDM ones included, shows the departure airport next to the callsign.

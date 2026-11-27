@@ -5,18 +5,6 @@
       "value": "0, 176, 0",
       "expression": ["$hasAcknowledgmentState"]
     },
-    "altitudeAboveTATruncate": {
-      "value": "0,3",
-      "expression": ["$isAboveTransitionAltitude"]
-    },
-    "altitudeBelowTAPrefix": {
-      "value": "A",
-      "expression": ["$isBelowTransitionAltitude"]
-    },
-    "altitudeBelowTATruncate": {
-      "value": "1,3",
-      "expression": ["$isBelowTransitionAltitude"]
-    },
     "assumedPrefix": {
       "value": "[",
       "expression": ["$isAssumed"]
@@ -160,6 +148,14 @@
     "suggestedSidColor": {
       "value": "142,142,142",
       "expression": ["$isAssignedSidEmpty"]
+    },
+    "suggestedClimbColor": {
+      "value": "142,142,142",
+      "expression": ["$isClearedLevelEmpty"]
+    },
+    "suggestedClimbIfNoCfl": {
+      "value": "&defaultSidLevel",
+      "expression": ["$isClearedLevelEmpty"]
     },
     "suggestedSidIfNoAssigned": {
       "value": "&suggestedSid",
@@ -477,7 +473,6 @@
       ]
     ],
     "incorrectSquawk": ["!=", "squawk", "&assignedSquawk"],
-    "isAboveTransitionAltitude": [">=", "altitude", "&transitionAltitude"],
     "isAssignedArrRunwayEmpty": ["isEmpty", "arrRunway"],
     "isAssignedArrRunwayNotEmpty": ["notEmpty", "arrRunway"],
     "isAssignedDepRunwayEmpty": ["isEmpty", "depRunway"],
@@ -486,7 +481,7 @@
     "isAssignedSidNotEmpty": ["notEmpty", "sid"],
     "isAssignedStarEmpty": ["isEmpty", "star"],
     "isAssignedStarNotEmpty": ["notEmpty", "star"],
-    "isBelowTransitionAltitude": ["<", "altitude", "&transitionAltitude"],
+    "isClearedLevelEmpty": ["==", "clearedFlightLevel", "0"],
     "isConcerned": ["==", "attentionState", "1"],
     "isControllerTimingOut": ["==", "controllerIsTimingOut", "1"],
     "isDefaultDatalinkState": [

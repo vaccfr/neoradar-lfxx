@@ -157,7 +157,13 @@
     - name: cfl
       width: 40
       tagItem:
-        itemName: clearedFlightLevel
+        itemName: text
+        # The CFL once set, else the initial climb the server suggests with the SID (grey).
+        value:
+          - =suggestedClimbIfNoCfl
+          - |
+            &clearedFlightLevel
+        color: ["=suggestedClimbColor"]
         placeholder: "---"
         padWithZeroLeft: 5
         truncate: [0, 3]
@@ -277,6 +283,20 @@
           - =suggestedSidColor
           - =blueAssignedSid
         leftClick: sidMenu
+    - name: cfl
+      width: 40
+      tagItem:
+        itemName: text
+        # The CFL once set, else the initial climb the server suggests with the SID (grey).
+        value:
+          - =suggestedClimbIfNoCfl
+          - |
+            &clearedFlightLevel
+        color: ["=suggestedClimbColor"]
+        placeholder: "---"
+        padWithZeroLeft: 5
+        truncate: [0, 3]
+        leftClick: cfl
     - name: star
       width: 120
       tagItem:
@@ -370,6 +390,11 @@
           =colourConcerned
           =colourUnconcerned
         leftClick: callsignMenu
+    - name: adep
+      width: 40
+      tagItem:
+        itemName: origin
+        leftClick: fpDialog
     - name: atyp
       width: 40
       tagItem:
@@ -404,7 +429,13 @@
     - name: cfl
       width: 40
       tagItem:
-        itemName: clearedFlightLevel
+        itemName: text
+        # The CFL once set, else the initial climb the server suggests with the SID (grey).
+        value:
+          - =suggestedClimbIfNoCfl
+          - |
+            &clearedFlightLevel
+        color: ["=suggestedClimbColor"]
         placeholder: "---"
         padWithZeroLeft: 5
         truncate: [0, 3]
@@ -507,11 +538,6 @@
       width: 30
       tagItem:
         itemName: "plugin:vIFF CDM:TAG_MSG"
-    - name: adep
-      width: 40
-      tagItem:
-        itemName: origin
-        leftClick: fpDialog
     - name: RDY
       width: 30
       tagItem:
@@ -565,6 +591,11 @@
           =colourConcerned
           =colourUnconcerned
         leftClick: callsignMenu
+    - name: adep
+      width: 40
+      tagItem:
+        itemName: origin
+        leftClick: fpDialog
     - name: sid
       widthChars: 7
       tagItem:
@@ -578,6 +609,20 @@
           - =blueAssignedSid
         leftClick: sidMenu
         placeholder: "----"
+    - name: cfl
+      width: 40
+      tagItem:
+        itemName: text
+        # The CFL once set, else the initial climb the server suggests with the SID (grey).
+        value:
+          - =suggestedClimbIfNoCfl
+          - |
+            &clearedFlightLevel
+        color: ["=suggestedClimbColor"]
+        placeholder: "---"
+        padWithZeroLeft: 5
+        truncate: [0, 3]
+        leftClick: cfl
     - name: rwy
       widthChars: 3
       tagItem:
@@ -689,6 +734,11 @@
           =colourConcerned
           =colourUnconcerned
         leftClick: callsignMenu
+    - name: adep
+      width: 40
+      tagItem:
+        itemName: origin
+        leftClick: fpDialog
     - name: sid
       widthChars: 7
       tagItem:
@@ -702,6 +752,20 @@
           - =blueAssignedSid
         leftClick: sidMenu
         placeholder: "----"
+    - name: cfl
+      width: 40
+      tagItem:
+        itemName: text
+        # The CFL once set, else the initial climb the server suggests with the SID (grey).
+        value:
+          - =suggestedClimbIfNoCfl
+          - |
+            &clearedFlightLevel
+        color: ["=suggestedClimbColor"]
+        placeholder: "---"
+        padWithZeroLeft: 5
+        truncate: [0, 3]
+        leftClick: cfl
     - name: rwy
       widthChars: 3
       tagItem:
@@ -812,6 +876,11 @@
           =colourConcerned
           =colourUnconcerned
         leftClick: callsignMenu
+    - name: adep
+      widthChars: 4
+      tagItem:
+        itemName: origin
+        leftClick: fpDialog
     - name: v
       widthChars: 2
       tagItem:
@@ -861,7 +930,13 @@
     - name: cfl
       widthChars: 3
       tagItem:
-        itemName: clearedFlightLevel
+        itemName: text
+        # The CFL once set, else the initial climb the server suggests with the SID (grey).
+        value:
+          - =suggestedClimbIfNoCfl
+          - |
+            &clearedFlightLevel
+        color: ["=suggestedClimbColor"]
         placeholder: "---"
         padWithZeroLeft: 5
         truncate: [0, 3]

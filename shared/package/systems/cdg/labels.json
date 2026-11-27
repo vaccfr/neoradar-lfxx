@@ -1,5 +1,9 @@
 {
   "$schema": "https://raw.githubusercontent.com/neoradar-project/schemas/refs/heads/main/systems/labels.schema.json",
+  "altitudeFormat": {
+    "belowTransition": { "prefix": "A", "digits": 2 },
+    "aboveTransition": { "digits": 3 }
+  },
   "ground": "#neoirma",
   "airborne": {
     "tagPositioning": {
@@ -169,9 +173,7 @@
           [
             {
               "itemName": "computedAltitude",
-              "prefix": ["=altitudeBelowTAPrefix"],
-              "truncate": ["=altitudeBelowTATruncate", "=altitudeAboveTATruncate"],
-              "padWithZeroLeft": 5,
+              "format": "altitude",
               "leftClick": "routeDraw"
             },
             {
@@ -381,9 +383,7 @@
           [
             {
               "itemName": "computedAltitude",
-              "prefix": ["=altitudeBelowTAPrefix"],
-              "truncate": ["=altitudeBelowTATruncate", "=altitudeAboveTATruncate"],
-              "padWithZeroLeft": 5,
+              "format": "altitude",
               "leftClick": "routeDraw"
             },
             {
@@ -567,9 +567,7 @@
           [
             {
               "itemName": "computedAltitude",
-              "prefix": ["=altitudeBelowTAPrefix"],
-              "truncate": ["=altitudeBelowTATruncate", "=altitudeAboveTATruncate"],
-              "padWithZeroLeft": 5
+              "format": "altitude"
             },
             {
               "itemName": "verticalTrend",
@@ -725,9 +723,7 @@
           [
             {
               "itemName": "computedAltitude",
-              "prefix": ["=altitudeBelowTAPrefix"],
-              "truncate": ["=altitudeBelowTATruncate", "=altitudeAboveTATruncate"],
-              "padWithZeroLeft": 5
+              "format": "altitude"
             },
             {
               "itemName": "verticalTrend",
