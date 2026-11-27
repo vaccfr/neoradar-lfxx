@@ -127,18 +127,24 @@ only for what is NeoRadar-specific or cannot wait.
 
 ### Tag colours, labels, symbols (radar systems)
 
-There are two systems, both static files in `shared/package/systems/`, edited by hand. The build
+There are three systems, all static files in `shared/package/systems/`, edited by hand. The build
 no longer reads CoFrance's `tag_formats.json`: when CoFrance changes a colour or rule, port it here.
 
 | System | Used by | Track logic from |
 | --- | --- | --- |
-| `neoirma` | every CoFrance approach display except Paris-CDG, and every AVISO (ground) display | CoFrance tag format `IRMA` |
+| `neoirma` | every CoFrance approach display except Paris-CDG and Paris-Orly, and every other AVISO (ground) display | CoFrance tag format `IRMA` |
 | `cdg` | the Paris-CDG approach (`PLUGIN:CoFrance:TagFormat:Paris-CDG`), and the LFPG and LFPB AVISOs (`SYSTEM_FOR_AVISO`) | CoFrance tag format `Paris-CDG` |
+| `orly` | the Paris-Orly approach (`PLUGIN:CoFrance:TagFormat:Paris-Orly`, the EGA Paris-Orly display), and the LFPO AVISO (`SYSTEM_FOR_AVISO`) | CoFrance tag format `Paris-Orly` |
 
 `SYSTEM_FOR_TAG_FORMAT` in `scripts/build.py` maps tag formats to systems; anything else gets
 `neoirma`. neoIRMA is a stripless IRMA, not the real-world one. Its `ground` section (labels and
 targets) is the package's only ground look: the AVISO look, raw video with a small ring. `cdg`'s
-`ground` and `groundSymbology` are `"#neoirma"`, a reference to it.
+and `orly`'s `ground` and `groundSymbology` are `"#neoirma"`, a reference to it.
+
+`orly` is neoIRMA with Paris-Orly's flows: its tags, tag positioning, track triangle, trails,
+`mapstyle.yaml` and `policy.json` are neoIRMA's, copied (the CoFrance Orly display differs from the
+other approach displays only by its maps and tag format). Only the track and style variants differ.
+A change to neoIRMA's tags, mapstyle or safety nets is made in `orly` too.
 
 **Track colours** follow the CoFrance rules in their priority order (the first matching variant
 wins, as CoFrance's lowest priority number does):
@@ -152,6 +158,12 @@ wins, as CoFrance's lowest priority number does):
   `O` Orly, `A` Pontoise/Beauvais, `V` Toussus/Villacoublay, `R` CDG with no runway yet, `G`/`P`
   local flights, two-letter departure codes by route point (`NN` NURMO, `EL` LANVI…), `T` other
   Paris departures, black `Z` (VFR) and `X` (the rest).
+- `orly`: CoFrance's Paris-Orly letters (at the leader base, as `cdg`) and colours: `P` local
+  flights within Orly / Toussus / Villacoublay `#D1D5D0`, `O` Orly arrivals `#F8A29A`, `V`
+  Toussus / Villacoublay arrivals `#E7A3FA`, `K` Le Bourget arrivals `#4CBC38`, `G` CDG arrivals
+  and `E` CDG / Le Bourget departures `#C6B68F`, `M` Orly / Toussus / Villacoublay departures
+  `#ACE2DD`, `S` VFR `#ACAFAB` and `X` the rest `#93886F`. `S` and `X` are altitude-filtered, as
+  in CoFrance; the others show through the filter.
 
 **Altitude filter.** CoFrance shows flights from a rule with `filtered: false`, and any flight
 assumed by you, in transfer to or from you, through the altitude filter. Each variant that does
@@ -159,7 +171,7 @@ this lists every `applyToFilterStates`; the tag layouts have a twin keyed on
 `$neoirmaThroughFilter` / `$cdgThroughFilter` for the same flights.
 
 **Flight state** is on the callsign. CoFrance's IRMA and Paris-CDG formats colour by flow, not
-by state, so the state is shown in reverse video, the same in both systems whatever the flow
+by state, so the state is shown in reverse video, the same in every system whatever the flow
 (the `assumed…`, `incomingTransfer…` and `handoffText` rules in `expressions.json`):
 
 | State | Callsign |
@@ -191,11 +203,13 @@ fills rectangles) under a 1 px ring at 4.5 px, whose anti-aliased edge makes the
 client fills a circle (0.4.4) with hard pixel rows, no smoother than the rectangles, and an older
 client would draw it hollow. Other polygons fill only when they are axis-aligned rectangles.
 
-Both mapstyles carry the CoFrance route draw (thin `route_line` green, small crosses, fix labels
+Every mapstyle carries the CoFrance route draw (thin `route_line` green, small crosses, fix labels
 as 4-Flight's flight leg draws them: RobotoMono regular 12 px, a client font, on a dark slate box
 with 4 px rounded corners, `cornerRadius`; the bold 10 px B612 on a square plate was hard to read) and the RDF circle (3 NM, at alpha 150: the radius is in NM and never clamped, so 10 NM
 filled an approach display and 0.5 NM was too small to see; `circleThreshold` only hides one
-smaller than that many pixels; the client has no RDF width or dash setting yet).
+smaller than that many pixels; the client has no RDF width or dash setting yet). `lowAltitude` is a
+floor on pressure altitude below which no circle draws: at the schema default 3000 ft, finals, ground
+and departures had none, so it is -2000 (under the ground at any QNH).
 Trails are vector shapes in the track colour, sized per mark by `historyTrailShape.scaleRamp`
 (client 0.4.4): CDG's ring (`cdg/trail`, radius 4.5, stroke 1.3) at 3.5, 3.5, 2.5, 2.5, 1.5,
 1.5 px radius, every mark inside the disc's size and on whole pixels (a ring of radius n + 0.5 on
@@ -211,14 +225,14 @@ every n-th update, so the trail stalled and then jumped. The tag's vertical tren
 tag font, as heavy as the rest of the tag: `↗` climbing, `↘` descending, a long dash `—` level
 (the Lucide icons `:imove-up-right`… were too thin to read, and an arrow for level flight misled).
 
-**Tags.** The airborne rows are the same in both systems. The detailed tag (hover) shows
+**Tags.** The airborne rows are the same in every system. The detailed tag (hover) shows
 everything the compact one does, and more: never let a hover lose an item. While you hand a
 flight to another controller (attention state 4), both show that controller's frequency after
 the SID, in hand-off green (`nextControllerFrequency`), so you know what to tell the pilot. No runway item: at CDG
 the runway is in the track colour and letter, and no other French airport lands on two runways
 at once.
 
-**Safety nets** (`policy.json`, the same in both systems): STCA on the client's defaults (TopSky's
+**Safety nets** (`policy.json`, the same in every system): STCA on the client's defaults (TopSky's
 thresholds, 2.75 NM / 750 ft below 9500 ft, shown when one of the pair is yours), with the
 final-approach corridor (2.5 NM in trail on final) and CDG's simultaneous runway pairs
 (`stca.parallel`: arrivals 26L/27R and 08R/09L, departures 26R/27L and 08L/09R); the emergency
@@ -241,7 +255,7 @@ their text could not be read over the map.
 
 Rules and expressions shared by both live in `expressions.json`; `lists.yaml` is shared too.
 
-Both systems draw tags and route-draw labels in B612 Mono LFXX Bold (`fonts/B612MonoLFXX-Bold.ttf`): Airbus/ENAC's
+Every system draws tags and route-draw labels in B612 Mono LFXX Bold (`fonts/B612MonoLFXX-Bold.ttf`): Airbus/ENAC's
 cockpit-display font B612 Mono Bold, with a bar added in the zero so 0 and O differ (B612 draws
 them alike). `scripts/font_zero.py` makes it from upstream's `B612Mono-Bold.ttf`. SIL OFL, no
 reserved name: keep `B612-OFL.txt` beside it. 12 px takes the width and line height of 13 px
@@ -280,7 +294,7 @@ the systems exists, since the client silently ignores a broken one.
 
 Profiles are converted from the ASRs on every build, then `finalize` adds:
 
-- CoFrance displays: the system (`cdg` or `neoirma`), transition altitude 5000, CoFrance's
+- CoFrance displays: the system (`cdg`, `orly` or `neoirma`), transition altitude 5000, CoFrance's
   altitude filter and maps.
 - AVISO displays: the `neoirma` system and exactly their airport's AVISO layer, nothing else.
   An airport with no vSMR AVISO file falls back to the sector file's `<ICAO> AVISO` region and

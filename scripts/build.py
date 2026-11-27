@@ -21,7 +21,8 @@ runs after neoradar-cli convert: it gives the converted profiles their ATM syste
 altitude filter and CoFrance map items, and prunes manifest layers whose dataset is absent.
 
 The ATM systems are static, hand-maintained files in shared/package/systems: `cdg` for the
-Paris-CDG approach, `neoirma` for every other approach and for the ground displays.
+Paris-CDG approach, `orly` for the Paris-Orly approach (neoIRMA's tags with CoFrance's Paris-Orly
+letters and colours), `neoirma` for every other approach and for the ground displays.
 
 Standard library only.
 """
@@ -67,11 +68,12 @@ SECTOR_LAYERS = [
 
 # NeoRadar ATM systems (shared/package/systems/<name>). A CoFrance tag format listed here gets its
 # own system; every other CoFrance display and every vSMR (AVISO) display uses neoIRMA, whose ground
-# section is the package's one ground look (cdg's ground points at it).
-SYSTEM_FOR_TAG_FORMAT = {"Paris-CDG": "cdg"}
-# AVISOs whose airborne traffic is CDG's: Charles de Gaulle and Le Bourget show the Paris-CDG
-# colours and letters around the airfield. Their ground look is the same (cdg's is #neoirma).
-SYSTEM_FOR_AVISO = {"LFPG": "cdg", "LFPB": "cdg"}
+# section is the package's one ground look (cdg's and orly's ground point at it).
+SYSTEM_FOR_TAG_FORMAT = {"Paris-CDG": "cdg", "Paris-Orly": "orly"}
+# AVISOs whose airborne traffic is an approach's: Charles de Gaulle and Le Bourget show the
+# Paris-CDG colours and letters around the airfield, Orly the Paris-Orly ones. Their ground look is
+# the same (cdg's and orly's are #neoirma).
+SYSTEM_FOR_AVISO = {"LFPG": "cdg", "LFPB": "cdg", "LFPO": "orly"}
 # AVISOs turned so the airport sits square on the screen (map.orientation, degrees).
 AVISO_ORIENTATION = {"LFPG": 356, "LFMN": 135}
 DEFAULT_SYSTEM = "neoirma"

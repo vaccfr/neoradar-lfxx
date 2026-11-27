@@ -224,6 +224,34 @@
     "track_e3b8cb": {
       "value": "227,184,203",
       "expression": ["$isTrack"]
+    },
+    "track_93886f": {
+      "value": "147,136,111",
+      "expression": ["$isTrack"]
+    },
+    "track_acafab": {
+      "value": "172,175,171",
+      "expression": ["$isTrack"]
+    },
+    "track_ace2dd": {
+      "value": "172,226,221",
+      "expression": ["$isTrack"]
+    },
+    "track_c6b68f": {
+      "value": "198,182,143",
+      "expression": ["$isTrack"]
+    },
+    "track_d1d5d0": {
+      "value": "209,213,208",
+      "expression": ["$isTrack"]
+    },
+    "track_e7a3fa": {
+      "value": "231,163,250",
+      "expression": ["$isTrack"]
+    },
+    "track_f8a29a": {
+      "value": "248,162,154",
+      "expression": ["$isTrack"]
     }
   },
   "expressions": {
@@ -443,6 +471,36 @@
         "$cdgDepOrly",
         "$cdgDepPTOB",
         "$cdgDepCDG",
+        "$isOwnedOrOffered"
+      ]
+    ],
+    "orlyLocal": [
+      "AND",
+      [
+        ["OR", [["==", "origin", "LFPO"], ["==", "origin", "LFPN"], ["==", "origin", "LFPV"]]],
+        [
+          "OR",
+          [["==", "destination", "LFPO"], ["==", "destination", "LFPN"], ["==", "destination", "LFPV"]]
+        ]
+      ]
+    ],
+    "orlyArrOrly": ["==", "destination", "LFPO"],
+    "orlyArrPNPV": ["OR", [["==", "destination", "LFPN"], ["==", "destination", "LFPV"]]],
+    "orlyArrBourget": ["==", "destination", "LFPB"],
+    "orlyArrCDG": ["==", "destination", "LFPG"],
+    "orlyDepOrly": ["OR", [["==", "origin", "LFPO"], ["==", "origin", "LFPN"], ["==", "origin", "LFPV"]]],
+    "orlyDepCDG": ["OR", [["==", "origin", "LFPG"], ["==", "origin", "LFPB"]]],
+    "orlyVFR": ["contains", "flightRule", "V"],
+    "orlyThroughFilter": [
+      "OR",
+      [
+        "$orlyLocal",
+        "$orlyArrOrly",
+        "$orlyArrPNPV",
+        "$orlyArrBourget",
+        "$orlyArrCDG",
+        "$orlyDepOrly",
+        "$orlyDepCDG",
         "$isOwnedOrOffered"
       ]
     ],

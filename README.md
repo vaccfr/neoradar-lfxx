@@ -17,10 +17,12 @@ One package covers all of France. It is built from the French vACC military GNG 
 
 NeoRadar is used for approach and below for now. The package has the converted sector file, the
 approach (CCA/EGA) and AVISO ASRs as NeoRadar profiles (the centre displays and login profiles
-are left out), the CoFrance maps, and two radar systems:
+are left out), the CoFrance maps, and three radar systems:
 
-- **`neoirma`**: a stripless IRMA for every approach, and the ground look for every AVISO.
+- **`neoirma`**: a stripless IRMA for every other approach, and the ground look for every AVISO.
 - **`cdg`**: the Paris-CDG approach, with CoFrance's Paris-CDG track colours and letters.
+- **`orly`**: the Paris-Orly approach: neoIRMA's tags with CoFrance's Paris-Orly track colours
+  and letters.
 
 The systems before this change are kept in [backup/](backup/README.md).
 

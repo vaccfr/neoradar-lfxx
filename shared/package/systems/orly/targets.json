@@ -1,0 +1,422 @@
+{
+  "$schema": "https://raw.githubusercontent.com/neoradar-project/schemas/refs/heads/main/systems/targets.schema.json",
+  "groundSymbology": "#neoirma",
+  "airborneSymbology": [
+    {
+      "description": "P: local flight Orly / Toussus / Villacoublay",
+      "applyWhen": "$orlyLocal",
+      "applyToFilterStates": [
+        "kUnfiltered",
+        "kUpperFiltered",
+        "kLowerFiltered"
+      ],
+      "plotShape": "neoirma/track",
+      "plotColor": [
+        "=alertTrack",
+        "=warningTrack",
+        "=track_d1d5d0"
+      ],
+      "historyTrailsSkipSteps": 2,
+      "speedVectorColor": [
+        "=alertTrack",
+        "=warningTrack",
+        "=track_d1d5d0"
+      ],
+      "historyTrailShape": {
+        "shape": "neoirma/trail",
+        "steps": 6,
+        "color": [
+          "=alertTrack",
+          "=warningTrack",
+          "=track_d1d5d0"
+        ],
+        "scaleRamp": [
+          1.25,
+          1.25,
+          1.25,
+          0.75,
+          0.75,
+          0.75
+        ]
+      }
+    },
+    {
+      "description": "O: Orly arrival",
+      "applyWhen": "$orlyArrOrly",
+      "applyToFilterStates": [
+        "kUnfiltered",
+        "kUpperFiltered",
+        "kLowerFiltered"
+      ],
+      "plotShape": "neoirma/track",
+      "plotColor": [
+        "=alertTrack",
+        "=warningTrack",
+        "=track_f8a29a"
+      ],
+      "historyTrailsSkipSteps": 2,
+      "speedVectorColor": [
+        "=alertTrack",
+        "=warningTrack",
+        "=track_f8a29a"
+      ],
+      "historyTrailShape": {
+        "shape": "neoirma/trail",
+        "steps": 6,
+        "color": [
+          "=alertTrack",
+          "=warningTrack",
+          "=track_f8a29a"
+        ],
+        "scaleRamp": [
+          1.25,
+          1.25,
+          1.25,
+          0.75,
+          0.75,
+          0.75
+        ]
+      }
+    },
+    {
+      "description": "V: Toussus / Villacoublay arrival",
+      "applyWhen": "$orlyArrPNPV",
+      "applyToFilterStates": [
+        "kUnfiltered",
+        "kUpperFiltered",
+        "kLowerFiltered"
+      ],
+      "plotShape": "neoirma/track",
+      "plotColor": [
+        "=alertTrack",
+        "=warningTrack",
+        "=track_e7a3fa"
+      ],
+      "historyTrailsSkipSteps": 2,
+      "speedVectorColor": [
+        "=alertTrack",
+        "=warningTrack",
+        "=track_e7a3fa"
+      ],
+      "historyTrailShape": {
+        "shape": "neoirma/trail",
+        "steps": 6,
+        "color": [
+          "=alertTrack",
+          "=warningTrack",
+          "=track_e7a3fa"
+        ],
+        "scaleRamp": [
+          1.25,
+          1.25,
+          1.25,
+          0.75,
+          0.75,
+          0.75
+        ]
+      }
+    },
+    {
+      "description": "K: Le Bourget arrival",
+      "applyWhen": "$orlyArrBourget",
+      "applyToFilterStates": [
+        "kUnfiltered",
+        "kUpperFiltered",
+        "kLowerFiltered"
+      ],
+      "plotShape": "neoirma/track",
+      "plotColor": [
+        "=alertTrack",
+        "=warningTrack",
+        "=track_4cbc38"
+      ],
+      "historyTrailsSkipSteps": 2,
+      "speedVectorColor": [
+        "=alertTrack",
+        "=warningTrack",
+        "=track_4cbc38"
+      ],
+      "historyTrailShape": {
+        "shape": "neoirma/trail",
+        "steps": 6,
+        "color": [
+          "=alertTrack",
+          "=warningTrack",
+          "=track_4cbc38"
+        ],
+        "scaleRamp": [
+          1.25,
+          1.25,
+          1.25,
+          0.75,
+          0.75,
+          0.75
+        ]
+      }
+    },
+    {
+      "description": "G: CDG arrival",
+      "applyWhen": "$orlyArrCDG",
+      "applyToFilterStates": [
+        "kUnfiltered",
+        "kUpperFiltered",
+        "kLowerFiltered"
+      ],
+      "plotShape": "neoirma/track",
+      "plotColor": [
+        "=alertTrack",
+        "=warningTrack",
+        "=track_c6b68f"
+      ],
+      "historyTrailsSkipSteps": 2,
+      "speedVectorColor": [
+        "=alertTrack",
+        "=warningTrack",
+        "=track_c6b68f"
+      ],
+      "historyTrailShape": {
+        "shape": "neoirma/trail",
+        "steps": 6,
+        "color": [
+          "=alertTrack",
+          "=warningTrack",
+          "=track_c6b68f"
+        ],
+        "scaleRamp": [
+          1.25,
+          1.25,
+          1.25,
+          0.75,
+          0.75,
+          0.75
+        ]
+      }
+    },
+    {
+      "description": "M: Orly / Toussus / Villacoublay departure",
+      "applyWhen": "$orlyDepOrly",
+      "applyToFilterStates": [
+        "kUnfiltered",
+        "kUpperFiltered",
+        "kLowerFiltered"
+      ],
+      "plotShape": "neoirma/track",
+      "plotColor": [
+        "=alertTrack",
+        "=warningTrack",
+        "=track_ace2dd"
+      ],
+      "historyTrailsSkipSteps": 2,
+      "speedVectorColor": [
+        "=alertTrack",
+        "=warningTrack",
+        "=track_ace2dd"
+      ],
+      "historyTrailShape": {
+        "shape": "neoirma/trail",
+        "steps": 6,
+        "color": [
+          "=alertTrack",
+          "=warningTrack",
+          "=track_ace2dd"
+        ],
+        "scaleRamp": [
+          1.25,
+          1.25,
+          1.25,
+          0.75,
+          0.75,
+          0.75
+        ]
+      }
+    },
+    {
+      "description": "E: CDG / Le Bourget departure",
+      "applyWhen": "$orlyDepCDG",
+      "applyToFilterStates": [
+        "kUnfiltered",
+        "kUpperFiltered",
+        "kLowerFiltered"
+      ],
+      "plotShape": "neoirma/track",
+      "plotColor": [
+        "=alertTrack",
+        "=warningTrack",
+        "=track_c6b68f"
+      ],
+      "historyTrailsSkipSteps": 2,
+      "speedVectorColor": [
+        "=alertTrack",
+        "=warningTrack",
+        "=track_c6b68f"
+      ],
+      "historyTrailShape": {
+        "shape": "neoirma/trail",
+        "steps": 6,
+        "color": [
+          "=alertTrack",
+          "=warningTrack",
+          "=track_c6b68f"
+        ],
+        "scaleRamp": [
+          1.25,
+          1.25,
+          1.25,
+          0.75,
+          0.75,
+          0.75
+        ]
+      }
+    },
+    {
+      "description": "S: VFR (yours or offered to you, shown through the altitude filter)",
+      "applyWhen": "$orlyVFR",
+      "applyToAttentionStates": [
+        "kIncomingTransfer",
+        "kAssumed",
+        "kOutgoingTransfer"
+      ],
+      "applyToFilterStates": [
+        "kUnfiltered",
+        "kUpperFiltered",
+        "kLowerFiltered"
+      ],
+      "plotShape": "neoirma/track",
+      "plotColor": [
+        "=alertTrack",
+        "=warningTrack",
+        "=track_acafab"
+      ],
+      "historyTrailsSkipSteps": 2,
+      "speedVectorColor": [
+        "=alertTrack",
+        "=warningTrack",
+        "=track_acafab"
+      ],
+      "historyTrailShape": {
+        "shape": "neoirma/trail",
+        "steps": 6,
+        "color": [
+          "=alertTrack",
+          "=warningTrack",
+          "=track_acafab"
+        ],
+        "scaleRamp": [
+          1.25,
+          1.25,
+          1.25,
+          0.75,
+          0.75,
+          0.75
+        ]
+      }
+    },
+    {
+      "description": "S: VFR",
+      "applyWhen": "$orlyVFR",
+      "plotShape": "neoirma/track",
+      "plotColor": [
+        "=alertTrack",
+        "=warningTrack",
+        "=track_acafab"
+      ],
+      "historyTrailsSkipSteps": 2,
+      "speedVectorColor": [
+        "=alertTrack",
+        "=warningTrack",
+        "=track_acafab"
+      ],
+      "historyTrailShape": {
+        "shape": "neoirma/trail",
+        "steps": 6,
+        "color": [
+          "=alertTrack",
+          "=warningTrack",
+          "=track_acafab"
+        ],
+        "scaleRamp": [
+          1.25,
+          1.25,
+          1.25,
+          0.75,
+          0.75,
+          0.75
+        ]
+      }
+    },
+    {
+      "description": "X: other traffic (yours or offered to you, shown through the altitude filter)",
+      "applyToAttentionStates": [
+        "kIncomingTransfer",
+        "kAssumed",
+        "kOutgoingTransfer"
+      ],
+      "applyToFilterStates": [
+        "kUnfiltered",
+        "kUpperFiltered",
+        "kLowerFiltered"
+      ],
+      "plotShape": "neoirma/track",
+      "plotColor": [
+        "=alertTrack",
+        "=warningTrack",
+        "=track_93886f"
+      ],
+      "historyTrailsSkipSteps": 2,
+      "speedVectorColor": [
+        "=alertTrack",
+        "=warningTrack",
+        "=track_93886f"
+      ],
+      "historyTrailShape": {
+        "shape": "neoirma/trail",
+        "steps": 6,
+        "color": [
+          "=alertTrack",
+          "=warningTrack",
+          "=track_93886f"
+        ],
+        "scaleRamp": [
+          1.25,
+          1.25,
+          1.25,
+          0.75,
+          0.75,
+          0.75
+        ]
+      }
+    },
+    {
+      "description": "X: other traffic",
+      "plotShape": "neoirma/track",
+      "plotColor": [
+        "=alertTrack",
+        "=warningTrack",
+        "=track_93886f"
+      ],
+      "historyTrailsSkipSteps": 2,
+      "speedVectorColor": [
+        "=alertTrack",
+        "=warningTrack",
+        "=track_93886f"
+      ],
+      "historyTrailShape": {
+        "shape": "neoirma/trail",
+        "steps": 6,
+        "color": [
+          "=alertTrack",
+          "=warningTrack",
+          "=track_93886f"
+        ],
+        "scaleRamp": [
+          1.25,
+          1.25,
+          1.25,
+          0.75,
+          0.75,
+          0.75
+        ]
+      }
+    }
+  ]
+}

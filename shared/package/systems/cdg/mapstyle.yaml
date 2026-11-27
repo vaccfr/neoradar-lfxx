@@ -75,5 +75,7 @@ rdf:
   singleTransmissionColor: [170, 231, 197, 150]
   concurrentTransmissionColor: [255, 0, 0, 255]
   circleThreshold: 6
-  lowAltitude: 3000
+  # A floor on pressure altitude: no circle below it. Under the ground at any QNH, so approach
+  # and AVISO traffic (finals, ground, departures) gets its circle too.
+  lowAltitude: -2000
   highAltitude: 41100

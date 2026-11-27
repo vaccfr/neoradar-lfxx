@@ -12,7 +12,7 @@ rebuilt from upstream on each run:
 
 - `vaccfr/Sector-Files` (public): ASRs, login profiles, aliases
 - `alexisBalzano/CoFrance-config-files` (public): CoFrance maps (its `tag_formats.json` is the
-  reference the two systems were ported from, not a build input)
+  reference the systems were ported from, not a build input)
 - `vaccfr/data-sectorfiles` (PRIVATE): GNG `.sct`/`.ese`, ICAO
 
 Laid over each other, they form a "source tree" with the French Controller Pack layout. A local
@@ -46,7 +46,7 @@ Controller Pack install (e.g. `~/Documents/FrenchVACC`) is already one.
 | `shared/package/` | Copied into every package: systems, fonts, images, sounds, plugins |
 | `shared/package/cdm/` | `CDMconfig.xml` for the vIFF CDM plugin (French vACC's, FTP fields blank); its rate and taxi-zone files are downloaded from `vaccfr/vIFF-CDM` |
 | `shared/package/plugins/` | Plugins as `.nrplugin` archives (now `vIFF-CDM-alpha`); `build.py` lists each in the manifest's `plugins` |
-| `shared/package/systems/` | The two static systems: `neoirma` (stripless IRMA: every approach but CDG, and the one ground look, used by every AVISO) and `cdg` (Paris-CDG approach; its ground is `#neoirma`). Tracks are vector shapes in `shapes.json` |
+| `shared/package/systems/` | The three static systems: `neoirma` (stripless IRMA: every approach but CDG and Orly, and the one ground look, used by every AVISO), `cdg` (Paris-CDG approach; its ground is `#neoirma`) and `orly` (Paris-Orly approach: neoIRMA's tags, mapstyle and policy, copied, with CoFrance's Paris-Orly letters and colours; its ground is `#neoirma`). Tracks are vector shapes in `shapes.json` |
 | `backup/` | The systems, sprite atlas and tag-format generator before the two-system cleanup. Not built, kept for reference (trails are vector shapes now; the package has no sprite atlas) |
 | `diffs/`, `transforms/` | Patches and text replacements applied to source files during `assemble` |
 | `.github/workflows/` | `release.yml` (build, validate, publish), `validate.yml` (repo checks) |
@@ -77,11 +77,12 @@ node scripts/validate.js <schemas checkout> build/*/package      # ajv@8 + js-ya
   upstream ASRs carry no map content on purpose, with their airport's AVISO layer only.
 - **A drawing's `showWhen` holds only where its item is listed; an item's `showWhen` shows it in
   every profile.** Conditional AVISO content (runway-configuration arrows) uses the drawing one.
-- **Two systems, edited by hand.** The build does not read CoFrance's tag formats: a CoFrance
+- **Three systems, edited by hand.** The build does not read CoFrance's tag formats: a CoFrance
   colour or rule change is ported into `shared/package/systems` by hand. Track colours follow
-  CoFrance's IRMA / Paris-CDG rules in priority order; the flight state is the callsign's reverse
-  video, one look per state in both systems (docs/maintaining.md has the table). The airborne tag
-  rows and callsign colours are identical in both systems: change both.
+  CoFrance's IRMA / Paris-CDG / Paris-Orly rules in priority order; the flight state is the
+  callsign's reverse video, one look per state in every system (docs/maintaining.md has the
+  table). The airborne tag rows and callsign colours are identical in all three: change all.
+  `orly` is neoIRMA's tags, mapstyle and policy copied: a change there goes into both.
 - **Filtered traffic is hidden unless a variant lists its filter state.** Variants for flows
   CoFrance never filters, and for flights assumed or in transfer, list all `applyToFilterStates`;
   tag layouts have a twin keyed on `$<system>ThroughFilter`. Keep targets, styles and layouts in

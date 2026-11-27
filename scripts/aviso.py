@@ -13,7 +13,10 @@ AVISO profile lists:
   <ICAO> <label kind>    one item per label category (Gates, Taxiways, TORA...)
   <ICAO> <group>         one item per vSMR group (East Arrows...). A group named for a direction
                          draws only while a runway end facing that way is active, as a drawing
-                         showWhen, so it shows only where its item is listed (that AVISO)
+                         showWhen, so it shows only where its item is listed (that AVISO).
+                         The profile lists the groups vSMR starts visible, plus every group
+                         drawn only with labels (LFPG's gate and taxiway names), as it lists
+                         labels outside groups
   <ICAO> temporary closures  works areas and their boundaries, taken from the airport's variant
                          files (LFPO_Work.geojson), drawn over the ground layout and groups
 
@@ -150,15 +153,38 @@ def convert_airport(path: Path, report: Report, palettes: dict[str, str],
                          "geometry": {"type": "Polygon", "coordinates": [project([[w, s], [e, s], [e, n], [w, n], [w, s]])]}})
 
     groups = {g.get("id"): g for g in data.get("vsmr_groups") or []}
+
+    # A group drawn only with labels (a feature counts for the first group it names, as below).
+    # Labels outside any group are always listed, and LFPG's gate, taxiway, building and TORA names
+    # were such labels until its file moved them into groups vSMR starts hidden; a label-only group
+    # is listed the same way, so the AVISO still opens with its names.
+    kinds_by_group: dict[str, set] = {}
+    for feature in data.get("features") or []:
+        props = feature.get("properties") or {}
+        first = next((g for g in props.get("vsmr_group_ids") or [] if g in groups), None)
+        if first is not None and feature.get("geometry"):
+            kind = props.get("object_type") or (styles.get(props.get("style_id")) or {}).get("object_type")
+            kinds_by_group.setdefault(first, set()).add(kind)
+    label_only = {gid for gid, kinds in kinds_by_group.items() if kinds == {"Label"}}
+
     group_items: dict[str, tuple[str, list | None]] = {}
+    shown_anyway: list[str] = []
     for gid, group in groups.items():
         direction = group_direction(group)
         cond = runway_condition(icao, direction, runways) if direction else None
         if direction and cond is None:
             report.warnings.append(f"AVISO {icao}: group {group.get('name')!r} faces {direction} but no runway end does; drawn whenever listed")
+        visible = group.get("visible", True) is not False
+        if not visible and gid in label_only:
+            shown_anyway.append(str(group.get("name") or gid))
         uuid = add_item(f"group-{gid}", f"{icao} {clean_name(str(group.get('name') or gid))}", order=2,
-                        listed_by_profile=group.get("visible", True) is not False)
+                        listed_by_profile=visible or gid in label_only)
         group_items[gid] = (uuid, cond)
+    if shown_anyway:
+        report.warnings.append(
+            f"AVISO {icao}: label groups the vSMR file starts hidden are shown, as labels outside groups are: "
+            f"{', '.join(shown_anyway)} (set them visible in Sector-Files LFXX/Plugins/vSMR/vSMR_Data/AVISO/{icao}.geojson "
+            f"to silence this, or change the label-only rule in scripts/aviso.py to hide them)")
 
     layout_uuid = None
     for feature in (data.get("features") or []) + extra_features:

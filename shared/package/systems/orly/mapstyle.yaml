@@ -1,0 +1,88 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/neoradar-project/schemas/main/systems/mapstyle.schema.json
+inactiveSectorBackgroundColor: [51,51,51]
+activeSectorBackgroundColor: [70,70,70]
+
+
+neighborSectorBorderLineColor: [145, 82, 15]
+neighborSectorBorderLineWidth: 2
+
+extendedCenterlines:
+  lengthNm: 20
+  color: [101, 129, 101]
+  lineWidth: 2
+  thresholdOffsetNm: 2
+
+  majorTickType: 'rightSideLine'
+  majorTickSpacingNm: 5
+  majorTickWidth: 1
+
+layerStyles:
+  label:
+    textStyle:
+      fontSize: 9
+  
+  fix:
+    pointStyle:
+      type: 'cross'
+      size: 4
+      strokeColor: [83, 94, 78]
+      fillColor: [83, 94, 78]
+      rotation: 45
+
+  vor:
+    pointStyle:
+      type: cross
+      size: 4
+      strokeColor: [83, 94, 78]
+      fillColor: [83, 94, 78]
+      rotation: 45
+
+  ndb:
+    pointStyle:
+      type: circle
+      size: 4
+      strokeColor: [83, 94, 78]
+      fillColor: [83, 94, 78]
+      rotation: 45
+
+  
+
+# Route draw in CoFrance's route colours (CoFrance.toml [Route display colors]): a thin line,
+# small crosses at the fixes, and labels as 4-Flight's flight leg draws them: a regular mono face on a
+# dark rounded box, so they stay readable over the map.
+routeDraw:
+  lineStyle:
+    color: [160, 216, 180]
+    width: 1
+    opacity: 0.85
+  pointStyle:
+    type: cross
+    size: 3
+    strokeColor: [160, 216, 180]
+    strokeWidth: 1
+    fillOpacity: 0
+  textStyle:
+    color: [160, 216, 180]
+    fontFamily: RobotoMono
+    fontWeight: normal
+    fontSize: 12
+    lineHeight: 14
+    offset: [8, -8]
+    backgroundColor: [44, 50, 56]
+    backgroundOpacity: 0.9
+    padding: 3
+    cornerRadius: 4
+
+# Radio direction finder: the circle drawn round an aircraft while it transmits.
+rdf:
+  circleRadius: 3
+  circlePrecision: 0
+  lowPrecision: 0
+  highPrecision: 0
+  singleTransmissionColor: [170, 231, 197, 150]
+  concurrentTransmissionColor: [255, 0, 0, 255]
+  circleThreshold: 6
+  # A floor on pressure altitude: no circle below it. Under the ground at any QNH, so approach
+  # and AVISO traffic (finals, ground, departures) gets its circle too.
+  lowAltitude: -2000
+  highAltitude: 41100

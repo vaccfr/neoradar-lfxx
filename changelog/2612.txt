@@ -25,3 +25,15 @@ Radar systems (both cdg and neoirma)
   runway set and none of the listed runways is in use. Before, both variants drew over each
   other whenever the other airport's runways were only partly set (e.g. Orly 25 for arrivals
   only) or not set at all.
+
+2612.4
+- EGA Paris-Orly gets CoFrance's Paris-Orly look on the neoIRMA tags: track and tag colours by
+  flow with the letter at the base of the leader (P local Orly/Toussus/Villacoublay, O Orly
+  arrivals, V Toussus/Villacoublay arrivals, K Le Bourget arrivals, G CDG arrivals, M Orly group
+  departures, E CDG/Le Bourget departures, S VFR, X other). S and X follow the altitude filter,
+  the others show through it, as in CoFrance. The LFPO AVISO shows the same colours and letters.
+- LFPG AVISO opens with its gate/stand, taxiway, building, engine test area and TORA names again.
+  The vSMR file now groups them and starts them hidden; label-only groups are shown, as labels
+  outside groups always were.
+- RDF circle on every transmitting aircraft: it was drawn only at or above 3000 ft, so finals,
+  ground and departures never showed one.
